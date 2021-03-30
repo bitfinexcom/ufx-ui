@@ -121,6 +121,7 @@ export const BALANCES = `${NS}-balances`
 
 // Dialog
 export const DIALOG = `${NS}-dialog`
+export const DIALOG_SCROLL_LOCK = `${NS}-dialog-scroll-lock`
 
 // Grid
 export const GRID = `${NS}-grid`
