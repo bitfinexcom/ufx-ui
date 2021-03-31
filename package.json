@@ -147,7 +147,6 @@
     "react-i18next": "^11.7.0",
     "react-measure": "^2.3.0",
     "react-number-format": "^4.4.1",
-    "react-popper": "^2.2.4",
     "react-popper-tooltip": "^2.11.1",
     "react-router-dom": "^5.2.0",
     "react-throttle-render": "^2.0.0",
