@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import { copyToClipboard } from '../../../../utils/clipboard'
 import {
-  Tooltip, Heading, Button, QRCode, Modal, Input,
+  Tooltip, Heading, Button, QRCode, Dialog as Modal, Input,
 } from '../../../ui'
 import { NOT_ENABLED, NONE_GENERATED } from '../constants'
 

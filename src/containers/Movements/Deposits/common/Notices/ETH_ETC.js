@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Notice, Button, Modal } from '../../../../../components/ui'
+import { Notice, Button, Dialog as Modal } from '../../../../../components/ui'
 import EthereumNotice from './Ethereum'
 
 const ETH_ETC = () => {

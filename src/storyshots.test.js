@@ -6,9 +6,8 @@ import { act } from 'react-dom/test-utils'
 const waitForNextTick = () => new Promise((resolve) => setTimeout(resolve))
 
 // ignore all stories whose snapshots are not static
-// Dialog/Popover stories use Portal which do not work well and shows updates in snapshots intermittently
+// Dialog stories use Portal which do not work well and shows updates in snapshots intermittently
 const DialogStories = 'Dialog.stories.storyshot' // uses portal
-const PopoverStories = 'Popover.stories.storyshot' // uses portal
 const ContainerStories = 'containers' // uses live api data
 const ignoreStoryIds = ['components-format-prettydate--show-year'] // uses current date
 
@@ -24,7 +23,6 @@ initStoryshots({
 
     if (snapshotFileName
       && !snapshotFileName.includes(DialogStories)
-      && !snapshotFileName.includes(PopoverStories)
       && !snapshotFileName.includes(ContainerStories)
     ) {
       const storyElement = story.render(context)

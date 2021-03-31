@@ -4,7 +4,7 @@ import React, { useState, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../../../common/classes'
-import { Button, Modal } from '../../../../components/ui'
+import { Button, Dialog as Modal } from '../../../../components/ui'
 
 const HelpButton = ({ helpMessage, children }) => {
   const { t } = useTranslation('movements')

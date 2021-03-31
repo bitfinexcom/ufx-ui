@@ -61,9 +61,6 @@ export const SORT_BUTTON = `${NS}-sort-button`
 // Notifications
 export const NOTIFICATIONS = `${NS}-notifications`
 
-// Popover
-export const POPOVER = `${NS}-popover`
-
 // Notice
 export const NOTICE = `${NS}-notice`
 
