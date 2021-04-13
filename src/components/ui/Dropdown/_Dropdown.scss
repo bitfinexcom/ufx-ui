@@ -1,0 +1,109 @@
+$dropdown-background-color: $light-gray4 !default;
+$dropdown-active-item-background-color: rgba($intent-primary, 0.3) !default;
+$dropdown-box-shadow: 0 1px 2px 0 rgba($black, 0.05) !default;
+$input-background-color: $light-gray6 !default;
+$input-border-color: $light-gray1 !default;
+
+.#{$ns}-dropdown {
+  position: relative;
+
+  .list {
+    box-shadow: $dropdown-box-shadow;
+    background-color: $dropdown-background-color;
+    list-style-type: none;
+    padding: 0;
+    margin-top: $ufx-base-size * -0.8;
+    width: 100%;
+    min-width: $ufx-base-size * 10;
+    max-height: $ufx-base-size * 24;
+    overflow-y: auto;
+    position: absolute;
+    top: $ufx-base-size * 4.7;
+    z-index: 999;
+  }
+
+  .list-item {
+    padding: $ufx-base-size;
+    cursor: pointer;
+    border-radius: $ufx-border-radius;
+
+    &:hover,
+    &--active,
+    &:focus {
+      background-color: $dropdown-active-item-background-color;
+    }
+
+    &:focus {
+      @include focus-state;
+    }
+  }
+
+  .list-search {
+    display: flex;
+    width: 100%;
+    padding: $ufx-base-size $ufx-base-size * 0.5;
+
+    input {
+      background-color: $input-background-color;
+      border: none;
+      border-bottom: 1px solid $input-border-color;
+      width: 100%;
+      height: $ufx-base-size * 3;
+      padding-right: $ufx-base-size * 2;
+      &:focus {
+        outline: none;
+        border-bottom-color: $ufx-border-focus-color;
+      }
+    }
+
+    .search-icon {
+      margin-left: $ufx-base-size * -1.5;
+      align-self: center;
+      color: $ufx-text-color;
+    }
+  }
+
+  .dropdown-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    border-radius: $ufx-border-radius;
+    width: 100%;
+    height: 100%;
+    padding: $ufx-base-size;
+    background-color: rgba($intent-primary, 0.3);
+    border: 1px solid rgba($intent-primary, 0.3);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      @include focus-state;
+    }
+
+    .selected-text,
+    * {
+      @include overflow-ellipsis();
+      outline: none;
+    }
+
+    svg {
+      margin-left: $ufx-base-size * 0.5;
+    }
+  }
+
+  &--small {
+    height: $ufx-base-size * 3;
+
+    .list {
+      top: $ufx-base-size * 3.7;
+      margin-top: $ufx-base-size * -0.6;
+    }
+
+    .list-item {
+      padding: $ufx-base-size * 0.6;
+    }
+  }
+}

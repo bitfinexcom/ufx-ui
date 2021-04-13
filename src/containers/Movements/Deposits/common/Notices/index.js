@@ -1,0 +1,7 @@
+export { default as AMP } from './AMP'
+export { default as BCH } from './BCH'
+export { default as ERC20 } from './ERC20'
+export { default as ETH_ETC } from './ETH_ETC'
+export { default as IOTA } from './IOTA'
+export { default as PaymentId } from './PaymentId'
+export { default as Ethereum } from './PaymentId'

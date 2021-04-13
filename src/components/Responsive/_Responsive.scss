@@ -1,0 +1,22 @@
+$breakpoints: 'hg', 'xl', 'lg', 'ml', 'md', 'sm', 's', 'xs', 'xxs';
+
+.#{$ns}-responsive {
+  display: block;
+
+  // .hidden-hg
+  // .hidden-xl
+  // .hidden-lg
+  // .hidden-ml
+  // .hidden-md
+  // .hidden-sm
+  // .hidden.s
+  // .hidden-xs
+  // .hidden-xxs
+  @each $bp in $breakpoints {
+    &--#{$bp} {
+      .hidden-#{$bp} {
+        display: none;
+      }
+    }
+  }
+}

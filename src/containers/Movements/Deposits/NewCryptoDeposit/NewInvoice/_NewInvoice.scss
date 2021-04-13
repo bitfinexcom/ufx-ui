@@ -1,0 +1,127 @@
+.#{$ns}-new-invoice {
+  .rc-slider-track {
+    background-color: $light-blue1;
+  }
+
+  .rc-slider-dot-active,
+  .rc-slider-handle {
+    border-color: $light-blue1;
+  }
+
+  .rc-slider-handle:active {
+    box-shadow: 0 0 $ufx-base-size * 0.8 $light-blue1;
+  }
+
+  .rc-slider-handle:focus {
+    box-shadow: 0 0 $ufx-base-size * 0.5 $light-blue1;
+  }
+
+  .lnx-deposit {
+    display: grid;
+    grid-gap: $ufx-base-size * 2;
+    justify-items: center;
+
+    .lnx-slider {
+      min-height: $ufx-base-size * 3;
+      max-width: $ufx-base-size * 50;
+      margin-left: $ufx-base-size * 3;
+    }
+
+    .wallet-select-wrapper {
+      display: grid;
+      grid-template-columns: $ufx-base-size * 5 $ufx-base-size * 20;
+      grid-gap: $ufx-base-size * 2;
+    }
+
+    .label {
+      margin-top: $ufx-base-size;
+      text-align: right;
+    }
+
+    .gen-invoice {
+      margin-left: $ufx-base-size * 7;
+    }
+  }
+
+  .invoice-qrcode {
+    margin-top: $ufx-base-size * 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .qrcode {
+      margin: $ufx-base-size * 3 0 $ufx-base-size;
+      width: $ufx-base-size * 30 !important;
+      height: $ufx-base-size * 30 !important;
+    }
+
+    .copy {
+      padding: $ufx-base-size $ufx-base-size * 1.5;
+    }
+  }
+
+  .lightning-address {
+    width: 70%;
+    text-align: left;
+    overflow: visible;
+    word-wrap: break-word;
+    margin: auto;
+    a {
+      cursor: pointer;
+    }
+  }
+}
+
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-new-invoice {
+    .lnx-deposit {
+      .lnx-slider {
+        margin: $ufx-base-size * 0.5 auto;
+        min-width: $ufx-base-size * 30;
+        max-width: $ufx-base-size * 30;
+      }
+
+      .rc-slider-mark-text:first-child {
+        display: block;
+        transform: translateX(0) !important;
+      }
+
+      .rc-slider-mark-text {
+        display: none;
+      }
+
+      .rc-slider-mark-text:last-child {
+        display: block;
+        transform: translateX(-100%) !important;
+      }
+
+      .gen-invoice {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .wallet-select-wrapper {
+        grid-template-columns: 1fr;
+        grid-gap: $ufx-base-size;
+        justify-items: center;
+
+        .wallet-select {
+          width: $ufx-base-size * 20;
+        }
+      }
+
+      .label {
+        margin: 0;
+      }
+    }
+
+    .invoice-qrcode {
+      .qrcode {
+        width: $ufx-base-size * 20 !important;
+        height: $ufx-base-size * 20 !important;
+      }
+    }
+  }
+}

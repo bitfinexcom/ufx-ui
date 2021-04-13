@@ -1,0 +1,30 @@
+---
+name: QuickSwap
+route: /components/quickswap
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+
+import QuickSwap from './QuickSwap'
+
+# QuickSwap
+TODO: desc
+
+## Properties
+
+<Props of={QuickSwap} />
+
+## Basic usage
+
+<Playground>
+  <QuickSwap
+    tokenList={{
+      btc: 'Bitcoin',
+      eth: 'Ethereum',
+    }}
+    getConversionRate={({from, to}) => 100.12}
+    getAvailableBalance={() => 100}
+    onSwapClick={(values) => alert(JSON.stringify(values))}
+  />
+</Playground>

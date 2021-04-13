@@ -1,0 +1,11 @@
+.#{$ns}-help-button {
+  padding: 1px;
+  border-bottom: 1px solid $light-gray2;
+  min-width: $ufx-base-size * 3;
+
+  &:hover,
+  &:focus {
+    font-weight: normal;
+    border-color: $gray2;
+  }
+}

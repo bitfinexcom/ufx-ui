@@ -1,0 +1,68 @@
+@mixin heading-typography() {
+  color: $ufx-heading-color;
+  font-weight: $ufx-font-weight-bold;
+}
+
+.#{$ns}-heading {
+  @include heading-typography();
+  margin: 0 0 $ufx-base-size;
+  padding: 0;
+
+  @each $intent, $color in $intents {
+    &--#{$intent} {
+      color: $color;
+    }
+  }
+}
+
+// tag: (font-size, line-height)
+$headings: (
+  "h1": (
+    60px,
+    67px,
+  ),
+  "h2": (
+    40px,
+    50px,
+  ),
+  "h3": (
+    25px,
+    29px,
+  ),
+  "h4": (
+    18px,
+    20px,
+  ),
+  "h5": (
+    16px,
+    19px,
+  ),
+  "h6": (
+    14px,
+    16px,
+  ),
+) !default;
+
+/*
+Headings
+
+Markup:
+  <h1 class="@ns-heading">H1 heading</h1>
+  <h2 class="@ns-heading">H2 heading</h2>
+  <h3 class="@ns-heading">H3 heading</h3>
+  <h4 class="@ns-heading">H4 heading</h4>
+  <h5 class="@ns-heading">H5 heading</h5>
+  <h6 class="@ns-heading">H6 heading</h6>
+*/
+
+@each $tag, $props in $headings {
+  %#{$tag} {
+    font-size: nth($props, 1);
+    line-height: nth($props, 2);
+  }
+
+  #{$tag}.#{$ns}-heading {
+    @extend %#{$tag};
+    @include text-alignment();
+  }
+}

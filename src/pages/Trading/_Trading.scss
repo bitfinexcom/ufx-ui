@@ -1,0 +1,44 @@
+.#{$ns}-trading {
+  thead th,
+  .header {
+    font-weight: $ufx-font-weight-light;
+  }
+
+  .#{$ns}-orders {
+    th:nth-child(6),
+    td:nth-child(6) {
+      width: 25% !important;
+    }
+    th:nth-child(7),
+    td:nth-child(7) {
+      width: 13% !important;
+    }
+    th:nth-child(8),
+    td:nth-child(8) {
+      width: 12% !important;
+    }
+  }
+
+  .#{$ns}-table-wrapper {
+    overflow-y: initial;
+    max-height: 100%;
+  }
+
+  &__walletlist {
+    padding: $ufx-base-size $ufx-base-size * 2.5;
+
+    .list {
+      display: grid;
+      grid-gap: $ufx-base-size;
+    }
+
+    a {
+      text-decoration: none;
+      color: $ufx-text-color;
+
+      &:hover {
+        color: $intent-primary;
+      }
+    }
+  }
+}

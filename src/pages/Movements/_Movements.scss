@@ -1,0 +1,53 @@
+.#{$ns}-movements {
+  padding: $ufx-base-size * 2.5 5%;
+
+  .header {
+    font-size: $ufx-base-size * 2;
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      margin-top: $ufx-base-size * 2;
+    }
+
+    a {
+      text-decoration: none;
+      color: $light-blue2;
+    }
+
+    .fa-chevron-right {
+      margin: 0 $ufx-base-size;
+      color: $light-gray2;
+    }
+  }
+
+  .currency-list {
+    margin-top: $ufx-base-size * 0.5;
+    height: $ufx-base-size * 3.6;
+    min-width: $ufx-base-size * 15;
+
+    .list {
+      top: $ufx-base-size * 4.2;
+    }
+  }
+
+  .divider {
+    border: 1px solid $light-gray3;
+    margin-top: $ufx-base-size * 1.5;
+  }
+
+  .movement-list {
+    margin-top: $ufx-base-size * 3.5;
+  }
+}
+
+.#{$ns}-responsive--xs {
+  .#{$ns}-deposits {
+    padding-left: $ufx-base-size;
+    padding-right: $ufx-base-size;
+  }
+
+  .header {
+    font-size: $ufx-base-size * 1.6;
+  }
+}

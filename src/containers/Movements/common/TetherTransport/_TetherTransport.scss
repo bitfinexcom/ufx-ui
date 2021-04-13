@@ -1,0 +1,5 @@
+.#{$ns}-tether-transport {
+  display: grid;
+  grid-template-columns: $ufx-base-size * 5 $ufx-base-size * 20;
+  grid-gap: $ufx-base-size * 2;
+}

@@ -1,0 +1,43 @@
+
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# builds
+dist
+build
+.rpt2_cache
+src/ufx-ui.css
+src/ufx-ui.bundle.scss
+
+# snapshot
+.size-snapshot.json
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+report.*.json
+
+example/src/index.css
+example/report.*.json
+
+# storybook temporary assets
+/.storybook/cache
+/storybook-static
+
+# rollup-plugin-visualizer output file
+stats.html
+
+
+# doczjs temporary build dirs
+.docz
+docz-build

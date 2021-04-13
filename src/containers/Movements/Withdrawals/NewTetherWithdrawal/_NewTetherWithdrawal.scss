@@ -1,0 +1,20 @@
+.#{$ns}-new-withdrawal.tether {
+  .#{$ns}-tether-transport {
+    grid-gap: $ufx-base-size;
+  }
+
+  .#{$ns}-sort-button {
+    text-align: left;
+    width: 100%;
+    text-transform: uppercase;
+  }
+}
+
+.#{$ns}-responsive--xl,
+.#{$ns}-responsive--lg {
+  .#{$ns}-new-withdrawal.tether {
+    .#{$ns}-tether-transport {
+      grid-template-columns: $ufx-base-size * 8 $ufx-base-size * 20;
+    }
+  }
+}

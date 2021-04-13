@@ -1,0 +1,16 @@
+### TickerList component:
+- Table has 5 columns
+  - Favorite
+  - Name (sortable)
+  - Last Price (sortable)
+  - 24h Change (sortable)
+  - Volume (sortable)
+- Favorite column
+ - Selecting Favorite from header row shows only favorite pairs
+ - A row can be marked as favorite using this column
+- Volume column has optional unit button
+- 24h Change column shows value with color(green/red) for +ve/-ve change
+- Table has striped layout
+- Row in table is interactive/clickable
+- Component should be accessible using keyboard
+- Component should be Responsive

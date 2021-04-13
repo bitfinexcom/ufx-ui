@@ -1,0 +1,88 @@
+@mixin base-typography() {
+  font-size: $ufx-font-size;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: $ufx-line-height;
+  text-transform: none;
+}
+
+@mixin focus-state($color: $ufx-border-focus-color) {
+  outline: none;
+  border: 1px solid $color;
+}
+
+@mixin text-alignment {
+  &--align-left {
+    text-align: left;
+  }
+
+  &--align-center {
+    text-align: center;
+  }
+
+  &--align-right {
+    text-align: right;
+  }
+}
+
+@mixin overflow-ellipsis() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+@mixin disabled($opacity: 0.8) {
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+    opacity: $opacity;
+  }
+}
+
+@mixin error-base() {
+  font-size: $ufx-error-font-size;
+  color: $intent-error;
+  opacity: 0.8;
+}
+
+@function centered-text($height, $line-height: $ufx-line-height) {
+  @return floor(($height - $line-height) / 2);
+}
+
+@mixin divider($margin: $ufx-base-size * 2, $color: $light-gray6) {
+  border: 0.5px solid $color;
+  border-radius: 2px;
+  margin: $margin 0;
+}
+
+@mixin focus-box-shadow(
+  $spread-radius: 3px,
+  $color: $ufx-text-color,
+  $opacity: 0.3
+) {
+  box-shadow: 0 0 0 $spread-radius rgba($color, $opacity);
+}
+
+@mixin styledScrollbar($bg-color: $light-gray3) {
+  &::-webkit-scrollbar {
+    width: $ufx-base-size * 0.5;
+    height: $ufx-base-size * 0.5;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: $ufx-base-size * 0.3;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $ufx-base-size * 0.3;
+    background: $bg-color;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: $bg-color transparent;
+}

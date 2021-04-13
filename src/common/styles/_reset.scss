@@ -1,0 +1,28 @@
+html {
+  box-sizing: border-box;
+}
+
+// adjust box-sizing for every element
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// Style resets on top of Normalize.css
+
+body {
+  @include base-typography();
+  font-family: $ufx-font-family;
+  color: $ufx-text-color;
+  background-color: $ufx-background-color;
+}
+
+button {
+  color: currentColor;
+}
+
+p {
+  margin-bottom: $ufx-base-size;
+  margin-top: 0;
+}

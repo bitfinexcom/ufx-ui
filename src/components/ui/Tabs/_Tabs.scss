@@ -1,0 +1,27 @@
+.#{$ns}-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+
+  .tab {
+    cursor: pointer;
+    margin: 0 3px;
+    padding-bottom: $ufx-base-size * 0.2;
+    color: $intent-secondary;
+    border-bottom: 1px solid transparent;
+    outline: none;
+    transition: border-color $ufx-transition-duration $ufx-transition-ease,
+      color $ufx-transition-duration $ufx-transition-ease;
+
+    &:focus,
+    &:hover,
+    &--active {
+      color: $intent-primary;
+      border-color: $intent-primary;
+    }
+
+    &--active {
+      font-weight: $ufx-font-weight-bold;
+    }
+  }
+}

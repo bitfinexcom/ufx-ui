@@ -1,0 +1,15 @@
+$label-margin-bottom: $ufx-base-size !default;
+
+.#{$ns}-label {
+  margin-bottom: $label-margin-bottom;
+  @include overflow-ellipsis();
+  white-space: pre-wrap;
+
+  &.uppercase {
+    text-transform: uppercase;
+  }
+
+  &--small {
+    margin-bottom: $label-margin-bottom * 0.5;
+  }
+}

@@ -1,0 +1,70 @@
+.#{$ns}-orders {
+  table {
+    table-layout: fixed;
+  }
+  td {
+    vertical-align: middle;
+    word-wrap: break-word;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 1em 0.5em;
+  }
+
+  .row {
+    .intent {
+      position: relative;
+      text-align: center;
+    }
+
+    .pair {
+      .mobile-order-type {
+        display: block;
+        color: $gray5;
+      }
+    }
+
+    .buy,
+    .sell {
+      position: absolute;
+      top: 2px;
+      bottom: 2px;
+      left: 0;
+      width: 3px;
+    }
+
+    .buy {
+      background: $intent-success;
+    }
+
+    .sell {
+      background: $intent-error;
+    }
+  }
+
+  &.mobile-table {
+    table {
+      table-layout: auto;
+    }
+
+    td {
+      white-space: nowrap;
+    }
+
+    th, td {
+      padding-right: 14px;
+    }
+  }
+}
+
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-orders {
+    .row {
+      .pair {
+        text-align: left;
+      }
+    }
+  }
+}

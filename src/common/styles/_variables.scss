@@ -1,0 +1,54 @@
+@import "colors";
+
+// Namespace appended to the beginning of each CSS class i.e. `.#{$ns}-button`
+$ns: ufx !default;
+
+$intent-primary: $green1 !default;
+$intent-secondary: $blue1 !default;
+$intent-success: $green1 !default;
+$intent-info: $blue2 !default;
+$intent-warning: $yellow1 !default;
+$intent-error: $red1 !default;
+
+$intents: (
+  "primary": $intent-primary,
+  "secondary": $intent-secondary,
+  "success": $intent-success,
+  "info": $intent-info,
+  "warning": $intent-warning,
+  "error": $intent-error,
+) !default;
+
+$ufx-background-color: $white !default;
+
+$ufx-base-size: 10px !default;
+
+$ufx-font-family: sans-serif !default;
+
+$ufx-font-size: $ufx-base-size * 1.4 !default;
+
+$ufx-line-height: $ufx-base-size * 1.7 !default;
+
+$ufx-font-weight-bold: 600;
+$ufx-font-weight-light: 300;
+
+$ufx-border-radius: 2px !default;
+
+$ufx-error-font-size: $ufx-base-size * 1.3 !default;
+
+$ufx-text-color: $dark-gray1 !default;
+$ufx-heading-color: $ufx-text-color !default;
+
+$ufx-text-color-muted: $gray1 !default;
+$ufx-text-color-disabled: rgba($ufx-text-color-muted, 0.6) !default;
+
+$ufx-border-focus-color: $intent-primary !default;
+
+$ufx-input-height: $ufx-base-size * 4.7 !default;
+
+// Transitions
+$ufx-transition-ease: cubic-bezier(0.4, 1, 0.75, 0.9) !default;
+$ufx-transition-duration: 0.15s !default;
+
+$ufx-divider-black: rgba($black, 0.15) !default;
+$ufx-divider-grey: rgba($light-gray6, 0.15) !default;

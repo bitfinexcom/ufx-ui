@@ -1,0 +1,74 @@
+---
+name: MarketList
+route: /components/marketlist
+menu: Components
+---
+
+import { Playground, Props } from "docz";
+
+import MarketList from "./MarketList";
+
+# MarketList
+
+TODO: desc
+
+## Properties
+
+<Props of={MarketList} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+    const [favs, setFavs] = React.useState({});
+    return (
+      <MarketList
+        data={[
+          {
+            id: "tBTCUSD",
+            baseCcy: "BTC",
+            quoteCcy: "USD",
+            lastPrice: 8370.7,
+            "24hChange": -0.0209,
+            "24hHigh": 8815.3,
+            "24hLow": 8314,
+            "24hVolume": 62126212.09381871,
+          },
+          {
+            id: "tETHUSD",
+            baseCcy: "ETH",
+            quoteCcy: "USD",
+            lastPrice: 8270.6,
+            "24hChange": -0.0209,
+            "24hHigh": 8815.3,
+            "24hLow": 8316,
+            "24hVolume": 6312.09381871,
+          },
+          {
+            id: "tXRPUSD",
+            baseCcy: "XRP",
+            quoteCcy: "USD",
+            lastPrice: 8255.4,
+            "24hChange": 0.0209,
+            "24hHigh": 8815.3,
+            "24hLow": 8317,
+            "24hVolume": 6200.09381871,
+          },
+        ]}
+        tabs={[
+          {
+            id: "USD",
+            title: "USD",
+          },
+          {
+            id: "EUR",
+            title: "EUR",
+          },
+        ]}
+        onRowClick={(pair) => alert(`selected pair is ${pair}`)}
+        favs={favs}
+        saveFavs={setFavs}
+      />
+    );
+  }}
+</Playground>

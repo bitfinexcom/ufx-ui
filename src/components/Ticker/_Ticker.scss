@@ -1,0 +1,100 @@
+.#{$ns}-ticker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "info  info  price"
+    "price_change price_change price_change"
+    "volume high low";
+  grid-row-gap: $ufx-base-size * 1.5;
+
+  font-size: $ufx-base-size * 1.4;
+  line-height: $ufx-base-size * 1.8;
+
+  .info {
+    grid-area: info;
+    display: flex;
+    align-items: flex-end;
+
+    .ccy-icon {
+      display: flex;
+      margin-right: $ufx-base-size * 0.5;
+    }
+
+    .quote-ccy {
+      margin-left: $ufx-base-size * 0.3;
+      margin-left: $ufx-base-size * 0.2;
+    }
+
+    .info-icon {
+      margin-left: $ufx-base-size * 0.4;
+      margin-bottom: $ufx-base-size * 0.4;
+      padding: $ufx-base-size * 0.2;
+      cursor: pointer;
+      align-self: flex-end;
+
+      &:focus {
+        outline: none;
+        @include focus-box-shadow(1px);
+      }
+    }
+  }
+
+  .last-price {
+    grid-area: price;
+    display: grid;
+    grid-template-areas:
+      "price  price"
+      "change perc";
+    justify-content: flex-end;
+
+    .price {
+      justify-self: flex-end;
+    }
+  }
+
+  .price-change {
+    grid-area: price_change;
+    justify-self: flex-end;
+    margin-top: $ufx-base-size * -1;
+
+    .price {
+      grid-area: change;
+    }
+
+    .perc {
+      grid-area: perc;
+    }
+
+    .change-icon {
+      margin: 0 $ufx-base-size * 0.5;
+    }
+  }
+
+  .volume {
+    grid-area: volume;
+  }
+
+  .high {
+    grid-area: high;
+    justify-self: center;
+  }
+
+  .low {
+    grid-area: low;
+    justify-self: flex-end;
+  }
+
+  .highlight {
+    font-size: $ufx-base-size * 3;
+    line-height: $ufx-base-size * 3.2;
+    font-weight: $ufx-font-weight-bold;
+  }
+
+  .label {
+    font-weight: $ufx-font-weight-light;
+  }
+
+  .value {
+    font-weight: $ufx-font-weight-bold;
+  }
+}
