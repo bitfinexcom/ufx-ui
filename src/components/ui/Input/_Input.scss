@@ -1,0 +1,116 @@
+$input-color: $ufx-text-color !default;
+$input-color-disabled: $ufx-text-color-disabled !default;
+$input-placeholder-color: $ufx-text-color-disabled !default;
+$input-background-color: $light-gray6 !default;
+$input-background-color-disabled: rgba($light-gray2, 0.5) !default;
+$input-border-color: $light-gray1 !default;
+$input-shadow-color-focus: $intent-primary !default;
+
+$input-padding-horizontal: $ufx-base-size !default;
+$input-padding-vertical: $ufx-base-size !default;
+$input-transition: color $ufx-transition-duration $ufx-transition-ease;
+$input-container-transition: border $ufx-transition-duration
+  $ufx-transition-ease;
+@mixin input-placeholder() {
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+}
+
+@mixin input-disabled() {
+  &.disabled,
+  &:disabled {
+    box-shadow: none;
+    color: $input-color-disabled;
+    cursor: not-allowed;
+    resize: none;
+  }
+
+  &.disabled {
+    background: $input-background-color-disabled;
+  }
+
+  &:disabled {
+    background: transparent;
+  }
+}
+
+@mixin input-base() {
+  appearance: none;
+  background: $input-background-color;
+  color: $input-color;
+  height: $ufx-input-height;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: $input-padding-vertical $input-padding-horizontal;
+  vertical-align: middle;
+
+  &:focus {
+    color: $intent-primary;
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  @include input-placeholder();
+  @include disabled(0.6);
+}
+
+.#{$ns}-input {
+  display: inline-block;
+  transition: $input-transition;
+  width: 100%;
+
+  .#{$ns}-label {
+    transition: $input-transition;
+  }
+  .input-field-container.disabled {
+    background-color: $input-background-color-disabled;
+    border: solid 1px $ufx-background-color;
+  }
+  .input-field-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid $input-border-color;
+    border-radius: $ufx-border-radius;
+    transition: $input-container-transition;
+    background: $input-background-color;
+
+    &:focus-within {
+      @include focus-state;
+    }
+
+    @include disabled(0.6);
+  }
+
+  .input-field {
+    @include input-base();
+    @include text-alignment();
+    overflow: hidden;
+
+    &--small {
+      height: $ufx-base-size * 3;
+      padding: ($ufx-base-size * 0.5) $ufx-base-size;
+    }
+  }
+
+  .error-msg {
+    @include error-base();
+    margin-top: 1px;
+    display: none;
+  }
+  .error-msg.visible {
+    display: block;
+  }
+}

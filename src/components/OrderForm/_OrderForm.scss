@@ -1,0 +1,116 @@
+.#{$ns}-order-form {
+  display: grid;
+  grid-template-areas:
+    "type type-cb"
+    "price amount"
+    "tif tif"
+    "slippage total"
+    "buy sell";
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: $ufx-base-size;
+  row-gap: $ufx-base-size;
+
+  .postonly {
+    display: inline-flex;
+  }
+  &__tooltip {
+    max-width: $ufx-base-size * 15;
+  }
+
+  .ask-bid-wrapper {
+    display: flex;
+    align-items: center;
+    padding-bottom: $ufx-base-size * 0.5;
+    height: $ufx-base-size * 2;
+  }
+
+  button.ask-bid {
+    background-color: $intent-error !important;
+    display: inline-block;
+    border-radius: 50%;
+    padding-top: $ufx-base-size * 0.5;
+    min-height: $ufx-base-size;
+    min-width: $ufx-base-size;
+    margin: $ufx-base-size * 0.3;
+    padding: 0;
+    transition: opacity 0.2s ease-in-out;
+
+    &.bid {
+      background-color: $intent-success !important;
+      margin-right: $ufx-base-size * 0.5;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+  }
+
+  .order-total {
+    font-weight: 300;
+    margin-right: $ufx-base-size * 1.1;
+    cursor: help;
+    &__wrapper {
+      min-height: $ufx-base-size * 1.636;
+      max-height: $ufx-base-size * 1.636;
+
+      grid-area: total;
+      text-overflow: ellipsis;
+      justify-self: flex-end;
+      overflow: hidden;
+      white-space: nowrap;
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+
+  .tif-input,
+  .amount-input,
+  .price-input {
+    font-size: $ufx-base-size * 1.3;
+    .has-error {
+      position: relative;
+      border-color: $intent-error;
+    }
+    .error-msg {
+      display: none;
+      position: unset;
+      font-size: $ufx-base-size * 1.1;
+      height: $ufx-base-size * 1.636;
+    }
+    .error-msg.visible {
+      display: block;
+    }
+  }
+
+  .#{$ns}-label {
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .label-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .buy-button {
+    grid-area: buy;
+  }
+
+  .sell-button {
+    grid-area: sell;
+  }
+  .tif-input {
+    grid-area: tif;
+  }
+  .slippage {
+    &__wrapper {
+      grid-area: slippage;
+      min-height: $ufx-base-size * 1.636;
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}

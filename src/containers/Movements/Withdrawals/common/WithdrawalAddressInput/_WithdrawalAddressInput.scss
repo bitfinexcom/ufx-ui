@@ -1,0 +1,11 @@
+.withdrawal-address-input {
+  .address-input {
+    margin-bottom: 0 !important;
+    padding-right: $ufx-base-size * 4.6 !important;
+  }
+
+  .help-text {
+    min-height: $ufx-base-size * 1.5;
+    font-size: 85%;
+  }
+}

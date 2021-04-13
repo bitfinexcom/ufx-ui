@@ -1,0 +1,16 @@
+.#{$ns}-depth-chart {
+  .canvas {
+    display: block;
+    cursor: crosshair;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__toolbar {
+    display: flex;
+
+    button:disabled {
+      opacity: 0.5;
+    }
+  }
+}

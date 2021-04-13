@@ -1,0 +1,25 @@
+.#{$ns}-notice {
+  margin: $ufx-base-size 0;
+  padding: $ufx-base-size $ufx-base-size * 1.4;
+  border: 1px solid $gray5;
+  background: $light-gray5;
+
+  &.info {
+    background: lighten($color: $light-blue1, $amount: 24);
+    border-color: $light-blue1;
+
+    .icon {
+      color: darken($light-blue1, 20);
+    }
+  }
+
+  &.warning {
+    background-color: $light-yellow1;
+    border-color: darken($color: $light-yellow1, $amount: 20);
+    color: $yellow2;
+  }
+
+  &.error {
+    color: $intent-error;
+  }
+}

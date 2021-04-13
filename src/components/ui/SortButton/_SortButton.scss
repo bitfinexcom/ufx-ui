@@ -1,0 +1,23 @@
+.#{$ns}-sort-button {
+  cursor: pointer;
+  user-select: none;
+  padding: $ufx-base-size * 0.3;
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+    .arrow-icon {
+      visibility: visible;
+    }
+  }
+
+  .arrow-icon {
+    position: relative;
+    left: $ufx-base-size * 0.3;
+    visibility: hidden;
+
+    &.active {
+      visibility: visible;
+    }
+  }
+}

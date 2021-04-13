@@ -1,0 +1,124 @@
+$popover-background-color: $dark-gray4 !default;
+
+.#{$ns}-popover {
+  position: relative;
+
+  &__content {
+    position: absolute;
+    border-radius: 3px;
+    background: $popover-background-color;
+    opacity: 0;
+    will-change: opacity, transform;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow:
+      0 0 0 1px rgba(16, 22, 26, .2),
+      0 2px 4px rgba(16, 22, 26, .4),
+      0 8px 24px rgba(16, 22, 26, .4);
+
+    &.entering,
+    &.entered {
+      opacity: 1;
+      transform: translate3d(-50%, 0, 0) scale3d(1, 1, 1);
+    }
+  }
+
+  &__arrow {
+    z-index: -1;
+
+    &:after {
+      content: '';
+      display: block;
+      background: $popover-background-color;
+      width: 20px;
+      height: 20px;
+      transform: rotate(45deg);
+      position: relative;
+    }
+  }
+  
+  &__content {
+    &.bottom {
+      transform: translate3d(-50%, -10px, 0) scale3d(0.8, 0.8, 1);
+      transform-origin: top center;
+      top: 10px;
+
+      &.entering,
+      &.entered {
+        transform: translate3d(-50%, 0, 0) scale3d(1, 1, 1);
+      }
+
+      .#{$ns}-popover__arrow {
+        top: 0;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+  
+        &:after {
+          top: -5px;
+        }
+      }
+    }
+
+    &.top {
+      transform: translate3d(-50%, 10px, 0) scale3d(0.8, 0.8, 1);
+      transform-origin: bottom center;
+      bottom: 10px;
+
+      &.entering,
+      &.entered {
+        transform: translate3d(-50%, 0, 0) scale3d(1, 1, 1);
+      }
+
+      .#{$ns}-popover__arrow {
+        bottom: 0;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+
+        &:after {
+          bottom: -5px;
+        }
+      }
+    }
+
+    &.left {
+      transform: translate3d(10px, -50%, 0) scale3d(0.8, 0.8, 1);
+      transform-origin: right center;
+      right: 10px;
+
+      &.entering,
+      &.entered {
+        transform: translate3d(0, -50%, 0) scale3d(1, 1, 1);
+      }
+
+      .#{$ns}-popover__arrow {
+        right: 0;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+
+        &:after {
+          right: -5px;
+        }
+      }
+    }
+
+    &.right {
+      transform: translate3d(-10px, -50%, 0) scale3d(0.8, 0.8, 1);
+      transform-origin: left center;
+      left: 10px;
+
+      &.entering,
+      &.entered {
+        transform: translate3d(0, -50%, 0) scale3d(1, 1, 1);
+      }
+
+      .#{$ns}-popover__arrow {
+        left: 0;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+
+        &:after {
+          left: -5px;
+        }
+      }
+    }
+  }
+}

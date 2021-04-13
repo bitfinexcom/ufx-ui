@@ -1,0 +1,14 @@
+.#{$ns}-new-tether-deposit {
+  display: grid;
+  grid-gap: $ufx-base-size * 2;
+
+  .label {
+    margin-top: $ufx-base-size * 0.6;
+    text-align: right;
+  }
+
+  .deposit-table {
+    display: grid;
+    grid-gap: $ufx-base-size * 2;
+  }
+}

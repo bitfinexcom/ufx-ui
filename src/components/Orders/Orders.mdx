@@ -1,0 +1,64 @@
+---
+name: Orders
+route: /components/orders
+menu: Components
+---
+
+import { Playground, Props } from "docz";
+
+import Orders from "./Orders";
+import OrdersComp from "./Orders";
+
+# Orders
+
+TODO: desc
+
+## Properties
+
+<Props of={OrdersComp} />
+
+## Basic usage
+
+<Playground>
+  <Orders
+    orders={[
+      {
+        pair: "EOS/USDt",
+        price: 6,
+        status: "fully.filled",
+        type: "LIMIT",
+        amount: 0,
+        symbol: "EOS.USDT",
+        clientId: 1574071834104,
+        groupId: {},
+        id: "85",
+        placed: 1574072954517,
+      },
+      {
+        pair: "BTC/USDt",
+        price: 2,
+        status: "user",
+        type: "LIMIT",
+        amount: 5,
+        symbol: "EOS.USDT",
+        clientId: 1574071578909,
+        groupId: {},
+        id: "18446744073709551531",
+        placed: 1574072401518,
+      },
+      {
+        pair: "BTC/USD",
+        price: 6,
+        status: "fully.filled",
+        type: "LIMIT",
+        amount: -1,
+        symbol: "EOS.USDT",
+        clientId: 1574071362894,
+        groupId: {},
+        id: "18446744073709551534",
+        placed: 1574071835512,
+      },
+    ]}
+    cancelOrder={(id) => alert(`order id is ${id}`)}
+  />
+</Playground>

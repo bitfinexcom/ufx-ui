@@ -1,0 +1,13 @@
+@import "./NewInvoice/NewInvoice";
+
+.#{$ns}-new-crypto-deposit {
+  .deposit-table,
+  .crypto-deposit-table {
+    display: grid;
+    grid-gap: $ufx-base-size * 2;
+  }
+
+  .info-button {
+    background-color: $light-gray3;
+  }
+}

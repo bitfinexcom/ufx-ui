@@ -1,0 +1,165 @@
+$search-input-height: $ufx-base-size * 2.8;
+
+.#{$ns}-marketlist {
+  margin-bottom: $ufx-base-size * 2;
+
+  .#{$ns}-button {
+    color: $intent-secondary;
+    padding: 0;
+    text-transform: uppercase;
+  }
+
+  .quoteccy-dropdown {
+    width: $ufx-base-size * 12;
+  }
+
+  .divider {
+    @include divider;
+  }
+
+  &__toolbar {
+    display: grid;
+    grid-template-areas: "fav-button tabs search-input";
+    grid-template-columns: max-content 1fr max-content;
+    color: $intent-secondary;
+    margin-left: $ufx-base-size;
+
+    // tabs
+    .#{$ns}-tabs {
+      grid-area: tabs;
+      padding: 0 $ufx-base-size;
+
+      .tab {
+        margin: 0 $ufx-base-size;
+        padding-bottom: $ufx-base-size * 0.5;
+        border-bottom: 2px solid transparent;
+
+        &:hover,
+        &--active {
+          border-bottom: 2px solid $intent-primary;
+        }
+      }
+    }
+
+    .fav-button {
+      grid-area: fav-button;
+      justify-self: flex-start;
+      padding-top: 2px;
+      margin-bottom: $ufx-base-size * 0.6;
+
+      span {
+        margin-left: $ufx-base-size * 0.5;
+      }
+
+      &:hover,
+      &:focus,
+      &--active {
+        color: $intent-primary;
+      }
+    }
+  }
+
+  &__table.#{$ns}-table {
+    tbody tr:first-child td {
+      box-shadow: none;
+    }
+
+    tbody {
+      .fav-button {
+        color: $ufx-text-color;
+        padding: 0 2px;
+      }
+
+      .green-text {
+        color: $intent-success;
+      }
+
+      .red-text {
+        color: $intent-error;
+      }
+    }
+
+    thead {
+      button {
+        height: $ufx-base-size * 2.4;
+        &:focus {
+          outline: auto;
+        }
+      }
+    }
+
+    .table-header {
+      display: flex;
+      align-items: center;
+
+      &__text {
+        margin-right: $ufx-base-size * 0.5;
+      }
+
+      &__default-icon {
+        display: flex;
+        flex-direction: column-reverse;
+
+        .fa-caret-down {
+          margin-top: $ufx-base-size * -0.6;
+        }
+      }
+    }
+  }
+
+  .search-input {
+    grid-area: search-input;
+
+    .input-field-container {
+      display: flex;
+      align-items: baseline;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid $intent-secondary;
+
+      & input {
+        height: $search-input-height;
+        background: transparent;
+        color: $intent-secondary;
+        padding: 0 ($ufx-base-size * 0.5) ($ufx-base-size * 0.5)
+          ($ufx-base-size * 0.5);
+      }
+    }
+  }
+}
+
+.#{$ns}-responsive--lg {
+  .#{$ns}-marketlist {
+    &__toolbar {
+      grid-row-gap: $ufx-base-size;
+      grid-template-areas:
+        "fav-button tabs"
+        ". search-input";
+      grid-template-columns: max-content 1fr;
+      justify-content: flex-start;
+    }
+
+    .search-input {
+      justify-self: flex-end;
+    }
+  }
+}
+
+.#{$ns}-responsive--md,
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-marketlist {
+    &__toolbar {
+      grid-column-gap: $ufx-base-size * 2;
+    }
+
+    .fav-button {
+      justify-self: flex-start;
+    }
+
+    .search-input {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+}

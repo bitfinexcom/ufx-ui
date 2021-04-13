@@ -1,0 +1,90 @@
+$checkbox-size: $ufx-base-size * 1.6 !default;
+$checkbox-size-small: $ufx-base-size * 1.4 !default;
+$checkbox-label-margin: 0 ($ufx-base-size * 0.5) 0 ($ufx-base-size * 2.5) !default;
+
+.#{$ns}-checkbox {
+  position: relative;
+  outline: none;
+  @include disabled();
+  margin-top: $ufx-base-size * 0.5;
+
+  :disabled + .#{$ns}-label:after {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    :not(:disabled) + .#{$ns}-label:after {
+      @include focus-box-shadow($color: $gray1, $opacity: 0.2);
+    }
+    .checked + .#{$ns}-label:after {
+      @include focus-box-shadow($color: $intent-primary, $opacity: 0.2);
+    }
+  }
+
+  .input-field {
+    display: none;
+
+    & + .#{$ns}-label:after {
+      content: "";
+      border: 1px solid currentColor;
+      border-radius: $ufx-border-radius;
+      height: $checkbox-size;
+      width: $checkbox-size;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: border $ufx-transition-duration $ufx-transition-ease,
+        box-shadow $ufx-transition-duration $ufx-transition-ease;
+    }
+
+    &.checked + .#{$ns}-label:after {
+      border: 1px solid $intent-primary;
+    }
+
+    &.checked + .#{$ns}-label:before {
+      content: "";
+      display: block;
+      width: $ufx-base-size * 0.8;
+      height: $ufx-base-size * 0.4;
+      border-bottom: 1.5px solid $intent-primary;
+      border-left: 1.5px solid $intent-primary;
+      transform: rotate(-45deg) scale(1);
+      position: absolute;
+      top: $ufx-base-size * 0.5;
+      left: $ufx-base-size * 0.4;
+    }
+  }
+
+  .#{$ns}-label {
+    display: flex;
+    margin: $checkbox-label-margin;
+    cursor: pointer;
+    @include disabled();
+  }
+
+  .error {
+    @include error-base();
+    align-self: baseline;
+    margin-left: $ufx-base-size * 2.5;
+  }
+
+  &.#{$ns}-checkbox--small {
+    .input-field {
+      & + .#{$ns}-label:before {
+        width: $ufx-base-size * 0.7;
+        left: $ufx-base-size * 0.4;
+        top: $ufx-base-size * 0.6;
+      }
+
+      & + .#{$ns}-label:after {
+        width: $checkbox-size-small;
+        height: $checkbox-size-small;
+        top: $ufx-base-size * 0.2;
+      }
+    }
+
+    .#{$ns}-label {
+      margin-left: $ufx-base-size * 2.2;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.#{$ns}-movementlist {
+  .muted {
+    font-weight: $ufx-font-weight-light;
+    font-size: $ufx-base-size * 1.3;
+  }
+
+  thead th {
+    font-weight: normal;
+  }
+}

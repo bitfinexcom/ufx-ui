@@ -1,0 +1,34 @@
+@import "./react-popper-tooltip";
+
+.#{$ns}-tooltip {
+  cursor: text;
+  color: lighten($dark-gray1, 10%);
+  padding: 4px 12px;
+  font-size: $ufx-base-size * 1.3;
+
+  &.#{$ns}-tooltip--persistent {
+    pointer-events: auto !important;
+
+    &:hover {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  }
+
+  .tooltip-arrow {
+    pointer-events: none;
+  }
+
+  .tooltip-arrow[data-placement*="right"] {
+    margin-left: -0.8rem;
+  }
+
+  .tooltip-arrow[data-placement*="left"] {
+    margin-right: -0.8rem;
+  }
+
+  .tooltip-arrow[data-placement*="left"]::before,
+  .tooltip-arrow[data-placement*="left"]::after {
+    border-width: 0.5rem 0 0.5rem 0.4rem !important;
+  }
+}

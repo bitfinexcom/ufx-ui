@@ -1,0 +1,119 @@
+$button-bg-color: $light-gray4;
+$button-border-color: $gray5;
+
+.#{$ns}-deposit-wallets {
+  display: grid;
+  grid-gap: $ufx-base-size * 2;
+  width: 100%;
+
+  .deposit-row {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-gap: $ufx-base-size * 2;
+
+    button {
+      background-color: $button-bg-color;
+      font-size: $ufx-base-size * 1.5;
+      font-weight: $ufx-font-weight-bold;
+      padding: $ufx-base-size * 0.8 $ufx-base-size * 2;
+
+      &:disabled {
+        opacity: 0.6;
+      }
+    }
+
+    .actions {
+      align-self: flex-end;
+
+      button {
+        border: 1px solid $button-border-color;
+
+        &:hover:not(:disabled) {
+          background-color: $light-gray3;
+        }
+
+        &:focus:not(:disabled) {
+          background-color: $gray6;
+        }
+
+        &:disabled {
+          background-color: $light-gray3;
+          opacity: 0.5;
+        }
+      }
+
+      button:nth-child(2) {
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+
+    .deposit-address {
+      button {
+        width: 100%;
+      }
+
+      .input-field-container {
+        border: 1px solid $button-border-color;
+      }
+
+      input {
+        background-color: $button-bg-color;
+        height: $ufx-base-size * 3.3;
+        cursor: default;
+        text-align: center;
+      }
+
+      .disabled {
+        pointer-events: default;
+      }
+    }
+  }
+
+  .#{$ns}-divider {
+    margin: 0;
+    display: none;
+  }
+}
+
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-deposit-wallets {
+    .deposit-row {
+      grid-template-columns: auto;
+      grid-gap: $ufx-base-size * 1.5;
+      justify-items: center;
+
+      .actions {
+        justify-self: center;
+      }
+
+      .#{$ns}-heading {
+        text-align: center;
+        margin-bottom: $ufx-base-size;
+      }
+
+      .deposit-address {
+        min-width: $ufx-base-size * 32;
+        max-width: $ufx-base-size * 45;
+      }
+    }
+
+    .#{$ns}-divider {
+      display: initial;
+    }
+  }
+}
+
+.qr-code-modal {
+  margin: $ufx-base-size * 2;
+  .qr-code {
+    margin: $ufx-base-size * 2 auto;
+    display: flex;
+  }
+
+  .address {
+    display: flex;
+    justify-content: center;
+  }
+}

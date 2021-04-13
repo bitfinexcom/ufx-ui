@@ -1,0 +1,13 @@
+.#{$ns}-spinner {
+  text-align: center;
+  color: $gray2;
+
+  .fast-spin {
+    -webkit-animation: fa-spin 0.6s infinite linear;
+    animation: fa-spin 0.6s infinite linear;
+  }
+
+  &__margin-wrapper {
+    margin-top: $ufx-base-size * 3.2;
+  }
+}

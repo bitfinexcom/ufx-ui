@@ -1,0 +1,244 @@
+$grid-component-padding-y: ($ufx-base-size * 0.8);
+$grid-component-padding-x: ($ufx-base-size * 1.2);
+$grid-component-padding: $grid-component-padding-y $grid-component-padding-x;
+$grid-header-height: $ufx-base-size * 3.4;
+$grid-background-color: $light-gray6;
+$grid-edit-background-color: $white;
+$grid-edit-padding: $ufx-base-size * 0.8;
+
+@mixin edit-component-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+
+  opacity: 0.6;
+  background: $grid-edit-background-color;
+  z-index: 100;
+}
+
+.#{$ns}-grid {
+  position: relative;
+  overflow-x: hidden;
+
+  .grid-layout {
+    z-index: 5;
+
+    .react-grid-item.react-grid-placeholder {
+      background-color: $gray1;
+    }
+
+    &__title {
+      padding: $grid-component-padding-y;
+    }
+
+    &__component-wrapper {
+      position: relative;
+      background: $grid-edit-background-color;
+      border-radius: $ufx-base-size * 0.4;
+
+      .react-resizable-handle {
+        &:after {
+          width: $ufx-base-size * 0.6;
+          height: $ufx-base-size * 0.6;
+
+          border: 1px solid $dark-gray5;
+          border-top: 0;
+          border-left: 0;
+        }
+      }
+    }
+
+    &__component {
+      padding: $grid-component-padding;
+
+      position: absolute;
+      top: $ufx-base-size * 4;
+      left: 0;
+      right: 0;
+      bottom: $ufx-base-size * 1.2;
+      padding-bottom: 0;
+      overflow-y: auto;
+      @include styledScrollbar;
+      display: flex;
+
+      & > * {
+        width: 100%;
+        height: 100%;
+      }
+
+      .react-resizable-handle {
+        background: $grid-edit-background-color;
+      }
+    }
+    .grid-component__order-form {
+      overflow-y: visible;
+    }
+
+    &__header {
+      display: flex;
+      height: $grid-header-height;
+
+      border-radius: $ufx-base-size * 0.6 $ufx-base-size * 0.6 0 0;
+      border-bottom: 1px solid $light-gray2;
+    }
+
+    &__toolbar {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;
+
+      button {
+        padding: $grid-component-padding;
+        min-width: $ufx-base-size * 3;
+        height: 100%;
+      }
+    }
+
+    &__is-editing {
+      cursor: move;
+
+      .grid-layout__component {
+        // disable component content while editing
+        > *:first-child {
+          position: relative;
+
+          &:after {
+            @include edit-component-overlay;
+          }
+        }
+      }
+    }
+  }
+
+  .grid-edit {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    background: darken($grid-edit-background-color, 5%);
+
+    border-radius: $ufx-base-size * 0.6;
+
+    display: grid;
+    grid-template-columns: max-content auto repeat(4, min-content);
+    grid-template-areas: "title add undo save reset close";
+
+    .title {
+      grid-area: title;
+
+      display: flex;
+      padding: $grid-edit-padding;
+      border-right: 1px solid $gray5;
+
+      .text {
+        font-weight: bold;
+        align-self: center;
+      }
+
+      .tooltip {
+        display: flex;
+        align-items: center;
+        margin: $ufx-base-size * 0.2 0 0 $ufx-base-size * 0.6;
+      }
+    }
+
+    .add {
+      grid-area: add;
+      padding: $grid-edit-padding;
+    }
+
+    > * {
+      display: flex;
+      align-items: center;
+    }
+
+    .undo {
+      grid-area: undo;
+      margin-right: $ufx-base-size * 0.8;
+      color: $intent-primary;
+    }
+
+    .save {
+      grid-area: save;
+      padding: $grid-edit-padding;
+      border-right: 1px solid $gray5;
+    }
+
+    .reset {
+      grid-area: reset;
+      padding: $grid-edit-padding;
+    }
+
+    .close {
+      grid-area: close;
+      padding: $grid-edit-padding;
+    }
+
+    .reset,
+    .close {
+      button {
+        background-color: $light-gray3;
+        margin-right: $ufx-base-size * 0.6;
+
+        &:hover {
+          background-color: lighten($light-gray3, 0.5);
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &__editing {
+    min-height: $ufx-base-size * 40;
+  }
+
+  &__background {
+    background: $grid-background-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: -1;
+  }
+
+  &__nonvisible-list {
+    margin-top: $ufx-base-size * 1.5;
+    min-width: $ufx-base-size * 15;
+
+    .list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+      width: 100%;
+      text-align: left;
+      padding: $ufx-base-size;
+    }
+  }
+}
+
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-grid {
+    .grid-edit {
+      grid-template-rows: auto auto;
+      grid-template-columns: min-content 1fr repeat(2, min-content);
+      grid-template-areas:
+        "title add undo save"
+        "title reset reset close";
+
+      .save {
+        border-right: 0;
+      }
+    }
+  }
+}

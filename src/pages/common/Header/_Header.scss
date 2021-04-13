@@ -1,0 +1,55 @@
+.#{$ns}-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $ufx-base-size * 0.8;
+  background-color: $ufx-background-color;
+  border-bottom: 1px solid $gray5;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $ufx-base-size * 5.4;
+  width: 100%;
+  z-index: 10;
+
+  .right {
+    display: flex;
+  }
+
+  .active {
+    color: $intent-primary;
+  }
+
+  a {
+    text-decoration: none;
+    color: $ufx-text-color;
+
+    &:hover,
+    &.active {
+      color: $intent-primary;
+    }
+  }
+
+  .wallets-heading {
+    display: flex;
+    align-items: center;
+    margin-right: $ufx-base-size;
+
+    .fa-chevron-down {
+      margin-left: $ufx-base-size * 0.6;
+      margin-top: $ufx-base-size * 0.3;
+    }
+  }
+
+  .header {
+    font-weight: $ufx-font-weight-light;
+  }
+
+  .edit-button {
+    background-color: $light-gray3;
+    &__hide {
+      visibility: hidden;
+    }
+  }
+}

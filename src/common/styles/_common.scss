@@ -1,0 +1,31 @@
+.#{$ns}-green-text {
+  color: $intent-success;
+  fill: $intent-success;
+}
+
+.#{$ns}-red-text {
+  color: $intent-error;
+  fill: $intent-error;
+}
+
+.#{$ns}-center {
+  text-align: center !important;
+}
+
+.#{$ns}-rtl {
+  text-align: right !important;
+}
+
+.#{$ns}-table-wrapper {
+  overflow-y: scroll;
+  max-height: $ufx-base-size * 35;
+  @include styledScrollbar;
+}
+
+.#{$ns}-divider {
+  @include divider;
+}
+
+.#{$ns}-text-muted {
+  font-weight: $ufx-font-weight-light;
+}

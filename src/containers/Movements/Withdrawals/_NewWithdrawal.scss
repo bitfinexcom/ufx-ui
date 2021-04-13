@@ -1,0 +1,92 @@
+$col-1-width: $ufx-base-size * 8;
+
+.#{$ns}-new-withdrawal {
+  .form {
+    display: grid;
+    grid-template-columns: $col-1-width max-content 1fr;
+    grid-template-rows: repeat(4, min-content);
+    grid-column-gap: $ufx-base-size;
+    grid-row-gap: $ufx-base-size * 1.5;
+    justify-content: center;
+    margin: $ufx-base-size * 3 0;
+
+    .address-label,
+    .memo-label,
+    .wallet-label {
+      grid-column: 1/2;
+    }
+    .address-input,
+    .memo-input,
+    .wallet-input {
+      grid-column: 2/3;
+    }
+
+    .ccy-usd {
+      grid-column: 1/3;
+      grid-column-gap: $ufx-base-size;
+      grid-row-gap: $ufx-base-size * 0.5;
+    }
+
+    .avail-box {
+      grid-column: 3;
+      grid-row: 1/-1;
+      justify-self: flex-end;
+    }
+
+    .label {
+      margin-top: $ufx-base-size;
+      justify-self: flex-end;
+    }
+
+    .#{$ns}-dropdown {
+      width: $ufx-base-size * 18;
+
+      .list {
+        top: $ufx-base-size * 4.2;
+      }
+    }
+
+    .#{$ns}-input,
+    .input-field-container,
+    .#{$ns}-dropdown {
+      height: $ufx-base-size * 3.6;
+    }
+  }
+
+  .submit {
+    margin-top: $ufx-base-size * 1.5;
+  }
+}
+
+.#{$ns}-responsive--md,
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-new-withdrawal {
+    .form {
+      grid-template-columns: $col-1-width max-content;
+      grid-template-rows: auto;
+
+      .avail-box {
+        grid-column: 1/-1;
+      }
+    }
+
+    .#{$ns}-withdrawal-terms {
+      justify-content: center;
+    }
+
+    .submit {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-new-withdrawal {
+    .form {
+      grid-template-columns: $ufx-base-size * 5 0.8fr;
+    }
+  }
+}

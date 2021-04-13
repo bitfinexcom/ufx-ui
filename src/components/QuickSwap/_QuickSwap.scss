@@ -1,0 +1,137 @@
+$quickswap-input-min-width: $ufx-base-size * 24;
+$quickswap-input-max-width: $ufx-base-size * 29;
+$quickswap-dropdown-width: $ufx-base-size * 13;
+
+.#{$ns}-quickswap {
+  padding: $ufx-base-size * 2;
+  display: grid;
+  grid-template-rows: ($ufx-base-size * 6) ($ufx-base-size * 10) (
+      $ufx-base-size * 6
+    ) max-content max-content;
+  grid-row-gap: $ufx-base-size;
+  grid-template-areas:
+    "title title title"
+    "from-amount swap-icon to-amount"
+    "..... ..... rate-label"
+    "accept-terms accept-terms accept-terms"
+    "..... swap-button .....";
+
+  .title {
+    grid-area: title;
+  }
+
+  .swap-icon {
+    grid-area: swap-icon;
+    justify-self: center;
+    align-self: center;
+    margin-top: $ufx-base-size * 2.5;
+    cursor: pointer;
+    padding: ($ufx-base-size * 0.5) ($ufx-base-size * 1.5);
+
+    &:hover {
+      border: 1px solid $intent-primary;
+    }
+
+    &:focus {
+      @include focus-state;
+      @include focus-box-shadow($color: $intent-primary);
+    }
+  }
+
+  .from-amount,
+  .to-amount {
+    min-width: $quickswap-input-min-width;
+    max-width: $quickswap-input-max-width;
+    align-self: center;
+  }
+
+  .from-amount {
+    grid-area: from-amount;
+  }
+
+  .to-amount {
+    grid-area: to-amount;
+    justify-self: end;
+  }
+
+  .rate-label {
+    grid-area: rate-label;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .#{$ns}-label:first-of-type {
+      margin-bottom: $ufx-base-size * 0.5;
+    }
+  }
+
+  .accept-terms {
+    grid-area: accept-terms;
+    justify-self: center;
+  }
+
+  .swap-button {
+    grid-area: swap-button;
+    align-self: center;
+    justify-self: center;
+    margin-top: $ufx-base-size;
+  }
+
+  .token-dropdown {
+    min-width: $quickswap-dropdown-width;
+    max-width: $quickswap-dropdown-width;
+    border-radius: 2px;
+
+    &:focus-within {
+      outline: none;
+      border-right: 1px solid $intent-primary !important;
+      @include focus-box-shadow($spread-radius: 2px, $color: $intent-primary);
+    }
+
+    .dropdown-field {
+      border: 0;
+      border-radius: 0;
+    }
+
+    .list {
+      margin-top: 0;
+    }
+  }
+
+  .tokenlist-renderer {
+    display: flex;
+    align-items: center;
+
+    > div {
+      margin: 0 ($ufx-base-size * 0.5);
+      @include overflow-ellipsis();
+    }
+  }
+}
+
+.#{$ns}-responsive--md,
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-quickswap {
+    grid-template-rows: auto;
+    grid-gap: $ufx-base-size;
+    grid-template-areas:
+      "title"
+      "from-amount"
+      "swap-icon"
+      "to-amount"
+      "rate-label"
+      "accept-terms"
+      "swap-button";
+
+    > * {
+      justify-self: center;
+    }
+  }
+
+  .rate-label {
+    margin-top: $ufx-base-size * 2;
+    min-width: $quickswap-dropdown-width;
+    max-width: $quickswap-input-max-width;
+  }
+}

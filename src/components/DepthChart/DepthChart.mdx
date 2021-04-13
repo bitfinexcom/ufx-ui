@@ -1,0 +1,194 @@
+---
+name: DepthChart
+route: /components/DepthChart
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+
+import DepthChart from './DepthChart'
+
+# DepthChart
+
+Depthchart implementation
+
+## Properties
+
+<Props of={DepthChart} />
+
+## Basic usage
+
+<Playground>
+  <DepthChart
+    online
+    width={600}
+    height={220}
+    asks={{
+      19276: { price: 19276, count: 7, amount: -26.36653064 },
+      19277: { price: 19277, count: 1, amount: -0.1 },
+      19278: { price: 19278, count: 1, amount: -0.84 },
+      19279: { price: 19279, count: 7, amount: -3.33483102 },
+      19280: { price: 19280, count: 3, amount: -0.28889251 },
+      19281: { price: 19281, count: 4, amount: -0.58754237 },
+      19282: { price: 19282, count: 5, amount: -1.2022725 },
+      19283: { price: 19283, count: 7, amount: -2.34394453 },
+      19284: { price: 19284, count: 7, amount: -0.6293271 },
+      19285: { price: 19285, count: 3, amount: -1.62003525 },
+      19286: { price: 19286, count: 4, amount: -2.6431 },
+      19287: { price: 19287, count: 4, amount: -0.9248 },
+      19288: { price: 19288, count: 3, amount: -0.17193099 },
+      19289: { price: 19289, count: 2, amount: -1.29045291 },
+      19290: { price: 19290, count: 2, amount: -0.95963517 },
+      19291: { price: 19291, count: 4, amount: -1.38645404 },
+      19292: { price: 19292, count: 4, amount: -0.51959453 },
+      19293: { price: 19293, count: 3, amount: -0.52348009 },
+      19294: { price: 19294, count: 6, amount: -3.6944504 },
+      19295: { price: 19295, count: 5, amount: -1.68515107 },
+      19296: { price: 19296, count: 6, amount: -3.16198075 },
+      19297: { price: 19297, count: 1, amount: -0.50045291 },
+      19298: { price: 19298, count: 2, amount: -0.94797 },
+      19299: { price: 19299, count: 2, amount: -1.2904 },
+      19300: { price: 19300, count: 8, amount: -1.62848196 },
+    }}
+    bids={{
+      19251: { price: 19251, count: 8, amount: 3.94253015 },
+      19252: { price: 19252, count: 5, amount: 7.5981867 },
+      19253: { price: 19253, count: 7, amount: 0.90105319 },
+      19254: { price: 19254, count: 5, amount: 0.051 },
+      19255: { price: 19255, count: 6, amount: 0.45178659 },
+      19256: { price: 19256, count: 9, amount: 2.14389665 },
+      19257: { price: 19257, count: 7, amount: 1.33111933 },
+      19258: { price: 19258, count: 6, amount: 1.5059 },
+      19259: { price: 19259, count: 7, amount: 1.14133 },
+      19260: { price: 19260, count: 4, amount: 0.8261 },
+      19261: { price: 19261, count: 6, amount: 0.4308 },
+      19262: { price: 19262, count: 7, amount: 1.7227 },
+      19263: { price: 19263, count: 7, amount: 2.72821 },
+      19264: { price: 19264, count: 4, amount: 2.0008 },
+      19265: { price: 19265, count: 7, amount: 0.6987225 },
+      19266: { price: 19266, count: 7, amount: 1.1962 },
+      19267: { price: 19267, count: 5, amount: 0.255 },
+      19268: { price: 19268, count: 4, amount: 2.94979285 },
+      19269: { price: 19269, count: 5, amount: 0.9963 },
+      19270: { price: 19270, count: 7, amount: 1.501 },
+      19271: { price: 19271, count: 3, amount: 0.0008 },
+      19272: { price: 19272, count: 3, amount: 0.0008 },
+      19273: { price: 19273, count: 4, amount: 0.001 },
+      19274: { price: 19274, count: 4, amount: 0.001 },
+      19275: { price: 19275, count: 3, amount: 4.43540774 },
+    }}
+    tAsks={{
+      19276: { total: -26.36653064, amount: -26.36653064 },
+      19277: { total: -26.466530640000002, amount: -0.1 },
+      19278: { total: -27.306530640000002, amount: -0.84 },
+      19279: { total: -30.64136166, amount: -3.33483102 },
+      19280: { total: -30.93025417, amount: -0.28889251 },
+      19281: { total: -31.517796540000003, amount: -0.58754237 },
+      19282: { total: -32.720069040000006, amount: -1.2022725 },
+      19283: { total: -35.06401357000001, amount: -2.34394453 },
+      19284: { total: -35.693340670000005, amount: -0.6293271 },
+      19285: { total: -37.313375920000006, amount: -1.62003525 },
+      19286: { total: -39.95647592, amount: -2.6431 },
+      19287: { total: -40.88127592, amount: -0.9248 },
+      19288: { total: -41.05320691, amount: -0.17193099 },
+      19289: { total: -42.34365982, amount: -1.29045291 },
+      19290: { total: -43.30329499, amount: -0.95963517 },
+      19291: { total: -44.689749029999994, amount: -1.38645404 },
+      19292: { total: -45.20934355999999, amount: -0.51959453 },
+      19293: { total: -45.73282364999999, amount: -0.52348009 },
+      19294: { total: -49.427274049999994, amount: -3.6944504 },
+      19295: { total: -51.11242512, amount: -1.68515107 },
+      19296: { total: -54.274405869999995, amount: -3.16198075 },
+      19297: { total: -54.774858779999995, amount: -0.50045291 },
+      19298: { total: -55.72282877999999, amount: -0.94797 },
+      19299: { total: -57.01322877999999, amount: -1.2904 },
+      19300: { total: -58.64171073999999, amount: -1.62848196 },
+      total: -58.64171073999999,
+    }}
+    tBids={{
+      19251: { total: 38.811435700000004, amount: 3.94253015 },
+      19252: { total: 34.86890555, amount: 7.5981867 },
+      19253: { total: 27.270718849999998, amount: 0.90105319 },
+      19254: { total: 26.36966566, amount: 0.051 },
+      19255: { total: 26.31866566, amount: 0.45178659 },
+      19256: { total: 25.86687907, amount: 2.14389665 },
+      19257: { total: 23.72298242, amount: 1.33111933 },
+      19258: { total: 22.39186309, amount: 1.5059 },
+      19259: { total: 20.88596309, amount: 1.14133 },
+      19260: { total: 19.74463309, amount: 0.8261 },
+      19261: { total: 18.91853309, amount: 0.4308 },
+      19262: { total: 18.48773309, amount: 1.7227 },
+      19263: { total: 16.76503309, amount: 2.72821 },
+      19264: { total: 14.03682309, amount: 2.0008 },
+      19265: { total: 12.03602309, amount: 0.6987225 },
+      19266: { total: 11.33730059, amount: 1.1962 },
+      19267: { total: 10.14110059, amount: 0.255 },
+      19268: { total: 9.88610059, amount: 2.94979285 },
+      19269: { total: 6.93630774, amount: 0.9963 },
+      19270: { total: 5.94000774, amount: 1.501 },
+      19271: { total: 4.43900774, amount: 0.0008 },
+      19272: { total: 4.43820774, amount: 0.0008 },
+      19273: { total: 4.43740774, amount: 0.001 },
+      19274: { total: 4.43640774, amount: 0.001 },
+      19275: { total: 4.43540774, amount: 4.43540774 },
+      total: 38.811435700000004,
+    }}
+    pAsks={[
+      19276,
+      19277,
+      19278,
+      19279,
+      19280,
+      19281,
+      19282,
+      19283,
+      19284,
+      19285,
+      19286,
+      19287,
+      19288,
+      19289,
+      19290,
+      19291,
+      19292,
+      19293,
+      19294,
+      19295,
+      19296,
+      19297,
+      19298,
+      19299,
+      19300,
+    ]}
+    pBids={[
+      19251,
+      19252,
+      19253,
+      19254,
+      19255,
+      19256,
+      19257,
+      19258,
+      19259,
+      19260,
+      19261,
+      19262,
+      19263,
+      19264,
+      19265,
+      19266,
+      19267,
+      19268,
+      19269,
+      19270,
+      19271,
+      19272,
+      19273,
+      19274,
+      19275,
+    ]}
+    zoom={25}
+    fontFamily='"Helvetica Neue"'
+    theme='light-theme'
+  />
+</Playground>

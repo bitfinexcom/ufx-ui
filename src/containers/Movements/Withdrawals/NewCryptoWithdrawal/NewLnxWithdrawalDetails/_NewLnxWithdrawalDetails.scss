@@ -1,0 +1,56 @@
+.#{$ns}-new-withdrawal.lnx {
+  .lnx-form-wrapper {
+    display: grid;
+    justify-content: center;
+  }
+
+  .form {
+    grid-template-columns: $ufx-base-size * 8 $ufx-base-size * 40;
+    margin: 0;
+    margin-top: $ufx-base-size;
+  }
+
+  .avail-box {
+    margin-left: $ufx-base-size * 10;
+  }
+
+  .submit {
+    margin-top: $ufx-base-size * 1.5;
+    text-align: center;
+  }
+}
+
+.#{$ns}-responsive--md,
+.#{$ns}-responsive--sm {
+  .#{$ns}-new-withdrawal.lnx {
+    .form {
+      grid-template-columns: $ufx-base-size * 5 $ufx-base-size * 45;
+    }
+  }
+}
+
+.#{$ns}-responsive--xs {
+  .#{$ns}-new-withdrawal.lnx {
+    .form {
+      grid-template-columns: $ufx-base-size * 5 $ufx-base-size * 25;
+    }
+
+    .avail-box {
+      justify-self: center;
+      margin-left: 0;
+    }
+
+    .submit {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.#{$ns}-responsive--xs {
+  .#{$ns}-new-withdrawal.lnx {
+    .avail-box {
+      justify-self: flex-end;
+    }
+  }
+}

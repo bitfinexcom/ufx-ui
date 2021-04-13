@@ -1,0 +1,88 @@
+$button-padding-horizontal: $ufx-base-size * 3.2 !default;
+$button-padding-vertical: $ufx-base-size * 1.4 !default;
+
+@mixin button-base() {
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-intent($color) {
+  border: 1px solid $color;
+  background-color: $color;
+  color: $white;
+  transition: all $ufx-transition-duration $ufx-transition-ease;
+
+  &:active:not([disabled]) {
+    filter: brightness(90%);
+  }
+
+  &:hover:not([disabled]) {
+    background-color: darken($color, 5);
+    border-color: darken($color, 5);
+  }
+
+  &:focus:not([disabled]),
+  &:active:not([disabled]) {
+    @include focus-box-shadow($color: $color);
+  }
+
+  &[disabled] {
+    background-color: darken(desaturate($color, 10.82), 14.31);
+    border-color: darken(desaturate($color, 10.82), 14.31);
+    color: mix($white, darken(desaturate($color, 10.82), 14.31), 60);
+  }
+
+  &--outline {
+    border-width: 2px;
+    background: white;
+    color: $color;
+
+    &:hover:not([disabled]) {
+      background: white;
+      color: darken($color, 10);
+    }
+  }
+}
+
+.#{$ns}-button {
+  @include button-base();
+  border-radius: $ufx-border-radius;
+  padding: $button-padding-vertical $button-padding-horizontal;
+  @include disabled();
+
+  .fa-spin {
+    margin-left: $ufx-base-size;
+  }
+
+  @each $intent, $color in $intents {
+    &--#{$intent} {
+      @include button-intent($color);
+    }
+  }
+
+  &--minimal {
+    padding: 0 $ufx-base-size * 0.7;
+    min-width: $ufx-base-size * 2.4;
+    min-height: $ufx-base-size * 2.4;
+
+    &:hover {
+      background-color: rgba($gray3, 0.15);
+    }
+
+    &:focus {
+      @include focus-box-shadow(2px);
+    }
+  }
+
+  &--small {
+    padding: $ufx-base-size ($ufx-base-size * 2.4);
+  }
+}

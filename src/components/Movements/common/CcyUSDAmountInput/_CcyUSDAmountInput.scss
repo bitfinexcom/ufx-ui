@@ -1,0 +1,61 @@
+.ccy-usd {
+  display: grid;
+  grid-template-columns: $ufx-base-size * 8 $ufx-base-size * 20 min-content $ufx-base-size * 20;
+  grid-column-gap: $ufx-base-size * 2;
+  grid-row-gap: $ufx-base-size * 0.5;
+  align-items: flex-start;
+
+  .label {
+    text-align: right;
+  }
+
+  .label,
+  .equiv {
+    margin-top: $ufx-base-size;
+  }
+
+  .amount-input {
+    input {
+      height: auto;
+    }
+
+    .ccy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 $ufx-base-size * 0.5;
+      border-left: 1px solid $light-gray1;
+      width: 20%;
+    }
+  }
+
+  .help {
+    display: flex;
+    align-items: center;
+    font-size: $ufx-base-size * 1.3;
+    grid-column: 2/-1;
+    justify-self: flex-start;
+
+    .min-amount {
+      padding: $ufx-base-size * 0.5;
+      text-decoration: underline;
+    }
+  }
+}
+
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .ccy-usd {
+    grid-template-columns: $ufx-base-size * 5 1fr;
+    grid-gap: $ufx-base-size;
+    justify-items: center;
+
+    .amount-input {
+      min-width: 100%;
+    }
+
+    .equiv {
+      margin-left: $ufx-base-size * 3;
+    }
+  }
+}
