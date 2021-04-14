@@ -1,13 +1,15 @@
 {
   "name": "ufx-ui",
   "version": "0.1.0",
-  "description": "",
+  "description": "A UI toolkit to build trading interface",
   "keywords": [
     "exchange",
-    "modular-ui",
+    "trading-ui",
+    "microfinex-ui",
     "front-end"
   ],
   "author": "Bitfinex",
+  "license": "Apache-2.0",
   "repository": "https://github.com/bitfinexcom/ufx-ui",
   "main": "dist/ufx-ui.cjs.js",
   "module": "dist/ufx-ui.esm.js",
