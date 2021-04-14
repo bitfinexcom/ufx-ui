@@ -12,6 +12,7 @@ import { KEYS } from './OrderHistory.constants'
 // headerCellClassName: th classname
 // cellClassName: td classname
 // renderer: for content to be renderered inside td
+// truncate: for cell content to be truncated with ellipsis
 const getColumns = (args = {}) => {
   const { t, isMobile, columnsKeys } = args
 

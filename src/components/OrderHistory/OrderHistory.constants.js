@@ -7,8 +7,6 @@ import FormattedValue from '../format/PrettyValue'
 
 const { AMOUNT_DECIMALS, PRICE_SIG_FIGS } = PLATFORM_SETTINGS
 
-export const BREAKPOINT_SMALL = 576
-
 export const KEYS = {
   ID: 'id',
   PAIR: 'pair',
@@ -16,7 +14,7 @@ export const KEYS = {
   BASE_CCY: 'baseCcy',
   QUOTE_CCY: 'quoteCcy',
   AMOUNT: 'amount',
-  ORGINIAL_AMOUNT: 'originalAmount',
+  ORIGINAL_AMOUNT: 'originalAmount',
   PRICE: 'price',
   PRICE_AVERAGE: 'priceAverage',
   PLACED: 'placed',

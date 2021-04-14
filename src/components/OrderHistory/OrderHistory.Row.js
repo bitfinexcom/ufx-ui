@@ -26,7 +26,7 @@ const OrderHRow = (props) => {
   const type = getDisplayValue(KEYS.TYPE)
   const baseCcy = getDisplayValue(KEYS.BASE_CCY)
   const quoteCcy = getDisplayValue(KEYS.QUOTE_CCY)
-  const originalAmount = getDisplayValue(KEYS.ORGINIAL_AMOUNT)
+  const originalAmount = getDisplayValue(KEYS.ORIGINAL_AMOUNT)
   const id = getDisplayValue(KEYS.ID)
 
   const isSellOrder = (originalAmount < 0)

@@ -7,15 +7,13 @@ import { useTranslation } from 'react-i18next'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
-import withResponsive from '../../hoc/withResponsive'
 import { getMappedKey } from '../../utils/data-mapping'
-import { ResponsiveState } from '../Responsive'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
 // import KEYS as ORDER_HISTORY_COLUMNS for storybook props-table documentation
-import { KEYS as ORDER_HISTORY_COLUMNS, BREAKPOINT_SMALL } from './OrderHistory.constants'
-import OrderHHeader from './OrderHistory.Header'
-import OrderHRow from './OrderHistory.Row'
+import { KEYS as ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import Header from './OrderHistory.Header'
+import Row from './OrderHistory.Row'
 
 export const OrderHistory = (props) => {
   const {
@@ -23,32 +21,30 @@ export const OrderHistory = (props) => {
     loading,
     rowMapping,
     className,
-    parentWidth,
     columns: columnsKeys,
+    isMobileLayout,
   } = props
   const { t } = useTranslation('orderhistory')
-  const { width } = ResponsiveState()
-  const isMobile = (parentWidth || width) < BREAKPOINT_SMALL
   const keyForId = getMappedKey(ORDER_HISTORY_COLUMNS.ID, rowMapping)
 
-  const columns = useMemo(() => getColumns({ t, isMobile, columnsKeys }), [t, isMobile, columnsKeys])
+  const columns = useMemo(() => getColumns({ t, isMobileLayout, columnsKeys }), [t, isMobileLayout, columnsKeys])
 
   if (loading) {
     return <Spinner />
   }
 
   const classes = cx(Classes.ORDER_HISTORY, className, {
-    'mobile-table': isMobile,
+    'mobile-table': isMobileLayout,
   })
 
   return (
     <div className={classes}>
       <div className={Classes.TABLE_WRAPPER}>
         <Table condensed striped>
-          <OrderHHeader columns={columns} />
+          <Header columns={columns} />
           <tbody>
             {orders.map((order) => (
-              <OrderHRow
+              <Row
                 key={_get(order, keyForId)}
                 columns={columns}
                 rowMapping={rowMapping}
@@ -68,12 +64,30 @@ export const OrderHistory = (props) => {
 }
 
 OrderHistory.propTypes = {
+  /**
+   * The orders to be displayed in the component
+   */
   orders: PropTypes.arrayOf(PropTypes.object),
+  /**
+   * A toggle to display a loading indicator
+   */
   loading: PropTypes.bool,
+  /**
+   * Custom mapping of the row’s column
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  /**
+   * The classname of the component
+   */
   className: PropTypes.string,
-  parentWidth: PropTypes.number,
+  /**
+   * Optional prop to customize the columns of the component
+   */
   columns: PropTypes.arrayOf(PropTypes.oneOf(Object.values(ORDER_HISTORY_COLUMNS))),
+  /**
+   * A toggle to display a condensed layout for mobile
+   */
+  isMobileLayout: PropTypes.bool,
 }
 
 export const defaultProps = {
@@ -81,11 +95,11 @@ export const defaultProps = {
   loading: false,
   rowMapping: {},
   className: null,
-  parentWidth: null,
   columns: Object.values(ORDER_HISTORY_COLUMNS),
+  isMobileLayout: false,
 }
 
 OrderHistory.defaultProps = defaultProps
 
 // export default withI18nProvider(withResponsive(memo(OrderHistory)))
-export default withResponsive(memo(OrderHistory))
+export default memo(OrderHistory)

@@ -16,3 +16,5 @@ export const ROW_MAPPING = {
     renderer: ({ value }) => <OrderStatus status={value} />,
   },
 }
+
+export const BREAKPOINT_SMALL = 576
