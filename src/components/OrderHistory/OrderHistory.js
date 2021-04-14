@@ -54,9 +54,9 @@ export const OrderHistory = (props) => {
           </tbody>
         </Table>
         {orders.length === 0 && (
-        <div className='empty'>
-          <small>{t('no_orders')}</small>
-        </div>
+          <div className='empty'>
+            <small>{t('no_orders')}</small>
+          </div>
         )}
       </div>
     </div>
@@ -67,7 +67,18 @@ OrderHistory.propTypes = {
   /**
    * The orders to be displayed in the component
    */
-  orders: PropTypes.arrayOf(PropTypes.object),
+  orders: PropTypes.arrayOf(PropTypes.shapeOf({
+    amount: PropTypes.number,
+    cid: PropTypes.number,
+    created: PropTypes.number,
+    gid: PropTypes.number,
+    id: PropTypes.number,
+    originalAmount: PropTypes.number,
+    price: PropTypes.number,
+    status: PropTypes.string,
+    symbol: PropTypes.string,
+    type: PropTypes.string,
+  })),
   /**
    * A toggle to display a loading indicator
    */
@@ -102,4 +113,3 @@ export const defaultProps = {
 OrderHistory.defaultProps = defaultProps
 
 export default withI18nProvider(memo(OrderHistory))
-// export default memo(OrderHistory)
