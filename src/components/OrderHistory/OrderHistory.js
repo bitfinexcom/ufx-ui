@@ -101,5 +101,5 @@ export const defaultProps = {
 
 OrderHistory.defaultProps = defaultProps
 
-// export default withI18nProvider(withResponsive(memo(OrderHistory)))
-export default memo(OrderHistory)
+export default withI18nProvider(memo(OrderHistory))
+// export default memo(OrderHistory)
