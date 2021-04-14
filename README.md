@@ -71,6 +71,7 @@ Incase of a bug or issue, feel free to create a new issue or submit a pull reque
 ## Contributing
 
 ### Build storybook
+
 ```
 npm install
 npm run install:peer
@@ -103,6 +104,4 @@ It will generate bundle at 'example/build' path
 
 ## License
 
-<!-- TODO: add license details and links -->
-
-MIT © [bitfinexcom]()
+Apache-2.0
