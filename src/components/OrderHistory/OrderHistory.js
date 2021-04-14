@@ -67,7 +67,7 @@ OrderHistory.propTypes = {
   /**
    * The orders to be displayed in the component
    */
-  orders: PropTypes.arrayOf(PropTypes.shapeOf({
+  orders: PropTypes.arrayOf(PropTypes.shape({
     amount: PropTypes.number,
     cid: PropTypes.number,
     created: PropTypes.number,
