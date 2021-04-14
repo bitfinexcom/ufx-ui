@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import { getValue } from '../../utils/data-mapping'
+import Truncate from '../ui/Truncate'
 import { KEYS, MAPPING } from './OrderHistory.constants'
 
 const OrderHRow = (props) => {
@@ -42,10 +43,22 @@ const OrderHRow = (props) => {
         cellClassName,
         cellStyle,
         renderer: defRenderer,
+        truncate,
       }) => {
         const formattedValue = getDisplayValue(key)
         const value = getDisplayValue(key, false)
         const renderer = _get(customMapping, [key, 'renderer'], defRenderer)
+        const content = renderer ? renderer({
+          value,
+          formattedValue,
+          data,
+          orderTitle,
+          colorClass,
+          isSellOrder,
+          type,
+          baseCcy,
+          quoteCcy,
+        }) : formattedValue
 
         return (
           <td
@@ -53,17 +66,7 @@ const OrderHRow = (props) => {
             className={cellClassName}
             style={cellStyle}
           >
-            {renderer ? renderer({
-              value,
-              formattedValue,
-              data,
-              orderTitle,
-              colorClass,
-              isSellOrder,
-              type,
-              baseCcy,
-              quoteCcy,
-            }) : formattedValue}
+            {truncate ? <Truncate>{content}</Truncate> : content}
           </td>
         )
       })}

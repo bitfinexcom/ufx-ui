@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
+import Truncate from '../ui/Truncate'
+
 const OrderHHeader = (props) => {
   const { columns } = props
 
@@ -12,13 +14,14 @@ const OrderHHeader = (props) => {
           label,
           headerCellClassName,
           cellStyle,
+          truncate,
         }) => (
           <th
             key={key}
             style={cellStyle}
             className={headerCellClassName}
           >
-            {label}
+            {truncate ? <Truncate>{label}</Truncate> : label}
           </th>
         ))}
       </tr>

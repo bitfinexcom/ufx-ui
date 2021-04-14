@@ -13,14 +13,15 @@ import { KEYS } from './OrderHistory.constants'
 // cellClassName: td classname
 // renderer: for content to be renderered inside td
 const getColumns = (args = {}) => {
-  const { t, isMobile } = args
+  const { t, isMobile, columnsKeys } = args
 
-  return [
+  const allColumns = [
     {
       key: '',
       label: '',
       cellStyle: { width: '3%' },
       cellClassName: 'intent',
+      truncate: false,
       renderer: ({
         orderTitle, colorClass, isSellOrder,
       }) => {
@@ -44,15 +45,16 @@ const getColumns = (args = {}) => {
       label: t('pair'),
       cellStyle: { width: isMobile ? '17%' : '12%' },
       cellClassName: 'pair',
+      truncate: true,
       renderer: ({
         formattedValue, type,
       }) => (
         <>
           {formattedValue}
           {isMobile && (
-          <span className='mobile-order-type'>
-            {type}
-          </span>
+            <span className='mobile-order-type'>
+              {type}
+            </span>
           )}
         </>
       ),
@@ -62,6 +64,7 @@ const getColumns = (args = {}) => {
         key: KEYS.TYPE,
         label: t('type'),
         cellStyle: { width: '10%' },
+        truncate: true,
       },
     ]),
     {
@@ -70,6 +73,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: '15%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: true,
     },
     {
       key: KEYS.BASE_CCY,
@@ -77,6 +81,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: '7%' },
       headerCellClassName: Classes.CENTER,
       cellClassName: Classes.CENTER,
+      truncate: true,
     },
     {
       key: KEYS.PRICE,
@@ -84,6 +89,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: isMobile ? '20%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: true,
     },
     {
       key: KEYS.PRICE_AVERAGE,
@@ -91,6 +97,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: isMobile ? '18%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: true,
     },
     {
       key: KEYS.STATUS,
@@ -98,15 +105,30 @@ const getColumns = (args = {}) => {
       cellStyle: { width: isMobile ? '20%' : '13%' },
       headerCellClassName: Classes.CENTER,
       cellClassName: cx('status', Classes.CENTER),
+      truncate: true,
     },
     ...(isMobile ? [] : [
       {
         key: KEYS.PLACED,
         label: t('inactive'),
         cellStyle: { width: '15%' },
+        truncate: true,
       },
     ]),
   ]
+
+  return columnsKeys.reduce((columns, columnKey) => {
+    const column = allColumns.find(({ key }) => columnKey === key)
+
+    if (!column) {
+      return columns
+    }
+
+    return [
+      ...columns,
+      column,
+    ]
+  }, [allColumns[0]])
 }
 
 export default getColumns

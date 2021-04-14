@@ -12,7 +12,8 @@ import { getMappedKey } from '../../utils/data-mapping'
 import { ResponsiveState } from '../Responsive'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-import { KEYS, BREAKPOINT_SMALL } from './OrderHistory.constants'
+// import KEYS as ORDER_HISTORY_COLUMNS for storybook props-table documentation
+import { KEYS as ORDER_HISTORY_COLUMNS, BREAKPOINT_SMALL } from './OrderHistory.constants'
 import OrderHHeader from './OrderHistory.Header'
 import OrderHRow from './OrderHistory.Row'
 
@@ -23,13 +24,14 @@ export const OrderHistory = (props) => {
     rowMapping,
     className,
     parentWidth,
+    columns: columnsKeys,
   } = props
   const { t } = useTranslation('orderhistory')
   const { width } = ResponsiveState()
   const isMobile = (parentWidth || width) < BREAKPOINT_SMALL
-  const keyForId = getMappedKey(KEYS.ID, rowMapping)
+  const keyForId = getMappedKey(ORDER_HISTORY_COLUMNS.ID, rowMapping)
 
-  const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
+  const columns = useMemo(() => getColumns({ t, isMobile, columnsKeys }), [t, isMobile, columnsKeys])
 
   if (loading) {
     return <Spinner />
@@ -71,6 +73,7 @@ OrderHistory.propTypes = {
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
   className: PropTypes.string,
   parentWidth: PropTypes.number,
+  columns: PropTypes.arrayOf(PropTypes.oneOf(Object.values(ORDER_HISTORY_COLUMNS))),
 }
 
 export const defaultProps = {
@@ -79,8 +82,10 @@ export const defaultProps = {
   rowMapping: {},
   className: null,
   parentWidth: null,
+  columns: Object.values(ORDER_HISTORY_COLUMNS),
 }
 
 OrderHistory.defaultProps = defaultProps
 
-export default withI18nProvider(withResponsive(memo(OrderHistory)))
+// export default withI18nProvider(withResponsive(memo(OrderHistory)))
+export default withResponsive(memo(OrderHistory))
