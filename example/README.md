@@ -5,7 +5,7 @@
 ### Open terminal-1
 
 ```bash
-cd [prod_dir]
+cd [proj_dir]
 npm install
 npm run install:peer
 npm start
@@ -14,7 +14,7 @@ npm start
 ### Open terminal-2
 
 ```bash
-cd [prod_dir]/example
+cd [proj_dir]/example
 npm install
 npm start
 ```
