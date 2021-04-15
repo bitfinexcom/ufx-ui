@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
-import { getValue } from '../../utils/data-mapping'
+import { getValue, getVisibleColumns, getOrderedColumns } from '../../utils/data-mapping'
 import Truncate from '../ui/Truncate'
 import { ORDER_HISTORY_COLUMNS, MAPPING } from './OrderHistory.constants'
 
@@ -16,6 +16,9 @@ const OrderHRow = (props) => {
     rowMapping: customMapping,
   } = props
   const { t } = useTranslation('orderhistory')
+
+  const visibleColumns = getVisibleColumns(columns, customMapping)
+  const orderedColumns = getOrderedColumns(visibleColumns, customMapping)
 
   const getDisplayValue = getValue({
     mapping: MAPPING,
@@ -38,16 +41,16 @@ const OrderHRow = (props) => {
 
   return (
     <tr className='row'>
-      {columns.map(({
+      {orderedColumns.map(({
         key,
         cellClassName,
         cellStyle,
         renderer: defRenderer,
-        truncate,
       }) => {
         const formattedValue = getDisplayValue(key)
         const value = getDisplayValue(key, false)
         const renderer = _get(customMapping, [key, 'renderer'], defRenderer)
+        const truncate = _get(customMapping, [key, 'truncate'], false)
         const content = renderer ? renderer({
           value,
           formattedValue,

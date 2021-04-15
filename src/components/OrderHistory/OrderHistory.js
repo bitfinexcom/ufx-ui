@@ -9,9 +9,10 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withResponsive from '../../hoc/withResponsive'
 import { getMappedKey } from '../../utils/data-mapping'
+import { ResponsiveState } from '../Responsive'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import { ORDER_HISTORY_COLUMNS, BREAKPOINT_SMALL } from './OrderHistory.constants'
 import Header from './OrderHistory.Header'
 import Row from './OrderHistory.Row'
 
@@ -21,27 +22,28 @@ export const OrderHistory = (props) => {
     loading,
     rowMapping,
     className,
-    columns: columnsKeys,
     isMobileLayout,
   } = props
   const { t } = useTranslation('orderhistory')
   const keyForId = getMappedKey(ORDER_HISTORY_COLUMNS.ID, rowMapping)
+  const { width } = ResponsiveState()
+  const isMobile = isMobileLayout !== undefined ? !!isMobileLayout : width < BREAKPOINT_SMALL
 
-  const columns = useMemo(() => getColumns({ t, isMobileLayout, columnsKeys }), [t, isMobileLayout, columnsKeys])
+  const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
 
   if (loading) {
     return <Spinner />
   }
 
   const classes = cx(Classes.ORDER_HISTORY, className, {
-    'mobile-table': isMobileLayout,
+    'mobile-table': isMobile,
   })
 
   return (
     <div className={classes}>
       <div className={Classes.TABLE_WRAPPER}>
         <Table condensed striped>
-          <Header columns={columns} />
+          <Header columns={columns} rowMapping={rowMapping} />
           <tbody>
             {orders.map((order) => (
               <Row
@@ -67,18 +69,7 @@ OrderHistory.propTypes = {
   /**
    * The orders to be displayed in the component
    */
-  orders: PropTypes.arrayOf(PropTypes.shape({
-    amount: PropTypes.number,
-    cid: PropTypes.number,
-    created: PropTypes.number,
-    gid: PropTypes.number,
-    id: PropTypes.number,
-    originalAmount: PropTypes.number,
-    price: PropTypes.number,
-    status: PropTypes.string,
-    symbol: PropTypes.string,
-    type: PropTypes.string,
-  })),
+  orders: PropTypes.arrayOf(PropTypes.object),
   /**
    * A toggle to display a loading indicator
    */
@@ -92,10 +83,6 @@ OrderHistory.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Optional prop to customize the columns of the component
-   */
-  columns: PropTypes.arrayOf(PropTypes.oneOf(Object.values(ORDER_HISTORY_COLUMNS))),
-  /**
    * A toggle to display a condensed layout for mobile
    */
   isMobileLayout: PropTypes.bool,
@@ -106,8 +93,7 @@ export const defaultProps = {
   loading: false,
   rowMapping: {},
   className: null,
-  columns: Object.values(ORDER_HISTORY_COLUMNS),
-  isMobileLayout: false,
+  isMobileLayout: undefined,
 }
 
 OrderHistory.defaultProps = defaultProps

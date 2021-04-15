@@ -4,7 +4,7 @@ $ufx-table-border-width: 1px !default;
 $ufx-table-border-color: $ufx-divider-black !default;
 $ufx-table-header-font-weight: $ufx-font-weight-bold;
 
-$ufx-table-even-row-background-color: white !default;
+$ufx-table-even-row-background-color: $ufx-background-color !default;
 $ufx-table-odd-row-background-color: $light-gray6 !default;
 $ufx-table-hover-row-background-color: rgba($gray5, 0.2) !default;
 $ufx-table-active-row-background-color: rgba($gray5, 0.3) !default;

@@ -8,6 +8,7 @@ import FormattedValue from '../format/PrettyValue'
 const { AMOUNT_DECIMALS, PRICE_SIG_FIGS } = PLATFORM_SETTINGS
 
 export const ORDER_HISTORY_COLUMNS = {
+  ICON: 'icon',
   ID: 'id',
   PAIR: 'pair',
   TYPE: 'type',
@@ -38,3 +39,5 @@ export const MAPPING = {
     format: (value) => <FormattedDate ts={value} />,
   },
 }
+
+export const BREAKPOINT_SMALL = 576

@@ -14,11 +14,11 @@ import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
 // renderer: for content to be renderered inside td
 // truncate: for cell content to be truncated with ellipsis
 const getColumns = (args = {}) => {
-  const { t, isMobile, columnsKeys } = args
+  const { t, isMobile } = args
 
-  const allColumns = [
+  return [
     {
-      key: '',
+      key: ORDER_HISTORY_COLUMNS.ICON,
       label: '',
       cellStyle: { width: '3%' },
       cellClassName: 'intent',
@@ -117,19 +117,6 @@ const getColumns = (args = {}) => {
       },
     ]),
   ]
-
-  return columnsKeys.reduce((columns, columnKey) => {
-    const column = allColumns.find(({ key }) => columnKey === key)
-
-    if (!column) {
-      return columns
-    }
-
-    return [
-      ...columns,
-      column,
-    ]
-  }, [allColumns[0]])
 }
 
 export default getColumns
