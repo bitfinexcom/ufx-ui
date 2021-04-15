@@ -7,11 +7,11 @@ import { useTranslation } from 'react-i18next'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
+import withResponsive from '../../hoc/withResponsive'
 import { getMappedKey } from '../../utils/data-mapping'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-// import KEYS as ORDER_HISTORY_COLUMNS for storybook props-table documentation
-import { KEYS as ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
 import Header from './OrderHistory.Header'
 import Row from './OrderHistory.Row'
 
@@ -112,4 +112,4 @@ export const defaultProps = {
 
 OrderHistory.defaultProps = defaultProps
 
-export default withI18nProvider(memo(OrderHistory))
+export default withI18nProvider(withResponsive(memo(OrderHistory)))
