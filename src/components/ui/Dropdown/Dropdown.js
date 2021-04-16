@@ -85,13 +85,34 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
 })
 
 Dropdown.propTypes = {
+  /**
+   * The value renderer function of the Dropdown.
+   */
   valueRenderer: PropTypes.func,
+  /**
+   * The ID of the Dropdown.
+   */
   id: PropTypes.string,
+  /**
+   * The name of the Dropdown.
+   */
   name: PropTypes.string,
+  /**
+   * The className of the Dropdown.
+   */
   className: PropTypes.string,
+  /**
+   * The style of the Dropdown.
+   */
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
+  /**
+   * If true, shows the Button in a small style.
+   */
   small: PropTypes.bool,
+  /**
+   * The placeholder of the Dropdown.
+   */
   placeholder: PropTypes.string,
   ...DropdownList.propTypes,
 }
