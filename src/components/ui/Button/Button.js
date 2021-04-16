@@ -25,6 +25,7 @@ export const Button = forwardRef(function Button(props, ref) {
     title,
     small,
     outline,
+    ...rest
   } = props
 
   const intentModifier = Classes.intentSuffix(intent)
@@ -41,7 +42,6 @@ export const Button = forwardRef(function Button(props, ref) {
       id={id}
       // eslint-disable-next-line react/button-has-type
       type={type}
-      style={style}
       onClick={(e) => {
         if (disabled) {
           e.preventDefault()
@@ -53,6 +53,8 @@ export const Button = forwardRef(function Button(props, ref) {
       disabled={disabled || loading}
       className={classes}
       title={title}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
       {children}
       {loading && <FontAwesomeIcon icon={faCircleNotch} spin size='lg' />}
@@ -69,20 +71,57 @@ export const BUTTON_TYPES = {
 export const BUTTON_TYPES_ARR = Object.values(BUTTON_TYPES)
 
 Button.propTypes = {
+  /**
+   * The ID of the Button.
+   */
   id: PropTypes.string,
+  /**
+   * The tag of the Button.
+   */
   as: PropTypes.node,
+  /**
+   * The content of the Button.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * The className of the Button.
+   */
   className: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
+  /**
+   * If true, show the loading icon.
+   */
   loading: PropTypes.bool,
+  /**
+   * If true, set the Button to the disabled state.
+   */
   disabled: PropTypes.bool,
+  /**
+   * The function called when the Button is clicked.
+   */
   onClick: PropTypes.func,
+  /**
+   * The intent of the Button.
+   */
   intent: PropTypes.oneOf(INTENT_TYPES_ARR),
+  /**
+   * The type attribute of the Button.
+   */
   type: PropTypes.oneOf(BUTTON_TYPES_ARR),
-  minimal: PropTypes.bool,
+  /**
+   * The title attribute of the Button.
+   */
   title: PropTypes.string,
+  /**
+   * If true, shows the Button in a minimal style.
+   */
+  minimal: PropTypes.bool,
+  /**
+   * If true, shows the Button in a small style.
+   */
   small: PropTypes.bool,
+  /**
+   * If true, shows the Button in an outline style.
+   */
   outline: PropTypes.bool,
 }
 
@@ -90,7 +129,6 @@ Button.defaultProps = {
   id: null,
   as: 'button',
   className: null,
-  style: null,
   loading: false,
   disabled: false,
   onClick: () => { },
