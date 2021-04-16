@@ -151,28 +151,85 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
 })
 
 DateTimePicker.propTypes = {
+  /**
+   * The ID of the DateTimePicker.
+   */
   id: PropTypes.string,
+  /**
+   * The name attribute of the DateTimePicker.
+   */
   name: PropTypes.string,
+  /**
+   * The value of the DateTimePicker.
+   */
   value: PropTypes.object,
+  /**
+   * The label text of the DateTimePicker.
+   */
   label: PropTypes.node,
+  /**
+   * The className of the DateTimePicker.
+   */
   className: PropTypes.string,
+  /**
+   * The style attribute of the DateTimePicker.
+   */
   style: PropTypes.object,
+  /**
+   * If true, set the DateTimePicker to the disabled state.
+   */
   disabled: PropTypes.bool,
+  /**
+   * The function called when the DateTimePicker state changes to blur.
+   */
   onBlur: PropTypes.func,
+  /**
+   * The function called when the DateTimePicker state changes.
+   */
   onChange: PropTypes.func,
+  /**
+   * The error text of the DateTimePicker.
+   */
   error: PropTypes.string,
+  /**
+   * The alignment of the DateTimePicker text.
+   */
   alignText: PropTypes.oneOf(Object.values(TEXT_ALIGNMENT)),
+  /**
+   * If true, shows the DateTimePicker in a small style.
+   */
   small: PropTypes.bool,
+  /**
+   * The time intervals of the DateTimePicker.
+   */
   timeIntervals: PropTypes.number,
+  /**
+   * The minimum settable date of the DateTimePicker.
+   */
   minDate: PropTypes.instanceOf(Date),
+  /**
+   * The maximum settable date of the DateTimePicker.
+   */
   maxDate: PropTypes.instanceOf(Date),
-  maxTime: PropTypes.instanceOf(Date),
+  /**
+   * The minimum settable time of the DateTimePicker.
+   */
   minTime: PropTypes.instanceOf(Date),
+  /**
+   * The maximum settable time of the DateTimePicker.
+   */
+  maxTime: PropTypes.instanceOf(Date),
+  /**
+   * The date format of the DateTimePicker.
+   */
   userDateFormat: PropTypes.oneOf([
     'DD-MM-YY HH:mm:ss',
     'MM-DD-YY HH:mm:ss',
     'YY-MM-DD HH:mm:ss',
   ]),
+  /**
+   * The placement of the DateTimePicker popper element.
+   */
   popperPlacement: PropTypes.string,
 }
 
