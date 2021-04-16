@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 
 import { OrderHistory } from '../../components'
-import withResponsive from '../../hoc/withResponsive'
 import useOrders from '../../hooks/useOrders'
 import { ROW_MAPPING } from './OrderHistory.constants'
 
@@ -19,4 +18,4 @@ const OrderHistoryContainer = (props) => {
   )
 }
 
-export default withResponsive(memo(OrderHistoryContainer))
+export default memo(OrderHistoryContainer)
