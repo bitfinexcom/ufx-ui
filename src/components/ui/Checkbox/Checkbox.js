@@ -15,12 +15,12 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     checked,
     disabled,
     className,
-    style,
     id,
     name,
     onChange,
     error,
     small,
+    ...rest,
   } = props
   const checkboxRef = useRef(null)
   const classes = cx(Classes.CHECKBOX, className, {
@@ -56,7 +56,6 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
 
   return (
     <div
-      style={style}
       ref={ref}
       className={classes}
       htmlFor={id}
@@ -65,6 +64,8 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
       aria-checked={checked}
       onClick={handleLabelClick}
       onKeyPress={utils.handleKeyboardEvent(' ', handleLabelClick)}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <input {...inputProps} />
@@ -86,16 +87,41 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
 })
 
 Checkbox.propTypes = {
+  /**
+   * The label text of the Checkbox.
+   */
   label: PropTypes.node,
+  /**
+   * If true, set the Checkbox to the checked state.
+   */
   checked: PropTypes.bool.isRequired,
+  /**
+   * If true, set the Checkbox to the disabled state.
+   */
   disabled: PropTypes.bool,
+  /**
+   * The className of the Button.
+   */
   className: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
+  /**
+   * The ID of the Button.
+   */
   id: PropTypes.string,
+  /**
+   * The name attribute of the Button.
+   */
   name: PropTypes.string,
+  /**
+   * The function called when the Checkbox state changes.
+   */
   onChange: PropTypes.func,
+  /**
+   * The error text of the Checkbox.
+   */
   error: PropTypes.string,
+  /**
+   * If true, shows the Button in a small style.
+   */
   small: PropTypes.bool,
 }
 
