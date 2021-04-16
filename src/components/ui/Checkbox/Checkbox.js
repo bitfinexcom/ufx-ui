@@ -20,7 +20,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     onChange,
     error,
     small,
-    ...rest,
+    ...rest
   } = props
   const checkboxRef = useRef(null)
   const classes = cx(Classes.CHECKBOX, className, {
