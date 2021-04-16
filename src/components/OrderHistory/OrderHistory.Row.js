@@ -1,6 +1,6 @@
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
@@ -17,8 +17,8 @@ const OrderHRow = (props) => {
   } = props
   const { t } = useTranslation('orderhistory')
 
-  const visibleColumns = getVisibleColumns(columns, customMapping)
-  const orderedColumns = getOrderedColumns(visibleColumns, customMapping)
+  const visibleColumns = useMemo(() => getVisibleColumns(columns, customMapping), [columns, customMapping])
+  const orderedColumns = useMemo(() => getOrderedColumns(visibleColumns, customMapping), [visibleColumns, customMapping])
 
   const getDisplayValue = getValue({
     mapping: MAPPING,

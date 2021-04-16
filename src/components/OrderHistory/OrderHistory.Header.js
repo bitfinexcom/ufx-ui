@@ -1,6 +1,6 @@
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 
 import { getOrderedColumns, getVisibleColumns } from '../../utils/data-mapping'
 import Truncate from '../ui/Truncate'
@@ -8,8 +8,8 @@ import Truncate from '../ui/Truncate'
 const OrderHHeader = (props) => {
   const { columns, rowMapping } = props
 
-  const visibleColumns = getVisibleColumns(columns, rowMapping)
-  const orderedColumns = getOrderedColumns(visibleColumns, rowMapping)
+  const visibleColumns = useMemo(() => getVisibleColumns(columns, rowMapping), [columns, rowMapping])
+  const orderedColumns = useMemo(() => getOrderedColumns(visibleColumns, rowMapping), [visibleColumns, rowMapping])
 
   return (
     <thead>
