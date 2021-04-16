@@ -67,23 +67,24 @@ export const OrderHistory = (props) => {
 
 OrderHistory.propTypes = {
   /**
-   * The orders to be displayed in the component
+   * The orders to be displayed in the OrderHistory’s component.
    */
   orders: PropTypes.arrayOf(PropTypes.object),
   /**
-   * A toggle to display a loading indicator
+   * If true, show the loading message.
    */
   loading: PropTypes.bool,
   /**
-   * Custom mapping of the row’s column
+   * The custom field/column mapping for the data.
    */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
   /**
-   * The classname of the component
+   * The className of the OrderHistory’s outer element.
    */
   className: PropTypes.string,
   /**
-   * A toggle to display a condensed layout for mobile
+   * If true, show the OrderHistory in a condensed mobile layout. By default
+   * the mobile layout will be enabled when the screen size is below 576.
    */
   isMobileLayout: PropTypes.bool,
 }

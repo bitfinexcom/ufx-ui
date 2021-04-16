@@ -129,74 +129,77 @@ export const Book = (props) => {
 
 Book.propTypes = {
   /**
-   * whether to show offline message
+   * If false, show the offline message.
    */
   online: PropTypes.bool,
   /**
-   * whether to show loading indicator
+   * If true, show the loading message.
    */
   loading: PropTypes.bool,
   /**
-   * data to show on asks side
+   * The data to show on asks side.
    */
   asks: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
   /**
-   * data to show on bids side
+   * The data to show on bids side.
    */
   bids: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
   /**
-   * asks data with 'total' field that is cumulative sum of amount
+   * The asks data with 'total' field that is cumulative sum of amount.
    */
   tAsks: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number])),
   /**
-   * bids data with 'total' field that is cumulative sum of amount
+   * The bids data with 'total' field that is cumulative sum of amount.
    */
   tBids: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number])),
   /**
-   * sorted price list to show on asks side
+   * The sorted price list to show on asks side.
    */
   pAsks: PropTypes.arrayOf(PropTypes.number),
   /**
-   * sorted price list to show on bids side
+   * The sorted price list to show on bids side.
    */
   pBids: PropTypes.arrayOf(PropTypes.number),
   /**
-   * list of open orders
+   * The list of open orders.
    */
   orders: PropTypes.arrayOf(PropTypes.shape(PROP_ORDER)),
   /**
-   * fn to call when an open order is closed
+   * The function called when an open order is closed.
    */
   cancelOrder: PropTypes.func,
   /**
-   * fn to call when a book row is clicked
+   * The function called when a book row is clicked.
    */
   onRowClick: PropTypes.func,
   /**
-   * for css customization
+   * The className of the Book’s outer element.
    */
   className: PropTypes.string,
+  /**
+   * The parent’s width of the Book’s component.
+   */
   parentWidth: PropTypes.number,
   /**
-   * zoom level for bar graph
+   * The zoom level for bar graph.
    */
   zoom: PropTypes.number,
   /**
-   * visualisation type for bar graph: <br/>
+   * The visualisation type for bar graph: <br/>
    * 'cumulative': bar graph for 'total' field<br/>
    * 'amount': bar graph for 'amount' field
    */
   bookViz: PropTypes.oneOf(Object.values(BOOK_VIZ_TYPES)),
   /**
-   * field/column mapping for asks/bids data
+   * The custom field/column mapping for the data.
    */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
   /**
-   * whether to show stacked layout for bids and asks side
+   * If true, show the Book in a vertically stacked layout for bids and asks side.
    */
   isStackedView: PropTypes.bool,
   /**
-   * number of book rows to display<br/>
+   * The number of book rows to display.
    */
   numberOfRows: PropTypes.number,
 }
