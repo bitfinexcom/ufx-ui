@@ -1,5 +1,6 @@
 export const selectors = {
   BOOK: '.ufx-book',
+  MAIN: '.main',
   SIDE: '.side',
   ROW: '.row',
   SPINNER: '.ufx-book__error .ufx-spinner',
@@ -14,6 +15,7 @@ export const selectors = {
   INCREASE_ZOOM: 1,
   DECREASE_PREC: 2,
   INCREASE_PREC: 3,
+  SPREAD: '.spread',
 }
 
 const BID = 0
@@ -26,6 +28,10 @@ export default class Book {
 
   static isVisible() {
     cy.isVisible(selectors.BOOK)
+  }
+
+  static getElement(selector = '') {
+    return cy.get(selectors.BOOK).find(selector)
   }
 
   static getSide(bid = true) {
