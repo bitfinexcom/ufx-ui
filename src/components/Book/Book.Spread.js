@@ -8,7 +8,7 @@ import { DATA_MAPPING } from '../../common/props'
 import { KEYS } from './Book.constants'
 import { PROP_BOOK_TRADE } from './Book.props'
 
-const getMaxTotal = (totalArr, priceArr) => Math.abs(_get(totalArr, [_last(priceArr), 'total']))
+const getMaxTotal = (totalArr, priceArr) => Math.abs(_get(totalArr, [_last(priceArr), 'total'], 0))
 
 const Spread = (props) => {
   const {
@@ -18,8 +18,8 @@ const Spread = (props) => {
   const askTotal = getMaxTotal(tAsks, pAsks)
   const bidTotal = getMaxTotal(tBids, pBids)
   const total = new Big(askTotal).plus(bidTotal).toString()
-  const minAsk = _get(pAsks, '0')
-  const maxBid = _get(pBids, '0')
+  const minAsk = _get(pAsks, '0', 0)
+  const maxBid = _get(pBids, '0', 0)
   const spread = new Big(minAsk).minus(maxBid).toString()
 
   return (
