@@ -40,8 +40,9 @@ export const findMatchingChannel = (channels, source) => {
   const compareWith = {
     symbol: source.symbol, // symbol: tBTCUSD
     channel: source.channel, // channel-name: book, trades
-    len: source.len, // compare length because book and book-top has same name 'book' and differs by length, TODO: can we rename book(len=100) to book-top ?
+    ...(source.len && { len: source.len }), // compare length because book and book-top has same name 'book' and differs by length, TODO: can we rename book(len=100) to book-top ?
   }
+
   return _find(channels, _matches(compareWith))
 }
 
