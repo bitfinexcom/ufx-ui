@@ -7,6 +7,8 @@ module.exports = {
     '../src/containers/Book/**/*.stories.js',
     '../src/components/OrderHistory/**/*.stories.js',
     '../src/containers/OrderHistory/**/*.stories.js',
+    '../src/components/Trades/**/*.stories.js',
+    '../src/containers/Trades/**/*.stories.js'
   ],
   addons: [
     '@storybook/preset-scss',
