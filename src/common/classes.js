@@ -46,6 +46,9 @@ export const TABLE_INTERACTIVE = `${NS}-table--interactive`
 export const TABLE_STRIPED = `${NS}-table--striped`
 export const TABLE_CONDENSED = `${NS}-table--condensed`
 
+// Truncate
+export const TRUNCATE = `${NS}-truncate`
+
 // Modal
 export const MODAL = `${NS}-modal`
 

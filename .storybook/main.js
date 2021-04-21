@@ -4,7 +4,9 @@ module.exports = {
     '../src/components/format/**/*.stories.js',
     '../src/components/ui/**/*.stories.js',
     '../src/components/Book/**/*.stories.js',
-    '../src/containers/Book/**/*.stories.js'
+    '../src/containers/Book/**/*.stories.js',
+    '../src/components/OrderHistory/**/*.stories.js',
+    '../src/containers/OrderHistory/**/*.stories.js',
   ],
   addons: [
     '@storybook/preset-scss',
