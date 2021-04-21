@@ -1,7 +1,9 @@
 import isArray from 'lodash/isArray'
 import isEmpty from 'lodash/isEmpty'
 import _isEqual from 'lodash/isEqual'
+import _keys from 'lodash/keys'
 import size from 'lodash/size'
+import _toString from 'lodash/toString'
 
 import { removeOldest } from '../../functions/objects'
 import { snapshot } from '../../functions/utils'
@@ -10,9 +12,7 @@ import types from '../constants/ws.constants'
 
 const MAX_TRADES_NUMBER = 24
 
-const INITIAL_STATE = {
-  chanId: undefined,
-}
+const INITIAL_STATE = {}
 
 const reducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload = [], channel = {} } = action
@@ -29,11 +29,13 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
         return state
       }
       const rawData = isArray(ph1) ? ph1 : ph2
+
       if (isEmpty(rawData)) {
         return {
-          chanId,
           ...state,
-          [symbol]: {},
+          [chanId]: {
+            [symbol]: {},
+          },
         }
       }
 
@@ -42,8 +44,9 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
 
       return {
         ...state,
-        chanId,
-        [symbol]: data,
+        [chanId]: {
+          [symbol]: data,
+        },
       }
     }
 
@@ -55,7 +58,8 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
         return state
       }
       const [chanId, ph1, ph2] = payload
-      if (+chanId === 0 || chanId !== state.chanId) {
+      const allChanIds = _keys(state)
+      if (+chanId === 0 || !allChanIds.includes(_toString(chanId))) {
         return state
       }
       const { symbol = chanId } = channel
@@ -68,7 +72,7 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
       }
       const data = adapter(rawData, { chanId, type, symbol })
       const { id } = data
-      const prev = state[symbol] || {}
+      const prev = state[chanId][symbol] || {}
 
       // dont update if te,tu message for same trade
       if (_isEqual(data, prev[id])) {
@@ -83,9 +87,11 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
 
       return {
         ...state,
-        [symbol]: {
-          ...prevData,
-          [id]: data,
+        [chanId]: {
+          [symbol]: {
+            ...prevData,
+            [id]: data,
+          },
         },
       }
     }
