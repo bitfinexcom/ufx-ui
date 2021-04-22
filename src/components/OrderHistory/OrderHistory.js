@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { compose } from 'lodash/fp/compose'
+import compose from 'lodash/fp/compose'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { useMemo, memo } from 'react'
@@ -82,7 +82,8 @@ OrderHistory.propTypes = {
   className: PropTypes.string,
   /**
    * If true, show the OrderHistory in a condensed mobile layout. By default
-   * the mobile layout will be enabled when the screen size is below 576.
+   * the mobile layout will be enabled when the screen size is below the mobile
+   * breakpoint (BREAKPOINTS.MD).
    */
   isMobileLayout: PropTypes.bool,
 }

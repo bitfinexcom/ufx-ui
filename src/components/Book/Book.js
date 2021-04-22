@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { compose } from 'lodash/fp/compose'
+import compose from 'lodash/fp/compose'
 import _isBoolean from 'lodash/isBoolean'
 import _partition from 'lodash/partition'
 import _take from 'lodash/take'
