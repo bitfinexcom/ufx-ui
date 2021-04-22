@@ -20,10 +20,26 @@ const Flex = (props = {}) => {
 }
 
 Flex.propTypes = {
+  /**
+   * The children of the Flex.
+   */
   children: PropTypes.node.isRequired,
-  style: PropTypes.shape(),
+  /**
+   * The style of the Flex.
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  /**
+   * The className of the Flex.
+   */
   className: PropTypes.string,
+  /**
+   * The ID of the Flex.
+   */
   id: PropTypes.string,
+  /**
+   * If true, renders the Flex in a row direction.
+   */
   horizontal: PropTypes.bool,
 }
 

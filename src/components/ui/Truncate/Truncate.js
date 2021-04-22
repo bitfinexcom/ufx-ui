@@ -1,9 +1,10 @@
 import cx from 'classnames'
+import PropTypes from 'prop-types'
 import React from 'react'
 
 import * as Classes from '../../../common/classes'
 
-export default function Truncate({ className, children, ...props }) {
+function Truncate({ className, children, ...props }) {
   return (
     <span
       className={cx(Classes.TRUNCATE, className)}
@@ -15,3 +16,16 @@ export default function Truncate({ className, children, ...props }) {
     </span>
   )
 }
+
+Truncate.prototype = {
+  /**
+   * The className of the Truncate.
+   */
+  className: PropTypes.string,
+  /**
+   * The children of the Truncate.
+   */
+  children: PropTypes.string,
+}
+
+export default Truncate

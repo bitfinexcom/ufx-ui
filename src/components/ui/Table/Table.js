@@ -30,12 +30,30 @@ const Table = forwardRef(function Table(props, ref) {
 })
 
 Table.propTypes = {
+  /**
+   * The content of the Table.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * The className of the Table.
+   */
   className: PropTypes.string,
+  /**
+   * The style of the Table.
+   */
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
+  /**
+   * If true, the rows of the Table will have hover/focus and active interactions.
+   */
   interactive: PropTypes.bool,
+  /**
+   * If true, the rows of the Table will display in a striped style.
+   */
   striped: PropTypes.bool,
+  /**
+   * If true, the rows of the Table will display in a condensed style.
+   */
   condensed: PropTypes.bool,
 }
 
