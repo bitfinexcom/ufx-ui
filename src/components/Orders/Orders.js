@@ -1,9 +1,10 @@
 import cx from 'classnames'
+import { compose } from 'lodash/fp/componse'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { useMemo, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { compose } from 'react-redux'
+// import { compose } from 'react-redux'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
