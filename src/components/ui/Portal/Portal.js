@@ -30,8 +30,17 @@ function Portal({ children, id, target }) {
 }
 
 Portal.propTypes = {
+  /**
+   * The content of the Portal.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * The id of the Portal container.
+   */
   id: PropTypes.string.isRequired,
+  /**
+   * The DOM target of the Portal container. This is where the container will be rendered to.
+   */
   target: PropTypes.oneOfType([PropTypes.node, PropTypes.object]),
 }
 

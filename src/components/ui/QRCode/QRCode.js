@@ -12,7 +12,13 @@ const QRCode = forwardRef(function QRCode(props, ref) {
 })
 
 QRCode.propTypes = {
+  /**
+   * The value of the QRCode.
+   */
   value: PropTypes.string.isRequired,
+  /**
+   * The className of the QRCode.
+   */
   className: PropTypes.string,
 }
 
