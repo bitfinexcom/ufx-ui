@@ -1,4 +1,4 @@
-# μfinex
+# μfinex. 
 
 μfinex (Microfinex) is an open-source UI library that lets you quickly build a trading interface connected to the Bitfinex API.
 
