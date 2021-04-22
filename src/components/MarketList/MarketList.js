@@ -152,7 +152,7 @@ MarketList.propTypes = {
   /**
    * If true, show the OrderHistory in a condensed mobile layout. By default
    * the mobile layout will be enabled when the screen size is below the mobile
-   * breakpoint (BREAKPOINTS.MD).
+   * breakpoint (BREAKPOINTS.SM).
    */
   isMobileLayout: PropTypes.bool,
 }
