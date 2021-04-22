@@ -83,24 +83,78 @@ const Input = forwardRef(function Input(props, ref) {
 })
 
 Input.propTypes = {
+  /**
+   * The type of the Input.
+   */
   type: PropTypes.string,
+  /**
+   * The ID of the Input.
+   */
   id: PropTypes.string,
+  /**
+   * The name of the Input.
+   */
   name: PropTypes.string,
+  /**
+   * The value of the Input.
+   */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * The placeholder of the Input.
+   */
   placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * The label of the Input.
+   */
   label: PropTypes.node,
+  /**
+   * The className of the Input.
+   */
   className: PropTypes.string,
+  /**
+   * The style of the Input.
+   */
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
+  /**
+   * The readOnly of the Input.
+   */
   readOnly: PropTypes.bool,
+  /**
+   * If true, set the Input to the disabled state.
+   */
   disabled: PropTypes.bool,
+  /**
+   * The function called when the Input changes.
+   */
   onChange: PropTypes.func,
+  /**
+   * The function called when the Input blurs.
+   */
   onBlur: PropTypes.func,
+  /**
+   * The leftElement of the Input.
+   */
   leftElement: PropTypes.node,
+  /**
+   * The rightElement of the Input.
+   */
   rightElement: PropTypes.node,
+  /**
+   * The error text of the Input.
+   */
   error: PropTypes.string,
+  /**
+   * The alignment of the text of the Input.
+   */
   alignText: PropTypes.oneOf(Object.values(TEXT_ALIGNMENT)),
+  /**
+   * If true, shows the Input in a small style.
+   */
   small: PropTypes.bool,
+  /**
+   * If true, shows the error of the Input.
+   */
   shouldRenderError: PropTypes.bool,
 }
 

@@ -37,13 +37,31 @@ const Label = forwardRef(function Label(props, ref) {
 })
 
 Label.propTypes = {
+  /**
+   * The label of the Label.
+   */
   label: PropTypes.node.isRequired,
+  /**
+   * The tag of the Label.
+   */
   // do not use lodash methods/_values to show correct prop-types in storybook props table
   tag: PropTypes.oneOf(Object.values(LABEL_TAGS)),
+  /**
+   * The className of the Label.
+   */
   className: PropTypes.string,
+  /**
+   * The style of the Label.
+   */
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
+  /**
+   * If true, shows the text of the Label in uppercase.
+   */
   uppercase: PropTypes.bool,
+  /**
+   * If true, shows the Label in a small style.
+   */
   small: PropTypes.bool,
 }
 
