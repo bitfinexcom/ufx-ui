@@ -15,7 +15,7 @@ export const basic = showTemplateStory(Checkbox, props)
 
 export const state = () => (
   <>
-    <Checkbox label='Uncheked' checked={false} />
+    <Checkbox label='Unchecked' checked={false} />
     <Checkbox label='Cheked' checked />
   </>
 )

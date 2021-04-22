@@ -48,13 +48,31 @@ const Heading = forwardRef(function Heading(props, ref) {
 })
 
 Heading.propTypes = {
+  /**
+   * The children of the Heading.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * The tag of the Heading.
+   */
   // do not use lodash methods/_values to show correct prop-types in storybook props table
   tag: PropTypes.oneOf(Object.values(HEADING_TAGS)),
+  /**
+   * The className of the Heading.
+   */
   className: PropTypes.string,
+  /**
+   * The style of the Heading.
+   */
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
+  /**
+   * The intent of the Heading.
+   */
   intent: PropTypes.oneOf(INTENT_TYPES_ARR),
+  /**
+   * The alignment of the text of the Heading.
+   */
   alignText: PropTypes.oneOf(Object.values(TEXT_ALIGNMENT)),
 }
 

@@ -116,6 +116,7 @@ Dropdown.propTypes = {
   placeholder: PropTypes.string,
   ...DropdownList.propTypes,
 }
+
 Dropdown.defaultProps = {
   valueRenderer: null,
   id: null,
