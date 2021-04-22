@@ -1,4 +1,6 @@
-{
+const pkg = require('./package.json')
+
+module.exports = {
   "parser": "babel-eslint",
   "extends": ["airbnb"],
   "plugins": ["react-hooks"],
@@ -44,7 +46,8 @@
       }
     ],
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "import/no-unresolved": ["error", { ignore: Object.keys(pkg.peerDependencies) }]
   },
   "settings": {
     "import/resolver": {
