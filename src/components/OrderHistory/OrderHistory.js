@@ -1,9 +1,9 @@
 import cx from 'classnames'
+import { compose } from 'lodash/fp/compose'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { useMemo, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { compose } from 'react-redux'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
@@ -13,7 +13,7 @@ import withResponsive from '../../hoc/withResponsive'
 import { getMappedKey } from '../../utils/data-mapping'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-import { ORDER_HISTORY_COLUMNS, BREAKPOINT_SMALL } from './OrderHistory.constants'
+import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
 import Header from './OrderHistory.Header'
 import Row from './OrderHistory.Row'
 
@@ -100,6 +100,6 @@ OrderHistory.defaultProps = defaultProps
 export default compose(
   withI18nProvider,
   withResponsive,
-  withMobileLayout(BREAKPOINT_SMALL),
+  withMobileLayout(),
   memo,
 )(OrderHistory)

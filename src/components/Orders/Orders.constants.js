@@ -34,5 +34,3 @@ export const MAPPING = {
     format: (value) => <FormattedDate ts={value} />,
   },
 }
-
-export const BREAKPOINT_SMALL = 576

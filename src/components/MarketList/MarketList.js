@@ -1,10 +1,10 @@
+import { compose } from 'lodash/fp/compose'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, {
   useReducer, useMemo, useCallback, memo,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { compose } from 'react-redux'
 
 import { BREAKPOINTS } from '../../common/classes'
 import * as Classes from '../../common/classes'
