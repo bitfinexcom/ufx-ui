@@ -6,8 +6,6 @@ export const DEFAULT_ZOOM = 100
 
 export const CANCEL_TIMEOUT_MS = 1500
 
-export const BREAKPOINT_VERTICAL = 539
-
 export const KEYS = {
   ORDER_COUNT: 'order_count',
   COUNT: 'count',

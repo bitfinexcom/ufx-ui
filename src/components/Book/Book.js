@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import compose from 'lodash/fp/compose'
 import _isBoolean from 'lodash/isBoolean'
 import _partition from 'lodash/partition'
 import _take from 'lodash/take'
@@ -6,7 +7,6 @@ import memoizeOne from 'memoize-one'
 import PropTypes from 'prop-types'
 import React, { useMemo, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { compose } from 'react-redux'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
@@ -17,7 +17,7 @@ import { getVisibleColumns } from '../../utils/data-mapping'
 import Spinner from '../ui/Spinner'
 import getColumns from './Book.columns'
 import {
-  BREAKPOINT_VERTICAL, BOOK_VIZ_TYPES, DISPLAYED_ROWS, DEFAULT_ZOOM,
+  BOOK_VIZ_TYPES, DISPLAYED_ROWS, DEFAULT_ZOOM,
 } from './Book.constants'
 import { getBookAmountMax, getBooktMax, getDecimals } from './Book.helpers'
 import { PROP_BOOK_TRADE, PROP_BOOK, PROP_ORDER } from './Book.props'
@@ -226,6 +226,6 @@ Book.defaultProps = defaultProps
 export default compose(
   withI18nProvider,
   withResponsive,
-  withMobileLayout(BREAKPOINT_VERTICAL),
+  withMobileLayout(),
   memo,
 )(Book)

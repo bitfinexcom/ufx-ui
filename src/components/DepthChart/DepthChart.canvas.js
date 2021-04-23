@@ -2,9 +2,9 @@
 import _last from 'lodash/last'
 import _sortBy from 'lodash/sortBy'
 
+import { BREAKPOINTS } from '../../common/classes'
 import { formatPrice, formatTotal } from '../../functions/number'
 import { convertHexToRGBA } from '../../utils/color'
-import { BREAKPOINT_MOBILE } from '../Responsive/Responsive'
 import { disableScroll, enableScroll, dpi } from './DepthChart.helpers'
 
 export default class DepthChartCanvas {
@@ -73,7 +73,7 @@ export default class DepthChartCanvas {
     axisColor,
     bgColor,
     highlightColor,
-    ticksDisplayStyle = (document.body.clientWidth > BREAKPOINT_MOBILE
+    ticksDisplayStyle = (document.body.clientWidth > BREAKPOINTS.MD
       ? DepthChartCanvas.ticksDisplayStyle.twoStaticTicks
       : DepthChartCanvas.ticksDisplayStyle.oneStaticTick),
     onScroll,
@@ -117,7 +117,7 @@ export default class DepthChartCanvas {
     this.asksGradient.addColorStop(0, convertHexToRGBA(asksColor, 0.1))
     this.asksGradient.addColorStop(1, convertHexToRGBA(asksColor, 0.02))
 
-    if (document.body.clientWidth > BREAKPOINT_MOBILE) {
+    if (document.body.clientWidth > BREAKPOINTS.MD) {
       this.canvas.addEventListener('mouseenter', () => {
         disableScroll()
         this.didMouseEnter = true
