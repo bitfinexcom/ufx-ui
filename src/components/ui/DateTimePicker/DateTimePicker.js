@@ -21,7 +21,6 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     label,
     value,
     name,
-    style,
     className,
     alignText,
     small,
@@ -37,6 +36,7 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     onBlur,
     userDateFormat,
     error,
+    ...rest
   } = props
 
   const {
@@ -84,9 +84,9 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
 
   return (
     <div
-      style={style}
       ref={ref}
       className={cx(Classes.INPUT, className)}
+      {...rest}
     >
       {
       label && (
@@ -140,7 +140,7 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
               onValueChange={handleTextInputChange}
               mask={INPUT_MASK}
             />
-      )}
+          )}
         />
       </div>
       <div className={cx('error-msg', { visible: isError })}>
@@ -171,10 +171,6 @@ DateTimePicker.propTypes = {
    * The className of the DateTimePicker.
    */
   className: PropTypes.string,
-  /**
-   * The style attribute of the DateTimePicker.
-   */
-  style: PropTypes.object,
   /**
    * If true, set the DateTimePicker to the disabled state.
    */
