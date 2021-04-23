@@ -4,7 +4,7 @@ import React, { useState, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../../../common/classes'
-import { Button, Dialog as Modal } from '../../../../components/ui'
+import { Button, Dialog } from '../../../../components/ui'
 
 const HelpButton = ({ helpMessage, children }) => {
   const { t } = useTranslation('movements')
@@ -25,13 +25,13 @@ const HelpButton = ({ helpMessage, children }) => {
         {children}
       </Button>
 
-      <Modal
+      <Dialog
         isOpen={showHelp}
         onClose={() => setShowHelp(false)}
         title={t('help')}
       >
         {helpMessage}
-      </Modal>
+      </Dialog>
     </>
   )
 }

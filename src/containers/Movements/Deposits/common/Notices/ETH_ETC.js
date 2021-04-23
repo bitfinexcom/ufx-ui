@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Notice, Button, Dialog as Modal } from '../../../../../components/ui'
+import { Notice, Button, Dialog } from '../../../../../components/ui'
 import EthereumNotice from './Ethereum'
 
 const ETH_ETC = () => {
@@ -24,15 +24,15 @@ const ETH_ETC = () => {
         {t('more_info')}
       </Button>
 
-      <Modal
+      <Dialog
         title={`Ethereum ${t('deposits')}`}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        closeOnOutsideClick
-        closeOnEscapeClick
+        canOutsideClickClose
+        canEscapeKeyClose
       >
         <EthereumNotice />
-      </Modal>
+      </Dialog>
     </Notice>
   )
 }

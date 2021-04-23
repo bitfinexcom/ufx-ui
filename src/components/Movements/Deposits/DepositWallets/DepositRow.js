@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import { copyToClipboard } from '../../../../utils/clipboard'
 import {
-  Tooltip, Heading, Button, QRCode, Dialog as Modal, Input,
+  Tooltip, Heading, Button, QRCode, Dialog, Input,
 } from '../../../ui'
 import { NOT_ENABLED, NONE_GENERATED } from '../constants'
 
@@ -134,12 +134,12 @@ const DepositRow = ({
         </div>
       )}
 
-      <Modal
+      <Dialog
         title={_startCase(`${name} ${t('wallet')} (${currency})`)}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        closeOnOutsideClick
-        closeOnEscapeClick
+        canOutsideClickClose
+        canEscapeKeyClose
       >
         <div className='qr-code-modal'>
           <QRCode value={address} className='qr-code' />
@@ -148,7 +148,7 @@ const DepositRow = ({
             {address}
           </div>
         </div>
-      </Modal>
+      </Dialog>
     </>
   )
 }
