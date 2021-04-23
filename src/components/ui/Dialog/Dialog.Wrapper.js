@@ -1,4 +1,3 @@
-import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { useEffect, forwardRef } from 'react'
 import { Transition } from 'react-transition-group'
@@ -42,7 +41,7 @@ const Wrapper = forwardRef(function Wrapper(props, ref) {
 
   useEffect(() => {
     const addOrRemove = isOpen ? 'add' : 'remove'
-    document.body.classList[addOrRemove](cx(Classes.DIALOG_SCROLL_LOCK))
+    document.body.classList[addOrRemove](Classes.DIALOG_SCROLL_LOCK)
   }, [isOpen])
 
   return (
