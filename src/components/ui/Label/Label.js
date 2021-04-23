@@ -13,13 +13,12 @@ export const LABEL_TAGS = {
 const Label = forwardRef(function Label(props, ref) {
   const {
     label,
-    tag,
+    tag: Tag,
     className,
-    style,
     uppercase,
     small,
   } = props
-  const ElementType = tag
+
   const classes = cx(
     Classes.LABEL,
     className,
@@ -30,9 +29,10 @@ const Label = forwardRef(function Label(props, ref) {
   )
 
   return (
-    <ElementType ref={ref} className={classes} style={style}>
+    // eslint-disable-next-line no-undef, react/jsx-props-no-spreading
+    <Tag ref={ref} className={classes} {...rest}>
       {label}
-    </ElementType>
+    </Tag>
   )
 })
 
@@ -51,11 +51,6 @@ Label.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * The style of the Label.
-   */
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
-  /**
    * If true, shows the text of the Label in uppercase.
    */
   uppercase: PropTypes.bool,
@@ -68,7 +63,6 @@ Label.propTypes = {
 Label.defaultProps = {
   tag: LABEL_TAGS.SPAN,
   className: null,
-  style: null,
   uppercase: false,
   small: false,
 }

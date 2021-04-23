@@ -18,7 +18,6 @@ const Input = forwardRef(function Input(props, ref) {
     placeholder,
     label,
     className,
-    style,
     readOnly,
     disabled,
     onChange,
@@ -28,10 +27,13 @@ const Input = forwardRef(function Input(props, ref) {
     error,
     alignText,
     small,
+    ...rest
   } = props
+
   const inputValue = (value === 0 || value)
     ? value
     : ''
+
   const inputProps = {
     type,
     placeholder,
@@ -55,9 +57,10 @@ const Input = forwardRef(function Input(props, ref) {
 
   return (
     <div
-      style={style}
       ref={ref}
       className={cx(Classes.INPUT, className)}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
       {label && (
         <Label
@@ -77,7 +80,6 @@ const Input = forwardRef(function Input(props, ref) {
       <div className={cx('error-msg', { visible: isError })}>
         {error}
       </div>
-
     </div>
   )
 })
@@ -111,11 +113,6 @@ Input.propTypes = {
    * The className of the Input.
    */
   className: PropTypes.string,
-  /**
-   * The style of the Input.
-   */
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
   /**
    * The readOnly of the Input.
    */
@@ -166,7 +163,6 @@ Input.defaultProps = {
   placeholder: '',
   label: '',
   className: null,
-  style: null,
   readOnly: false,
   disabled: false,
   onChange: () => { },

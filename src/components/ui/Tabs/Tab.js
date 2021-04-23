@@ -10,8 +10,8 @@ const Tab = (props) => {
     title,
     active,
     className,
-    style,
     onChange,
+    ...rest
   } = props
 
   const tabClasses = cx('tab', className, {
@@ -24,18 +24,16 @@ const Tab = (props) => {
     onChange(id)
   }
 
-  const tabProps = {
-    className: tabClasses,
-    style,
-    onClick: handleTabSelect,
-    onKeyPress: utils.handleKeyboardEvent(['Enter', ' '], handleTabSelect),
-    role: 'tab',
-    tabIndex: '0',
-  }
-
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <div {...tabProps}>
+    <div
+      className={tabClasses}
+      onClick={handleTabSelect}
+      onKeyPress={utils.handleKeyboardEvent(['Enter', ' '], handleTabSelect)}
+      role='tab'
+      tabIndex='0'
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
+    >
       <span>{title}</span>
     </div>
   )
@@ -52,15 +50,12 @@ Tab.propTypes = {
   ...TAB_PROP_TYPE,
   active: PropTypes.string,
   className: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
   onChange: PropTypes.func.isRequired,
 }
 
 Tab.defaultProps = {
   active: '',
   className: null,
-  style: null,
 }
 
 export default Tab

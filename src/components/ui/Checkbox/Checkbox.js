@@ -129,7 +129,6 @@ Checkbox.defaultProps = {
   label: '',
   disabled: false,
   className: null,
-  style: null,
   id: null,
   name: null,
   onChange: () => { },

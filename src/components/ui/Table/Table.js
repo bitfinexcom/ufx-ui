@@ -10,10 +10,10 @@ const Table = forwardRef(function Table(props, ref) {
   const {
     children,
     className,
-    style,
     interactive,
     striped,
     condensed,
+    ...rest
   } = props
 
   const classes = cx(Classes.TABLE, className, {
@@ -23,7 +23,8 @@ const Table = forwardRef(function Table(props, ref) {
   })
 
   return (
-    <table ref={ref} className={classes} style={style}>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <table ref={ref} className={classes} {...rest}>
       {children}
     </table>
   )
@@ -38,11 +39,6 @@ Table.propTypes = {
    * The className of the Table.
    */
   className: PropTypes.string,
-  /**
-   * The style of the Table.
-   */
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
   /**
    * If true, the rows of the Table will have hover/focus and active interactions.
    */
@@ -59,7 +55,6 @@ Table.propTypes = {
 
 Table.defaultProps = {
   className: null,
-  style: null,
   interactive: false,
   striped: false,
   condensed: false,

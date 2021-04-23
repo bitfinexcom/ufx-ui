@@ -86,6 +86,7 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     <div
       ref={ref}
       className={cx(Classes.INPUT, className)}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
     >
       {
@@ -235,7 +236,6 @@ DateTimePicker.defaultProps = {
   name: null,
   label: '',
   className: null,
-  style: null,
   disabled: false,
   onChange: () => { },
   onBlur: () => { },
