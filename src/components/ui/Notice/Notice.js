@@ -47,9 +47,21 @@ const Notice = forwardRef(function Notice(props, ref) {
 })
 
 Notice.propTypes = {
+  /**
+   * The type of the Notice.
+   */
   type: PropTypes.oneOf(Object.values(NOTICE_TYPES)),
+  /**
+   * The content of the Notice.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * The title of the Notice.
+   */
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /**
+   * The icon of the Notice.
+   */
   icon: PropTypes.node,
 }
 

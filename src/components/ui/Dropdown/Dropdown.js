@@ -19,11 +19,12 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     name,
     searchable,
     className,
-    style,
     onChange,
     small,
     placeholder,
+    ...rest
   } = props
+
   const [isOpen, setIsOpen] = useState(false)
   const content = valueRenderer && valueRenderer(value, options[value])
   const classes = cx(Classes.DROPDOWN, className, {
@@ -63,44 +64,59 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     <div
       ref={ref}
       className={classes}
-      style={style}
       onMouseLeave={() => setIsOpen(false)}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
 
       {buttonElement}
 
-      {
-        isOpen && (
-          <DropdownList
-            options={options}
-            value={value}
-            searchable={searchable}
-            optionRenderer={optionRenderer}
-            onChange={handleOnChange}
-          />
-        )
-      }
+      {isOpen && (
+        <DropdownList
+          options={options}
+          value={value}
+          searchable={searchable}
+          optionRenderer={optionRenderer}
+          onChange={handleOnChange}
+        />
+      )}
     </div>
   )
 })
 
 Dropdown.propTypes = {
+  /**
+   * The value renderer function of the Dropdown.
+   */
   valueRenderer: PropTypes.func,
+  /**
+   * The ID of the Dropdown.
+   */
   id: PropTypes.string,
+  /**
+   * The name of the Dropdown.
+   */
   name: PropTypes.string,
+  /**
+   * The className of the Dropdown.
+   */
   className: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
+  /**
+   * If true, shows the Button in a small style.
+   */
   small: PropTypes.bool,
+  /**
+   * The placeholder of the Dropdown.
+   */
   placeholder: PropTypes.string,
   ...DropdownList.propTypes,
 }
+
 Dropdown.defaultProps = {
   valueRenderer: null,
   id: null,
   name: null,
   className: null,
-  style: null,
   small: false,
   placeholder: null,
   ...DropdownList.defaultProps,

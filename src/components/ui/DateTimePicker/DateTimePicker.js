@@ -21,7 +21,6 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     label,
     value,
     name,
-    style,
     className,
     alignText,
     small,
@@ -37,6 +36,7 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
     onBlur,
     userDateFormat,
     error,
+    ...rest
   } = props
 
   const {
@@ -84,9 +84,10 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
 
   return (
     <div
-      style={style}
       ref={ref}
       className={cx(Classes.INPUT, className)}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
       {
       label && (
@@ -140,7 +141,7 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
               onValueChange={handleTextInputChange}
               mask={INPUT_MASK}
             />
-      )}
+          )}
         />
       </div>
       <div className={cx('error-msg', { visible: isError })}>
@@ -151,28 +152,81 @@ export const DateTimePicker = forwardRef(function DateTimePicker(props, ref) {
 })
 
 DateTimePicker.propTypes = {
+  /**
+   * The ID of the DateTimePicker.
+   */
   id: PropTypes.string,
+  /**
+   * The name attribute of the DateTimePicker.
+   */
   name: PropTypes.string,
+  /**
+   * The value of the DateTimePicker.
+   */
   value: PropTypes.object,
+  /**
+   * The label text of the DateTimePicker.
+   */
   label: PropTypes.node,
+  /**
+   * The className of the DateTimePicker.
+   */
   className: PropTypes.string,
-  style: PropTypes.object,
+  /**
+   * If true, set the DateTimePicker to the disabled state.
+   */
   disabled: PropTypes.bool,
+  /**
+   * The function called when the DateTimePicker state changes to blur.
+   */
   onBlur: PropTypes.func,
+  /**
+   * The function called when the DateTimePicker state changes.
+   */
   onChange: PropTypes.func,
+  /**
+   * The error text of the DateTimePicker.
+   */
   error: PropTypes.string,
+  /**
+   * The alignment of the DateTimePicker text.
+   */
   alignText: PropTypes.oneOf(Object.values(TEXT_ALIGNMENT)),
+  /**
+   * If true, shows the DateTimePicker in a small style.
+   */
   small: PropTypes.bool,
+  /**
+   * The time intervals of the DateTimePicker.
+   */
   timeIntervals: PropTypes.number,
+  /**
+   * The minimum settable date of the DateTimePicker.
+   */
   minDate: PropTypes.instanceOf(Date),
+  /**
+   * The maximum settable date of the DateTimePicker.
+   */
   maxDate: PropTypes.instanceOf(Date),
-  maxTime: PropTypes.instanceOf(Date),
+  /**
+   * The minimum settable time of the DateTimePicker.
+   */
   minTime: PropTypes.instanceOf(Date),
+  /**
+   * The maximum settable time of the DateTimePicker.
+   */
+  maxTime: PropTypes.instanceOf(Date),
+  /**
+   * The date format of the DateTimePicker.
+   */
   userDateFormat: PropTypes.oneOf([
     'DD-MM-YY HH:mm:ss',
     'MM-DD-YY HH:mm:ss',
     'YY-MM-DD HH:mm:ss',
   ]),
+  /**
+   * The placement of the DateTimePicker popper element.
+   */
   popperPlacement: PropTypes.string,
 }
 
@@ -182,7 +236,6 @@ DateTimePicker.defaultProps = {
   name: null,
   label: '',
   className: null,
-  style: null,
   disabled: false,
   onChange: () => { },
   onBlur: () => { },

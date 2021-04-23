@@ -13,13 +13,13 @@ export const LABEL_TAGS = {
 const Label = forwardRef(function Label(props, ref) {
   const {
     label,
-    tag,
+    tag: Tag,
     className,
-    style,
     uppercase,
     small,
+    ...rest
   } = props
-  const ElementType = tag
+
   const classes = cx(
     Classes.LABEL,
     className,
@@ -30,27 +30,40 @@ const Label = forwardRef(function Label(props, ref) {
   )
 
   return (
-    <ElementType ref={ref} className={classes} style={style}>
+    // eslint-disable-next-line no-undef, react/jsx-props-no-spreading
+    <Tag ref={ref} className={classes} {...rest}>
       {label}
-    </ElementType>
+    </Tag>
   )
 })
 
 Label.propTypes = {
+  /**
+   * The label of the Label.
+   */
   label: PropTypes.node.isRequired,
+  /**
+   * The tag of the Label.
+   */
   // do not use lodash methods/_values to show correct prop-types in storybook props table
   tag: PropTypes.oneOf(Object.values(LABEL_TAGS)),
+  /**
+   * The className of the Label.
+   */
   className: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
+  /**
+   * If true, shows the text of the Label in uppercase.
+   */
   uppercase: PropTypes.bool,
+  /**
+   * If true, shows the Label in a small style.
+   */
   small: PropTypes.bool,
 }
 
 Label.defaultProps = {
   tag: LABEL_TAGS.SPAN,
   className: null,
-  style: null,
   uppercase: false,
   small: false,
 }
