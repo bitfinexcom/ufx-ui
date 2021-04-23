@@ -17,6 +17,7 @@ const Label = forwardRef(function Label(props, ref) {
     className,
     uppercase,
     small,
+    ...rest
   } = props
 
   const classes = cx(
