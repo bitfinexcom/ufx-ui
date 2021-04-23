@@ -7,7 +7,7 @@ import Portal from '../Portal'
 import Modal from './Dialog.Modal'
 
 // eslint-disable-next-line prefer-arrow-callback
-const Wrapper = forwardRef(function Wrapper(props, ref) {
+const Dialog = forwardRef(function Dialog(props, ref) {
   const {
     children,
     isOpen,
@@ -76,7 +76,7 @@ const Wrapper = forwardRef(function Wrapper(props, ref) {
   )
 })
 
-Wrapper.propTypes = {
+Dialog.propTypes = {
   /**
    * Toggles the visibility of the overlay and its children.
    * This prop is required because the component is controlled.
@@ -104,45 +104,48 @@ Wrapper.propTypes = {
   /**
    * Whether to show the close button in the dialog's header.
    * Note that the header will only be rendered if `title` is provided.
-   * @default true
    */
   isCloseButtonShown: PropTypes.bool,
   /**
    * Whether pressing the `esc` key should invoke `onClose`.
-   * @default true
    */
   canEscapeKeyClose: PropTypes.bool,
   /**
    * Whether clicking outside the overlay element (either on backdrop when present or on document)
    * should invoke `onClose`.
-   * @default true
    */
   canOutsideClickClose: PropTypes.bool,
   /**
    * Whether to show the modal in fullscreen mode on mobile.
-   * @default false
    */
   isFullscreenInMobile: PropTypes.bool,
   /**
    * Whether to show the footer in fullscreen mode on mobile fixed to the bottom.
-   * @default false
    */
   hasStickyFooterInMobile: PropTypes.bool,
 
-  /** A space-delimited list of class names to pass along to a child element. */
+  /**
+   * A space-delimited list of class names to pass along to a child element.
+   */
   className: PropTypes.string,
 
-  /** Determines the max width of the dialog in desktop. */
+  /**
+   * Determines the max width of the dialog in desktop.
+   */
   width: PropTypes.number,
 
-  /** Determines the max height of the dialog in desktop. */
+  /**
+   * Determines the max height of the dialog in desktop.
+   */
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 
-  /** Determines the text alignment of the dialog */
+  /**
+   * Determines the text alignment of the dialog
+   */
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
 }
 
-Wrapper.defaultProps = {
+Dialog.defaultProps = {
   icon: null,
   isCloseButtonShown: true,
   title: null,
@@ -156,4 +159,4 @@ Wrapper.defaultProps = {
   textAlign: 'center',
 }
 
-export default Wrapper
+export default Dialog

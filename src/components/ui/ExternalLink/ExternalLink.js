@@ -23,9 +23,21 @@ const ExternalLink = forwardRef(function ExternalLink(props, ref) {
 })
 
 ExternalLink.propTypes = {
+  /**
+   * The link/href of the ExternalLink.
+   */
   link: PropTypes.string.isRequired,
+  /**
+   * The children of the ExternalLink.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * The className of the ExternalLink.
+   */
   className: PropTypes.string,
+  /**
+   * The target of the ExternalLink.
+   */
   target: PropTypes.string,
 }
 

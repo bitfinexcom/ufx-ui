@@ -42,11 +42,29 @@ const SortableButton = forwardRef(function SortableButton(props, ref) {
 })
 
 SortableButton.propTypes = {
+  /**
+   * The content of the SortButton.
+   */
   content: PropTypes.node.isRequired,
+  /**
+   * The function called when clicked on the SortButton.
+   */
   onSortClick: PropTypes.func,
+  /**
+   * The field of the SortButton.
+   */
   field: PropTypes.string,
+  /**
+   * The sortBy of the SortButton.
+   */
   sortBy: PropTypes.string,
+  /**
+   * If true, sorts the SortButton in an ascending manner.
+   */
   sortAscending: PropTypes.bool,
+  /**
+   * If true, sets the sorting of the SortButton in an ascending manner by default.
+   */
   defaultSortAscending: PropTypes.bool,
 }
 

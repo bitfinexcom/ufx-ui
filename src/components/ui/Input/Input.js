@@ -18,7 +18,6 @@ const Input = forwardRef(function Input(props, ref) {
     placeholder,
     label,
     className,
-    style,
     readOnly,
     disabled,
     onChange,
@@ -28,10 +27,13 @@ const Input = forwardRef(function Input(props, ref) {
     error,
     alignText,
     small,
+    ...rest
   } = props
+
   const inputValue = (value === 0 || value)
     ? value
     : ''
+
   const inputProps = {
     type,
     placeholder,
@@ -55,9 +57,10 @@ const Input = forwardRef(function Input(props, ref) {
 
   return (
     <div
-      style={style}
       ref={ref}
       className={cx(Classes.INPUT, className)}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
     >
       {label && (
         <Label
@@ -77,30 +80,78 @@ const Input = forwardRef(function Input(props, ref) {
       <div className={cx('error-msg', { visible: isError })}>
         {error}
       </div>
-
     </div>
   )
 })
 
 Input.propTypes = {
+  /**
+   * The type of the Input.
+   */
   type: PropTypes.string,
+  /**
+   * The ID of the Input.
+   */
   id: PropTypes.string,
+  /**
+   * The name of the Input.
+   */
   name: PropTypes.string,
+  /**
+   * The value of the Input.
+   */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * The placeholder of the Input.
+   */
   placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * The label of the Input.
+   */
   label: PropTypes.node,
+  /**
+   * The className of the Input.
+   */
   className: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
+  /**
+   * The readOnly of the Input.
+   */
   readOnly: PropTypes.bool,
+  /**
+   * If true, set the Input to the disabled state.
+   */
   disabled: PropTypes.bool,
+  /**
+   * The function called when the Input changes.
+   */
   onChange: PropTypes.func,
+  /**
+   * The function called when the Input blurs.
+   */
   onBlur: PropTypes.func,
+  /**
+   * The leftElement of the Input.
+   */
   leftElement: PropTypes.node,
+  /**
+   * The rightElement of the Input.
+   */
   rightElement: PropTypes.node,
+  /**
+   * The error text of the Input.
+   */
   error: PropTypes.string,
+  /**
+   * The alignment of the text of the Input.
+   */
   alignText: PropTypes.oneOf(Object.values(TEXT_ALIGNMENT)),
+  /**
+   * If true, shows the Input in a small style.
+   */
   small: PropTypes.bool,
+  /**
+   * If true, shows the error of the Input.
+   */
   shouldRenderError: PropTypes.bool,
 }
 
@@ -112,7 +163,6 @@ Input.defaultProps = {
   placeholder: '',
   label: '',
   className: null,
-  style: null,
   readOnly: false,
   disabled: false,
   onChange: () => { },
