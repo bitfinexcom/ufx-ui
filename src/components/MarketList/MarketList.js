@@ -1,3 +1,4 @@
+import compose from 'lodash/fp/compose'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, {
@@ -9,9 +10,9 @@ import { BREAKPOINTS } from '../../common/classes'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
+import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { getMappingForKey, getValue } from '../../utils/data-mapping'
-import { ResponsiveState } from '../Responsive'
 import { Table } from '../ui'
 import { TAB_PROP_TYPE } from '../ui/Tabs/Tab'
 import { getColumns } from './MarketList.columns'
@@ -31,10 +32,8 @@ export const MarketList = (props) => {
     filterData,
     defaultSortBy,
     rowMapping: customMapping,
-    parentWidth,
+    isMobileLayout: isSmallView,
   } = props
-  const { width } = ResponsiveState()
-  const isSmallView = (parentWidth || width) < BREAKPOINTS.SM
 
   const [state, dispatch] = useReducer(reducer, getInitState(tabs, defaultSortBy))
   const searchTerm = _get(state, `filter.${KEYS.BASE_CCY}`)
@@ -150,7 +149,12 @@ MarketList.propTypes = {
   defaultSortBy: PropTypes.string,
   filterData: PropTypes.func,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
-  parentWidth: PropTypes.number,
+  /**
+   * If true, show the OrderHistory in a condensed mobile layout. By default
+   * the mobile layout will be enabled when the screen size is below the mobile
+   * breakpoint (BREAKPOINTS.SM).
+   */
+  isMobileLayout: PropTypes.bool,
 }
 
 export const defaultProps = {
@@ -158,9 +162,14 @@ export const defaultProps = {
   filterData: filterDataHelper,
   rowMapping: {},
   onRowClick: () => {},
-  parentWidth: null,
+  isMobileLayout: undefined,
 }
 
 MarketList.defaultProps = defaultProps
 
-export default withI18nProvider(withResponsive(memo(MarketList)))
+export default compose(
+  withI18nProvider,
+  withResponsive,
+  withMobileLayout(BREAKPOINTS.SM),
+  memo,
+)(MarketList)

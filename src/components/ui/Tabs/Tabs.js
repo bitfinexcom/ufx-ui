@@ -47,14 +47,35 @@ const Tabs = forwardRef(function Tabs(props, ref) {
 })
 
 Tabs.propTypes = {
+  /**
+   * The tabs of the Tabs.
+   */
   // tabs: { type: { name: 'object', required: false } },
   tabs: PropTypes.arrayOf(PropTypes.shape(TAB_PROP_TYPE)),
+  /**
+   * The active tab id of the Tabs.
+   */
   active: PropTypes.string,
+  /**
+   * The function called when the Tabs state changes.
+   */
   onChange: PropTypes.func,
+  /**
+   * The className of the container of the Tabs.
+   */
   containerClassName: PropTypes.string,
+  /**
+   * The style of the container of the Tabs.
+   */
   // eslint-disable-next-line react/forbid-prop-types
   containerStyle: PropTypes.object,
+  /**
+   * The className of the tab of the Tabs.
+   */
   tabClassName: PropTypes.string,
+  /**
+   * The style of the tab of the Tabs.
+   */
   // eslint-disable-next-line react/forbid-prop-types
   tabStyle: PropTypes.object,
 }

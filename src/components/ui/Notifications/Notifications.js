@@ -27,6 +27,9 @@ const Notifications = forwardRef(function Notifications(props, ref) {
 })
 
 Notifications.propTypes = {
+  /**
+   * The notifications of the Notifications.
+   */
   notifications: PropTypes.arrayOf(PropTypes.shape(PROP_NOTIFICATION)),
 }
 

@@ -2,8 +2,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react'
 
-import Dialog from '..'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../.storybook/helper'
+import Dialog from '../Dialog.Wrapper'
 
 function DialogWithButton({ children, ...props }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,9 +29,9 @@ const Component = () => (
   </DialogWithButton>
 )
 
-export default getDefaultMetadata(Component, 'Components/ui/Dialog')
+export default getDefaultMetadata(Component, 'Components/ui/Dialog', {}, true)
 
-export const basic = showTemplateStory(Component)
+export const basic = showTemplateStory(Component, Dialog.defaultProps)
 
 export const canNotClose = showTemplateStory(() => (
   <DialogWithButton

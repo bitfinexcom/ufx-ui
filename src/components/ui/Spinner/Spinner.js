@@ -28,8 +28,17 @@ const Spinner = forwardRef(function Spinner(props, ref) {
 })
 
 Spinner.propTypes = {
+  /**
+   * If true, add a margin top.
+   */
   useMarginWrapper: PropTypes.bool,
+  /**
+   * The size of the Spinner.
+   */
   size: PropTypes.string,
+  /**
+   * The className of the Spinner.
+   */
   className: PropTypes.string,
 }
 

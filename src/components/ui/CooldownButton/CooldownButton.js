@@ -45,7 +45,13 @@ const CooldownButton = forwardRef(function CooldownButton(props, ref) {
 })
 
 CooldownButton.propTypes = {
+  /**
+   * The function called when the CooldownButton is clicked.
+   */
   onClick: PropTypes.func,
+  /**
+   * The cooldown timeout in milliseconds.
+   */
   timeoutMs: PropTypes.number,
 }
 

@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import compose from 'lodash/fp/compose'
 import _isBoolean from 'lodash/isBoolean'
 import _partition from 'lodash/partition'
 import _take from 'lodash/take'
@@ -10,13 +11,13 @@ import { useTranslation } from 'react-i18next'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
+import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { getVisibleColumns } from '../../utils/data-mapping'
-import { ResponsiveState } from '../Responsive'
 import Spinner from '../ui/Spinner'
 import getColumns from './Book.columns'
 import {
-  BREAKPOINT_VERTICAL, BOOK_VIZ_TYPES, DISPLAYED_ROWS, DEFAULT_ZOOM,
+  BOOK_VIZ_TYPES, DISPLAYED_ROWS, DEFAULT_ZOOM,
 } from './Book.constants'
 import { getBookAmountMax, getBooktMax, getDecimals } from './Book.helpers'
 import { PROP_BOOK_TRADE, PROP_BOOK, PROP_ORDER } from './Book.props'
@@ -37,16 +38,15 @@ export const Book = (props) => {
     cancelOrder,
     onRowClick,
     className,
-    parentWidth,
     zoom,
     bookViz,
     rowMapping,
     isStackedView,
+    isMobileLayout,
     numberOfRows,
   } = props
   const { t } = useTranslation()
-  const { width } = ResponsiveState()
-  const isVertical = _isBoolean(isStackedView) ? isStackedView : (parentWidth || width) < BREAKPOINT_VERTICAL
+  const isVertical = _isBoolean(isStackedView) ? isStackedView : isMobileLayout
   const [oBids, oAsks] = _partition(orders, (o) => o.amount > 0)
 
   const decimals = useMemo(
@@ -177,10 +177,6 @@ Book.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * The parent’s width of the Book’s component.
-   */
-  parentWidth: PropTypes.number,
-  /**
    * The zoom level for bar graph.
    */
   zoom: PropTypes.number,
@@ -217,7 +213,6 @@ export const defaultProps = {
   cancelOrder: () => { },
   onRowClick: () => { },
   className: null,
-  parentWidth: null,
   zoom: DEFAULT_ZOOM,
   bookViz: BOOK_VIZ_TYPES.CUMULATIVE,
   rowMapping: {},
@@ -228,4 +223,9 @@ export const defaultProps = {
 
 Book.defaultProps = defaultProps
 
-export default withI18nProvider(withResponsive(memo(Book)))
+export default compose(
+  withI18nProvider,
+  withResponsive,
+  withMobileLayout(),
+  memo,
+)(Book)

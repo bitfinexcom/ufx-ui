@@ -94,12 +94,33 @@ export const TOOLTIP_TRIGGER_TYPES = {
 export const TOOLTIP_TRIGGER_TYPES_ARR = Object.values(TOOLTIP_TRIGGER_TYPES)
 
 Tooltip.propTypes = {
+  /**
+   * The placement of the Tooltip.
+   */
   placement: PropTypes.oneOf(TOOLTIP_PLACEMENT_TYPES_ARR),
+  /**
+   * The trigger type of the Tooltip.
+   */
   trigger: PropTypes.oneOf(TOOLTIP_TRIGGER_TYPES_ARR),
+  /**
+   * If true, use a portal to render the tooltip.
+   */
   usePortal: PropTypes.bool,
+  /**
+   * The children of the Tooltip.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * The content of the Tooltip.
+   */
   content: PropTypes.node.isRequired,
+  /**
+   * The className of the Tooltip.
+   */
   className: PropTypes.string,
+  /**
+   * If true, shows the Tooltip in a persistent manner where it delays the hiding event.
+   */
   persistent: PropTypes.bool,
 }
 
