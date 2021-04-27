@@ -32,16 +32,13 @@ export const getTradeForChannelID = createSelector(
 export const hasFetchedTrades = (state, symbol) => !_isEmpty(getTradeForChannelID(state, symbol))
 
 export const getRecentTrades = createSelector(
-  [
-    getTradeForChannelID,
-    (_, symbol) => symbol,
-  ],
-  (trades, symbol) => {
+  [getTradeForChannelID],
+  (trades) => {
     if (!trades) {
       return undefined // loading state
     }
 
-    return _values(trades[symbol]).reverse()
+    return _values(trades).reverse()
   },
 )
 
