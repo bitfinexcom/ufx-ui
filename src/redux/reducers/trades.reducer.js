@@ -33,9 +33,7 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
       if (isEmpty(rawData)) {
         return {
           ...state,
-          [chanId]: {
-            [symbol]: {},
-          },
+          [chanId]: {},
         }
       }
 
@@ -45,7 +43,7 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
       return {
         ...state,
         [chanId]: {
-          [symbol]: data,
+          ...data,
         },
       }
     }
@@ -64,15 +62,16 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
       }
       const { symbol = chanId } = channel
       const rawData = isArray(ph1) ? ph1 : ph2
+
       if (isEmpty(rawData)) {
         return {
           ...state,
-          [symbol]: {},
+          [chanId]: {},
         }
       }
       const data = adapter(rawData, { chanId, type, symbol })
       const { id } = data
-      const prev = state[chanId][symbol] || {}
+      const prev = state[chanId] || {}
 
       // dont update if te,tu message for same trade
       if (_isEqual(data, prev[id])) {
@@ -88,10 +87,8 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
       return {
         ...state,
         [chanId]: {
-          [symbol]: {
-            ...prevData,
-            [id]: data,
-          },
+          ...prevData,
+          [id]: data,
         },
       }
     }
