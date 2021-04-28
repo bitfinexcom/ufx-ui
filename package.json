@@ -37,6 +37,7 @@
     "test": "cross-env react-scripts test --watchAll=false",
     "test:watch": "cross-env react-scripts test",
     "test:ufx-ui": "cross-env react-scripts test storyshots.test src/components/ui src/components/format src/components/Book src/components/OrderHistory --watchAll=false",
+    "test:ufx-ui:watch": "cross-env react-scripts test storyshots.test src/components/ui src/components/format src/components/Book src/components/OrderHistory",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "install:peer": "install-peers -f",
