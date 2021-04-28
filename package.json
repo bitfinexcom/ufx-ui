@@ -33,7 +33,7 @@
     "prepare": "run-s build build:css",
     "cy:test": "cd ./cypress-tests && npm run cy:run",
     "example:build": "cd ./example && npm run build",
-    "verify": "run-s lint test:ufx-ui prepare example:build build:storybook",
+    "verify": "run-s lint prepare example:build build:storybook test:ufx-ui",
     "test": "cross-env react-scripts test --watchAll=false",
     "test:watch": "cross-env react-scripts test",
     "test:ufx-ui": "cross-env react-scripts test storyshots.test src/components/ui src/components/format src/components/Book src/components/OrderHistory --watchAll=false",
