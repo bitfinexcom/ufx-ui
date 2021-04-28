@@ -47,7 +47,7 @@ const DropdownList = (props) => {
       {keys.map((key) => (
         <li key={key}>
           <div
-            className={cx('list-item', `item_${key}`, {
+            className={cx('list-item', {
               'list-item--active': value === key,
             })}
             onClick={() => onChange(key)}

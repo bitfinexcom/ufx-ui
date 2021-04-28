@@ -32,12 +32,13 @@ const tests = describe('Dropdown', () => {
     expect(wrapper.exists('.list')).toEqual(true)
 
     // verify using click
-    wrapper.find(`.item_${value}`).simulate('click')
+    wrapper.find(`.list-item[value="${value}"]`).simulate('click')
     expect(onChange).toHaveBeenCalledWith(value)
 
     // verify using keypress
     value = 'btc'
-    wrapper.find(`.item_${value}`).simulate('keypress', { key: 'Enter' })
+    wrapper.find(`.${Classes.DROPDOWN} #${id}`).simulate('click')
+    wrapper.find(`.list-item[value="${value}"]`).simulate('keypress', { key: 'Enter' })
     expect(onChange).toHaveBeenCalledWith(value)
 
     // close dropdown list
