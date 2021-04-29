@@ -1,4 +1,8 @@
 .#{$ns}-order-history {
+  .ufx-table-wrapper {
+    max-height: none;
+  }
+
   table {
     table-layout: fixed;
   }
