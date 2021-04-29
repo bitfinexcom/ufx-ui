@@ -20,7 +20,7 @@ basic.argTypes = {
 }
 basic.args = {
   children: 'Button Text',
-  intent: Intent.NONE,
+  intent: Intent.PRIMARY,
 }
 
 export const variants = () => (

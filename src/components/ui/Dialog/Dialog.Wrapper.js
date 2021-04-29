@@ -1,8 +1,8 @@
-// import FocusTrap from 'focus-trap-react'
 import PropTypes from 'prop-types'
 import React, { useEffect, forwardRef } from 'react'
 import { Transition } from 'react-transition-group'
 
+import * as Classes from '../../../common/classes'
 import Portal from '../Portal'
 import Modal from './Dialog.Modal'
 
@@ -38,6 +38,11 @@ const Dialog = forwardRef(function Dialog(props, ref) {
       window.removeEventListener('keydown', handleKeydown)
     }
   }, [onClose, isOpen, canEscapeKeyClose])
+
+  useEffect(() => {
+    const addOrRemove = isOpen ? 'add' : 'remove'
+    document.body.classList[addOrRemove](Classes.DIALOG_SCROLL_LOCK)
+  }, [isOpen])
 
   return (
     <Portal ref={ref} id='dialog-container' target={document.body}>

@@ -175,3 +175,7 @@ $mobile-media: "(max-width: 768px)";
     }
   }
 }
+
+.#{$ns}-dialog-scroll-lock {
+  overflow: hidden;
+}

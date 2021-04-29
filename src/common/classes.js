@@ -61,9 +61,6 @@ export const SORT_BUTTON = `${NS}-sort-button`
 // Notifications
 export const NOTIFICATIONS = `${NS}-notifications`
 
-// Popover
-export const POPOVER = `${NS}-popover`
-
 // Notice
 export const NOTICE = `${NS}-notice`
 
@@ -121,6 +118,7 @@ export const BALANCES = `${NS}-balances`
 
 // Dialog
 export const DIALOG = `${NS}-dialog`
+export const DIALOG_SCROLL_LOCK = `${NS}-dialog-scroll-lock`
 
 // Grid
 export const GRID = `${NS}-grid`
