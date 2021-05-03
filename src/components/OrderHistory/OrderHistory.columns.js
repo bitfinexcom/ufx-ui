@@ -4,7 +4,7 @@ import cx from 'classnames'
 import React from 'react'
 
 import * as Classes from '../../common/classes'
-import { KEYS } from './OrderHistory.constants'
+import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
 
 // key: column key
 // label: column header
@@ -12,15 +12,17 @@ import { KEYS } from './OrderHistory.constants'
 // headerCellClassName: th classname
 // cellClassName: td classname
 // renderer: for content to be renderered inside td
+// truncate: for cell content to be truncated with ellipsis
 const getColumns = (args = {}) => {
   const { t, isMobile } = args
 
   return [
     {
-      key: '',
+      key: ORDER_HISTORY_COLUMNS.ICON,
       label: '',
       cellStyle: { width: '3%' },
       cellClassName: 'intent',
+      truncate: false,
       renderer: ({
         orderTitle, colorClass, isSellOrder,
       }) => {
@@ -40,70 +42,78 @@ const getColumns = (args = {}) => {
       },
     },
     {
-      key: KEYS.PAIR,
+      key: ORDER_HISTORY_COLUMNS.PAIR,
       label: t('pair'),
       cellStyle: { width: isMobile ? '17%' : '12%' },
       cellClassName: 'pair',
+      truncate: true,
       renderer: ({
         formattedValue, type,
       }) => (
         <>
           {formattedValue}
           {isMobile && (
-          <span className='mobile-order-type'>
-            {type}
-          </span>
+            <span className='mobile-order-type'>
+              {type}
+            </span>
           )}
         </>
       ),
     },
     ...(isMobile ? [] : [
       {
-        key: KEYS.TYPE,
+        key: ORDER_HISTORY_COLUMNS.TYPE,
         label: t('type'),
         cellStyle: { width: '10%' },
+        truncate: true,
       },
     ]),
     {
-      key: KEYS.AMOUNT,
+      key: ORDER_HISTORY_COLUMNS.AMOUNT,
       label: t('amount'),
       cellStyle: { width: '15%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: true,
     },
     {
-      key: KEYS.BASE_CCY,
+      key: ORDER_HISTORY_COLUMNS.BASE_CCY,
       label: t('ccy'),
       cellStyle: { width: '7%' },
       headerCellClassName: Classes.CENTER,
       cellClassName: Classes.CENTER,
+      truncate: true,
     },
     {
-      key: KEYS.PRICE,
+      key: ORDER_HISTORY_COLUMNS.PRICE,
       label: t('price'),
       cellStyle: { width: isMobile ? '20%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: true,
     },
     {
-      key: KEYS.PRICE_AVERAGE,
+      key: ORDER_HISTORY_COLUMNS.PRICE_AVERAGE,
       label: t('average_price'),
       cellStyle: { width: isMobile ? '18%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: true,
     },
     {
-      key: KEYS.STATUS,
+      key: ORDER_HISTORY_COLUMNS.STATUS,
       label: t('status'),
       cellStyle: { width: isMobile ? '20%' : '13%' },
       headerCellClassName: Classes.CENTER,
       cellClassName: cx('status', Classes.CENTER),
+      truncate: true,
     },
     ...(isMobile ? [] : [
       {
-        key: KEYS.PLACED,
+        key: ORDER_HISTORY_COLUMNS.PLACED,
         label: t('inactive'),
         cellStyle: { width: '15%' },
+        truncate: true,
       },
     ]),
   ]

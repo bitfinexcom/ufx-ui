@@ -7,6 +7,11 @@ N/A
 ## Task reference
 
 
+## BREAKING CHANGES
+N/A
+
+(Explain here, any breaking changes that do not have backward compatibility with previous versions of ufx-ui or keep N/A
+i.e. if you renamed some component prop. Someone who is using previous version, should work on these updates, before upating their `ufx-ui` dependency to this version)
 
 
 ## PR description

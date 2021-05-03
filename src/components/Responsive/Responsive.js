@@ -7,14 +7,12 @@ import { withContentRect } from 'react-measure'
 import * as Classes from '../../common/classes'
 import ResponsiveContext from './ResponsiveContext'
 
-export const BREAKPOINT_MOBILE = 768
-
 const Responsive = (props) => {
   const { children, measureRef, contentRect } = props
   const width = _get(contentRect, 'client.width')
   const height = _get(contentRect, 'client.height')
   const classes = cx(Classes.RESPONSIVE, Classes.getResponsiveClass(width))
-  const isMobile = width < BREAKPOINT_MOBILE
+  const isMobile = width < Classes.BREAKPOINTS.MD
   const value = useMemo(() => ({ isMobile, width, height }), [
     isMobile,
     width,

@@ -2,73 +2,93 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react'
 
-import Dialog from '..'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../.storybook/helper'
+import Dialog from '../Dialog.Wrapper'
 
-function DialogWithButton({ children, ...props }) {
+function useToggle() {
   const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => setIsOpen(!isOpen)
+  const onClose = () => setIsOpen(false)
+
+  return [toggle, { isOpen, onClose }]
+}
+
+const Component = () => {
+  const [toggle, { isOpen, onClose }] = useToggle()
 
   return (
     <>
-      <button type='button' onClick={() => setIsOpen(!isOpen)}>Toggle</button>
-      <Dialog isOpen={isOpen} onClose={() => setIsOpen(false)} {...props}>
-        {children}
+      <button type='button' onClick={toggle}>Toggle</button>
+      <Dialog title='My Dialog' {...{ isOpen, onClose }}>
+        My Dialog Content
+        <Dialog.Footer>
+          <Dialog.Button primary onClick={onClose}>
+            Okay
+          </Dialog.Button>
+        </Dialog.Footer>
       </Dialog>
     </>
   )
 }
 
-const Component = () => (
-  <DialogWithButton title='My Dialog'>
-    My Dialog Content
-    <Dialog.Footer>
-      <Dialog.Button primary>
-        Okay
-      </Dialog.Button>
-    </Dialog.Footer>
-  </DialogWithButton>
-)
+export default getDefaultMetadata(Component, 'Components/ui/Dialog', {}, true)
 
-export default getDefaultMetadata(Component, 'Components/ui/Dialog')
+export const basic = showTemplateStory(Component, Dialog.defaultProps)
 
-export const basic = showTemplateStory(Component)
+export const canNotClose = showTemplateStory(() => {
+  const [toggle, { isOpen, onClose }] = useToggle()
 
-export const canNotClose = showTemplateStory(() => (
-  <DialogWithButton
-    title='My Dialog'
-    canOutsideClickClose={false}
-    isCloseButtonShown={false}
-    canEscapeKeyClose={false}
-  >
-    My Dialog Content
-    <Dialog.Footer>
-      <Dialog.Button primary>
-        Okay
-      </Dialog.Button>
-      <Dialog.Button secondary>
-        Cancel
-      </Dialog.Button>
-    </Dialog.Footer>
-  </DialogWithButton>
-))
+  return (
+    <>
+      <button type='button' onClick={toggle}>Toggle</button>
+      <Dialog
+        title='My Dialog'
+        canOutsideClickClose={false}
+        isCloseButtonShown={false}
+        canEscapeKeyClose={false}
+        {...{ isOpen, onClose }}
+      >
+        My Dialog Content
+        <Dialog.Footer>
+          <Dialog.Button primary onClick={onClose}>
+            Okay
+          </Dialog.Button>
+          <Dialog.Button secondary onClick={onClose}>
+            Cancel
+          </Dialog.Button>
+        </Dialog.Footer>
+      </Dialog>
+    </>
+  )
+})
 
-export const fullscreenWithStickyFooter = showTemplateStory(() => (
-  <DialogWithButton
-    title='My Dialog'
-    canOutsideClickClose={false}
-    isCloseButtonShown={false}
-    canEscapeKeyClose={false}
-    isFullscreenInMobile
-    hasStickyFooterInMobile
-  >
-    My Dialog Content1
-    <Dialog.Footer>
-      <Dialog.Button primary>
-        Okay
-      </Dialog.Button>
-      <Dialog.Button secondary>
-        Cancel
-      </Dialog.Button>
-    </Dialog.Footer>
-  </DialogWithButton>
-))
+export const fullscreenWithStickyFooter = showTemplateStory(() => {
+  const [toggle, { isOpen, onClose }] = useToggle()
+
+  return (
+    <>
+      <button type='button' onClick={toggle}>Toggle</button>
+      <Dialog
+        title='My Dialog'
+        canOutsideClickClose={false}
+        isCloseButtonShown={false}
+        canEscapeKeyClose={false}
+        isFullscreenInMobile
+        hasStickyFooterInMobile
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        My Dialog Content1
+        <Dialog.Footer>
+          <Dialog.Button primary onClick={onClose}>
+            Okay
+          </Dialog.Button>
+          <Dialog.Button secondary onClick={onClose}>
+            Cancel
+          </Dialog.Button>
+        </Dialog.Footer>
+      </Dialog>
+    </>
+  )
+})

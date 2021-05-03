@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import compose from 'lodash/fp/compose'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { useMemo, memo } from 'react'
@@ -7,14 +8,14 @@ import { useTranslation } from 'react-i18next'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
+import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { getMappedKey } from '../../utils/data-mapping'
-import { ResponsiveState } from '../Responsive'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-import { KEYS, BREAKPOINT_SMALL } from './OrderHistory.constants'
-import OrderHHeader from './OrderHistory.Header'
-import OrderHRow from './OrderHistory.Row'
+import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import Header from './OrderHistory.Header'
+import Row from './OrderHistory.Row'
 
 export const OrderHistory = (props) => {
   const {
@@ -22,13 +23,10 @@ export const OrderHistory = (props) => {
     loading,
     rowMapping,
     className,
-    parentWidth,
+    isMobileLayout: isMobile,
   } = props
   const { t } = useTranslation('orderhistory')
-  const { width } = ResponsiveState()
-  const isMobile = (parentWidth || width) < BREAKPOINT_SMALL
-  const keyForId = getMappedKey(KEYS.ID, rowMapping)
-
+  const keyForId = getMappedKey(ORDER_HISTORY_COLUMNS.ID, rowMapping)
   const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
 
   if (loading) {
@@ -43,10 +41,10 @@ export const OrderHistory = (props) => {
     <div className={classes}>
       <div className={Classes.TABLE_WRAPPER}>
         <Table condensed striped>
-          <OrderHHeader columns={columns} />
+          <Header columns={columns} rowMapping={rowMapping} />
           <tbody>
             {orders.map((order) => (
-              <OrderHRow
+              <Row
                 key={_get(order, keyForId)}
                 columns={columns}
                 rowMapping={rowMapping}
@@ -56,9 +54,9 @@ export const OrderHistory = (props) => {
           </tbody>
         </Table>
         {orders.length === 0 && (
-        <div className='empty'>
-          <small>{t('no_orders')}</small>
-        </div>
+          <div className='empty'>
+            <small>{t('no_orders')}</small>
+          </div>
         )}
       </div>
     </div>
@@ -66,11 +64,28 @@ export const OrderHistory = (props) => {
 }
 
 OrderHistory.propTypes = {
+  /**
+   * The orders to be displayed in the OrderHistory’s component.
+   */
   orders: PropTypes.arrayOf(PropTypes.object),
+  /**
+   * If true, show the loading message.
+   */
   loading: PropTypes.bool,
+  /**
+   * The custom field/column mapping for the data.
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  /**
+   * The className of the OrderHistory’s outer element.
+   */
   className: PropTypes.string,
-  parentWidth: PropTypes.number,
+  /**
+   * If true, show the OrderHistory in a condensed mobile layout. By default
+   * the mobile layout will be enabled when the screen size is below the mobile
+   * breakpoint (BREAKPOINTS.SM).
+   */
+  isMobileLayout: PropTypes.bool,
 }
 
 export const defaultProps = {
@@ -78,9 +93,14 @@ export const defaultProps = {
   loading: false,
   rowMapping: {},
   className: null,
-  parentWidth: null,
+  isMobileLayout: undefined,
 }
 
 OrderHistory.defaultProps = defaultProps
 
-export default withI18nProvider(withResponsive(memo(OrderHistory)))
+export default compose(
+  withI18nProvider,
+  withResponsive,
+  withMobileLayout(),
+  memo,
+)(OrderHistory)

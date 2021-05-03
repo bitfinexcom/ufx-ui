@@ -1,6 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import _filter from 'lodash/filter'
 import _get from 'lodash/get'
+import _map from 'lodash/map'
+import _sortBy from 'lodash/sortBy'
+import _values from 'lodash/values'
 
 export const getValue = ({
   mapping = {},
@@ -35,3 +38,16 @@ export const getMappingForKey = (customMapping = {}) => (key) => {
 }
 
 export const getVisibleColumns = (columns, customMapping = {}) => _filter(columns, ({ key }) => !_get(customMapping, [key, 'hidden'], false))
+
+export const getOrderedColumns = (columns, customMapping = {}) => {
+  const hasOrdering = _values(customMapping).some(row => !Number.isNaN(row.index))
+
+  if (!hasOrdering) {
+    return columns
+  }
+
+  const indexedColumns = _map(columns, column => ({ ...column, index: _get(customMapping, [column.key, 'index'], null) }))
+  const sortedColumns = _sortBy(indexedColumns, ['index', 'asc'])
+
+  return sortedColumns
+}

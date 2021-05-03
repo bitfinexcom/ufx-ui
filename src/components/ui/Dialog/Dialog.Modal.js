@@ -39,19 +39,19 @@ const Modal = forwardRef(({
         style={{ maxWidth: width, height, textAlign }}
       >
         {isCloseButtonShown && (
-        <button type='button' className='modal__close-button' onClick={onClose}>
-          &times;
-        </button>
+          <button type='button' className='modal__close-button' onClick={onClose}>
+            &times;
+          </button>
         )}
         {Icon && (
-        <div className='modal__icon'>
-          {typeof Icon === 'function' ? <Icon /> : Icon}
-        </div>
+          <div className='modal__icon'>
+            {typeof Icon === 'function' ? <Icon /> : Icon}
+          </div>
         )}
         {title && (
-        <div className='modal__title'>
-          {title}
-        </div>
+          <div className='modal__title'>
+            {title}
+          </div>
         )}
         <div
           className={cx('modal__body', {
