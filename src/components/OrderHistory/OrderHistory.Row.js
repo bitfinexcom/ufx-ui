@@ -31,6 +31,7 @@ const OrderHRow = (props) => {
   const quoteCcy = getDisplayValue(ORDER_HISTORY_COLUMNS.QUOTE_CCY)
   const originalAmount = getDisplayValue(ORDER_HISTORY_COLUMNS.ORIGINAL_AMOUNT)
   const id = getDisplayValue(ORDER_HISTORY_COLUMNS.ID)
+  const placed = getDisplayValue(ORDER_HISTORY_COLUMNS.PLACED)
 
   const isSellOrder = (originalAmount < 0)
   const orderTitle = isSellOrder
@@ -61,6 +62,7 @@ const OrderHRow = (props) => {
           type,
           baseCcy,
           quoteCcy,
+          placed,
         }) : formattedValue
 
         return (
