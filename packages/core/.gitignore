@@ -1,0 +1,8 @@
+node_modules
+
+dist
+
+src/ufx-core.css
+src/ufx-core.bundle.scss
+
+.size-snapshot.json
