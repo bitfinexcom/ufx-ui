@@ -49,9 +49,9 @@ const Modal = forwardRef(({
           </div>
         )}
         {title && (
-        <div className='modal__title'>
-          {title}
-        </div>
+          <div className='modal__title'>
+            {title}
+          </div>
         )}
         <div
           className={cx('modal__body', {

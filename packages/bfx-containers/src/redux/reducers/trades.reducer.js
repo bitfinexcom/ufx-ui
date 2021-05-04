@@ -31,7 +31,6 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
 
       if (isEmpty(rawData)) {
         return {
-          chanId,
           ...state,
           [chanId]: {},
         }
