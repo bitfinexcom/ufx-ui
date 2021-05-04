@@ -1,11 +1,11 @@
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
-import { getValue, getVisibleColumns, getOrderedColumns } from '../../utils/data-mapping'
+import { getValue } from '../../utils/data-mapping'
 import Truncate from '../ui/Truncate'
 import { KEYS, MAPPING } from './OrderHistory.constants'
 
@@ -16,9 +16,6 @@ const OrderHRow = (props) => {
     rowMapping: customMapping,
   } = props
   const { t } = useTranslation('orderhistory')
-
-  const visibleColumns = useMemo(() => getVisibleColumns(columns, customMapping), [columns, customMapping])
-  const orderedColumns = useMemo(() => getOrderedColumns(visibleColumns, customMapping), [visibleColumns, customMapping])
 
   const getDisplayValue = getValue({
     mapping: MAPPING,
@@ -42,7 +39,7 @@ const OrderHRow = (props) => {
 
   return (
     <tr className='row'>
-      {orderedColumns.map(({
+      {columns.map(({
         key,
         cellClassName,
         cellStyle,

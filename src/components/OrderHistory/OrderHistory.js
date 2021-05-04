@@ -10,7 +10,7 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
-import { getMappedKey } from '../../utils/data-mapping'
+import { getMappedKey, getMappedColumns } from '../../utils/data-mapping'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
 import { KEYS } from './OrderHistory.constants'
@@ -27,7 +27,7 @@ export const OrderHistory = (props) => {
   } = props
   const { t } = useTranslation('orderhistory')
   const keyForId = getMappedKey(KEYS.ID, rowMapping)
-  const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
+  const columns = useMemo(() => getMappedColumns(getColumns({ t, isMobile }), rowMapping), [t, isMobile, rowMapping])
 
   if (loading) {
     return <Spinner />

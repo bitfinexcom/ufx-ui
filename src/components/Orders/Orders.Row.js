@@ -9,6 +9,7 @@ import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import { getValue } from '../../utils/data-mapping'
 import { CooldownButton } from '../ui'
+import Truncate from '../ui/Truncate'
 import { KEYS, MAPPING, CANCEL_TIMEOUT_MS } from './Orders.constants'
 
 const OrderRow = (props) => {
@@ -59,6 +60,17 @@ const OrderRow = (props) => {
         const formattedValue = getDisplayValue(key)
         const value = getDisplayValue(key, false)
         const renderer = _get(customMapping, [key, 'renderer'], defRenderer)
+        const truncate = _get(customMapping, [key, 'truncate'], false)
+        const content = renderer ? renderer({
+          value,
+          formattedValue,
+          data,
+          orderTitle,
+          colorClass,
+          isSellOrder,
+          type,
+          cancelButton,
+        }) : formattedValue
 
         return (
           <td
@@ -66,16 +78,7 @@ const OrderRow = (props) => {
             className={cellClassName}
             style={cellStyle}
           >
-            {renderer ? renderer({
-              value,
-              formattedValue,
-              data,
-              orderTitle,
-              colorClass,
-              isSellOrder,
-              type,
-              cancelButton,
-            }) : formattedValue}
+            {truncate ? <Truncate>{content}</Truncate> : content}
           </td>
         )
       })}

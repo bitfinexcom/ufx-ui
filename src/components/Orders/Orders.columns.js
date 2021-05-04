@@ -46,7 +46,7 @@ const getColumns = (args = {}) => {
       label: t('pair'),
       cellStyle: { width: isMobile ? '17%' : '12%' },
       cellClassName: 'pair',
-      truncate: false,
+      truncate: true,
       renderer: ({ formattedValue, type }) => (
         <>
           {formattedValue}
@@ -63,7 +63,7 @@ const getColumns = (args = {}) => {
         key: KEYS.TYPE,
         label: t('type'),
         cellStyle: { width: '10%' },
-        truncate: false,
+        truncate: true,
       },
     ]),
     {
@@ -72,7 +72,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: '15%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
-      truncate: false,
+      truncate: true,
     },
     {
       key: KEYS.BASE_CCY,
@@ -80,7 +80,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: '7%' },
       headerCellClassName: Classes.CENTER,
       cellClassName: Classes.CENTER,
-      truncate: false,
+      truncate: true,
     },
     {
       key: KEYS.PRICE,
@@ -88,7 +88,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: isMobile ? '20%' : '17%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
-      truncate: false,
+      truncate: true,
     },
     {
       key: KEYS.STATUS,

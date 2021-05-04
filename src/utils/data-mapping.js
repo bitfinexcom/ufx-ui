@@ -51,3 +51,10 @@ export const getOrderedColumns = (columns, customMapping = {}) => {
 
   return sortedColumns
 }
+
+export const getMappedColumns = (columns, customMapping = {}) => {
+  const visibleColumns = getVisibleColumns(columns, customMapping)
+  const orderedColumns = getOrderedColumns(visibleColumns, customMapping)
+
+  return orderedColumns
+}
