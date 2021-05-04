@@ -1,5 +1,5 @@
 .#{$ns}-order-history {
-  .ufx-table-wrapper {
+  .#{$ns}-table-wrapper {
     max-height: none;
   }
 
@@ -60,7 +60,8 @@
       white-space: nowrap;
     }
 
-    th, td {
+    th,
+    td {
       padding-right: 14px;
       white-space: nowrap;
     }
