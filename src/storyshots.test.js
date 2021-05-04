@@ -14,7 +14,7 @@ const ignoreStoryIds = ['components-format-prettydate--show-year'] // uses curre
 initStoryshots({
   test: async ({ story, context }) => {
     const { id } = story
-    if (ignoreStoryIds.includes(id)) {
+    if (ignoreStoryIds.includes(id) || id.startsWith(ContainerStories)) {
       return
     }
 
@@ -23,7 +23,6 @@ initStoryshots({
 
     if (snapshotFileName
       && !snapshotFileName.includes(DialogStories)
-      && !snapshotFileName.includes(ContainerStories)
     ) {
       const storyElement = story.render(context)
       const tree = mount(storyElement)
