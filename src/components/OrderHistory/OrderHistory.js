@@ -13,7 +13,7 @@ import withResponsive from '../../hoc/withResponsive'
 import { getMappedKey } from '../../utils/data-mapping'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import { KEYS } from './OrderHistory.constants'
 import Header from './OrderHistory.Header'
 import Row from './OrderHistory.Row'
 
@@ -26,7 +26,7 @@ export const OrderHistory = (props) => {
     isMobileLayout: isMobile,
   } = props
   const { t } = useTranslation('orderhistory')
-  const keyForId = getMappedKey(ORDER_HISTORY_COLUMNS.ID, rowMapping)
+  const keyForId = getMappedKey(KEYS.ID, rowMapping)
   const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
 
   if (loading) {

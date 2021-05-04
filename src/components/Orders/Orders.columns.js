@@ -22,6 +22,7 @@ const getColumns = (args = {}) => {
       label: '',
       cellStyle: { width: '3%' },
       cellClassName: 'intent',
+      truncate: false,
       renderer: ({
         orderTitle, colorClass, isSellOrder,
       }) => {
@@ -45,6 +46,7 @@ const getColumns = (args = {}) => {
       label: t('pair'),
       cellStyle: { width: isMobile ? '17%' : '12%' },
       cellClassName: 'pair',
+      truncate: false,
       renderer: ({ formattedValue, type }) => (
         <>
           {formattedValue}
@@ -61,6 +63,7 @@ const getColumns = (args = {}) => {
         key: KEYS.TYPE,
         label: t('type'),
         cellStyle: { width: '10%' },
+        truncate: false,
       },
     ]),
     {
@@ -69,6 +72,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: '15%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: false,
     },
     {
       key: KEYS.BASE_CCY,
@@ -76,6 +80,7 @@ const getColumns = (args = {}) => {
       cellStyle: { width: '7%' },
       headerCellClassName: Classes.CENTER,
       cellClassName: Classes.CENTER,
+      truncate: false,
     },
     {
       key: KEYS.PRICE,
@@ -83,19 +88,36 @@ const getColumns = (args = {}) => {
       cellStyle: { width: isMobile ? '20%' : '17%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
       cellClassName: Classes.RIGHT_TO_LEFT,
+      truncate: false,
     },
     {
       key: KEYS.STATUS,
       label: t('status'),
-      cellStyle: { width: '18%' },
-      headerCellClassName: Classes.CENTER,
-      cellClassName: cx('status', Classes.CENTER),
+      cellStyle: { width: isMobile ? '20%' : '13%' },
+      headerCellClassName: isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER,
+      cellClassName: cx('status', isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER),
+      truncate: true,
+      renderer: ({
+        formattedValue, placed,
+      }) => (
+        <>
+          {formattedValue}
+          {isMobile && (
+            <span className='mobile-order-placed'>
+              {placed}
+            </span>
+          )}
+        </>
+      ),
     },
-    {
-      key: KEYS.PLACED,
-      label: t('placed'),
-      cellStyle: { width: isMobile ? '17%' : '15%' },
-    },
+    ...(isMobile ? [] : [
+      {
+        key: KEYS.PLACED,
+        label: t('placed'),
+        cellStyle: { width: '15%' },
+        truncate: true,
+      },
+    ]),
     {
       key: 'cancel_order',
       label: '',
