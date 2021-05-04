@@ -4,7 +4,7 @@ import cx from 'classnames'
 import React from 'react'
 
 import * as Classes from '../../common/classes'
-import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import { KEYS } from './OrderHistory.constants'
 
 // key: column key
 // label: column header
@@ -18,7 +18,7 @@ const getColumns = (args = {}) => {
 
   return [
     {
-      key: ORDER_HISTORY_COLUMNS.ICON,
+      key: KEYS.ICON,
       label: '',
       cellStyle: { width: '3%' },
       cellClassName: 'intent',
@@ -42,7 +42,7 @@ const getColumns = (args = {}) => {
       },
     },
     {
-      key: ORDER_HISTORY_COLUMNS.PAIR,
+      key: KEYS.PAIR,
       label: t('pair'),
       cellStyle: { width: isMobile ? '17%' : '12%' },
       cellClassName: 'pair',
@@ -62,14 +62,14 @@ const getColumns = (args = {}) => {
     },
     ...(isMobile ? [] : [
       {
-        key: ORDER_HISTORY_COLUMNS.TYPE,
+        key: KEYS.TYPE,
         label: t('type'),
         cellStyle: { width: '10%' },
         truncate: true,
       },
     ]),
     {
-      key: ORDER_HISTORY_COLUMNS.AMOUNT,
+      key: KEYS.AMOUNT,
       label: t('amount'),
       cellStyle: { width: '15%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
@@ -77,7 +77,7 @@ const getColumns = (args = {}) => {
       truncate: true,
     },
     {
-      key: ORDER_HISTORY_COLUMNS.BASE_CCY,
+      key: KEYS.BASE_CCY,
       label: t('ccy'),
       cellStyle: { width: '7%' },
       headerCellClassName: Classes.CENTER,
@@ -85,7 +85,7 @@ const getColumns = (args = {}) => {
       truncate: true,
     },
     {
-      key: ORDER_HISTORY_COLUMNS.PRICE,
+      key: KEYS.PRICE,
       label: t('price'),
       cellStyle: { width: isMobile ? '20%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
@@ -93,7 +93,7 @@ const getColumns = (args = {}) => {
       truncate: true,
     },
     {
-      key: ORDER_HISTORY_COLUMNS.PRICE_AVERAGE,
+      key: KEYS.PRICE_AVERAGE,
       label: t('average_price'),
       cellStyle: { width: isMobile ? '18%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
@@ -101,17 +101,29 @@ const getColumns = (args = {}) => {
       truncate: true,
     },
     {
-      key: ORDER_HISTORY_COLUMNS.STATUS,
+      key: KEYS.STATUS,
       label: t('status'),
       cellStyle: { width: isMobile ? '20%' : '13%' },
-      headerCellClassName: Classes.CENTER,
-      cellClassName: cx('status', Classes.CENTER),
+      headerCellClassName: isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER,
+      cellClassName: cx('status', isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER),
       truncate: true,
+      renderer: ({
+        formattedValue, placed,
+      }) => (
+        <>
+          {formattedValue}
+          {isMobile && (
+            <span className='mobile-order-placed'>
+              {placed}
+            </span>
+          )}
+        </>
+      ),
     },
     ...(isMobile ? [] : [
       {
-        key: ORDER_HISTORY_COLUMNS.PLACED,
-        label: t('inactive'),
+        key: KEYS.PLACED,
+        label: t('placed'),
         cellStyle: { width: '15%' },
         truncate: true,
       },

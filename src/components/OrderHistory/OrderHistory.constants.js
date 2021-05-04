@@ -7,7 +7,7 @@ import FormattedValue from '../format/PrettyValue'
 
 const { AMOUNT_DECIMALS, PRICE_SIG_FIGS } = PLATFORM_SETTINGS
 
-export const ORDER_HISTORY_COLUMNS = {
+export const KEYS = {
   ICON: 'icon',
   ID: 'id',
   PAIR: 'pair',
@@ -23,19 +23,19 @@ export const ORDER_HISTORY_COLUMNS = {
 }
 
 export const MAPPING = {
-  [ORDER_HISTORY_COLUMNS.TYPE]: {
+  [KEYS.TYPE]: {
     format: (value) => <OrderType>{value}</OrderType>,
   },
-  [ORDER_HISTORY_COLUMNS.AMOUNT]: {
+  [KEYS.AMOUNT]: {
     format: (value) => <FormattedValue value={value} decimals={AMOUNT_DECIMALS} fadeTrailingZeros />,
   },
-  [ORDER_HISTORY_COLUMNS.PRICE]: {
+  [KEYS.PRICE]: {
     format: (value) => <FormattedValue value={value} sigFig={PRICE_SIG_FIGS} fadeTrailingZeros />,
   },
-  [ORDER_HISTORY_COLUMNS.PRICE_AVERAGE]: {
+  [KEYS.PRICE_AVERAGE]: {
     format: (value) => <FormattedValue value={value} sigFig={PRICE_SIG_FIGS} fadeTrailingZeros />,
   },
-  [ORDER_HISTORY_COLUMNS.PLACED]: {
+  [KEYS.PLACED]: {
     format: (value) => <FormattedDate ts={value} />,
   },
 }

@@ -1,13 +1,13 @@
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
-import { getValue, getVisibleColumns, getOrderedColumns } from '../../utils/data-mapping'
+import { getValue } from '../../utils/data-mapping'
 import Truncate from '../ui/Truncate'
-import { ORDER_HISTORY_COLUMNS, MAPPING } from './OrderHistory.constants'
+import { KEYS, MAPPING } from './OrderHistory.constants'
 
 const OrderHRow = (props) => {
   const {
@@ -17,20 +17,18 @@ const OrderHRow = (props) => {
   } = props
   const { t } = useTranslation('orderhistory')
 
-  const visibleColumns = useMemo(() => getVisibleColumns(columns, customMapping), [columns, customMapping])
-  const orderedColumns = useMemo(() => getOrderedColumns(visibleColumns, customMapping), [visibleColumns, customMapping])
-
   const getDisplayValue = getValue({
     mapping: MAPPING,
     customMapping,
     data,
   })
 
-  const type = getDisplayValue(ORDER_HISTORY_COLUMNS.TYPE)
-  const baseCcy = getDisplayValue(ORDER_HISTORY_COLUMNS.BASE_CCY)
-  const quoteCcy = getDisplayValue(ORDER_HISTORY_COLUMNS.QUOTE_CCY)
-  const originalAmount = getDisplayValue(ORDER_HISTORY_COLUMNS.ORIGINAL_AMOUNT)
-  const id = getDisplayValue(ORDER_HISTORY_COLUMNS.ID)
+  const type = getDisplayValue(KEYS.TYPE)
+  const baseCcy = getDisplayValue(KEYS.BASE_CCY)
+  const quoteCcy = getDisplayValue(KEYS.QUOTE_CCY)
+  const originalAmount = getDisplayValue(KEYS.ORIGINAL_AMOUNT)
+  const id = getDisplayValue(KEYS.ID)
+  const placed = getDisplayValue(KEYS.PLACED)
 
   const isSellOrder = (originalAmount < 0)
   const orderTitle = isSellOrder
@@ -41,7 +39,7 @@ const OrderHRow = (props) => {
 
   return (
     <tr className='row'>
-      {orderedColumns.map(({
+      {columns.map(({
         key,
         cellClassName,
         cellStyle,
@@ -61,6 +59,7 @@ const OrderHRow = (props) => {
           type,
           baseCcy,
           quoteCcy,
+          placed,
         }) : formattedValue
 
         return (

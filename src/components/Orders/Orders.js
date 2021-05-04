@@ -10,7 +10,7 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
-import { getMappedKey } from '../../utils/data-mapping'
+import { getMappedKey, getMappedColumns } from '../../utils/data-mapping'
 import { Table, Spinner } from '../ui'
 import getColumns from './Orders.columns'
 import { KEYS } from './Orders.constants'
@@ -31,7 +31,7 @@ export const Orders = (props) => {
   const classes = cx(Classes.ORDERS, className, {
     'mobile-table': isMobile,
   })
-  const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
+  const columns = useMemo(() => getMappedColumns(getColumns({ t, isMobile }), rowMapping), [t, isMobile, rowMapping])
 
   if (loading) {
     return <Spinner />
