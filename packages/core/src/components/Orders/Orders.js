@@ -1,4 +1,4 @@
-import { getMappedKey } from '@ufx-ui/utils'
+import { getMappedKey, getMappedColumns } from '@ufx-ui/utils'
 import cx from 'classnames'
 import compose from 'lodash/fp/compose'
 import _get from 'lodash/get'
@@ -31,7 +31,7 @@ export const Orders = (props) => {
   const classes = cx(Classes.ORDERS, className, {
     'mobile-table': isMobile,
   })
-  const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
+  const columns = useMemo(() => getMappedColumns(getColumns({ t, isMobile }), rowMapping), [t, isMobile, rowMapping])
 
   if (loading) {
     return <Spinner />

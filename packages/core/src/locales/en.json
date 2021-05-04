@@ -95,7 +95,7 @@
     "price": "Price",
     "average_price": "Avg. Price",
     "status": "Status",
-    "inactive": "Inactive",
+    "placed": "Placed",
     "no_orders": "No historic orders",
     "sell_order_title": "Sell order (id: {{id}})",
     "buy_order_title": "Buy order (id: {{id}})"

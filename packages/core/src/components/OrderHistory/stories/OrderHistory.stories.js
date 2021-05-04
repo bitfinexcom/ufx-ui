@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { OrderHistory, defaultProps } from '../OrderHistory'
-import { ORDER_HISTORY_COLUMNS } from '../OrderHistory.constants'
+import { KEYS } from '../OrderHistory.constants'
 import data from './OrderHistory.stories_data'
 
 export default getDefaultMetadata(OrderHistory, 'Components/OrderHistory')
@@ -25,7 +25,7 @@ const {
   PRICE_AVERAGE,
   PLACED,
   STATUS,
-} = ORDER_HISTORY_COLUMNS
+} = KEYS
 
 export const basic = showTemplateStory(Component, props)
 

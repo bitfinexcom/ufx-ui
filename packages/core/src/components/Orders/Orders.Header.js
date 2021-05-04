@@ -1,8 +1,11 @@
+import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
+import Truncate from '../ui/Truncate'
+
 const OrdersHeader = (props) => {
-  const { columns } = props
+  const { columns, rowMapping } = props
 
   return (
     <thead>
@@ -12,15 +15,19 @@ const OrdersHeader = (props) => {
           label,
           headerCellClassName,
           cellStyle,
-        }) => (
-          <th
-            key={key}
-            style={cellStyle}
-            className={headerCellClassName}
-          >
-            {label}
-          </th>
-        ))}
+        }) => {
+          const truncate = _get(rowMapping, [key, 'truncate'], false)
+
+          return (
+            <th
+              key={key}
+              style={cellStyle}
+              className={headerCellClassName}
+            >
+              {truncate ? <Truncate>{label}</Truncate> : label}
+            </th>
+          )
+        })}
       </tr>
     </thead>
   )

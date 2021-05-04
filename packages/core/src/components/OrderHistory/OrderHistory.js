@@ -1,4 +1,4 @@
-import { getMappedKey } from '@ufx-ui/utils'
+import { getMappedKey, getMappedColumns } from '@ufx-ui/utils'
 import cx from 'classnames'
 import compose from 'lodash/fp/compose'
 import _get from 'lodash/get'
@@ -13,7 +13,7 @@ import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { Table, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import { KEYS } from './OrderHistory.constants'
 import Header from './OrderHistory.Header'
 import Row from './OrderHistory.Row'
 
@@ -26,8 +26,8 @@ export const OrderHistory = (props) => {
     isMobileLayout: isMobile,
   } = props
   const { t } = useTranslation('orderhistory')
-  const keyForId = getMappedKey(ORDER_HISTORY_COLUMNS.ID, rowMapping)
-  const columns = useMemo(() => getColumns({ t, isMobile }), [t, isMobile])
+  const keyForId = getMappedKey(KEYS.ID, rowMapping)
+  const columns = useMemo(() => getMappedColumns(getColumns({ t, isMobile }), rowMapping), [t, isMobile, rowMapping])
 
   if (loading) {
     return <Spinner />

@@ -1,8 +1,8 @@
 import OrderHistory from './OrderHistory'
-import { ORDER_HISTORY_COLUMNS } from './OrderHistory.constants'
+import { KEYS as ORDER_HISTORY_KEYS } from './OrderHistory.constants'
 
 export {
-  ORDER_HISTORY_COLUMNS,
+  ORDER_HISTORY_KEYS,
   OrderHistory,
 }
 
