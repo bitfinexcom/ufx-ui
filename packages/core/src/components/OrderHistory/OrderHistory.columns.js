@@ -104,9 +104,21 @@ const getColumns = (args = {}) => {
       key: KEYS.STATUS,
       label: t('status'),
       cellStyle: { width: isMobile ? '20%' : '13%' },
-      headerCellClassName: Classes.CENTER,
-      cellClassName: cx('status', Classes.CENTER),
+      headerCellClassName: isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER,
+      cellClassName: cx('status', isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER),
       truncate: true,
+      renderer: ({
+        formattedValue, placed,
+      }) => (
+        <>
+          {formattedValue}
+          {isMobile && (
+            <span className='mobile-order-placed'>
+              {placed}
+            </span>
+          )}
+        </>
+      ),
     },
     ...(isMobile ? [] : [
       {

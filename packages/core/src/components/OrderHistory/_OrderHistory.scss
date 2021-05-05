@@ -29,6 +29,13 @@
       }
     }
 
+    .status {
+      .mobile-order-placed {
+        display: block;
+        color: $gray5;
+      }
+    }
+
     .buy,
     .sell {
       position: absolute;
