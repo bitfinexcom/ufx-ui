@@ -1,7 +1,5 @@
+const base = require('../../babel.config.base.js')
+
 module.exports = {
-  presets: ['@babel/preset-react', '@babel/preset-env'],
-  plugins: [
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-private-methods',
-  ],
+  ...base,
 }
