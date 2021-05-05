@@ -20,7 +20,7 @@ import { ResponsiveState } from '../components/Responsive'
 // eslint-disable-next-line prefer-arrow-callback
 const MobileLayoutWrapper = (breakpoint = BREAKPOINTS.SM) => (Component) => forwardRef(function MobileLayoutWrapperComp(props, ref) {
   const { width } = ResponsiveState()
-  const isMobileLayout = _isUndefined(props.isMobileLayout)
+  const isMobileLayout = !_isUndefined(props.isMobileLayout)
     ? !!props.isMobileLayout
     : width < breakpoint
 
