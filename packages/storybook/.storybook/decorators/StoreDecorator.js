@@ -6,7 +6,7 @@ For ufx-ui/bfx-containers stories, i18n only work with StoreProvider(@ufx-ui/cor
 */
 import { StoreProvider as StoreProviderCore } from '../../../core/src/store'
 import { StoreProvider } from '@ufx-ui/core'
-import { useInjectBfxData, ReduxStoreProvider } from '@ufx-ui/bfx-containers'
+import { useInjectBfxData, ReduxStoreProvider } from '../../../bfx-containers/src/index.js'
 
 const BfxDataWrapper = ({ content }) => {
   useInjectBfxData()

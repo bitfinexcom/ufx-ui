@@ -7,6 +7,7 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "test": "npm run cy:run",
     "lint": "eslint ."
   },
   "author": "Bitfinex",

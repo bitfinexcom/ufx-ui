@@ -1,7 +1,4 @@
 import React from 'react'
-import _last from 'lodash/last'
-import _split from 'lodash/split'
-import _get from "lodash/get";
 
 import { ContentDecorator } from './decorators'
 

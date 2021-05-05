@@ -82,11 +82,11 @@ const libConfig = baseConfig()
 // Do not include any of the dependencies
 libConfig.external = excludeAllExternals
 libConfig.output = [
-  // {
-  //   name: 'UfxCore',
-  //   file: pkg.main,
-  //   format: 'cjs',
-  // },
+  {
+    name: 'UfxCore',
+    file: pkg.main,
+    format: 'cjs',
+  },
   {
     name: 'UfxCore',
     file: pkg.module,
@@ -125,6 +125,6 @@ umdConfigMin.output = [
 
 export default [
   libConfig,
-  // umdConfig,
-  // umdConfigMin,
+  umdConfig,
+  umdConfigMin,
 ]
