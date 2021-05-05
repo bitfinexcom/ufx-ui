@@ -1,0 +1,19 @@
+{
+  "name": "@ufx-ui/eslint-config",
+  "version": "0.1.0",
+  "description": "eslint config",
+  "main": "lib/index.js",
+  "author": "Bitfinex",
+  "homepage": "https://github.com/bitfinexcom/ufx-ui/packages/eslint-config#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitfinexcom/ufx-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bitfinexcom/ufx-ui/issues"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.13.15"
+  }
+}

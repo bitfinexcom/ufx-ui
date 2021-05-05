@@ -1,0 +1,80 @@
+.#{$ns}-order-history {
+  .#{$ns}-table-wrapper {
+    max-height: none;
+  }
+
+  table {
+    table-layout: fixed;
+  }
+
+  td {
+    word-wrap: break-word;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 1em 0.5em;
+  }
+
+  .row {
+    .intent {
+      position: relative;
+      text-align: center;
+    }
+
+    .pair {
+      .mobile-order-type {
+        display: block;
+        color: $gray5;
+      }
+    }
+
+    .buy,
+    .sell {
+      position: absolute;
+      top: 2px;
+      bottom: 2px;
+      left: 0;
+      width: 3px;
+    }
+
+    .buy {
+      background: $intent-success;
+    }
+
+    .sell {
+      background: $intent-error;
+    }
+
+    .amount {
+      white-space: nowrap;
+    }
+  }
+
+  &.mobile-table {
+    table {
+      table-layout: auto;
+    }
+
+    td {
+      white-space: nowrap;
+    }
+
+    th,
+    td {
+      padding-right: $ufx-base-size * 1.4;
+      white-space: nowrap;
+    }
+  }
+}
+
+.#{$ns}-responsive--sm,
+.#{$ns}-responsive--xs {
+  .#{$ns}-order-history {
+    .row {
+      .pair {
+        text-align: left;
+      }
+    }
+  }
+}
