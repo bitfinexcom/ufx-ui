@@ -29,7 +29,7 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/runtime": "7.13.17",
     "@rollup/plugin-url": "5.0.1",
-    "@ufx-ui/eslint-config": "^0.0.1",
+    "@ufx-ui/eslint-config": "^0.1.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.1.0",

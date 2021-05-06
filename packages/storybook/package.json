@@ -37,7 +37,7 @@
     "style-loader": "^2.0.0"
   },
   "dependencies": {
-    "@ufx-ui/core": "^0.0.1"
+    "@ufx-ui/core": "^0.1.0"
   },
   "peerDependencies": {
     "react": "16.13.1",
