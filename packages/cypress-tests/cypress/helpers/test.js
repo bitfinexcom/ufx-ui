@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import _forEach from 'lodash/forEach'
 
 import { testPairs } from '../config'

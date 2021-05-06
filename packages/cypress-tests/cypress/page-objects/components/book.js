@@ -39,28 +39,36 @@ export default class Book {
     return cy.get(`${selectors.BOOK} ${selectors.SIDE}`).eq(side)
   }
 
-  static getHeaders = (bid) => this.getSide(bid).find('.header')
+  static getHeaders(bid) {
+    return this.getSide(bid).find('.header')
+  }
 
-  static getHeader = (bid) => (colNum) => this.getHeaders(bid).find(`div:nth-child(${colNum})`)
+  static getHeader(bid) {
+    return (colNum) => this.getHeaders(bid).find(`div:nth-child(${colNum})`)
+  }
 
   static getRows(bid) {
     return this.getSide(bid).find(selectors.ROW)
   }
 
-  static clickRow = (bid) => (rowNum) => this.getRows(bid).eq(rowNum).click()
+  static clickRow(bid) {
+    return (rowNum) => this.getRows(bid).eq(rowNum).click()
+  }
 
-  static getColumn = (bid) => (column) => {
-    const row = this.getRows(bid).find(`div:nth-child(${column})`)
+  static getColumn(bid) {
+    return (column) => {
+      const row = this.getRows(bid).find(`div:nth-child(${column})`)
 
-    if (column === selectors.ORDER_COUNT_COL) {
-      return row.find('div')
+      if (column === selectors.ORDER_COUNT_COL) {
+        return row.find('div')
+      }
+
+      if (column === selectors.COUNT_COL) {
+        return row
+      }
+
+      return row.find('span')
     }
-
-    if (column === selectors.COUNT_COL) {
-      return row
-    }
-
-    return row.find('span')
   }
 
   static getToolbar() {

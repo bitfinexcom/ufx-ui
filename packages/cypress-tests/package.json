@@ -8,7 +8,8 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "npm run cy:run",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "Bitfinex",
   "dependencies": {
