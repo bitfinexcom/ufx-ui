@@ -22,6 +22,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     onChange,
     small,
     placeholder,
+    closeOnMouseLeave,
     ...rest
   } = props
 
@@ -64,7 +65,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     <div
       ref={ref}
       className={classes}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseLeave={closeOnMouseLeave ? () => setIsOpen(false) : undefined}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
     >
@@ -109,6 +110,10 @@ Dropdown.propTypes = {
    * The placeholder of the Dropdown.
    */
   placeholder: PropTypes.string,
+  /**
+   * If true, closes the dropdown on mouse leave.
+   */
+  closeOnMouseLeave: PropTypes.bool,
   ...DropdownList.propTypes,
 }
 
@@ -119,6 +124,7 @@ Dropdown.defaultProps = {
   className: null,
   small: false,
   placeholder: null,
+  closeOnMouseLeave: true,
   ...DropdownList.defaultProps,
 }
 
