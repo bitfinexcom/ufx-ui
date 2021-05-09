@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-unresolved */
 import { action } from '@storybook/addon-actions'
 
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'

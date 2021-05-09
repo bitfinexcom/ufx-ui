@@ -1,4 +1,4 @@
-import { getDefaultMetadata, showTemplateStory } from '../../../../../../../../.storybook/helper'
+import { getDefaultMetadata, showTemplateStory } from '../../../../../../../storybook/.storybook/helper'
 import Component, { DepositWallets, defaultProps } from '../DepositWallets'
 
 const wallets = [

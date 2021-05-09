@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-unresolved */
 import { mount } from 'enzyme'
 import React from 'react'
 
