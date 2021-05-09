@@ -13,8 +13,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "bootstrap": "npm install && lerna bootstrap",
-    "bootstrap:dev": "npm install && lerna bootstrap --force-local"
+    "bootstrap": "npm install && lerna bootstrap --no-hoist",
+    "bootstrap:dev": "npm install && lerna bootstrap  --no-hoist --force-local"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
