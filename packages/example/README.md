@@ -13,7 +13,7 @@ REACT_APP_UFX_API_SECRET=<api-secret>
 
 ```bash
 cd [proj_dir]
-npm bootstrap
+npm run bootstrap
 cd packages/example
 <setup env variables at this path>
 npm start or npm run build

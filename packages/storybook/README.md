@@ -6,7 +6,7 @@ Stories for ufx-ui components
 
 ```
 cd [proj_dir]
-npm bootstrap
+npm run bootstrap
 cd packages/storybook
 npm run build:storybook
 ```
