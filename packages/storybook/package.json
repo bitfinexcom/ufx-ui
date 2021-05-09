@@ -36,12 +36,12 @@
     "sass-loader": "^10",
     "style-loader": "^2.0.0"
   },
-  "dependencies": {
-    "@ufx-ui/core": "^0.1.0"
-  },
   "peerDependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-redux": "^7.2.1"
+  },
+  "dependencies": {
+    "@ufx-ui/core": "^0.1.0"
   }
 }
