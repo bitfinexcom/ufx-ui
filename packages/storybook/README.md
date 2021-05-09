@@ -1,11 +1,14 @@
-# `@ufx-ui/storybook`
+## ufx-ui/storybook
 
-> TODO: description
+Stories for ufx-ui components
 
-## Usage
+### Build storybook
 
 ```
-const storybook = require('@ufx-ui/storybook');
-
-// TODO: DEMONSTRATE API
+cd [proj_dir]
+npm bootstrap
+cd packages/storybook
+npm run build:storybook
 ```
+
+It will generate bundle at 'storybook-static' path

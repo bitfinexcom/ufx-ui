@@ -1,11 +1,3 @@
-# `@ufx-ui/eslint-config`
+## @ufx-ui/eslint-config
 
-> TODO: description
-
-## Usage
-
-```
-const eslintConfig = require('@ufx-ui/eslint-config');
-
-// TODO: DEMONSTRATE API
-```
+eslint config for @ufx-ui/* packages

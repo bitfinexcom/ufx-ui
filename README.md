@@ -12,56 +12,10 @@ Please be advised that the library is under development and has yet to reach a s
 
 ## Getting started
 
-### Installation
+### Installation and Usage
+> See [@ufx-ui/core instructions](packages/core/README.md)
 
-Add `ufx-ui` to package.json#dependencies
-
-```json
-{
-  "dependencies": {
-    "ufx-ui": "git+https://github.com/bitfinexcom/ufx-ui",
-    ...
-  }
-  ...
-}
-```
-
-### Usage
-
-```jsx
-// App.js
-
-import React, { Component } from "react";
-
-import { StoreProvider } from "ufx-ui";
-import "ufx-ui/dist/css/index.css";
-
-import Example from "./Example";
-
-class App extends Component {
-  render() {
-    return (
-      <StoreProvider>
-        <Example />
-      </StoreProvider>
-    );
-  }
-}
-```
-
-```jsx
-// Example.js
-import React, { Component } from "react";
-
-import { Ticker } from "ufx-ui";
-
-class Example extends Component {
-  render() {
-    return <Ticker />;
-  }
-}
-```
-
+> See [@ufx-ui/bfx-containers instructions](packages/bfx-containers/README.md)
 ## Bug Reporting
 
 Incase of a bug or issue, feel free to create a new issue or submit a pull request.
