@@ -94,5 +94,8 @@
     "react-transition-group": "^4.4.1",
     "scss-bundle": "^3.1.2",
     "yup": "^0.29.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
