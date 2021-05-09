@@ -14,5 +14,8 @@
   },
   "scripts": {
     "test": "echo 0"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
   }
 }
