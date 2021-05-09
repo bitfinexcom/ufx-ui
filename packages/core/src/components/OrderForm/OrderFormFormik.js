@@ -185,7 +185,9 @@ const OrderFormFormik = forwardRef((props, ref) => {
           maxDays={maxDays}
         />
       </div>
+
       <OrderFormTotalValue quoteCcy={quoteCcy} marketOrder={marketOrder} />
+
       <CooldownButton
         small
         intent={Intent.PRIMARY}

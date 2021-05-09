@@ -7,7 +7,6 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test": "npm run cy:run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

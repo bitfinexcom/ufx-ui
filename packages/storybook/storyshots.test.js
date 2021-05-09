@@ -2,6 +2,10 @@ import initStoryshots, { Stories2SnapsConverter } from '@storybook/addon-storysh
 import { mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import { act } from 'react-dom/test-utils'
+import { configure } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+
+configure({ adapter: new Adapter() })
 
 const waitForNextTick = () => new Promise((resolve) => setTimeout(resolve))
 

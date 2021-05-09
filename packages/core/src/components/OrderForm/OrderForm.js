@@ -5,6 +5,7 @@ import React, { memo, useMemo, forwardRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { INITIAL_STATE } from './OrderForm.constants'
+import withI18nProvider from '../../hoc/withI18nProvider'
 import { formSchema, supportedTypes } from './OrderForm.helpers'
 import FormikForm from './OrderFormFormik'
 
@@ -107,4 +108,4 @@ OrderForm.defaultProps = defaultProps
 
 OrderForm.displayName = 'OrderForm'
 
-export default memo(OrderForm)
+export default withI18nProvider(memo(OrderForm))
