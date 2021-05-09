@@ -1,4 +1,4 @@
-# μfinex
+# μfinex [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 μfinex (Microfinex) is an open-source UI library that lets you quickly build a trading interface connected to the Bitfinex API.
 
