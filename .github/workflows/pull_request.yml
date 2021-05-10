@@ -26,15 +26,12 @@ jobs:
 
       - name: Run Build Check
         run: npm run build && npm run build:css
-        continue-on-error: true
 
       - name: Run Lint Check
         run: npm run lint
-        continue-on-error: true
         
       - name: Run Test Check
         run: npm run test
-        continue-on-error: true
         
       - name: Annotate Checks
         uses: agyemanjp/ci-checks-action@2.0.3
