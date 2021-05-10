@@ -4,9 +4,9 @@
   "version": "0.3.2",
   "private": true,
   "scripts": {
-    "clean": "npm rebuild node-sass",
-    "start": "cd ../../ && npm run remove:peer && cd packages/example && npm run clean && react-scripts start",
-    "build": "npm run clean && react-scripts build",
+    "clean:css": "npm rebuild node-sass",
+    "start": "cd ../../ && npm run remove:peer && cd packages/example && npm run clean:css && react-scripts start",
+    "build": "npm run clean:css && react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"

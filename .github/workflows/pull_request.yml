@@ -1,4 +1,4 @@
-name: Pull Request Checks
+name: Pull request verify workflow
 
 on: [pull_request]
 
@@ -13,44 +13,47 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        with: 
+        with:
           persist-credentials: false
 
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-        
+
       - name: Install
         run: npm run bootstrap:ignorescripts && npm run install:peer
 
-      - name: Run Build Check
-        run: npm run build && npm run build:css
+      - name: Run Build CSS Check
+        run: npm run build:css
+
+      - name: Run Build JS Check
+        run: npm run build
 
       - name: Run Lint Check
         run: npm run lint
-        
+
       - name: Run Test Check
         run: npm run test
-        
+
       - name: Annotate Checks
         uses: agyemanjp/ci-checks-action@2.0.3
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
           checks: '[
-              {
-                "name": "build",
-                "fileName": ".build-report.json",
-                "prChangesOnly": true
-              },
-              {
-                "name": "lint",
-                "fileName": ".lint-report.json",
-                "prChangesOnly": true
-              },
-              {
-                "name": "test",
-                "fileName": ".test-report.json",
-                "prChangesOnly": false
-              }
-            ]'
+            {
+              "name": "build",
+              "fileName": ".build-report.json",
+              "prChangesOnly": true
+            },
+            {
+              "name": "lint",
+              "fileName": ".lint-report.json",
+              "prChangesOnly": true
+            },
+            {
+              "name": "test",
+              "fileName": ".test-report.json",
+              "prChangesOnly": false
+            }
+          ]'
