@@ -1,0 +1,185 @@
+$ufx-dialog-header-height: $ufx-base-size * 3.2;
+$ufx-dialog-padding-desktop: $ufx-base-size * 2;
+$ufx-dialog-padding-mobile: $ufx-base-size * 1.6;
+$ufx-dialog-title: $ufx-base-size * 1.8;
+
+$mobile-media: "(max-width: 768px)";
+
+.#{$ns}-dialog {
+  .background {
+    position: fixed;
+    z-index: 2147482999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    transition: opacity 0.4s;
+    will-change: opacity;
+    opacity: 0;
+
+    &.entering,
+    &.entered {
+      opacity: 1;
+    }
+
+    &.is-mobile-fullscreen {
+      @media #{$mobile-media} {
+        display: none;
+      }
+    }
+  }
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 48px);
+    max-width: 460px;
+    max-height: calc(100vh - 48px);
+    overflow: auto;
+    border-radius: $ufx-border-radius;
+    background: $ufx-background-color;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 16px;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 2147483000;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale3d(0.95, 0.95, 1);
+    transform-origin: bottom center;
+    will-change: opacity, transform;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in;
+
+    @media #{$mobile-media} {
+      width: calc(100vw - 22px);
+      max-height: calc(100vh - 48px);
+    }
+
+    &.entering,
+    &.entered {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale3d(1, 1, 1);
+      transition: opacity 0.35s ease-in-out, transform 0.35s ease-out;
+      transition-delay: 0.2s;
+    }
+
+    &.is-mobile-fullscreen {
+      @media #{$mobile-media} {
+        width: 100%;
+        height: 100% !important;
+        max-width: none;
+        max-height: none;
+        transform: translate(-50%, -42.5%);
+
+        &.entering,
+        &.entered {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+          transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+        }
+      }
+    }
+
+    &__title {
+      padding: $ufx-dialog-padding-desktop;
+      padding-bottom: 0;
+      font-size: $ufx-dialog-title;
+      line-height: $ufx-dialog-title;
+      font-weight: 700;
+
+      @media #{$mobile-media} {
+        padding: $ufx-dialog-padding-mobile;
+        padding-bottom: 0;
+      }
+    }
+
+    &__icon {
+      padding: $ufx-dialog-padding-desktop;
+      padding-bottom: 0;
+      text-align: left;
+
+      @media #{$mobile-media} {
+        padding: $ufx-dialog-padding-mobile;
+        padding-bottom: 0;
+      }
+    }
+
+    &__close-button {
+      position: absolute;
+      z-index: 1;
+      top: 4px;
+      right: 4px;
+      display: block;
+      font-size: $ufx-dialog-header-height;
+      font-weight: 300;
+      width: $ufx-dialog-header-height;
+      line-height: $ufx-dialog-header-height;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      box-sizing: content-box;
+      outline: 0;
+      border-radius: 50%;
+      color: $ufx-text-color;
+      opacity: 0.6;
+      cursor: pointer;
+      transition: opacity 0.2s;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+
+    &__body {
+      flex-grow: 1;
+      padding: $ufx-dialog-padding-desktop;
+
+      @media #{$mobile-media} {
+        padding: $ufx-dialog-padding-mobile;
+
+        &.is-sticky-footer {
+          // Padding top + padding bottom + button height (38)
+          padding-bottom: (
+            $ufx-dialog-padding-mobile * 0.5 + $ufx-dialog-padding-mobile + 38
+          );
+        }
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+      margin: $ufx-dialog-padding-desktop * 0.5
+        (-($ufx-dialog-padding-desktop * 0.25)) 0;
+
+      @media #{$mobile-media} {
+        margin: $ufx-dialog-padding-mobile * 0.5
+          (-($ufx-dialog-padding-mobile * 0.25)) 0;
+      }
+    }
+
+    &__button {
+      margin: 0 ($ufx-dialog-padding-desktop * 0.25);
+
+      @media #{$mobile-media} {
+        margin: 0 ($ufx-dialog-padding-mobile * 0.25);
+      }
+    }
+  }
+
+  .is-sticky-footer .modal__footer {
+    @media #{$mobile-media} {
+      position: absolute;
+      left: $ufx-dialog-padding-mobile;
+      bottom: $ufx-dialog-padding-mobile;
+      right: $ufx-dialog-padding-mobile;
+    }
+  }
+}
+
+.#{$ns}-dialog-scroll-lock {
+  overflow: hidden;
+}
