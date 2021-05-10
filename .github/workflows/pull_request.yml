@@ -7,7 +7,7 @@ on:
     branches: [staging]
   pull_request:
     branches: [staging]
-    types: [ready_for_review]
+    types: [opened, ready_for_review]
 
 jobs:
   checks:
