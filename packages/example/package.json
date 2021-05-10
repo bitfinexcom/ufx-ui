@@ -4,10 +4,9 @@
   "version": "0.3.2",
   "private": true,
   "scripts": {
-    "build:sass": "node-sass src/index.scss src/index.css",
-    "watch:sass": "node-sass src/index.scss src/index.css --watch",
-    "start": "cd ../../ && npm run remove:peer && cd packages/example && react-scripts start",
-    "build": "react-scripts build",
+    "clean": "npm rebuild node-sass",
+    "start": "cd ../../ && npm run remove:peer && cd packages/example && npm run clean && react-scripts start",
+    "build": "npm run clean && react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
