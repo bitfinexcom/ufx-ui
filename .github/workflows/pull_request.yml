@@ -4,11 +4,10 @@ on:
   # Trigger the workflow on push or pull request,
   # but only for the default(staging) branch
   push:
-    branches:
-      - staging
+    branches: [staging]
   pull_request:
-    branches:
-      - staging
+    branches: [staging]
+    types: [ready_for_review]
 
 jobs:
   checks:
