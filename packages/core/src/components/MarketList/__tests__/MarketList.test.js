@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-extraneous-dependencies */
 import { mount } from 'enzyme'
 import _get from 'lodash/get'
 import React from 'react'
