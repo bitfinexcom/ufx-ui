@@ -35,3 +35,6 @@ stats.html
 # lernajs
 lerna-debug.log
 package.json.lerna_backup
+
+# lerna-changelog
+.changelog
