@@ -11,6 +11,7 @@
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook",
     "deploy:storybook": "storybook-to-ghpages --remote=upstream",
+    "build": "npm run build",
     "test:snapshots": "jest --testPathPattern=./storyshots.test.js",
     "test:snapshots:watch": "jest --testPathPattern=./storyshots.test.js --watch",
     "test": "npm run test:snapshots"
