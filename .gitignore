@@ -7,9 +7,6 @@ node_modules
 # builds
 dist
 build
-.rpt2_cache
-src/ufx-ui.css
-src/ufx-ui.bundle.scss
 
 # snapshot
 .size-snapshot.json
@@ -20,15 +17,13 @@ src/ufx-ui.bundle.scss
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 report.*.json
-
-example/src/index.css
-example/report.*.json
 
 # storybook temporary assets
 /.storybook/cache
@@ -37,7 +32,6 @@ example/report.*.json
 # rollup-plugin-visualizer output file
 stats.html
 
-
-# doczjs temporary build dirs
-.docz
-docz-build
+# lernajs
+lerna-debug.log
+package.json.lerna_backup

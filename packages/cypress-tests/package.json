@@ -1,0 +1,23 @@
+{
+  "name": "@ufx-ui/cypress-tests",
+  "version": "0.3.2",
+  "private": true,
+  "description": "tests for @ufx-ui/example app",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "Bitfinex",
+  "dependencies": {
+    "cypress": "^7.0.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "prettier": "^2.2.1"
+  }
+}
