@@ -38,6 +38,5 @@ N/A
   - [ ] Added PR description
   - [ ] Relevant change in example app is verified, added example app screenshot
   - [ ] Storybook: stories, docs are updated/verified
-  - [ ] Tests/snapshots are updated
-  - [ ] Lint check passed
+  - [ ] `Pull request verify workflow` passed
   - [ ] PR development is completed, the developer is satisfied with the code quality and behavior of the app
