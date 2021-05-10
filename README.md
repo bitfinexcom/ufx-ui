@@ -4,7 +4,7 @@
 
 ---
 
-## :warning: Beta Disclaimer :warning:
+## Beta Disclaimer ⚠️
 
 Please be advised that the library is under development and has yet to reach a stable state. You may freely use the library, but be aware that it’s subject to breaking changes.
 
@@ -16,6 +16,7 @@ Please be advised that the library is under development and has yet to reach a s
 > See [@ufx-ui/core instructions](packages/core/README.md)
 
 > See [@ufx-ui/bfx-containers instructions](packages/bfx-containers/README.md)
+
 ## Bug Reporting
 
 Incase of a bug or issue, feel free to create a new issue or submit a pull request.
