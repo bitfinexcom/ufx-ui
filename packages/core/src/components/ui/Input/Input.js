@@ -167,7 +167,7 @@ Input.defaultProps = {
   rightElement: '',
   error: null,
   alignText: TEXT_ALIGNMENT.LEFT,
-  small: false,
+  small: true,
 }
 
 export default Input
