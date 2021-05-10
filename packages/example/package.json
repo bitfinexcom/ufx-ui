@@ -6,7 +6,7 @@
   "scripts": {
     "build:sass": "node-sass src/index.scss src/index.css",
     "watch:sass": "node-sass src/index.scss src/index.css --watch",
-    "start": "react-scripts start",
+    "start": "cd ../../ && npm run remove:peer && cd packages/example && react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint src",
