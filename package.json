@@ -16,6 +16,7 @@
     "install:peer": "install-peers -f",
     "remove:peer": "rm -rf node_modules/react node_modules/react-dom node_modules/react-redux",
     "bootstrap": "npm install && lerna bootstrap --no-hoist",
+    "bootstrap:ignorescripts": "npm install && lerna bootstrap --no-hoist --ignore-scripts",
     "bootstrap:dev": "npm install && lerna bootstrap --no-hoist --force-local",
     "lint": "lerna run lint",
     "build": "lerna run build",
