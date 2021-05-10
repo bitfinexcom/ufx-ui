@@ -4,9 +4,11 @@
   "version": "0.3.2",
   "private": true,
   "scripts": {
+    "install:peer": "install-peers -f",
     "clean:css": "npm rebuild node-sass",
-    "start": "cd ../../ && npm run remove:peer && cd packages/example && npm run clean:css && react-scripts start",
-    "build": "npm run clean:css && react-scripts build",
+    "clean": "npm run clean:css",
+    "start": "npm run clean && react-scripts start",
+    "build": "npm run clean && react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
@@ -15,10 +17,7 @@
     "@ufx-ui/bfx-containers": "^0.3.2",
     "@ufx-ui/core": "^0.3.2",
     "@ufx-ui/eslint-config": "^0.3.2",
-    "normalize.css": "^8.0.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-redux": "^7.2.1"
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
@@ -31,8 +30,14 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "install-peers-cli": "^2.2.0",
     "node-sass": "^4.14.1",
     "react-scripts": "4.0.3"
+  },
+  "peerDependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "^7.2.1"
   },
   "browserslist": [
     ">0.2%",
