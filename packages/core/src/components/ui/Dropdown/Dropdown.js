@@ -23,10 +23,11 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     small,
     placeholder,
     closeOnMouseLeave,
+    isOpen,
     ...rest
   } = props
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(isOpen)
   const content = valueRenderer && valueRenderer(value, options[value])
   const classes = cx(Classes.DROPDOWN, className, {
     [Classes.DROPDOWN + Classes.SIZE_SMALL]: small,
@@ -57,7 +58,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
   )
 
   const handleOnChange = (e) => {
-    setIsOpen(false)
+    // setIsOpen(false)
     onChange(e)
   }
 
@@ -114,6 +115,10 @@ Dropdown.propTypes = {
    * If true, closes the dropdown on mouse leave.
    */
   closeOnMouseLeave: PropTypes.bool,
+  /**
+   * If true, renders the dropdown in an open initial state.
+   */
+  isOpen: PropTypes.bool,
   ...DropdownList.propTypes,
 }
 
@@ -125,6 +130,7 @@ Dropdown.defaultProps = {
   small: false,
   placeholder: null,
   closeOnMouseLeave: true,
+  isOpen: false,
   ...DropdownList.defaultProps,
 }
 

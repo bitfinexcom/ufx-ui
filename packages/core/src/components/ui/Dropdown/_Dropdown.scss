@@ -54,7 +54,9 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     background-color: $ufx-dropdown-list-background-color;
     border-radius: $ufx-border-radius;
     list-style-type: none;
+    height: auto;
     max-height: $ufx-dropdown-padding * 16;
+    overflow-x: hidden;
     overflow-y: auto;
     text-align: left;
   }
