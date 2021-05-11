@@ -7,7 +7,7 @@ on:
     branches: [staging]
   pull_request:
     branches: [staging]
-    types: [opened, ready_for_review]
+    types: [opened, labeled, synchronize, ready_for_review]
 
 jobs:
   checks:
@@ -31,10 +31,7 @@ jobs:
       - name: Install
         run: npm run bootstrap:ignorescripts && npm run install:peer
 
-      - name: Run Build CSS Check
-        run: npm run build:css
-
-      - name: Run Build JS Check
+      - name: Run Build Check
         run: npm run build
 
       - name: Run Lint Check
