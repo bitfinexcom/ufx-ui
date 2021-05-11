@@ -80,14 +80,7 @@ export const columns = [{
   dataKey: 'cid',
   width: 100,
   cellRenderer: () => (
-    <div className='icons-cell'>
-      <i
-        role='button'
-        aria-label='Cancel'
-        tabIndex={0}
-        className='icon-cancel'
-      />
-    </div>
+    <p>X</p>
   ),
   disableSort: true,
 }]
