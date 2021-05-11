@@ -1,7 +1,6 @@
 $ufx-dropdown-height: 36px !default;
 $ufx-dropdown-padding: $ufx-base-size !default;
 $ufx-dropdown-background-color: rgba($intent-primary, 0.3) !default;
-$ufx-dropdown-hover-background-color: rgba($intent-primary, 0.5) !default;
 $ufx-dropdown-border-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-text-color: $ufx-text-color !default;
 $ufx-dropdown-list-background-color: $ufx-dropdown-background-color !default;
@@ -14,6 +13,10 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
 .#{$ns}-dropdown {
   position: relative;
   height: $ufx-dropdown-height;
+
+  .is-open .dropdown-field {
+    border-color: lighten($ufx-dropdown-border-color, 10%);
+  }
 
   .dropdown-field {
     display: flex;
@@ -28,11 +31,15 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     border: 1px solid $ufx-dropdown-border-color;
     cursor: pointer;
     color: $ufx-dropdown-text-color;
-    background: red;
+    transition: background-color .2s;
 
     &:hover,
     &:focus {
-      background-color: $ufx-dropdown-hover-background-color;
+      background-color: lighten($ufx-dropdown-hover-background-color, 5%);
+    }
+
+    &:active {
+      background-color: darken($ufx-dropdown-hover-background-color, 5%);
     }
 
     .selected-text,
