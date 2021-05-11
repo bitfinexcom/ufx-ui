@@ -58,7 +58,7 @@ export const getSortedData = (args = {}) => {
   const sortKeys = getSortKeys(columns)
   const sortFunctions = getSortFunctions(columns)
   const transform = transformers[sortBy] || (v => v)
-  const sortedData = [...data] // note copy
+  const sortedData = [...data]
   const asc = sortDirection === 'ASC'
   const key = sortKeys[sortBy] || sortBy
 

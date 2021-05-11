@@ -50,7 +50,7 @@ export const data = [
 export const columns = [{
   label: 'Symbol',
   dataKey: 'symbol',
-  width: 120,
+  width: 150,
   cellRenderer: ({ rowData = {} }) => rowData.symbol,
 }, {
   label: 'Type',
@@ -60,7 +60,7 @@ export const columns = [{
 }, {
   label: 'Amount',
   dataKey: 'amount',
-  width: 120,
+  width: 100,
   cellRenderer: ({ rowData = {} }) => (rowData.amount < 0 // eslint-disable-line
     ? <span className='hfui-red'>{rowData.amount}</span>
     : <span className='hfui-green'>{rowData.amount}</span>
@@ -68,7 +68,7 @@ export const columns = [{
 }, {
   label: 'Price',
   dataKey: 'price',
-  width: 120,
+  width: 100,
   cellRenderer: ({ rowData = {} }) => rowData.price,
 }, {
   label: 'Status',

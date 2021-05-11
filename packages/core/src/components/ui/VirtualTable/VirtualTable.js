@@ -116,7 +116,7 @@ VirtualTable.defaultProps = {
   defaultSortDirection: 'ASC',
   onRowClick: () => { },
   sortedDataPostProcessor: () => { },
-  getSortedData: getSortedDataHelper, // NOTE: useful default
+  getSortedData: getSortedDataHelper,
 }
 
 export default React.memo(VirtualTable)
