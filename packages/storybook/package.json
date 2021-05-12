@@ -9,9 +9,9 @@
   "scripts": {
     "install:peer": "install-peers -f",
     "storybook": "start-storybook -p 6006",
-    "2build:storybook": "build-storybook",
-    "2deploy:storybook": "storybook-to-ghpages --remote=upstream",
-    "2build": "npm run build:storybook",
+    "build:storybook": "build-storybook",
+    "deploy:storybook": "storybook-to-ghpages --remote=upstream",
+    "build": "npm run build:storybook",
     "test:snapshots": "jest --testPathPattern=./storyshots.test.js",
     "test:snapshots:watch": "jest --testPathPattern=./storyshots.test.js --watch",
     "test": "npm run test:snapshots"
