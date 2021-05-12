@@ -14,10 +14,6 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
   position: relative;
   height: $ufx-dropdown-height;
 
-  .is-open .dropdown-field {
-    border-color: lighten($ufx-dropdown-border-color, 10%);
-  }
-
   .dropdown-field {
     display: flex;
     justify-content: space-between;
@@ -35,11 +31,11 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
 
     &:hover,
     &:focus {
-      background-color: lighten($ufx-dropdown-hover-background-color, 5%);
+      background-color: mix(white, lighten($ufx-dropdown-background-color, 3%), 4%);
     }
 
     &:active {
-      background-color: darken($ufx-dropdown-hover-background-color, 5%);
+      background-color: $ufx-dropdown-background-color;
     }
 
     .selected-text,
@@ -51,6 +47,11 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     svg {
       margin-left: $ufx-dropdown-padding * 0.5;
     }
+  }
+
+  &.is-open .dropdown-field {
+    border-color: mix(white, lighten($ufx-dropdown-border-color, 6%), 8%);
+    background-color: $ufx-dropdown-background-color;
   }
 
   .list {
