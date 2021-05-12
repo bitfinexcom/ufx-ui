@@ -1,42 +1,30 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable padded-blocks */
+import cx from 'classnames'
+import _get from 'lodash/get'
+import _size from 'lodash/size'
 import PropTypes from 'prop-types'
 import React, { useState, useEffect } from 'react'
 import { AutoSizer, Table, Column } from 'react-virtualized'
 
+import * as Classes from '../../../common/classes'
 import { getSortedData as getSortedDataHelper, sortData } from './VirtualTable.helpers'
 
 const VirtualTable = ({
-  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor,
+  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive,
 }) => {
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
   const [processedData, setProcessedData] = useState([])
-  const [seedData, setSeedData] = useState(null)
-  const [seedSortBy, setSeedSortBy] = useState(null)
-  const [seedSortDirection, setSeedSortDirection] = useState(defaultSortDirection)
+
+  const classes = cx(Classes.VIRTUAL_TABLE_CONTAINER, className)
 
   useEffect(() => {
-    const seedSortingChanged = (defaultSortBy !== seedSortBy) || (defaultSortDirection !== seedSortDirection)
-    if (data === seedData && !seedSortingChanged) {
-      return
-    }
-
-    if (seedSortingChanged) {
-      setSortBy(defaultSortBy)
-      setSortDirection(defaultSortDirection)
-    }
-
-    setSeedSortBy(defaultSortBy)
-    setSeedSortDirection(defaultSortDirection)
-    setSeedData(data)
     setProcessedData(sortData({
       data, sortBy, sortDirection, columns,
     }, {
       getSortedData, sortedDataPostProcessor,
     }))
-
-  }, [defaultSortBy, defaultSortDirection, data, columns, getSortedData, seedData, seedSortBy, seedSortDirection, sortBy, sortDirection, sortedDataPostProcessor])
+  }, [data, columns, getSortedData, sortBy, sortDirection, sortedDataPostProcessor])
 
   const onSort = ({
     sortDirection: postSortDirection,
@@ -62,20 +50,20 @@ const VirtualTable = ({
   }
 
   return (
-    <div className='vt-container'>
-      <div className='hfui-table'>
+    <div className={classes}>
+      <div className={Classes.VIRTUAL_TABLE}>
         <AutoSizer>
           {({ width, height }) => (
             <Table
               height={height}
               width={width}
               rowHeight={rowHeight}
-              rowGetter={({ index }) => processedData[index]}
-              rowCount={processedData.length}
+              rowGetter={({ index }) => _get(processedData, index)}
+              rowCount={_size(processedData)}
+              rowClassName={interactive ? 'hover' : undefined}
               onRowClick={onRowClick}
               headerHeight={headerHeight}
               disableHeader={false}
-              gridStyle={{ outline: 'none' }}
               sort={onSort}
               sortBy={sortBy}
               sortDirection={sortDirection}
@@ -105,6 +93,8 @@ VirtualTable.propTypes = {
   getSortedData: PropTypes.func,
   defaultSortBy: PropTypes.string,
   defaultSortDirection: PropTypes.oneOf(['ASC', 'DESC']),
+  className: PropTypes.string,
+  interactive: PropTypes.bool,
 }
 
 VirtualTable.defaultProps = {
@@ -117,6 +107,8 @@ VirtualTable.defaultProps = {
   onRowClick: () => { },
   sortedDataPostProcessor: () => { },
   getSortedData: getSortedDataHelper,
+  className: null,
+  interactive: false,
 }
 
 export default React.memo(VirtualTable)
