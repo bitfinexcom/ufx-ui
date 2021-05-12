@@ -89,6 +89,7 @@
     "react-number-format": "^4.4.1",
     "react-popper-tooltip": "^2.11.1",
     "react-transition-group": "^4.4.1",
+    "react-virtualized": "^9.22.3",
     "yup": "^0.29.1"
   },
   "publishConfig": {
