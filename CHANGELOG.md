@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.5.0 (2021-05-12)
+
+#### :rocket: Feature
+
+- `core`, `storybook`
+  - [#29](https://github.com/bitfinexcom/ufx-ui/pull/29) (feature) virtualised table ([@Blaumaus](https://github.com/Blaumaus))
+
+#### :house: Internal
+
+- `cypress-tests`
+  - [#31](https://github.com/bitfinexcom/ufx-ui/pull/31) (internal) fix cy:open script ([@bhoomij](https://github.com/bhoomij))
+- `bfx-containers`, `core`
+  - [#30](https://github.com/bitfinexcom/ufx-ui/pull/30) (internal) build css using rollup ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+
+- Andrii R. ([@Blaumaus](https://github.com/Blaumaus))
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
 ## v0.4.0 (2021-05-10)
 
 #### :art: Refactor

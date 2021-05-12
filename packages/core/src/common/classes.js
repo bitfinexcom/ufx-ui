@@ -46,6 +46,10 @@ export const TABLE_INTERACTIVE = `${NS}-table--interactive`
 export const TABLE_STRIPED = `${NS}-table--striped`
 export const TABLE_CONDENSED = `${NS}-table--condensed`
 
+// VirtualTable
+export const VIRTUAL_TABLE_CONTAINER = `${NS}-virtual-table--container`
+export const VIRTUAL_TABLE = `${NS}-virtual-table`
+
 // Truncate
 export const TRUNCATE = `${NS}-truncate`
 
