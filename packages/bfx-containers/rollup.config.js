@@ -1,13 +1,19 @@
 import url from '@rollup/plugin-url'
 import svgr from '@svgr/rollup'
+import autoprefixer from 'autoprefixer'
+import fg from 'fast-glob'
+import discardComments from 'postcss-discard-comments'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
+import del from 'rollup-plugin-delete'
 import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
+import postcss from 'rollup-plugin-postcss'
 import replace from 'rollup-plugin-replace'
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot'
 import { terser } from 'rollup-plugin-terser'
 
+import bundleScss from '../../rollup/bundle_scss.rollup'
 import pkg from './package.json'
 
 const input = pkg.source
@@ -152,7 +158,66 @@ umdConfigMin.output = [
   },
 ]
 
+const cssInputFile = 'ufx-bfx-containers'
+const cssInputFilePath = `./src/${cssInputFile}.scss`
+
+const cssOutputDir = 'dist/css'
+const cssOutputFilePath = (minimize) => `${cssOutputDir}/${cssInputFile}${minimize ? '.min' : ''}.css`
+const scssOutputFile = `${cssInputFile}.bundle.scss`
+const buildExtraFile = `${cssOutputDir}/${cssInputFile}.js`
+
+const cssConfig = (minimize) => ({
+  input: cssInputFilePath,
+  output: [{
+    file: cssOutputFilePath(minimize),
+  }],
+  plugins: [
+    postcss({
+      extract: true,
+      minimize,
+      plugins: [
+        autoprefixer(),
+        discardComments(),
+      ],
+    }),
+    // delete extra output file dist/css/ufx-core.js generated while bundleCssConfig
+    del({ targets: buildExtraFile, verbose: true }),
+  ],
+})
+
+const bundleCssConfig = {
+  input: cssInputFilePath,
+  output: [{
+    dir: cssOutputDir,
+  }],
+  plugins: [
+    {
+      name: 'watch-external',
+      async buildStart() {
+        const files = await fg(['src/**/*.{css,scss}', 'node_modules/@ufx-ui/**/*.{css,scss}'])
+        // eslint-disable-next-line no-restricted-syntax
+        for (const file of files) {
+          this.addWatchFile(file)
+        }
+      },
+    },
+    bundleScss({
+      output: scssOutputFile,
+
+      bundlerOptions: {
+        project: './',
+        includePaths: [
+          'node_modules/',
+        ],
+      },
+    }),
+  ],
+}
+
 export default [
+  bundleCssConfig,
+  cssConfig(false),
+  cssConfig(true),
   libConfig,
   umdConfig,
   umdConfigMin,
