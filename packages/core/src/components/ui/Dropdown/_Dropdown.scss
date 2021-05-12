@@ -1,10 +1,11 @@
-$ufx-dropdown-height: 36px !default;
+$ufx-dropdown-height: 40px !default;
 $ufx-dropdown-padding: $ufx-base-size !default;
 $ufx-dropdown-background-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-border-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-text-color: $ufx-text-color !default;
-$ufx-dropdown-list-background-color: $ufx-dropdown-background-color !default;
-$ufx-dropdown-list-box-shadow: 0 1px 2px 0 rgba($black, 0.05) !default;
+$ufx-dropdown-list-background-color: white !default;
+$ufx-dropdown-list-border: 1px solid darken($ufx-dropdown-list-background-color, 10%) !default;
+$ufx-dropdown-list-box-shadow: 0 1px 2px 0 rgba($black, 0.1) !default;
 
 $ufx-dropdown-active-item-background-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-input-background-color: $light-gray6 !default;
@@ -13,8 +14,7 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
 .#{$ns}-dropdown {
   position: relative;
   height: $ufx-dropdown-height;
-  min-width: 196px;
-  width: 200px;
+  min-width: 120px;
 
   .dropdown-field {
     display: flex;
@@ -22,7 +22,6 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     align-items: center;
     user-select: none;
     border-radius: $ufx-border-radius;
-    min-width: 200px;
     width: 100%;
     height: 100%;
     padding: 0 $ufx-dropdown-padding;
@@ -68,6 +67,7 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     right: 0;
     box-shadow: $ufx-dropdown-list-box-shadow;
     background-color: $ufx-dropdown-list-background-color;
+    border: $ufx-dropdown-list-border;
     border-radius: $ufx-border-radius;
     list-style-type: none;
     height: auto;
@@ -116,15 +116,10 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
   }
 
   &--small {
-    height: $ufx-base-size * 3;
+    height: $ufx-dropdown-height * 0.75;
 
     .list {
-      top: $ufx-base-size * 3.7;
-      margin-top: $ufx-base-size * -0.6;
-    }
-
-    .list-item {
-      padding: $ufx-base-size * 0.6;
+      top: $ufx-dropdown-height * 0.75;
     }
   }
 }
