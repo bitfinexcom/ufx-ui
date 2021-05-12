@@ -136,7 +136,7 @@ Dropdown.defaultProps = {
   className: null,
   small: false,
   placeholder: null,
-  closeOnMouseLeave: true,
+  closeOnMouseLeave: false,
   isOpen: false,
   ...DropdownList.defaultProps,
 }

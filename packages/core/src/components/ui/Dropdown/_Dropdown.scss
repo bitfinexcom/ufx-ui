@@ -13,6 +13,8 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
 .#{$ns}-dropdown {
   position: relative;
   height: $ufx-dropdown-height;
+  min-width: 196px;
+  width: 200px;
 
   .dropdown-field {
     display: flex;
@@ -20,6 +22,7 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     align-items: center;
     user-select: none;
     border-radius: $ufx-border-radius;
+    min-width: 200px;
     width: 100%;
     height: 100%;
     padding: 0 $ufx-dropdown-padding;
@@ -57,6 +60,8 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
   .list {
     position: absolute;
     display: block;
+    padding: 0;
+    margin: 0;
     z-index: 999;
     top: $ufx-dropdown-height;
     left: 0;
