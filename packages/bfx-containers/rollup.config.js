@@ -194,7 +194,7 @@ const bundleCssConfig = {
     {
       name: 'watch-external',
       async buildStart() {
-        const files = await fg('src/**/*.{css,scss}')
+        const files = await fg(['src/**/*.{css,scss}', 'node_modules/@ufx-ui/**/*.{css,scss}'])
         // eslint-disable-next-line no-restricted-syntax
         for (const file of files) {
           this.addWatchFile(file)
