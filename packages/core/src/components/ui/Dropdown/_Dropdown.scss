@@ -30,6 +30,7 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     cursor: pointer;
     color: $ufx-dropdown-text-color;
     transition: background-color .2s;
+    outline: 0;
 
     &:hover,
     &:focus {
