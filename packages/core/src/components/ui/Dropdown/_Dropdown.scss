@@ -9,7 +9,7 @@ $ufx-dropdown-list-box-shadow: 0 1px 2px 0 rgba($black, 0.1) !default;
 
 $ufx-dropdown-active-item-background-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-input-background-color: $light-gray6 !default;
-$ufx-dropdown-input-border-color: $light-gray1 !default;
+$ufx-dropdown-input-border: 1px solid $light-gray1 !default;
 
 .#{$ns}-dropdown {
   position: relative;
@@ -81,27 +81,33 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
   .list-item {
     display: block;
     padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
-    cursor: pointer;
+    transition: background-color .2s;
 
     &:hover,
     &--active,
     &:focus {
       background-color: $ufx-dropdown-active-item-background-color;
     }
+
+    &:active {
+      transition-duration: .05s;
+      background-color: darken($ufx-dropdown-list-background-color, 5%);
+    }
   }
 
   .list-search {
     display: flex;
+    position: relative;
     width: 100%;
-    padding: $ufx-dropdown-padding $ufx-dropdown-padding * 0.5;
+    padding: ($ufx-dropdown-padding * 0.5);
 
     input {
       background-color: $ufx-dropdown-input-background-color;
-      border: none;
-      border-bottom: 1px solid $ufx-dropdown-input-border-color;
+      border: $ufx-dropdown-input-border;
+      border-radius: $ufx-border-radius;
       width: 100%;
-      height: $ufx-dropdown-padding * 3;
-      padding-right: $ufx-dropdown-padding * 2;
+      padding: ($ufx-dropdown-padding * 0.5) ($ufx-dropdown-padding * 0.75);
+      color: $ufx-dropdown-text-color;
 
       &:focus {
         outline: none;
@@ -110,9 +116,13 @@ $ufx-dropdown-input-border-color: $light-gray1 !default;
     }
 
     .search-icon {
-      margin-left: $ufx-base-size * -1.5;
-      align-self: center;
+      position: absolute;
+      top: ($ufx-dropdown-padding * 0.5);
+      right: $ufx-dropdown-padding;
+      padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
       color: $ufx-dropdown-text-color;
+      width: 16px;
+      height: 16px;
     }
   }
 
