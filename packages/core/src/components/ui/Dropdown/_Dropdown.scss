@@ -1,86 +1,43 @@
-$dropdown-background-color: $light-gray4 !default;
-$dropdown-active-item-background-color: rgba($intent-primary, 0.3) !default;
-$dropdown-box-shadow: 0 1px 2px 0 rgba($black, 0.05) !default;
-$input-background-color: $light-gray6 !default;
-$input-border-color: $light-gray1 !default;
+$ufx-dropdown-height: 40px !default;
+$ufx-dropdown-padding: $ufx-base-size !default;
+$ufx-dropdown-background-color: rgba($intent-primary, 0.3) !default;
+$ufx-dropdown-border-color: rgba($intent-primary, 0.3) !default;
+$ufx-dropdown-text-color: $ufx-text-color !default;
+$ufx-dropdown-list-background-color: white !default;
+$ufx-dropdown-list-border: 1px solid darken($ufx-dropdown-list-background-color, 10%) !default;
+$ufx-dropdown-list-box-shadow: 0 1px 2px 0 rgba($black, 0.1) !default;
+
+$ufx-dropdown-active-item-background-color: rgba($intent-primary, 0.3) !default;
+$ufx-dropdown-input-background-color: $light-gray6 !default;
+$ufx-dropdown-input-border-color: $light-gray1 !default;
 
 .#{$ns}-dropdown {
   position: relative;
-
-  .list {
-    box-shadow: $dropdown-box-shadow;
-    background-color: $dropdown-background-color;
-    list-style-type: none;
-    padding: 0;
-    margin-top: $ufx-base-size * -0.8;
-    width: 100%;
-    min-width: $ufx-base-size * 10;
-    max-height: $ufx-base-size * 24;
-    overflow-y: auto;
-    position: absolute;
-    top: $ufx-base-size * 4.7;
-    z-index: 999;
-  }
-
-  .list-item {
-    padding: $ufx-base-size;
-    cursor: pointer;
-    border-radius: $ufx-border-radius;
-
-    &:hover,
-    &--active,
-    &:focus {
-      background-color: $dropdown-active-item-background-color;
-    }
-
-    &:focus {
-      @include focus-state;
-    }
-  }
-
-  .list-search {
-    display: flex;
-    width: 100%;
-    padding: $ufx-base-size $ufx-base-size * 0.5;
-
-    input {
-      background-color: $input-background-color;
-      border: none;
-      border-bottom: 1px solid $input-border-color;
-      width: 100%;
-      height: $ufx-base-size * 3;
-      padding-right: $ufx-base-size * 2;
-      &:focus {
-        outline: none;
-        border-bottom-color: $ufx-border-focus-color;
-      }
-    }
-
-    .search-icon {
-      margin-left: $ufx-base-size * -1.5;
-      align-self: center;
-      color: $ufx-text-color;
-    }
-  }
+  height: $ufx-dropdown-height;
+  min-width: 120px;
 
   .dropdown-field {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     user-select: none;
     border-radius: $ufx-border-radius;
     width: 100%;
     height: 100%;
-    padding: $ufx-base-size;
-    background-color: rgba($intent-primary, 0.3);
-    border: 1px solid rgba($intent-primary, 0.3);
+    padding: 0 $ufx-dropdown-padding;
+    background-color: $ufx-dropdown-background-color;
+    border: 1px solid $ufx-dropdown-border-color;
+    cursor: pointer;
+    color: $ufx-dropdown-text-color;
+    transition: background-color .2s;
 
-    &:hover {
-      cursor: pointer;
+    &:hover,
+    &:focus {
+      background-color: mix(white, lighten($ufx-dropdown-background-color, 3%), 4%);
     }
 
-    &:focus {
-      @include focus-state;
+    &:active {
+      background-color: $ufx-dropdown-background-color;
     }
 
     .selected-text,
@@ -90,20 +47,79 @@ $input-border-color: $light-gray1 !default;
     }
 
     svg {
-      margin-left: $ufx-base-size * 0.5;
+      margin-left: $ufx-dropdown-padding * 0.5;
+    }
+  }
+
+  &.is-open .dropdown-field {
+    border-color: mix(white, lighten($ufx-dropdown-border-color, 6%), 8%);
+    background-color: $ufx-dropdown-background-color;
+  }
+
+  .list {
+    position: absolute;
+    display: block;
+    padding: 0;
+    margin: 0;
+    z-index: 999;
+    top: $ufx-dropdown-height;
+    left: 0;
+    right: 0;
+    box-shadow: $ufx-dropdown-list-box-shadow;
+    background-color: $ufx-dropdown-list-background-color;
+    border: $ufx-dropdown-list-border;
+    border-radius: $ufx-border-radius;
+    list-style-type: none;
+    height: auto;
+    max-height: $ufx-dropdown-padding * 16;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left;
+  }
+
+  .list-item {
+    display: block;
+    padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
+    cursor: pointer;
+
+    &:hover,
+    &--active,
+    &:focus {
+      background-color: $ufx-dropdown-active-item-background-color;
+    }
+  }
+
+  .list-search {
+    display: flex;
+    width: 100%;
+    padding: $ufx-dropdown-padding $ufx-dropdown-padding * 0.5;
+
+    input {
+      background-color: $ufx-dropdown-input-background-color;
+      border: none;
+      border-bottom: 1px solid $ufx-dropdown-input-border-color;
+      width: 100%;
+      height: $ufx-dropdown-padding * 3;
+      padding-right: $ufx-dropdown-padding * 2;
+
+      &:focus {
+        outline: none;
+        border-bottom-color: $ufx-border-focus-color;
+      }
+    }
+
+    .search-icon {
+      margin-left: $ufx-base-size * -1.5;
+      align-self: center;
+      color: $ufx-dropdown-text-color;
     }
   }
 
   &--small {
-    height: $ufx-base-size * 3;
+    height: $ufx-dropdown-height * 0.75;
 
     .list {
-      top: $ufx-base-size * 3.7;
-      margin-top: $ufx-base-size * -0.6;
-    }
-
-    .list-item {
-      padding: $ufx-base-size * 0.6;
+      top: $ufx-dropdown-height * 0.75;
     }
   }
 }

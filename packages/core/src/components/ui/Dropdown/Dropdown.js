@@ -2,7 +2,8 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
-import React, { useState, forwardRef } from 'react'
+import React, { useState, forwardRef, useEffect } from 'react'
+import OutsideClickHandler from 'react-outside-click-handler'
 
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
@@ -22,14 +23,21 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     onChange,
     small,
     placeholder,
+    closeOnMouseLeave,
+    isOpen: isOpenProp,
     ...rest
   } = props
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(isOpenProp)
   const content = valueRenderer && valueRenderer(value, options[value])
   const classes = cx(Classes.DROPDOWN, className, {
     [Classes.DROPDOWN + Classes.SIZE_SMALL]: small,
+    'is-open': isOpen,
   })
+
+  useEffect(() => {
+    setIsOpen(isOpenProp)
+  }, [isOpenProp])
 
   const toggle = () => {
     setIsOpen(!isOpen)
@@ -61,26 +69,27 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
   }
 
   return (
-    <div
-      ref={ref}
-      className={classes}
-      onMouseLeave={() => setIsOpen(false)}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...rest}
-    >
+    <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
+      <div
+        ref={ref}
+        className={classes}
+        onMouseLeave={closeOnMouseLeave ? () => setIsOpen(false) : undefined}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...rest}
+      >
+        {buttonElement}
 
-      {buttonElement}
-
-      {isOpen && (
-        <DropdownList
-          options={options}
-          value={value}
-          searchable={searchable}
-          optionRenderer={optionRenderer}
-          onChange={handleOnChange}
-        />
-      )}
-    </div>
+        {isOpen && (
+          <DropdownList
+            options={options}
+            value={value}
+            searchable={searchable}
+            optionRenderer={optionRenderer}
+            onChange={handleOnChange}
+          />
+        )}
+      </div>
+    </OutsideClickHandler>
   )
 })
 
@@ -109,6 +118,14 @@ Dropdown.propTypes = {
    * The placeholder of the Dropdown.
    */
   placeholder: PropTypes.string,
+  /**
+   * If true, closes the dropdown on mouse leave.
+   */
+  closeOnMouseLeave: PropTypes.bool,
+  /**
+   * If true, renders the dropdown in an open initial state.
+   */
+  isOpen: PropTypes.bool,
   ...DropdownList.propTypes,
 }
 
@@ -119,6 +136,8 @@ Dropdown.defaultProps = {
   className: null,
   small: false,
   placeholder: null,
+  closeOnMouseLeave: false,
+  isOpen: false,
   ...DropdownList.defaultProps,
 }
 
