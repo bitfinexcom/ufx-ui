@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.5.1 (2021-05-13)
+
+#### :dizzy: Improvement
+* `bfx-containers`, `core`, `cypress-tests`, `storybook`, `utils`
+  * [#32](https://github.com/bitfinexcom/ufx-ui/pull/32) (improvement) Dropdown ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### :memo: Documentation
+* [#33](https://github.com/bitfinexcom/ufx-ui/pull/33) (doc) add changelog for v0.5.0 ([@bhoomij](https://github.com/bhoomij))
+
+#### :house: Internal
+* [#34](https://github.com/bitfinexcom/ufx-ui/pull/34) (internal) add new PR label ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+
 ## v0.5.0 (2021-05-12)
 
 #### :rocket: Feature
