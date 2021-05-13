@@ -20,11 +20,13 @@ const input = pkg.source
 const { peerDependencies } = pkg
 const external = Object.keys(peerDependencies)
 external.push('@ufx-ui/utils')
+external.push('react-virtualized')
 
 const globals = {
   react: 'React',
   'react-dom': 'ReactDOM',
   '@ufx-ui/utils': 'UfxUIUtils',
+  'react-virtualized': 'ReactVirtualized',
 }
 
 const commonjsArgs = {
