@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/cypress-tests",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "description": "tests for @ufx-ui/example app",
   "main": "index.js",
