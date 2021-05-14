@@ -82,6 +82,7 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
     display: block;
     padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
     transition: background-color .2s;
+    cursor: pointer;
 
     &:hover,
     &--active,
@@ -106,7 +107,7 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
       border: $ufx-dropdown-input-border;
       border-radius: $ufx-border-radius;
       width: 100%;
-      padding: ($ufx-dropdown-padding * 0.5) ($ufx-dropdown-padding * 0.75);
+      padding: ($ufx-dropdown-padding * 0.5) ($ufx-dropdown-padding * 1.5) ($ufx-dropdown-padding * 0.5) ($ufx-dropdown-padding * 0.75);
       color: $ufx-dropdown-text-color;
 
       &:focus {
@@ -117,12 +118,10 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
 
     .search-icon {
       position: absolute;
-      top: ($ufx-dropdown-padding * 0.5);
+      top: 0;
       right: $ufx-dropdown-padding;
-      padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
+      height: 100%;
       color: $ufx-dropdown-text-color;
-      width: 16px;
-      height: 16px;
     }
   }
 
