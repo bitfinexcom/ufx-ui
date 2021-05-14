@@ -2,6 +2,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import _includes from 'lodash/includes'
+import _isFunction from 'lodash/isFunction'
 import _keys from 'lodash/keys'
 import _pickBy from 'lodash/pickBy'
 import _toLower from 'lodash/toLower'
@@ -16,12 +17,21 @@ const DropdownList = (props) => {
     options,
     optionRenderer,
     searchable,
+    searchModifier,
     onChange,
   } = props
   const [searchTerm, setSearchTerm] = useState('')
-  const filtered = _pickBy(options, (val, key) => !searchTerm
-    || _includes(_toLower(key), _toLower(searchTerm))
-    || _includes(_toLower(val), _toLower(searchTerm)))
+  const filtered = _pickBy(options, (optionValue, optionKey) => {
+    const val = _isFunction(searchModifier) ? searchModifier(optionValue) : optionValue
+    const key = _isFunction(searchModifier) ? searchModifier(optionKey) : optionKey
+    const search = _isFunction(searchModifier) ? searchModifier(searchTerm) : searchTerm
+
+    return (
+      !searchTerm
+        || _includes(_toLower(key), _toLower(search))
+        || _includes(_toLower(val), _toLower(search))
+    )
+  })
   const keys = _keys(filtered)
 
   const handleSearchTermClick = (e) => {
@@ -40,7 +50,7 @@ const DropdownList = (props) => {
               value={searchTerm}
               onChange={handleSearchTermClick}
             />
-            <FontAwesomeIcon className='search-icon' icon={faSearch} size='xs' />
+            <FontAwesomeIcon className='search-icon' icon={faSearch} />
           </div>
         </li>
       )}
