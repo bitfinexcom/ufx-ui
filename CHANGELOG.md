@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.5.2 (2021-05-14)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#38](https://github.com/bitfinexcom/ufx-ui/pull/38) (improvement) Dropdown search input ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### :bug: Bug Fix
+* `core`
+  * [#36](https://github.com/bitfinexcom/ufx-ui/pull/36) (fix) rollup config ([@Blaumaus](https://github.com/Blaumaus))
+
+#### Committers: 2
+- Andrii R. ([@Blaumaus](https://github.com/Blaumaus))
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+
 ## v0.5.1 (2021-05-13)
 
 #### :dizzy: Improvement
