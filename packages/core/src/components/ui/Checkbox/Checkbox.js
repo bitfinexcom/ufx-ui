@@ -5,6 +5,7 @@ import React, { useRef, forwardRef } from 'react'
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
 import Label from '../Label'
+import Tooltip from '../Tooltip'
 
 const stopPropagationOnClick = (e) => e.stopPropagation()
 
@@ -20,6 +21,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     onChange,
     error,
     small,
+    customhelp,
     ...rest
   } = props
   const checkboxRef = useRef(null)
@@ -55,34 +57,36 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
   }
 
   return (
-    <div
-      ref={ref}
-      className={classes}
-      htmlFor={id}
-      tabIndex={disabled ? -1 : 0}
-      role='checkbox'
-      aria-checked={checked}
-      onClick={handleLabelClick}
-      onKeyPress={utils.handleKeyboardEvent(' ', handleLabelClick)}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...rest}
-    >
-      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <input {...inputProps} />
+    <Tooltip content={customhelp}>
+      <div
+        ref={ref}
+        className={classes}
+        htmlFor={id}
+        tabIndex={disabled ? -1 : 0}
+        role='checkbox'
+        aria-checked={checked}
+        onClick={handleLabelClick}
+        onKeyPress={utils.handleKeyboardEvent(' ', handleLabelClick)}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...rest}
+      >
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <input {...inputProps} />
 
-      <Label
-        label={label || ''}
-        className={cx({ disabled })}
-        tag='div'
-        small={small}
-      />
+        <Label
+          label={label || ''}
+          className={cx({ disabled })}
+          tag='div'
+          small={small}
+        />
 
-      {error && (
-        <div className='error'>
-          {error}
-        </div>
-      )}
-    </div>
+        {error && (
+          <div className='error'>
+            {error}
+          </div>
+        )}
+      </div>
+    </Tooltip>
   )
 })
 
@@ -123,6 +127,10 @@ Checkbox.propTypes = {
    * If true, shows the Button in a small style.
    */
   small: PropTypes.bool,
+  /**
+   * A help message to be shown in the tooltip.
+   */
+  customhelp: PropTypes.string,
 }
 
 Checkbox.defaultProps = {
@@ -134,6 +142,7 @@ Checkbox.defaultProps = {
   onChange: () => { },
   error: '',
   small: false,
+  customhelp: '',
 }
 
 export default Checkbox
