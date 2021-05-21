@@ -9,6 +9,7 @@ export default getDefaultMetadata(Checkbox, 'Components/ui/Checkbox', {}, true)
 const props = {
   label: 'Auto Save',
   checked: false,
+  helpMessage: 'This is a custom help message!',
 }
 
 export const basic = showTemplateStory(Checkbox, props)

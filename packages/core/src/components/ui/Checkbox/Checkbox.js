@@ -1,10 +1,12 @@
 import cx from 'classnames'
+import _isEmpty from 'lodash/isEmpty'
 import PropTypes from 'prop-types'
 import React, { useRef, forwardRef } from 'react'
 
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
 import Label from '../Label'
+import Tooltip from '../Tooltip'
 
 const stopPropagationOnClick = (e) => e.stopPropagation()
 
@@ -20,6 +22,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     onChange,
     error,
     small,
+    helpMessage,
     ...rest
   } = props
   const checkboxRef = useRef(null)
@@ -54,7 +57,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     ref: checkboxRef,
   }
 
-  return (
+  const component = (
     <div
       ref={ref}
       className={classes}
@@ -84,6 +87,16 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
       )}
     </div>
   )
+
+  if (!_isEmpty(helpMessage)) {
+    return (
+      <Tooltip content={helpMessage}>
+        {component}
+      </Tooltip>
+    )
+  }
+
+  return component
 })
 
 Checkbox.propTypes = {
@@ -123,6 +136,10 @@ Checkbox.propTypes = {
    * If true, shows the Button in a small style.
    */
   small: PropTypes.bool,
+  /**
+   * A help message to be shown in the tooltip.
+   */
+  helpMessage: PropTypes.string,
 }
 
 Checkbox.defaultProps = {
@@ -134,6 +151,7 @@ Checkbox.defaultProps = {
   onChange: () => { },
   error: '',
   small: false,
+  helpMessage: '',
 }
 
 export default Checkbox
