@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import _isEmpty from 'lodash/isEmpty'
 import PropTypes from 'prop-types'
 import React, { useRef, forwardRef } from 'react'
 
@@ -21,7 +22,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     onChange,
     error,
     small,
-    customhelp,
+    helpMessage,
     ...rest
   } = props
   const checkboxRef = useRef(null)
@@ -56,36 +57,46 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     ref: checkboxRef,
   }
 
+  const Component = () => (
+    <div
+      ref={ref}
+      className={classes}
+      htmlFor={id}
+      tabIndex={disabled ? -1 : 0}
+      role='checkbox'
+      aria-checked={checked}
+      onClick={handleLabelClick}
+      onKeyPress={utils.handleKeyboardEvent(' ', handleLabelClick)}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...rest}
+    >
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <input {...inputProps} />
+
+      <Label
+        label={label || ''}
+        className={cx({ disabled })}
+        tag='div'
+        small={small}
+      />
+
+      {error && (
+        <div className='error'>
+          {error}
+        </div>
+      )}
+    </div>
+  )
+
+  if (_isEmpty(helpMessage)) {
+    return (
+      <Component />
+    )
+  }
+
   return (
-    <Tooltip content={customhelp}>
-      <div
-        ref={ref}
-        className={classes}
-        htmlFor={id}
-        tabIndex={disabled ? -1 : 0}
-        role='checkbox'
-        aria-checked={checked}
-        onClick={handleLabelClick}
-        onKeyPress={utils.handleKeyboardEvent(' ', handleLabelClick)}
-        // eslint-disable-next-line react/jsx-props-no-spreading
-        {...rest}
-      >
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <input {...inputProps} />
-
-        <Label
-          label={label || ''}
-          className={cx({ disabled })}
-          tag='div'
-          small={small}
-        />
-
-        {error && (
-          <div className='error'>
-            {error}
-          </div>
-        )}
-      </div>
+    <Tooltip content={helpMessage}>
+      <Component />
     </Tooltip>
   )
 })
@@ -130,7 +141,7 @@ Checkbox.propTypes = {
   /**
    * A help message to be shown in the tooltip.
    */
-  customhelp: PropTypes.string,
+  helpMessage: PropTypes.string,
 }
 
 Checkbox.defaultProps = {
@@ -142,7 +153,7 @@ Checkbox.defaultProps = {
   onChange: () => { },
   error: '',
   small: false,
-  customhelp: '',
+  helpMessage: '',
 }
 
 export default Checkbox

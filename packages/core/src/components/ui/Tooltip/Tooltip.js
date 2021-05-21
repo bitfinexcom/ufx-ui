@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-indent */
 import cx from 'classnames'
-import _isEmpty from 'lodash/isEmpty'
 import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
 import TooltipTrigger from 'react-popper-tooltip'
@@ -62,12 +61,6 @@ const Tooltip = forwardRef(function Tooltip(props, ref) {
   const tooltipClasses = cx(className, {
     [`${Classes.TOOLTIP}--persistent`]: persistent,
   })
-
-  if (_isEmpty(content)) {
-    return (
-      <>{children}</>
-    )
-  }
 
   return (
     <TooltipTrigger
