@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-indent */
 import cx from 'classnames'
+import _isEmpty from 'lodash/isEmpty'
 import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
 import TooltipTrigger from 'react-popper-tooltip'
-import _isEmpty from 'lodash/isEmpty'
 
 import * as Classes from '../../../common/classes'
 
