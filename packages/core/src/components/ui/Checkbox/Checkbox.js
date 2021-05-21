@@ -57,7 +57,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     ref: checkboxRef,
   }
 
-  const Component = () => (
+  const component = (
     <div
       ref={ref}
       className={classes}
@@ -88,17 +88,15 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     </div>
   )
 
-  if (_isEmpty(helpMessage)) {
+  if (!_isEmpty(helpMessage)) {
     return (
-      <Component />
+      <Tooltip content={helpMessage}>
+        {component}
+      </Tooltip>
     )
   }
 
-  return (
-    <Tooltip content={helpMessage}>
-      <Component />
-    </Tooltip>
-  )
+  return component
 })
 
 Checkbox.propTypes = {
