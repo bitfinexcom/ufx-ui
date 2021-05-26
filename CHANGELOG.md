@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.5.3 (2021-05-26)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#41](https://github.com/bitfinexcom/ufx-ui/pull/41) (improvement) Tooltip integration into Checkbox ([@Blaumaus](https://github.com/Blaumaus))
+
+#### :bug: Bug Fix
+* `core`
+  * [#42](https://github.com/bitfinexcom/ufx-ui/pull/42) (fix) Add !default flag to Dialog scss vars ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### Committers: 2
+- Andrii R. ([@Blaumaus](https://github.com/Blaumaus))
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
 
 ## v0.5.2 (2021-05-14)
 
