@@ -1,7 +1,7 @@
-$ufx-dialog-header-height: $ufx-base-size * 3.2;
-$ufx-dialog-padding-desktop: $ufx-base-size * 2;
-$ufx-dialog-padding-mobile: $ufx-base-size * 1.6;
-$ufx-dialog-title: $ufx-base-size * 1.8;
+$ufx-dialog-header-height: $ufx-base-size * 3.2 !default;
+$ufx-dialog-padding-desktop: $ufx-base-size * 2 !default;
+$ufx-dialog-padding-mobile: $ufx-base-size * 1.6 !default;
+$ufx-dialog-title: $ufx-base-size * 1.8 !default;
 
 $mobile-media: "(max-width: 768px)";
 
@@ -112,7 +112,7 @@ $mobile-media: "(max-width: 768px)";
       top: 4px;
       right: 4px;
       display: block;
-      font-size: $ufx-dialog-header-height;
+      font-size: 18px;
       font-weight: 300;
       width: $ufx-dialog-header-height;
       line-height: $ufx-dialog-header-height;

@@ -40,7 +40,7 @@ const Modal = forwardRef(({
       >
         {isCloseButtonShown && (
           <button type='button' className='modal__close-button' onClick={onClose}>
-            &times;
+            &#10005;
           </button>
         )}
         {Icon && (
