@@ -56,7 +56,8 @@ export const TickerList = (props) => {
     (row) => {
       const baseCcy = _get(row, keyForBaseCcy)
       const quoteCcy = _get(row, keyForQuoteCcy)
-      const labels = _get(row, keyForLabels)
+      // added backward compatibility
+      const labels = _get(row, keyForLabels, [baseCcy, quoteCcy])
 
       const matches = _toLower(_join([
         ...labels,
