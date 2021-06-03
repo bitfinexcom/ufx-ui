@@ -44,6 +44,19 @@ export const TickerList = (props) => {
   const [searchTerm, setSearchTerm] = useState('')
   const { t } = useTranslation()
 
+  const showOnlyFavsMemo = useMemo(() => {
+    if (!showOnlyFavs) {
+      // avoid to create an array L52
+      return false
+    }
+    const favValuesArray = Object.values(favs)
+    if (favValuesArray.length === 0 || !favValuesArray.includes(true)) {
+      // if fav object is empty or there are only false values
+      return false
+    }
+    return true
+  }, [showOnlyFavs, favs])
+
   const ordered = _orderBy(
     data,
     [sortBy],
@@ -63,7 +76,7 @@ export const TickerList = (props) => {
 
       return (
         _includes(matches, _toLower(searchTerm))
-        && (!showOnlyFavs || favs[row[keyForId]])
+        && (!showOnlyFavsMemo || favs[row[keyForId]])
       )
     },
   )
@@ -98,7 +111,7 @@ export const TickerList = (props) => {
                 setSortBy={setSortBy}
                 sortAsc={sortAsc}
                 setSortAsc={setSortAsc}
-                showOnlyFavs={showOnlyFavs}
+                showOnlyFavs={showOnlyFavsMemo}
                 setShowOnlyFavs={setShowOnlyFavs}
                 showVolumeUnit={showVolumeUnit}
                 volumeUnitList={volumeUnitList}
