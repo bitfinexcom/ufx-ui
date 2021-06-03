@@ -7,6 +7,7 @@ export const KEYS = {
   QUOTE_CCY: 'quoteCcy',
   LAST_PRICE: 'lastPrice',
   CHANGE_PERC: 'changePerc',
+  LABELS: 'labels',
   VOLUME: 'volume',
 }
 
