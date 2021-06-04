@@ -38,6 +38,7 @@ export const TickerList = (props) => {
   const keyForId = getMappedKey(KEYS.ID, rowMapping)
   const keyForBaseCcy = getMappedKey(KEYS.BASE_CCY, rowMapping)
   const keyForQuoteCcy = getMappedKey(KEYS.QUOTE_CCY, rowMapping)
+  const keyForCcyLabels = getMappedKey(KEYS.CCY_LABELS, rowMapping)
   const keyForVolume = getMappedKey(KEYS.VOLUME, rowMapping)
   const [sortBy, setSortBy] = useState(keyForVolume)
   const [sortAsc, setSortAsc] = useState(false)
@@ -55,9 +56,11 @@ export const TickerList = (props) => {
     (row) => {
       const baseCcy = _get(row, keyForBaseCcy)
       const quoteCcy = _get(row, keyForQuoteCcy)
+      // added backward compatibility
+      const ccyLabels = _get(row, keyForCcyLabels, [baseCcy, quoteCcy])
+
       const matches = _toLower(_join([
-        baseCcy,
-        quoteCcy,
+        ...ccyLabels,
         baseCcy + quoteCcy,
       ]))
 
