@@ -12,14 +12,14 @@ const TickerListToolbar = (props) => {
     setSearchTerm,
   } = props
   const { t } = useTranslation()
-  const onCancellClickHandler = useCallback(() => setSearchTerm(''), [setSearchTerm])
+  const onCancelClick = useCallback(() => setSearchTerm(''), [setSearchTerm])
 
   return (
     <Input
       placeholder={`${t('common:search')}..`}
       small
       rightElement={searchTerm
-        ? <FontAwesomeIcon icon={faTimes} className='search-icon' onClick={onCancellClickHandler} />
+        ? <FontAwesomeIcon icon={faTimes} className='search-icon' onClick={onCancelClick} />
         : <FontAwesomeIcon icon={faSearch} className='search-icon' />}
       value={searchTerm}
       className='search-ccy'
