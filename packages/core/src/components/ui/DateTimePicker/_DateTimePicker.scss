@@ -1,0 +1,17 @@
+// Need to style "react-datepicker" lib to match theme
+.react-datepicker-wrapper {
+  width: 100%;
+}
+div.#{$ns}-react-datepicker-popper {
+  z-index: 2;
+  .react-datepicker {
+    width: $ufx-base-size * 32.8;
+  }
+
+  .react-datepicker__day {
+    &.react-datepicker__day--disabled {
+      text-decoration: line-through;
+      background-color: transparent;
+    }
+  }
+}

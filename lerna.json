@@ -1,0 +1,30 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "hoist": true,
+  "version": "0.5.3",
+  "changelog": {
+    "repo": "bitfinexcom/ufx-ui",
+    "cacheDir": ".changelog",
+    "labels": {
+      "PR: Spec Compliance :eyeglasses:": ":eyeglasses: Spec Compliance",
+      "PR: Breaking Change :boom:": ":boom: Breaking Change",
+      "PR: Feature :rocket:": ":rocket: Feature",
+      "PR: Improvement :dizzy:": ":dizzy: Improvement",
+      "PR: Bug Fix :bug:": ":bug: Bug Fix",
+      "PR: Refactor :art:": ":art: Refactor",
+      "PR: Docs :memo:": ":memo: Documentation",
+      "PR: Internal :house:": ":house: Internal",
+      "PR: Performance :zap:": ":zap: Performance",
+      "PR: Revert :leftwards_arrow_with_hook:": ":leftwards_arrow_with_hook: Revert"
+    }
+  },
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "*.md"
+      ]
+    }
+  }
+}
