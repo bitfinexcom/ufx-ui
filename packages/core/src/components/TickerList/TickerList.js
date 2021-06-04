@@ -44,19 +44,6 @@ export const TickerList = (props) => {
   const [searchTerm, setSearchTerm] = useState('')
   const { t } = useTranslation()
 
-  const showOnlyFavsMemo = useMemo(() => {
-    if (!showOnlyFavs) {
-      // avoid to create an array L52
-      return false
-    }
-    const favValuesArray = Object.values(favs)
-    if (favValuesArray.length === 0 || !favValuesArray.includes(true)) {
-      // if fav object is empty or there are only false values
-      return false
-    }
-    return true
-  }, [showOnlyFavs, favs])
-
   const ordered = _orderBy(
     data,
     [sortBy],
@@ -76,7 +63,7 @@ export const TickerList = (props) => {
 
       return (
         _includes(matches, _toLower(searchTerm))
-        && (!showOnlyFavsMemo || favs[row[keyForId]])
+        && (!showOnlyFavs || favs[row[keyForId]])
       )
     },
   )
@@ -97,6 +84,22 @@ export const TickerList = (props) => {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
+      <Table condensed>
+        <TickerListHeader
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          sortAsc={sortAsc}
+          setSortAsc={setSortAsc}
+          showOnlyFavs={showOnlyFavs}
+          setShowOnlyFavs={setShowOnlyFavs}
+          showVolumeUnit={showVolumeUnit}
+          volumeUnitList={volumeUnitList}
+          volumeUnit={volumeUnit}
+          setVolumeUnit={setVolumeUnit}
+          dataMapping={rowMapping}
+          columns={columns}
+        />
+      </Table>
       {_isEmpty(filtered)
         ? (
           <div className='empty-tickerlist'>
@@ -104,44 +107,26 @@ export const TickerList = (props) => {
           </div>
         )
         : (
-          <>
-            <Table condensed>
-              <TickerListHeader
-                sortBy={sortBy}
-                setSortBy={setSortBy}
-                sortAsc={sortAsc}
-                setSortAsc={setSortAsc}
-                showOnlyFavs={showOnlyFavsMemo}
-                setShowOnlyFavs={setShowOnlyFavs}
-                showVolumeUnit={showVolumeUnit}
-                volumeUnitList={volumeUnitList}
-                volumeUnit={volumeUnit}
-                setVolumeUnit={setVolumeUnit}
-                dataMapping={rowMapping}
-                columns={columns}
-              />
+          <div className={Classes.TABLE_WRAPPER}>
+            <Table condensed interactive striped>
+              <tbody>
+                {filtered.map((row) => {
+                  const id = _get(row, keyForId)
+                  return (
+                    <Row
+                      key={id}
+                      data={row}
+                      dataMapping={rowMapping}
+                      isFav={!!favs[id]}
+                      toggleFav={toggleFav}
+                      onRowClick={onRowClick}
+                      columns={columns}
+                    />
+                  )
+                })}
+              </tbody>
             </Table>
-            <div className={Classes.TABLE_WRAPPER}>
-              <Table condensed interactive striped>
-                <tbody>
-                  {filtered.map((row) => {
-                    const id = _get(row, keyForId)
-                    return (
-                      <Row
-                        key={id}
-                        data={row}
-                        dataMapping={rowMapping}
-                        isFav={!!favs[id]}
-                        toggleFav={toggleFav}
-                        onRowClick={onRowClick}
-                        columns={columns}
-                      />
-                    )
-                  })}
-                </tbody>
-              </Table>
-            </div>
-          </>
+          </div>
         )}
     </div>
   )
