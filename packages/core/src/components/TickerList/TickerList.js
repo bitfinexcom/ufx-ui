@@ -84,6 +84,22 @@ export const TickerList = (props) => {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
+      <Table condensed>
+        <TickerListHeader
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          sortAsc={sortAsc}
+          setSortAsc={setSortAsc}
+          showOnlyFavs={showOnlyFavs}
+          setShowOnlyFavs={setShowOnlyFavs}
+          showVolumeUnit={showVolumeUnit}
+          volumeUnitList={volumeUnitList}
+          volumeUnit={volumeUnit}
+          setVolumeUnit={setVolumeUnit}
+          dataMapping={rowMapping}
+          columns={columns}
+        />
+      </Table>
       {_isEmpty(filtered)
         ? (
           <div className='empty-tickerlist'>
@@ -91,44 +107,26 @@ export const TickerList = (props) => {
           </div>
         )
         : (
-          <>
-            <Table condensed>
-              <TickerListHeader
-                sortBy={sortBy}
-                setSortBy={setSortBy}
-                sortAsc={sortAsc}
-                setSortAsc={setSortAsc}
-                showOnlyFavs={showOnlyFavs}
-                setShowOnlyFavs={setShowOnlyFavs}
-                showVolumeUnit={showVolumeUnit}
-                volumeUnitList={volumeUnitList}
-                volumeUnit={volumeUnit}
-                setVolumeUnit={setVolumeUnit}
-                dataMapping={rowMapping}
-                columns={columns}
-              />
+          <div className={Classes.TABLE_WRAPPER}>
+            <Table condensed interactive striped>
+              <tbody>
+                {filtered.map((row) => {
+                  const id = _get(row, keyForId)
+                  return (
+                    <Row
+                      key={id}
+                      data={row}
+                      dataMapping={rowMapping}
+                      isFav={!!favs[id]}
+                      toggleFav={toggleFav}
+                      onRowClick={onRowClick}
+                      columns={columns}
+                    />
+                  )
+                })}
+              </tbody>
             </Table>
-            <div className={Classes.TABLE_WRAPPER}>
-              <Table condensed interactive striped>
-                <tbody>
-                  {filtered.map((row) => {
-                    const id = _get(row, keyForId)
-                    return (
-                      <Row
-                        key={id}
-                        data={row}
-                        dataMapping={rowMapping}
-                        isFav={!!favs[id]}
-                        toggleFav={toggleFav}
-                        onRowClick={onRowClick}
-                        columns={columns}
-                      />
-                    )
-                  })}
-                </tbody>
-              </Table>
-            </div>
-          </>
+          </div>
         )}
     </div>
   )
