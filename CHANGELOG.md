@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.5.4 (2021-06-06)
+
+#### :dizzy: Improvement
+* `core`
+  * [#43](https://github.com/bitfinexcom/ufx-ui/pull/43) (improvement) TickerList: added filtering by fullnames of ccy ([@dmytroshch](https://github.com/dmytroshch))
+  * [#45](https://github.com/bitfinexcom/ufx-ui/pull/45) (improvement) TickerList: showing X button if input is filled && clear input on click ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :bug: Bug Fix
+* `core`
+  * [#46](https://github.com/bitfinexcom/ufx-ui/pull/46) (fix) document is undefined error for ssr build in gatsby app ([@bhoomij](https://github.com/bhoomij))
+  * [#44](https://github.com/bitfinexcom/ufx-ui/pull/44) (fix) TickerList: prevent showing favorites tickers list if one is empty ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- [@dmytroshch](https://github.com/dmytroshch)
+
+
 ## v0.5.3 (2021-05-26)
 
 #### :dizzy: Improvement
