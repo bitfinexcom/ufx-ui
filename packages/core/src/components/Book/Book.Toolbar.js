@@ -30,7 +30,6 @@ const BookToolbar = (props) => {
         title={t('decrease_zoom')}
         onClick={() => updateZoom(-20)}
         minimal
-        icon='minus'
         disabled={zoom === config.MIN_ZOOM}
       >
         <FontAwesomeIcon icon={faSearchMinus} />
@@ -48,7 +47,6 @@ const BookToolbar = (props) => {
         onClick={() => updatePrec(prec + 1)}
         timeoutMs={config.UPDATE_COOLDOWN_MS}
         minimal
-        icon='minus'
         disabled={prec === config.MAX_PRECISION}
       >
         <FontAwesomeIcon icon={faMinus} />

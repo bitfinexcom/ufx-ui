@@ -22,7 +22,6 @@ const DepthChartToolbar = ({
         title={t('decrease_zoom')}
         onClick={() => updateZoom(10)}
         minimal
-        icon='minus'
         disabled={zoom === config.MAX_ZOOM}
       >
         <FontAwesomeIcon icon={faSearchMinus} />
