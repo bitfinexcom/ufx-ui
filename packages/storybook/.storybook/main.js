@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   stories: [
     './stories/*.stories.mdx',
     '../../core/src/components/ui/**/*.stories.js',
@@ -8,8 +8,8 @@ module.exports = {
     '../../bfx-containers/src/containers/OrderHistory/**/*.stories.js',
     '../../core/src/components/Trades/**/*.stories.js',
     '../../bfx-containers/src/containers/Trades/**/*.stories.js',
-    '../../core/src/components/TickerList/**/*.stories.js'
-
+    '../../core/src/components/TickerList/**/*.stories.js',
+    '../../core/src/components/Ticker/**/*.stories.js'
   ],
   addons: [
     '@storybook/preset-scss',
