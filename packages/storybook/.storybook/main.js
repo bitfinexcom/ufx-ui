@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   stories: [
     './stories/*.stories.mdx',
     '../../core/src/components/ui/**/*.stories.js',
