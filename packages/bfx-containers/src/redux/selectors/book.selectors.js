@@ -1,4 +1,5 @@
 import _get from 'lodash/get'
+import _isEmpty from 'lodash/isEmpty'
 import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import { createSelector } from 'reselect'
@@ -11,35 +12,46 @@ const EMPTY_OBJ = {}
 
 const getBook = (state) => _get(getUfxState(state), 'book', EMPTY_OBJ)
 
-const getBookForChannelID = createSelector(
+export const getBookChannel = createSelector(
   [
-    getBook,
     getWSChannels,
     (_, symbol) => symbol,
   ],
-  (book, wsChannels, symbol) => {
-    const bookChannel = findMatchingChannel(wsChannels, {
-      ...SUBSCRIPTION_CONFIG,
-      symbol,
-    })
+  (wsChannels, symbol) => findMatchingChannel(wsChannels, {
+    ...SUBSCRIPTION_CONFIG,
+    symbol,
+  }),
+)
+
+export const getBookForSymbol = createSelector(
+  [
+    getBook,
+    getBookChannel,
+  ],
+  (book, bookChannel) => {
     const chanId = _get(bookChannel, 'chanId')
 
     return _get(book, [chanId], EMPTY_OBJ)
   },
 )
 
+export const isSubscribedToBook = createSelector(
+  getBookChannel,
+  (bookChannel) => !_isEmpty(bookChannel),
+)
+
 export const getBookSnapshotReceived = createSelector(
-  getBookForChannelID,
+  getBookForSymbol,
   (book) => _get(book, 'snapshotReceived'),
 )
 
 export const getBookAsks = createSelector(
-  getBookForChannelID,
+  getBookForSymbol,
   (book) => _get(book, 'asks'),
 )
 
 export const getBookBids = createSelector(
-  getBookForChannelID,
+  getBookForSymbol,
   (book) => _get(book, 'bids'),
 )
 
