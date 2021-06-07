@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.5.5 (2021-06-07)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#48](https://github.com/bitfinexcom/ufx-ui/pull/48) (improvement) book/trades: add new selectors, clean up unsubscribed state ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
 
 ## v0.5.4 (2021-06-06)
 
