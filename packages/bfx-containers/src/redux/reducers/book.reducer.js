@@ -1,6 +1,7 @@
 import _isArray from 'lodash/isArray'
 import _isNull from 'lodash/isNull'
 import _keys from 'lodash/keys'
+import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 import _toString from 'lodash/toString'
 
@@ -73,6 +74,18 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
 
     case types.BOOK_RESET_MESSAGE: {
       return INITIAL_STATE
+    }
+
+    case types.UNSUBSCRIBED: {
+      if (_isNull(payload)) {
+        return state
+      }
+      const { chanId, status } = payload
+      if (status !== 'OK') {
+        return state
+      }
+
+      return _omit(state, [chanId])
     }
 
     default: {
