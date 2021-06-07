@@ -8,6 +8,8 @@ module.exports = {
     '../../bfx-containers/src/containers/OrderHistory/**/*.stories.js',
     '../../core/src/components/Trades/**/*.stories.js',
     '../../bfx-containers/src/containers/Trades/**/*.stories.js',
+    '../../core/src/components/TickerList/**/*.stories.js'
+
   ],
   addons: [
     '@storybook/preset-scss',

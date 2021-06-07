@@ -14,7 +14,7 @@ const DEFAULT_REQUEST_HEADERS = {
 }
 
 const createApiInstance = (baseURL) => axios.create({
-  baseURL: `${corsProxyUrl}https:${baseURL}`,
+  baseURL: `${corsProxyUrl}http:${baseURL}`,
   headers: DEFAULT_REQUEST_HEADERS,
 })
 
