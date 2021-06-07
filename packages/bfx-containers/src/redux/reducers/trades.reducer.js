@@ -2,7 +2,9 @@ import { removeOldest, snapshot } from '@ufx-ui/utils'
 import isArray from 'lodash/isArray'
 import isEmpty from 'lodash/isEmpty'
 import _isEqual from 'lodash/isEqual'
+import _isNull from 'lodash/isNull'
 import _keys from 'lodash/keys'
+import _omit from 'lodash/omit'
 import size from 'lodash/size'
 import _toString from 'lodash/toString'
 
@@ -94,6 +96,18 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
 
     case types.TRADES_RESET_MESSAGE: {
       return INITIAL_STATE
+    }
+
+    case types.UNSUBSCRIBED: {
+      if (_isNull(payload)) {
+        return state
+      }
+      const { chanId, status } = payload
+      if (status !== 'OK') {
+        return state
+      }
+
+      return _omit(state, [chanId])
     }
 
     default: {
