@@ -14,12 +14,12 @@ const DEFAULT_REQUEST_HEADERS = {
 }
 
 const createApiInstance = (baseURL) => axios.create({
-  baseURL: `${corsProxyUrl}http:${baseURL}`,
+  baseURL: `${corsProxyUrl}${baseURL}`,
   headers: DEFAULT_REQUEST_HEADERS,
 })
 
-export const pubApi = createApiInstance(`//${apiUrl}`)
-export const api = createApiInstance(`//${apiUrl}`)
+export const pubApi = createApiInstance(apiUrl)
+export const api = createApiInstance(apiUrl)
 
 let apiResponseInterceptor
 let pubApiResponseInterceptor
