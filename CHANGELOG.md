@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.6.0 (2021-06-08)
+
+#### :rocket: Feature
+* `bfx-containers`, `storybook`
+  * [#49](https://github.com/bitfinexcom/ufx-ui/pull/49) (feature) tickers: export selectors/actions/reducer ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- [@dmytroshch](https://github.com/dmytroshch)
+
+
 ## v0.5.5 (2021-06-07)
 
 #### :dizzy: Improvement
