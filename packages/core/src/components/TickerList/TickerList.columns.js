@@ -19,6 +19,7 @@ const getColumns = ({ t } = {}) => [{
     <span>
       {baseCcy}
       /
+      <br />
       <span className='price-unit'>{quoteCcy}</span>
     </span>
   ),
