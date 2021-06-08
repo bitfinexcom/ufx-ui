@@ -35,6 +35,13 @@ export const Ticker = (props) => {
   const classes = cx(Classes.TICKER, className)
   const colorClass = Classes.getColors(changePerc, { strike: 0, includeStrike: true })
 
+  const isPairNameTooLong = () => {
+    const baseCcy = getDisplayValue(KEYS.BASE_CCY)
+    const lengthOfBoth = quoteCcy.length + baseCcy.length
+
+    return lengthOfBoth > 10
+  }
+
   const renderCell = (key) => {
     const value = getDisplayValue(key, false)
     const formattedValue = getDisplayValue(key)
@@ -54,7 +61,7 @@ export const Ticker = (props) => {
     <div className={classes}>
       <div className='info'>
         {ccyIcon && <div className='ccy-icon'>{ccyIcon}</div>}
-        <div className='highlight'>{renderCell(KEYS.BASE_CCY)}</div>
+        <div className={isPairNameTooLong() ? 'quote-ccy' : 'highlight'}>{renderCell(KEYS.BASE_CCY)}</div>
         <div className='quote-ccy'>{renderCell(KEYS.QUOTE_CCY)}</div>
         {showCoinInfoIcon && (
           <Button
