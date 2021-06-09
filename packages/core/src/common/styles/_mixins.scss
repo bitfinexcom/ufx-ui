@@ -47,7 +47,7 @@
 }
 
 @function centered-text($height, $line-height: $ufx-line-height) {
-  @return floor(($height - $line-height) / 2);
+  @return floor(math.div(($height - $line-height), 2));
 }
 
 @mixin divider($margin: $ufx-base-size * 2, $color: $light-gray6) {

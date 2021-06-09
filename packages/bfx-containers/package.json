@@ -84,6 +84,7 @@
     "redux-injectors": "^1.3.0",
     "redux-saga": "^1.1.3",
     "reselect": "^4.0.0",
+    "sass": "^1.34.1",
     "scss-bundle": "^3.1.2"
   },
   "publishConfig": {
