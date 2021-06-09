@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.6.1 (2021-06-09)
+
+#### :bug: Bug Fix
+* `core`
+  * [#52](https://github.com/bitfinexcom/ufx-ui/pull/52) (fix): TickerList: removed margins from FontAwesome styles in Searchbar ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :art: Refactor
+* `bfx-containers`, `core`, `example`
+  * [#54](https://github.com/bitfinexcom/ufx-ui/pull/54) (refactor) scss: replace / with math.div to make compatible with dart-sass ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- [@dmytroshch](https://github.com/dmytroshch)
+
+
 ## v0.6.0 (2021-06-08)
 
 #### :rocket: Feature
