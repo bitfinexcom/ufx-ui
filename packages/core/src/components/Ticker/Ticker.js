@@ -54,8 +54,12 @@ export const Ticker = (props) => {
     <div className={classes}>
       <div className='info'>
         {ccyIcon && <div className='ccy-icon'>{ccyIcon}</div>}
-        <div className='highlight'>{renderCell(KEYS.BASE_CCY)}</div>
-        <div className='quote-ccy'>{renderCell(KEYS.QUOTE_CCY)}</div>
+        {data.isPerp ? <div className='quote-ccy'>{renderCell(KEYS.PERP_UI)}</div> : (
+          <>
+            <div className='highlight'>{renderCell(KEYS.BASE_CCY)}</div>
+            <div className='quote-ccy'>{renderCell(KEYS.QUOTE_CCY)}</div>
+          </>
+        )}
         {showCoinInfoIcon && (
           <Button
             className='info-icon'
