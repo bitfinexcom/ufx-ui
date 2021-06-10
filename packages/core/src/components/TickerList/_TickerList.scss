@@ -25,6 +25,7 @@
   .#{$ns}-table tbody {
     td {
       vertical-align: middle;
+      font-feature-settings: "tnum";
     }
 
     td:not(:nth-child(1)) {
