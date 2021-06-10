@@ -1,6 +1,6 @@
 @mixin heading-typography() {
   color: $ufx-heading-color;
-  font-weight: $ufx-font-weight-bold;
+  font-weight: $ufx-font-weight-semibold;
 }
 
 .#{$ns}-heading {
