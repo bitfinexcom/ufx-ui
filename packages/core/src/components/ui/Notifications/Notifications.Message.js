@@ -11,12 +11,14 @@ const NotificationMessage = (props) => {
     level,
     message,
     group,
+    onClose,
   } = props
   const [groupIsExpanded, setGroupIsExpanded] = useState(false)
   const classes = cx(`${Classes.NOTIFICATIONS}__level`, `${Classes.NOTIFICATIONS}__level--${level}`)
 
   return (
     <div className={classes}>
+      {onClose && <p className='close-button' onClick={onClose} aria-hidden='true'>&#10005;</p>}
       <div className='message'>
         <div className='icon'>
           <FontAwesomeIcon icon={getIcon(level)} />
