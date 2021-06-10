@@ -7,8 +7,6 @@ const tickerList = [
     lastPrice: 4.019,
     volume: 402,
     ccyLabels: ['UST', 'Tether USDt', 'EOS'],
-    isPerp: false,
-    perpUI: null,
   }, {
     id: 'tBTCUSD',
     baseCcy: 'BTC',
@@ -17,8 +15,6 @@ const tickerList = [
     lastPrice: 9000,
     volume: 3940,
     ccyLabels: ['BTC', 'Bitcoin', 'USD', 'US Dollar'],
-    isPerp: false,
-    perpUI: null,
   }, {
     id: 'tBTCUST',
     baseCcy: 'BTC',
@@ -27,8 +23,6 @@ const tickerList = [
     lastPrice: 200,
     volume: 10000,
     ccyLabels: ['BTC', 'Bitcoin', 'UST', 'Tether USDt'],
-    isPerp: false,
-    perpUI: null,
   },
   {
     id: 'tXLMF0:USTF0',
@@ -38,8 +32,6 @@ const tickerList = [
     lastPrice: 20,
     volume: 5587,
     ccyLabels: ['tXLMF0', 'USTF0'],
-    isPerp: true,
-    perpUI: 'XLM-PERP',
   },
 ]
 

@@ -9,8 +9,6 @@ export const KEYS = {
   CHANGE_PERC: 'changePerc',
   CCY_LABELS: 'ccyLabels',
   VOLUME: 'volume',
-  PERP_UI: 'perpUI',
-  IS_PERP: 'isPerp',
 }
 
 const formatVolumePerc = (value) => `${(value * 100).toFixed(2)}%`

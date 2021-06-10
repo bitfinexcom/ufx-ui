@@ -15,15 +15,16 @@ export const KEYS = {
   VOLUME: 'volume',
   HIGH: 'high',
   LOW: 'low',
-  PERP_UI: 'perpUI',
 }
 
 export const MAPPING = {
-  [KEYS.QUOTE_CCY]: {
-    renderer: ({ formattedValue }) => `/ ${formattedValue}`,
-  },
-  [KEYS.PERP_UI]: {
-    renderer: ({ formattedValue }) => formattedValue,
+  [KEYS.BASE_CCY]: {
+    renderer: ({ baseCcy, quoteCcy }) => (
+      <>
+        <div className='highlight'>{baseCcy}</div>
+        /<div className='quote-ccy'>{quoteCcy}</div>
+      </>
+    ),
   },
   [KEYS.LAST_PRICE]: {
     defaultValue: 0,

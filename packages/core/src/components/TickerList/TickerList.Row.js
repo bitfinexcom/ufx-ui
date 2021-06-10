@@ -29,8 +29,6 @@ const TickerListRow = (props) => {
 
   const baseCcy = getDisplayValue(KEYS.BASE_CCY)
   const quoteCcy = getDisplayValue(KEYS.QUOTE_CCY)
-  const perpUI = getDisplayValue(KEYS.PERP_UI)
-  const isPerp = getDisplayValue(KEYS.IS_PERP)
   const id = getDisplayValue(KEYS.ID)
 
   const handleRowClick = () => {
@@ -72,8 +70,6 @@ const TickerListRow = (props) => {
               data,
               baseCcy,
               quoteCcy,
-              perpUI,
-              isPerp,
             }) : formattedValue}
           </td>
         )

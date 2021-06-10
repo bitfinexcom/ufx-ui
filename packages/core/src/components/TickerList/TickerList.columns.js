@@ -16,16 +16,14 @@ const getColumns = ({ t } = {}) => [{
   cellStyle: { width: '26%', textAlign: 'left', wordBreak: 'break-all' },
   headerCellClassName: 'pair',
   renderer: ({
-    baseCcy, quoteCcy, perpUI, isPerp,
+    baseCcy, quoteCcy,
   }) => (
     <>
-      {isPerp ? <span>{perpUI}</span> : (
-        <span>
-          {baseCcy}
-          /
-          <span className='price-unit'>{quoteCcy}</span>
-        </span>
-      )}
+      <span>
+        {baseCcy}
+        /
+        <span className='price-unit'>{quoteCcy}</span>
+      </span>
     </>
 
   ),
