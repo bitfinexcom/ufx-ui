@@ -23,6 +23,8 @@
   }
 
   tbody {
+    font-feature-settings: "tnum";
+
     td.#{$ns}-rtl {
       padding-right: $ufx-base-size;
     }

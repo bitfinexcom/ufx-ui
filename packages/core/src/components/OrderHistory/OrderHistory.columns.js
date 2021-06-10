@@ -73,7 +73,7 @@ const getColumns = (args = {}) => {
       label: t('amount'),
       cellStyle: { width: '15%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: Classes.RIGHT_TO_LEFT,
+      cellClassName: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
       truncate: true,
     },
     {
@@ -89,7 +89,7 @@ const getColumns = (args = {}) => {
       label: t('price'),
       cellStyle: { width: isMobile ? '20%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: Classes.RIGHT_TO_LEFT,
+      cellClassName: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
       truncate: true,
     },
     {
@@ -97,7 +97,7 @@ const getColumns = (args = {}) => {
       label: t('average_price'),
       cellStyle: { width: isMobile ? '18%' : '12.5%' },
       headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: Classes.RIGHT_TO_LEFT,
+      cellClassName: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
       truncate: true,
     },
     {
