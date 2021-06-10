@@ -18,7 +18,7 @@ const NotificationMessage = (props) => {
 
   return (
     <div className={classes}>
-      {onClose && <p className='close-button' onClick={onClose}>&#10005;</p>}
+      {onClose && <p className='close-button' onClick={onClose} aria-hidden='true'>&#10005;</p>}
       <div className='message'>
         <div className='icon'>
           <FontAwesomeIcon icon={getIcon(level)} />
