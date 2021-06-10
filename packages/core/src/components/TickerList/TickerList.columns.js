@@ -15,12 +15,19 @@ const getColumns = ({ t } = {}) => [{
   defaultSortAsc: true,
   cellStyle: { width: '26%', textAlign: 'left', wordBreak: 'break-all' },
   headerCellClassName: 'pair',
-  renderer: ({ baseCcy, quoteCcy }) => (
-    <span>
-      {baseCcy}
-      /
-      <span className='price-unit'>{quoteCcy}</span>
-    </span>
+  renderer: ({
+    baseCcy, quoteCcy, perpUI, isPerp,
+  }) => (
+    <>
+      {isPerp ? <span>{perpUI}</span> : (
+        <span>
+          {baseCcy}
+          /
+          <span className='price-unit'>{quoteCcy}</span>
+        </span>
+      )}
+    </>
+
   ),
 }, {
   label: t('tickerlist:last_price'),
