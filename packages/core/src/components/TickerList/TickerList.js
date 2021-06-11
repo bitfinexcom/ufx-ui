@@ -56,13 +56,10 @@ export const TickerList = (props) => {
     (row) => {
       const baseCcy = _get(row, keyForBaseCcy)
       const quoteCcy = _get(row, keyForQuoteCcy)
-      // added backward compatibility
-      const ccyLabels = _get(row, keyForCcyLabels, [baseCcy, quoteCcy])
+      const defaultLabels = [baseCcy, quoteCcy, baseCcy + quoteCcy, `${baseCcy}/${quoteCcy}`]
+      const ccyLabels = _get(row, keyForCcyLabels, [])
 
-      const matches = _toLower(_join([
-        ...ccyLabels,
-        baseCcy + quoteCcy,
-      ]))
+      const matches = _toLower(_join([...ccyLabels, ...defaultLabels]))
 
       return (
         _includes(matches, _toLower(searchTerm))

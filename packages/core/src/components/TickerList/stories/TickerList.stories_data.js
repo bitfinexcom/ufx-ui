@@ -24,6 +24,15 @@ const tickerList = [
     volume: 10000,
     ccyLabels: ['BTC', 'Bitcoin', 'UST', 'Tether USDt'],
   },
+  {
+    id: 'tXLMF0:USTF0',
+    baseCcy: 'tXLMF0',
+    quoteCcy: 'USTF0',
+    changePerc: 2,
+    lastPrice: 20,
+    volume: 5587,
+    ccyLabels: ['tXLMF0', 'USTF0'],
+  },
 ]
 
 export default tickerList
