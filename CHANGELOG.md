@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.7.0 (2021-06-11)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#59](https://github.com/bitfinexcom/ufx-ui/pull/59) (improvement) Add font feature settings tnum ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+  * [#58](https://github.com/bitfinexcom/ufx-ui/pull/58) (improvement) Ticker/TickerList: allow to spectify custom renderer for ticker-name ([@dmytroshch](https://github.com/dmytroshch))
+* `core`
+  * [#57](https://github.com/bitfinexcom/ufx-ui/pull/57) (improvement) notifications ([@Blaumaus](https://github.com/Blaumaus))
+* `bfx-containers`, `core`, `example`
+  * [#56](https://github.com/bitfinexcom/ufx-ui/pull/56) (improvement) Ticker font improvement ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### Committers: 4
+- Andrii R. ([@Blaumaus](https://github.com/Blaumaus))
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+- [@dmytroshch](https://github.com/dmytroshch)
+
+
 ## v0.6.1 (2021-06-09)
 
 #### :bug: Bug Fix
