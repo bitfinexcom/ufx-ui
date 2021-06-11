@@ -22,6 +22,7 @@ $ufx-book-side-min-width: $ufx-base-size * 27;
   .rows {
     display: flex;
     flex-direction: column;
+    font-feature-settings: "tnum";
   }
 
   .row {
