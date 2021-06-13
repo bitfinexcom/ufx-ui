@@ -40,9 +40,9 @@ const DropdownList = (props) => {
   }
 
   return (
-    <ul className='list'>
+    <div className='list-wrapper'>
       {searchable && (
-        <li>
+        <div className='list-search-wrapper'>
           <div className='list-search'>
             <input
               type='text'
@@ -52,27 +52,31 @@ const DropdownList = (props) => {
             />
             <FontAwesomeIcon className='search-icon' icon={faSearch} />
           </div>
-        </li>
+        </div>
       )}
-      {keys.map((key) => (
-        <li key={key}>
-          <div
-            className={cx('list-item', {
-              'list-item--active': value === key,
-            })}
-            onClick={() => onChange(key)}
-            onKeyPress={utils.handleKeyboardEvent('Enter', () => onChange(key))}
-            tabIndex={0}
-            role='button'
-            value={key}
-          >
-            {!optionRenderer
-              ? options[key]
-              : optionRenderer(key, options[key])}
-          </div>
-        </li>
-      ))}
-    </ul>
+      <div className='list-scroller'>
+        <ul className='list'>
+          {keys.map((key) => (
+            <li key={key}>
+              <div
+                className={cx('list-item', {
+                  'list-item--active': value === key,
+                })}
+                onClick={() => onChange(key)}
+                onKeyPress={utils.handleKeyboardEvent('Enter', () => onChange(key))}
+                tabIndex={0}
+                role='button'
+                value={key}
+              >
+                {!optionRenderer
+                  ? options[key]
+                  : optionRenderer(key, options[key])}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   )
 }
 
