@@ -24,7 +24,7 @@ const TickerListToolbar = (props) => {
       value={searchTerm}
       className='search-ccy'
       onChange={setSearchTerm}
-      type='search'
+      type='text'
     />
   )
 }
