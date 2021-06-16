@@ -141,7 +141,7 @@ DepthChart.propTypes = {
 export const defaultProps = {
   loading: false,
   className: null,
-  theme: 'eosfinex-dark-theme',
+  theme: 'dark-theme',
   width: 600,
   height: 220,
   zoom: 50,

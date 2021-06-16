@@ -6,7 +6,6 @@ export const THEMES = {
   LIGHT_THEME: 'light-theme',
   COLOURBLIND_THEME: 'colourblind-theme',
   BLACK_THEME: 'black-theme',
-  EOSFINEX_THEME: 'eosfinex-dark-theme',
   DARK_THEME: 'dark-theme',
 }
 
@@ -46,18 +45,6 @@ const COLORS = {
     redLight: '#523137',
     blueDark: '#ccc',
     blueLight: '#ccc',
-  },
-}
-
-const EOSFINEX_COLORS = {
-  dark: {
-    bg: '#182A39',
-    greenDark: '#3DCC91',
-    greenLight: '#51D19C',
-    redDark: '#D22A42',
-    redLight: '#D83E54',
-    blueDark: '#87a5b8',
-    blueLight: '#76a7c6',
   },
 }
 
@@ -275,7 +262,6 @@ const THEME_MAP = {
   [THEMES.COLOURBLIND_THEME]: generateLightTheme(COLORS.colourblind),
   [THEMES.DARK_THEME]: generateDarkTheme(COLORS.dark),
   [THEMES.BLACK_THEME]: generateDarkTheme(COLORS.black),
-  [THEMES.EOSFINEX_THEME]: generateDarkTheme(EOSFINEX_COLORS.dark),
 }
 
 export function getCurrentStyle(theme, type = null) {
