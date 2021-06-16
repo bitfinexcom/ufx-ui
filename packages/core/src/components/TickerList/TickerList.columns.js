@@ -82,7 +82,6 @@ const getColumns = ({
   {
     label: t('tickerlist:24h_change'),
     dataKey: KEYS.CHANGE_PERC,
-    width: '15%',
     headerStyle: styles.changePerc,
     style: styles.changePerc,
     renderer: ({ dataKey, rowData }) => {
