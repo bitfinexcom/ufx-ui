@@ -27,3 +27,11 @@ export const MAPPING = {
     format: formatVolume,
   },
 }
+
+export const styles = {
+  favorite: { width: '7%', justifyContent: 'flex-start' },
+  pair: { width: '25%', textAlign: 'left', wordBreak: 'break-all' },
+  lastPrice: { width: '23%', textAlign: 'right' },
+  changePerc: { width: '15%', textAlign: 'right' },
+  volume: { width: '29%', textAlign: 'right' },
+}

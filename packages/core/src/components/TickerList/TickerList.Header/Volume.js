@@ -1,18 +1,32 @@
+import _indexOf from 'lodash/indexOf'
+import _keys from 'lodash/keys'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import * as Classes from '../../../../common/classes'
-import * as utils from '../../../../common/utils'
-import { Tooltip } from '../../../ui'
+import * as Classes from '../../../common/classes'
+import * as utils from '../../../common/utils'
+import { Tooltip } from '../../ui'
 
 const Volume = (props) => {
   const {
+    showVolumeUnit,
     volumeUnit,
     setVolumeUnit,
     volumeUnitList,
   } = props
   const { t } = useTranslation('tickerlist')
+
+  const toggleVolumeUnit = (e) => {
+    e.stopPropagation() // Do not propagate to avoid sorting when clicking volumeUnit buttons
+    const units = _keys(volumeUnitList)
+    const nextUnitIndex = (_indexOf(units, volumeUnit) + 1) % units.length
+    setVolumeUnit(units[nextUnitIndex])
+  }
+
+  if (!showVolumeUnit) {
+    return t('tickerlist:volume')
+  }
 
   return (
     <span className='volume-header'>
@@ -25,8 +39,8 @@ const Volume = (props) => {
         placement='top'
       >
         <span
-          onClick={setVolumeUnit}
-          onKeyPress={utils.handleKeyboardEvent('Enter', setVolumeUnit)}
+          onClick={toggleVolumeUnit}
+          onKeyPress={utils.handleKeyboardEvent('Enter', toggleVolumeUnit)}
           className='unit'
           role='button'
           tabIndex='0'

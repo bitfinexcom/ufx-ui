@@ -10,7 +10,7 @@ import * as Classes from '../../../common/classes'
 import { getSortedData as getSortedDataHelper, sortData } from './VirtualTable.helpers'
 
 const VirtualTable = ({
-  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive,
+  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive, striped, headerClassName, noRowsRenderer,
 }) => {
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
@@ -60,13 +60,18 @@ const VirtualTable = ({
               rowHeight={rowHeight}
               rowGetter={({ index }) => _get(processedData, index)}
               rowCount={_size(processedData)}
-              rowClassName={interactive ? 'hover' : undefined}
+              rowClassName={cx({
+                interactive,
+                striped,
+              })}
               onRowClick={onRowClick}
               headerHeight={headerHeight}
               disableHeader={false}
               sort={onSort}
               sortBy={sortBy}
               sortDirection={sortDirection}
+              headerClassName={headerClassName}
+              noRowsRenderer={noRowsRenderer}
             >
               {columns.map((c = {}) => (
                 <Column

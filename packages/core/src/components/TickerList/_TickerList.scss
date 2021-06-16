@@ -1,57 +1,39 @@
+$fav-col-min-width: $ufx-base-size * 1.4;
+
 .#{$ns}-tickerlist {
   .empty-tickerlist {
     display: flex;
     justify-content: center;
   }
 
-  .#{$ns}-table {
-    th {
-      font-size: $ufx-base-size * 1.3;
-      padding: 2px;
+  .ReactVirtualized__Table__headerColumn {
+    min-width: $fav-col-min-width;
 
-      button:not(.fav-button) {
-        font-weight: $ufx-font-weight-light;
-        width: 100%;
-        text-align: inherit;
-        padding: 2px;
-
-        span {
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .#{$ns}-table tbody {
-    td {
-      vertical-align: middle;
-    }
-
-    td:not(:nth-child(1)) {
-      padding: $ufx-base-size * 0.4;
+    .fav-col button {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-start;
     }
   }
 
   .fav-col {
-    width: 7%;
-    padding-left: $ufx-base-size * 0.5;
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .#{$ns}-button--minimal {
+      margin: 2px;
+      padding: 0 $ufx-base-size * 0.3;
+      min-width: $fav-col-min-width;
+      min-height: $ufx-base-size * 2;
     }
   }
 
   .fav-icon {
-    width: $ufx-base-size;
-    height: $ufx-base-size;
+    min-width: $ufx-base-size;
+    min-height: $ufx-base-size;
     font-size: $ufx-base-size;
     cursor: pointer;
   }
 
   .price-unit {
-    font-weight: $ufx-font-weight-light;
+    font-weight: $ufx-font-weight-medium;
   }
 
   &__volume-tooltip {
@@ -62,7 +44,8 @@
     .unit {
       padding: 0;
       vertical-align: baseline;
-      margin-left: $ufx-base-size * 0.3;
+      margin: 0 $ufx-base-size * 0.3;
+      line-height: $ufx-base-size * 2;
       text-decoration: underline;
       cursor: pointer;
       border-radius: 2px;
@@ -82,5 +65,49 @@
 
   .search-ccy {
     margin-bottom: $ufx-base-size;
+  }
+
+  .#{$ns}-virtual-table--container {
+    // subtract search toolbar height
+    height: calc(100% - (#{$ufx-base-size} * 5.4));
+
+    .ReactVirtualized__Table__headerRow {
+      padding-right: $ufx-base-size * 0.5 !important;
+    }
+
+    .ReactVirtualized__Table__headerColumn:first-of-type,
+    .ReactVirtualized__Table__rowColumn:first-of-type {
+      margin-left: 0;
+    }
+
+    .ReactVirtualized__Table__headerColumn:first-of-type {
+      padding: 0;
+    }
+
+    .ReactVirtualized__Table__headerColumn,
+    .ReactVirtualized__Table__rowColumn {
+      margin-right: $ufx-base-size * 0.5;
+    }
+
+    .ReactVirtualized__Table__headerColumn:last-of-type,
+    .ReactVirtualized__Table__rowColumn:last-of-type {
+      margin-right: $ufx-base-size * 0.5;
+    }
+
+    .ReactVirtualized__Table__headerTruncatedText {
+      margin-right: 0;
+    }
+
+    .ReactVirtualized__Table__sortableHeaderColumn {
+      padding: 0;
+      display: block;
+    }
+
+    .ReactVirtualized__Table__Grid {
+      &:focus {
+        outline: none;
+        @include focus-box-shadow(2px);
+      }
+    }
   }
 }

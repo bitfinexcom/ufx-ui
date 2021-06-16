@@ -8,14 +8,14 @@
   font-weight: normal;
 
   > * {
-    font-size: $ufx-base-size !important;
+    font-size: $ufx-base-size * 1.2 !important;
   }
 }
 
 .ReactVirtualized__Table__headerTruncatedText {
   margin-right: $ufx-base-size * 0.4;
-  font-weight: $ufx-font-weight-semibold;
-  font-size: $ufx-font-size;
+  font-weight: $ufx-font-weight-normal;
+  font-size: $ufx-base-size * 1.2;
   text-transform: none;
 }
 
@@ -23,7 +23,7 @@
   color: $ufx-text-color;
 
   > * {
-    font-size: $ufx-font-size;
+    font-size: $ufx-base-size * 1.2;
     line-height: $ufx-line-height !important;
   }
 }
@@ -33,14 +33,35 @@
   position: absolute;
   width: calc(100% - 16px);
   height: calc(100% - 16px);
-  
+
   .#{$ns}-virtual-table {
     flex: 1 1 auto;
 
-    .hover {
-      &:hover {
-        cursor: pointer;
-        color: $gray1;
+    .ReactVirtualized__Table__Grid {
+      @include styledScrollbar;
+    }
+
+    .interactive {
+      &.ReactVirtualized__Table__row {
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          background-color: $ufx-table-hover-row-background-color !important;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .striped {
+      &.ReactVirtualized__Table__row:nth-child(odd) {
+        background-color: $ufx-table-odd-row-background-color;
+      }
+
+      &.ReactVirtualized__Table__row:nth-child(even) {
+        background-color: $ufx-table-even-row-background-color;
       }
     }
   }

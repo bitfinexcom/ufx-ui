@@ -1,5 +1,6 @@
 import _filter from 'lodash/filter'
 import _get from 'lodash/get'
+import _isFunction from 'lodash/isFunction'
 import _map from 'lodash/map'
 import _sortBy from 'lodash/sortBy'
 import _values from 'lodash/values'
@@ -19,7 +20,7 @@ export const getValue = ({
     return value
   }
 
-  if (customFormat) {
+  if (_isFunction(customFormat)) {
     return customFormat(value, selector, data)
   }
 
@@ -56,4 +57,9 @@ export const getMappedColumns = (columns, customMapping = {}) => {
   const orderedColumns = getOrderedColumns(visibleColumns, customMapping)
 
   return orderedColumns
+}
+
+export const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
+  const formattedValue = getDisplayValue(rowData)(dataKey, true)
+  return formattedValue
 }
