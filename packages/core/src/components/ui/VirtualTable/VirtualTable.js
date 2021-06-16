@@ -99,7 +99,10 @@ VirtualTable.propTypes = {
   defaultSortBy: PropTypes.string,
   defaultSortDirection: PropTypes.oneOf(['ASC', 'DESC']),
   className: PropTypes.string,
+  headerClassName: PropTypes.string,
   interactive: PropTypes.bool,
+  striped: PropTypes.bool,
+  noRowsRenderer: PropTypes.func,
 }
 
 VirtualTable.defaultProps = {
@@ -113,7 +116,10 @@ VirtualTable.defaultProps = {
   sortedDataPostProcessor: () => { },
   getSortedData: getSortedDataHelper,
   className: null,
+  headerClassName: null,
   interactive: false,
+  striped: false,
+  noRowsRenderer: () => {},
 }
 
 export default React.memo(VirtualTable)

@@ -52,12 +52,14 @@ const Volume = (props) => {
 }
 
 Volume.propTypes = {
+  showVolumeUnit: PropTypes.bool,
   volumeUnit: PropTypes.string,
   setVolumeUnit: PropTypes.func.isRequired,
   volumeUnitList: PropTypes.objectOf(PropTypes.string).isRequired,
 }
 
 Volume.defaultProps = {
+  showVolumeUnit: false,
   volumeUnit: null,
 }
 
