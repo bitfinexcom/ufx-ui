@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.8.0 (2021-06-17)
+
+#### :rocket: Feature
+* `bfx-containers`, `storybook`
+  * [#64](https://github.com/bitfinexcom/ufx-ui/pull/64) (feature) export ticker volume conversion helper and selectors ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :dizzy: Improvement
+* `bfx-containers`, `core`, `storybook`, `utils`
+  * [#66](https://github.com/bitfinexcom/ufx-ui/pull/66) (improvement) Tickerlist: improve performance, styles and keyboard nav ([@bhoomij](https://github.com/bhoomij))
+* `core`, `storybook`
+  * [#62](https://github.com/bitfinexcom/ufx-ui/pull/62) (improvement) Dropdown: searchable scroll ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### :bug: Bug Fix
+* `core`, `storybook`
+  * [#63](https://github.com/bitfinexcom/ufx-ui/pull/63) (fix) tickerlist searchbar: fix 2 close icon ([@bhoomij](https://github.com/bhoomij))
+
+#### :art: Refactor
+* `storybook`
+  * [#61](https://github.com/bitfinexcom/ufx-ui/pull/61) (refactor) Simplify storybook scripts ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### Committers: 3
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+
 ## v0.7.0 (2021-06-11)
 
 #### :dizzy: Improvement
