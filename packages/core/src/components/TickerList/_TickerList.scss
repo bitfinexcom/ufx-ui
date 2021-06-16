@@ -6,16 +6,6 @@ $fav-col-min-width: $ufx-base-size * 1.4;
     justify-content: center;
   }
 
-  .ReactVirtualized__Table__headerColumn {
-    min-width: $fav-col-min-width;
-
-    .fav-col button {
-      display: flex;
-      align-items: baseline;
-      justify-content: flex-start;
-    }
-  }
-
   .fav-col {
     .#{$ns}-button--minimal {
       margin: 2px;
@@ -71,10 +61,6 @@ $fav-col-min-width: $ufx-base-size * 1.4;
     // subtract search toolbar height
     height: calc(100% - (#{$ufx-base-size} * 5.4));
 
-    .ReactVirtualized__Table__headerRow {
-      padding-right: $ufx-base-size * 0.5 !important;
-    }
-
     .ReactVirtualized__Table__headerColumn:first-of-type,
     .ReactVirtualized__Table__rowColumn:first-of-type {
       margin-left: 0;
@@ -89,6 +75,13 @@ $fav-col-min-width: $ufx-base-size * 1.4;
       margin-right: $ufx-base-size * 0.5;
     }
 
+    // overwrite row, cell styles
+    .ReactVirtualized__Table__rowColumn {
+      text-overflow: unset;
+      white-space: inherit;
+      word-break: break-all;
+    }
+
     .ReactVirtualized__Table__headerColumn:last-of-type,
     .ReactVirtualized__Table__rowColumn:last-of-type {
       margin-right: $ufx-base-size * 0.5;
@@ -96,6 +89,24 @@ $fav-col-min-width: $ufx-base-size * 1.4;
 
     .ReactVirtualized__Table__headerTruncatedText {
       margin-right: 0;
+      font-size: $ufx-base-size * 1.2;
+    }
+
+    .ReactVirtualized__Table__row {
+      > * {
+        font-size: $ufx-base-size * 1.2;
+      }
+    }
+
+    .ReactVirtualized__Table__headerColumn {
+      min-width: $fav-col-min-width;
+      font-size: $ufx-base-size * 1.2;
+
+      .fav-col button {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
+      }
     }
 
     .ReactVirtualized__Table__sortableHeaderColumn {

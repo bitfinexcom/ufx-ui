@@ -1,41 +1,41 @@
-.ReactVirtualized__Table__headerRow {
-  border-bottom: none;
-  padding-right: 0 !important;
-  height: $ufx-base-size * 4.8;
-}
-
-.ReactVirtualized__Table__headerColumn {
-  font-weight: normal;
-
-  > * {
-    font-size: $ufx-font-size !important;
-  }
-}
-
-.ReactVirtualized__Table__headerTruncatedText {
-  margin-right: $ufx-base-size * 0.4;
-  font-weight: $ufx-font-weight-normal;
-  font-size: $ufx-font-size;
-  text-transform: none;
-}
-
-.ReactVirtualized__Table__row {
-  color: $ufx-text-color;
-
-  > * {
-    font-size: $ufx-font-size;
-    line-height: $ufx-line-height !important;
-  }
-}
-
 .#{$ns}-virtual-table--container {
   display: flex;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - (#{$ufx-base-size} * 1.6));
+  height: calc(100% - (#{$ufx-base-size} * 1.6));
 
   .#{$ns}-virtual-table {
     flex: 1 1 auto;
+
+    .ReactVirtualized__Table__headerRow {
+      border-bottom: none;
+      padding-right: 0;
+      height: $ufx-base-size * 4.8;
+    }
+
+    .ReactVirtualized__Table__headerColumn {
+      font-weight: normal;
+
+      > * {
+        font-size: $ufx-font-size;
+      }
+    }
+
+    .ReactVirtualized__Table__headerTruncatedText {
+      margin-right: $ufx-base-size * 0.4;
+      font-weight: $ufx-font-weight-normal;
+      font-size: $ufx-font-size;
+      text-transform: none;
+    }
+
+    .ReactVirtualized__Table__row {
+      color: $ufx-text-color;
+
+      > * {
+        font-size: $ufx-font-size;
+        line-height: $ufx-line-height;
+      }
+    }
 
     .ReactVirtualized__Table__Grid {
       @include styledScrollbar;
