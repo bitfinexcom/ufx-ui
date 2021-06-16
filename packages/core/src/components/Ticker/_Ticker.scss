@@ -7,7 +7,7 @@
     "volume high low";
   grid-row-gap: $ufx-base-size * 0.5;
 
-  font-size: $ufx-base-size * 1.4;
+  font-size: $ufx-font-size;
   line-height: $ufx-base-size * 1.8;
 
   .info {
@@ -21,7 +21,7 @@
     }
 
     .quote-ccy {
-      font-size: $ufx-base-size * 1.4;
+      font-size: $ufx-font-size;
       font-weight: $ufx-font-weight-normal;
       line-height: $ufx-base-size * 1.8;
       margin-left: $ufx-base-size * 0.4;

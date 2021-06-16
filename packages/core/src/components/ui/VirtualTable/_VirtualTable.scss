@@ -8,14 +8,14 @@
   font-weight: normal;
 
   > * {
-    font-size: $ufx-base-size * 1.2 !important;
+    font-size: $ufx-font-size !important;
   }
 }
 
 .ReactVirtualized__Table__headerTruncatedText {
   margin-right: $ufx-base-size * 0.4;
   font-weight: $ufx-font-weight-normal;
-  font-size: $ufx-base-size * 1.2;
+  font-size: $ufx-font-size;
   text-transform: none;
 }
 
@@ -23,7 +23,7 @@
   color: $ufx-text-color;
 
   > * {
-    font-size: $ufx-base-size * 1.2;
+    font-size: $ufx-font-size;
     line-height: $ufx-line-height !important;
   }
 }
@@ -31,8 +31,8 @@
 .#{$ns}-virtual-table--container {
   display: flex;
   position: absolute;
-  width: calc(100% - 16px);
-  height: calc(100% - 16px);
+  width: 100%;
+  height: 100%;
 
   .#{$ns}-virtual-table {
     flex: 1 1 auto;
