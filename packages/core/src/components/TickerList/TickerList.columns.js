@@ -1,7 +1,6 @@
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { getFormattedValue } from '@ufx-ui/utils'
 import _get from 'lodash/get'
 import React from 'react'
 
@@ -9,6 +8,11 @@ import { getColors } from '../../common/classes'
 import { Button } from '../ui'
 import { KEYS, styles } from './TickerList.constants'
 import { Favorite, Volume } from './TickerList.Header'
+
+const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
+  const formattedValue = getDisplayValue(rowData)(dataKey, true)
+  return formattedValue
+}
 
 // label: column header
 // dataKey: represents data in table cell

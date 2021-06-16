@@ -58,8 +58,3 @@ export const getMappedColumns = (columns, customMapping = {}) => {
 
   return orderedColumns
 }
-
-export const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
-  const formattedValue = getDisplayValue(rowData)(dataKey, true)
-  return formattedValue
-}
