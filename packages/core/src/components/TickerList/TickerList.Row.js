@@ -19,6 +19,7 @@ const TickerListRow = (props) => {
     onRowClick,
     dataMapping: customMapping,
     columns,
+    style,
   } = props
 
   const getDisplayValue = getValue({
@@ -41,12 +42,15 @@ const TickerListRow = (props) => {
   }
 
   return (
-    <tr
+    <div
+      role='button'
       tabIndex='0'
       onClick={handleRowClick}
       onKeyPress={utils.handleKeyboardEvent(['Enter'], handleRowClick)}
+      className='row'
+      style={style}
     >
-      <td className='fav-col'>
+      <div className='fav-col'>
         <Button
           minimal
           onClick={handleFavIconClick}
@@ -56,14 +60,14 @@ const TickerListRow = (props) => {
             className='fav-icon'
           />
         </Button>
-      </td>
+      </div>
       {columns.map(({ key, renderer: defRenderer, cellStyle }) => {
         const formattedValue = getDisplayValue(key)
         const value = getDisplayValue(key, false)
         const renderer = _get(customMapping, [key, 'renderer'], defRenderer)
 
         return (
-          <td key={key} style={cellStyle}>
+          <span key={key} style={cellStyle}>
             {renderer ? renderer({
               value,
               formattedValue,
@@ -71,10 +75,11 @@ const TickerListRow = (props) => {
               baseCcy,
               quoteCcy,
             }) : formattedValue}
-          </td>
+          </span>
         )
       })}
-    </tr>
+    </div>
+
   )
 }
 

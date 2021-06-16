@@ -1,4 +1,6 @@
 .#{$ns}-tickerlist {
+  padding-right: 10px;
+
   .empty-tickerlist {
     display: flex;
     justify-content: center;
@@ -32,9 +34,29 @@
     }
   }
 
+  &__body {
+    width: 100%;
+    min-height: 180px;
+  }
+
+  .row {
+    cursor: pointer;
+    display: flex;
+    & span {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    & span:not(:nth-child(1)) {
+      padding: $ufx-base-size * 0.4;
+    }
+    & span:last-child {
+      margin-right: 0;
+    }
+  }
+
   .fav-col {
     width: 7%;
-    padding-left: $ufx-base-size * 0.5;
+    padding-left: $ufx-base-size * 0.2;
 
     button {
       display: flex;

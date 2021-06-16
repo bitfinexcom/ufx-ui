@@ -5,10 +5,19 @@ import _includes from 'lodash/includes'
 import _isEmpty from 'lodash/isEmpty'
 import _join from 'lodash/join'
 import _orderBy from 'lodash/orderBy'
+import _size from 'lodash/size'
 import _toLower from 'lodash/toLower'
 import PropTypes from 'prop-types'
-import React, { useState, useMemo, memo } from 'react'
+import React, {
+  useState,
+  useMemo,
+  memo,
+  useRef,
+} from 'react'
 import { useTranslation } from 'react-i18next'
+import {
+  AutoSizer, List,
+} from 'react-virtualized'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
@@ -19,6 +28,8 @@ import { KEYS } from './TickerList.constants'
 import TickerListHeader from './TickerList.Header'
 import Row from './TickerList.Row'
 import TickerListToolbar from './TickerList.Toolbar'
+
+const DEFAULT_HEIGHT = 30
 
 export const TickerList = (props) => {
   const {
@@ -45,6 +56,9 @@ export const TickerList = (props) => {
   const [searchTerm, setSearchTerm] = useState('')
   const { t } = useTranslation()
 
+  const containerRef = useRef()
+  const containerWidth = containerRef.current?.clientWidth || 200
+
   const ordered = _orderBy(
     data,
     [sortBy],
@@ -68,6 +82,8 @@ export const TickerList = (props) => {
     },
   )
 
+  const lengthOfList = _size(filtered)
+
   const toggleFav = (id) => {
     const newFavs = {
       ...favs,
@@ -76,10 +92,25 @@ export const TickerList = (props) => {
     saveFavs(newFavs)
   }
 
+  const calculatedRowHeight = useMemo(() => {
+    if (containerWidth < 320) {
+      return 60
+    }
+    if (containerWidth >= 320 && containerWidth < 550) {
+      return 45
+    }
+    return DEFAULT_HEIGHT
+  }, [containerWidth])
+
+  const heightOfTickerList = useMemo(() => lengthOfList * calculatedRowHeight, [lengthOfList, calculatedRowHeight])
+
   const columns = useMemo(() => getColumns({ t }), [t])
 
   return (
-    <div className={cx(Classes.TICKER_LIST, className)}>
+    <div
+      className={cx(Classes.TICKER_LIST, className)}
+      ref={containerRef}
+    >
       <TickerListToolbar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -107,25 +138,49 @@ export const TickerList = (props) => {
           </div>
         )
         : (
-          <div className={Classes.TABLE_WRAPPER}>
-            <Table condensed interactive striped>
-              <tbody>
-                {filtered.map((row) => {
-                  const id = _get(row, keyForId)
-                  return (
-                    <Row
-                      key={id}
-                      data={row}
-                      dataMapping={rowMapping}
-                      isFav={!!favs[id]}
-                      toggleFav={toggleFav}
-                      onRowClick={onRowClick}
-                      columns={columns}
-                    />
-                  )
-                })}
-              </tbody>
-            </Table>
+          <div className={`${Classes.TICKER_LIST}__body`}>
+            {lengthOfList > 50 ? (
+              <AutoSizer>
+                {({ width }) => (
+                  <List
+                    height={heightOfTickerList}
+                    width={width}
+                    rowHeight={calculatedRowHeight}
+                    rowCount={lengthOfList}
+                    disableHeader
+                    rowRenderer={({ index, style }) => {
+                      const row = filtered[index]
+                      const id = _get(row, keyForId)
+                      return (
+                        <Row
+                          key={id}
+                          data={row}
+                          dataMapping={rowMapping}
+                          isFav={!!favs[id]}
+                          toggleFav={toggleFav}
+                          onRowClick={onRowClick}
+                          columns={columns}
+                          style={style}
+                        />
+                      )
+                    }}
+                  />
+                )}
+              </AutoSizer>
+            ) : filtered.map((row) => {
+              const id = _get(row, keyForId)
+              return (
+                <Row
+                  key={id}
+                  data={row}
+                  dataMapping={rowMapping}
+                  isFav={!!favs[id]}
+                  toggleFav={toggleFav}
+                  onRowClick={onRowClick}
+                  columns={columns}
+                />
+              )
+            })}
           </div>
         )}
     </div>
