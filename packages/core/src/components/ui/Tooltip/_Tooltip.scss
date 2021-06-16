@@ -4,7 +4,7 @@
   cursor: text;
   color: lighten($dark-gray1, 10%);
   padding: 4px 12px;
-  font-size: $ufx-base-size * 1.3;
+  font-size: $ufx-font-size;
 
   &.#{$ns}-tooltip--persistent {
     pointer-events: auto !important;

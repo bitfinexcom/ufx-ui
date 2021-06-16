@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Button, Tooltip } from '../../../ui'
+import { Button, Tooltip } from '../../ui'
 
 const Favorite = (props) => {
   const {
@@ -15,7 +15,7 @@ const Favorite = (props) => {
   const { t } = useTranslation('tickerlist')
 
   return (
-    <th className='fav-col'>
+    <div className='fav-col'>
       <Button
         minimal
         className='fav-button'
@@ -28,7 +28,7 @@ const Favorite = (props) => {
           />
         </Tooltip>
       </Button>
-    </th>
+    </div>
   )
 }
 

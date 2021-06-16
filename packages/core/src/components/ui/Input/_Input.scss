@@ -87,6 +87,10 @@ $input-container-transition: border $ufx-transition-duration
     transition: $input-container-transition;
     background: $input-background-color;
 
+    input {
+      border-radius: $ufx-border-radius;
+    }
+
     &:focus-within {
       @include focus-state;
     }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Input } from '../ui'
+import { Input, Button } from '../ui'
 
 const TickerListToolbar = (props) => {
   const {
@@ -19,7 +19,7 @@ const TickerListToolbar = (props) => {
       placeholder={`${t('common:search')}..`}
       small
       rightElement={searchTerm
-        ? <FontAwesomeIcon icon={faTimes} className='search-icon' onClick={onCancelClick} />
+        ? <Button onClick={onCancelClick} minimal><FontAwesomeIcon icon={faTimes} className='search-icon' /></Button>
         : <FontAwesomeIcon icon={faSearch} className='search-icon' />}
       value={searchTerm}
       className='search-ccy'

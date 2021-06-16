@@ -1,5 +1,6 @@
 import _filter from 'lodash/filter'
 import _get from 'lodash/get'
+import _isFunction from 'lodash/isFunction'
 import _map from 'lodash/map'
 import _sortBy from 'lodash/sortBy'
 import _values from 'lodash/values'
@@ -19,7 +20,7 @@ export const getValue = ({
     return value
   }
 
-  if (customFormat) {
+  if (_isFunction(customFormat)) {
     return customFormat(value, selector, data)
   }
 
