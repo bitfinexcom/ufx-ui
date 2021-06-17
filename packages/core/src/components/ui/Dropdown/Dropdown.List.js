@@ -1,4 +1,4 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import _includes from 'lodash/includes'
@@ -10,6 +10,7 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 
 import * as utils from '../../../common/utils'
+import { Button } from '../index'
 
 const DropdownList = (props) => {
   const {
@@ -39,6 +40,8 @@ const DropdownList = (props) => {
     setSearchTerm(e.target.value)
   }
 
+  const onCancelClick = () => setSearchTerm('')
+
   return (
     <div className='list-wrapper'>
       {searchable && (
@@ -50,7 +53,9 @@ const DropdownList = (props) => {
               value={searchTerm}
               onChange={handleSearchTermClick}
             />
-            <FontAwesomeIcon className='search-icon' icon={faSearch} />
+            {searchTerm
+              ? <FontAwesomeIcon icon={faTimes} className='search-icon' onClick={onCancelClick} />
+              : <FontAwesomeIcon icon={faSearch} className='search-icon' />}
           </div>
         </div>
       )}
