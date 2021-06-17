@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 
 
+#### :house: Internal
+* `bfx-containers`, `core`, `eslint-config`, `example`, `storybook`, `utils`
+  * [#70](https://github.com/bitfinexcom/ufx-ui/pull/70) (internal) Npm audit fix ([@bhoomij](https://github.com/bhoomij))
+* `storybook`
+  * [#69](https://github.com/bitfinexcom/ufx-ui/pull/69) (doc/test) add more stories/snapshot tests ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 ## v0.8.0 (2021-06-17)
 
 #### :rocket: Feature
