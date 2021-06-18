@@ -2,6 +2,7 @@ import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import _includes from 'lodash/includes'
+import _isEmpty from 'lodash/isEmpty'
 import _join from 'lodash/join'
 import _keys from 'lodash/keys'
 import _pickBy from 'lodash/pickBy'
@@ -25,7 +26,7 @@ const DropdownList = (props) => {
   const [searchTerm, setSearchTerm] = useState('')
 
   const filtered = useMemo(() => {
-    if (!searchable) {
+    if (!searchable || _isEmpty(searchValues)) {
       return options
     }
 
