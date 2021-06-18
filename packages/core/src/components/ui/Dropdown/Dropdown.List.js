@@ -2,15 +2,16 @@ import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import _includes from 'lodash/includes'
-import _isFunction from 'lodash/isFunction'
+import _join from 'lodash/join'
 import _keys from 'lodash/keys'
 import _pickBy from 'lodash/pickBy'
 import _toLower from 'lodash/toLower'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 import * as utils from '../../../common/utils'
-import { Button } from '../index'
+
+const searchModifier = (searchValue) => searchValue.replace(/[\s/]/g, '')
 
 const DropdownList = (props) => {
   const {
@@ -18,21 +19,25 @@ const DropdownList = (props) => {
     options,
     optionRenderer,
     searchable,
-    searchModifier,
     onChange,
+    searchValues,
   } = props
   const [searchTerm, setSearchTerm] = useState('')
-  const filtered = _pickBy(options, (optionValue, optionKey) => {
-    const val = _isFunction(searchModifier) ? searchModifier(optionValue) : optionValue
-    const key = _isFunction(searchModifier) ? searchModifier(optionKey) : optionKey
-    const search = _isFunction(searchModifier) ? searchModifier(searchTerm) : searchTerm
 
-    return (
-      !searchTerm
-        || _includes(_toLower(key), _toLower(search))
-        || _includes(_toLower(val), _toLower(search))
-    )
-  })
+  const filtered = useMemo(() => {
+    if (!searchable) {
+      return options
+    }
+
+    return _pickBy(options, (optionValue, optionKey) => {
+      const values = searchValues[optionKey]
+      const joinedCcy = searchModifier(optionValue)
+      const matches = _toLower(_join([...values, optionValue, joinedCcy]))
+
+      return _includes(matches, _toLower(searchTerm))
+    })
+  },
+  [options, searchTerm, searchable, searchValues])
   const keys = _keys(filtered)
 
   const handleSearchTermClick = (e) => {
@@ -87,11 +92,11 @@ const DropdownList = (props) => {
 
 DropdownList.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  // eslint-disable-next-line react/forbid-prop-types
-  options: PropTypes.object.isRequired,
+  options: PropTypes.objectOf(PropTypes.string).isRequired,
   optionRenderer: PropTypes.func,
   searchable: PropTypes.bool,
   onChange: PropTypes.func,
+  searchValues: PropTypes.objectOf(PropTypes.array),
 }
 
 DropdownList.defaultProps = {
@@ -99,6 +104,7 @@ DropdownList.defaultProps = {
   optionRenderer: null,
   searchable: false,
   onChange: () => { },
+  searchValues: null,
 }
 
 export default DropdownList
