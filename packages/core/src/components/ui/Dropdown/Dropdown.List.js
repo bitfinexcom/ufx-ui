@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import _includes from 'lodash/includes'
 import _isEmpty from 'lodash/isEmpty'
-import _join from 'lodash/join'
+import _isFunction from 'lodash/isFunction'
 import _keys from 'lodash/keys'
 import _pickBy from 'lodash/pickBy'
 import _toLower from 'lodash/toLower'
@@ -12,8 +12,6 @@ import React, { useState, useMemo } from 'react'
 
 import * as utils from '../../../common/utils'
 
-const searchModifier = (searchValue) => searchValue.replace(/[\s/]/g, '')
-
 const DropdownList = (props) => {
   const {
     value,
@@ -21,32 +19,38 @@ const DropdownList = (props) => {
     optionRenderer,
     searchable,
     onChange,
-    searchValues,
+    onSearchTermChange,
   } = props
   const [searchTerm, setSearchTerm] = useState('')
 
   const filtered = useMemo(() => {
-    if (!searchable || _isEmpty(searchValues)) {
+    if (!searchable || _isEmpty(searchTerm) || _isFunction(onSearchTermChange)) {
       return options
     }
 
-    return _pickBy(options, (optionValue, optionKey) => {
-      const values = searchValues[optionKey]
-      const joinedCcy = searchModifier(optionValue)
-      const matches = _toLower(_join([...values, optionValue, joinedCcy]))
-
-      return _includes(matches, _toLower(searchTerm))
-    })
+    return _pickBy(options, (optionValue, optionKey) => !searchTerm
+          || _includes(_toLower(optionKey), _toLower(searchTerm))
+          || _includes(_toLower(optionValue), _toLower(searchTerm)))
   },
-  [options, searchTerm, searchable, searchValues])
-  const keys = _keys(filtered)
+  [options, searchTerm, searchable, onSearchTermChange])
+
+  const keys = useMemo(() => _keys(filtered), [filtered])
 
   const handleSearchTermClick = (e) => {
     e.stopPropagation()
-    setSearchTerm(e.target.value)
+    const { value: _v } = e.target
+    if (_isFunction(onSearchTermChange)) {
+      onSearchTermChange(_v)
+    }
+    setSearchTerm(_v)
   }
 
-  const onCancelClick = () => setSearchTerm('')
+  const onCancelClick = () => {
+    if (_isFunction(onSearchTermChange)) {
+      onSearchTermChange('')
+    }
+    setSearchTerm('')
+  }
 
   return (
     <div className='list-wrapper'>
@@ -97,7 +101,7 @@ DropdownList.propTypes = {
   optionRenderer: PropTypes.func,
   searchable: PropTypes.bool,
   onChange: PropTypes.func,
-  searchValues: PropTypes.objectOf(PropTypes.array),
+  onSearchTermChange: PropTypes.func,
 }
 
 DropdownList.defaultProps = {
@@ -105,7 +109,7 @@ DropdownList.defaultProps = {
   optionRenderer: null,
   searchable: false,
   onChange: () => { },
-  searchValues: null,
+  onSearchTermChange: null,
 }
 
 export default DropdownList

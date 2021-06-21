@@ -25,7 +25,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     placeholder,
     closeOnMouseLeave,
     isOpen: isOpenProp,
-    searchValues,
+    onSearchTermChange,
     ...rest
   } = props
 
@@ -87,7 +87,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
             searchable={searchable}
             optionRenderer={optionRenderer}
             onChange={handleOnChange}
-            searchValues={searchValues}
+            onSearchTermChange={onSearchTermChange}
           />
         )}
       </div>
@@ -132,7 +132,7 @@ Dropdown.propTypes = {
    * If true, renders the dropdown with a search input.
    */
   searchable: PropTypes.bool,
-  searchValues: PropTypes.objectOf(PropTypes.arrayOf),
+  onSearchTermChange: PropTypes.func,
   ...DropdownList.propTypes,
 }
 
@@ -146,7 +146,7 @@ Dropdown.defaultProps = {
   closeOnMouseLeave: false,
   isOpen: false,
   searchable: false,
-  searchValues: null,
+  onSearchTermChange: null,
   ...DropdownList.defaultProps,
 }
 
