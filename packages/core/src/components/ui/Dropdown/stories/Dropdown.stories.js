@@ -18,16 +18,6 @@ const props = {
     UNI: 'Uniswap',
   },
   value: 'BTC',
-  searchValues: {
-    BTC: ['Bitcoin', 'BTC'],
-    ETH: ['Ethereum', 'ETH'],
-    USDT: ['Tether', 'USDT'],
-    ADA: ['Cardano', 'ADA'],
-    DOGE: ['Dogecoin', 'DOGE'],
-    XRP: ['XRP'],
-    DOT: ['Polkadot', 'DOT'],
-    UNI: ['Uniswap', 'UNI'],
-  },
 }
 
 export const basic = showTemplateStory(Dropdown, props)
