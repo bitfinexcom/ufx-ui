@@ -11,6 +11,7 @@ import PropTypes from 'prop-types'
 import React, { useState, useMemo } from 'react'
 
 import * as utils from '../../../common/utils'
+import { Button, Input } from '../index'
 
 const DropdownList = (props) => {
   const {
@@ -36,20 +37,20 @@ const DropdownList = (props) => {
 
   const keys = useMemo(() => _keys(filtered), [filtered])
 
-  const handleSearchTermClick = (e) => {
-    e.stopPropagation()
-    const { value: _v } = e.target
+  const updateSearchTerm = (_value) => {
     if (_isFunction(onSearchTermChange)) {
-      onSearchTermChange(_v)
+      onSearchTermChange(_value)
     }
-    setSearchTerm(_v)
+    setSearchTerm(_value)
+  }
+
+  const handleSearchTermChange = (_value, event) => {
+    event.stopPropagation()
+    updateSearchTerm(_value)
   }
 
   const onCancelClick = () => {
-    if (_isFunction(onSearchTermChange)) {
-      onSearchTermChange('')
-    }
-    setSearchTerm('')
+    updateSearchTerm('')
   }
 
   return (
@@ -57,15 +58,21 @@ const DropdownList = (props) => {
       {searchable && (
         <div className='list-search-wrapper'>
           <div className='list-search'>
-            <input
+            <Input
+              small
+              rightElement={searchTerm
+                ? (
+                  <Button onClick={onCancelClick} minimal>
+                    <FontAwesomeIcon icon={faTimes} className='search-icon' />
+                  </Button>
+                )
+                : <FontAwesomeIcon icon={faSearch} className='search-icon' />}
+              value={searchTerm}
+              className='search-ccy'
+              onChange={handleSearchTermChange}
               type='text'
               autoComplete='off'
-              value={searchTerm}
-              onChange={handleSearchTermClick}
             />
-            {searchTerm
-              ? <FontAwesomeIcon icon={faTimes} className='search-icon' onClick={onCancelClick} />
-              : <FontAwesomeIcon icon={faSearch} className='search-icon' />}
           </div>
         </div>
       )}
