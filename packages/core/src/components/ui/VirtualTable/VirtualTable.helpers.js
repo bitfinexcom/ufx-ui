@@ -1,5 +1,7 @@
 import _get from 'lodash/get'
 import _isFunction from 'lodash/isFunction'
+import _map from 'lodash/map'
+import _reduce from 'lodash/reduce'
 
 export const getTransformers = (columns = []) => {
   const transformers = {}
@@ -89,4 +91,22 @@ export function sortData(args = {}, props = {}) {
   sortedDataPostProcessor(sortedData)
 
   return sortedData
+}
+
+/**
+ * Returns columns array based on the provided columnts and container width.
+ * Columns width are updated proportionally based on the container width and column's width.
+ *
+ * @param {number} containerWidth - the width of the container which contains table, columns will be relative to it
+ * @param {Array} columns - an array of columns to process
+ * @return {Array} updated columns array
+ */
+export const processColumns = (containerWidth, columns) => {
+  const sigma = _reduce(columns, (prev, curr) => prev + curr.width, 0)
+  const c = containerWidth / sigma
+
+  return _map(columns, (col) => ({
+    ...col,
+    width: col.width * c,
+  }))
 }
