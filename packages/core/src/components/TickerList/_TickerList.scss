@@ -75,11 +75,8 @@ $fav-col-min-width: $ufx-base-size * 1.4;
       margin-right: $ufx-base-size * 0.5;
     }
 
-    // overwrite row, cell styles
-    .ReactVirtualized__Table__rowColumn {
-      text-overflow: unset;
-      white-space: inherit;
-      word-break: break-all;
+    .ReactVirtualized__Table__sortableHeaderIcon {
+      flex-basis: 12px;
     }
 
     .ReactVirtualized__Table__headerColumn:last-of-type,
@@ -111,7 +108,6 @@ $fav-col-min-width: $ufx-base-size * 1.4;
 
     .ReactVirtualized__Table__sortableHeaderColumn {
       padding: 0;
-      display: block;
     }
 
     .ReactVirtualized__Table__Grid {

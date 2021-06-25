@@ -29,9 +29,15 @@ export const MAPPING = {
 }
 
 export const styles = {
-  favorite: { width: '7%', justifyContent: 'flex-start' },
-  pair: { width: '25%', textAlign: 'left', wordBreak: 'break-all' },
-  lastPrice: { width: '23%', textAlign: 'right' },
-  changePerc: { width: '15%', textAlign: 'right' },
-  volume: { width: '29%', textAlign: 'right' },
+  favorite: { width: '8%', justifyContent: 'flex-start' },
+  pair: {
+    width: '24%',
+    justifyContent: 'flex-start',
+    wordBreak: 'break-all',
+    whiteSpace: 'normal',
+    lineHeight: 1,
+  },
+  lastPrice: { width: '24%', justifyContent: 'flex-end' },
+  changePerc: { width: '18%', justifyContent: 'flex-end' },
+  volume: { width: '26%', justifyContent: 'flex-end' },
 }
