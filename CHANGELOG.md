@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.8.3 (2021-06-28)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#76](https://github.com/bitfinexcom/ufx-ui/pull/76) (Improvement) export volume units constants ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :bug: Bug Fix
+* `core`
+  * [#77](https://github.com/bitfinexcom/ufx-ui/pull/77) (fix) circular dependency ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 ## v0.8.2 (2021-06-22)
 
 #### :dizzy: Improvement
