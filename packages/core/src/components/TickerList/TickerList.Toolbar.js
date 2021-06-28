@@ -7,10 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { Input, Button } from '../ui'
 
 const TickerListToolbar = (props) => {
-  const {
-    searchTerm,
-    setSearchTerm,
-  } = props
+  const { searchTerm, setSearchTerm } = props
   const { t } = useTranslation()
   const onCancelClick = useCallback(() => setSearchTerm(''), [setSearchTerm])
 
@@ -18,9 +15,15 @@ const TickerListToolbar = (props) => {
     <Input
       placeholder={`${t('common:search')}..`}
       small
-      rightElement={searchTerm
-        ? <Button onClick={onCancelClick} minimal><FontAwesomeIcon icon={faTimes} className='search-icon' /></Button>
-        : <FontAwesomeIcon icon={faSearch} className='search-icon' />}
+      rightElement={
+        searchTerm ? (
+          <Button onClick={onCancelClick} minimal>
+            <FontAwesomeIcon icon={faTimes} className='search-icon' />
+          </Button>
+        ) : (
+          <FontAwesomeIcon icon={faSearch} className='search-icon' />
+        )
+      }
       value={searchTerm}
       className='search-ccy'
       onChange={setSearchTerm}

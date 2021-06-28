@@ -11,7 +11,8 @@ import PropTypes from 'prop-types'
 import React, { useState, useMemo } from 'react'
 
 import * as utils from '../../../common/utils'
-import { Button, Input } from '../index'
+import Button from '../Button'
+import Input from '../Input'
 
 const DropdownList = (props) => {
   const {
