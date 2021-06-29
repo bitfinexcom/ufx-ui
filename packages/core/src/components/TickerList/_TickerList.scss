@@ -76,7 +76,7 @@ $fav-col-min-width: $ufx-base-size * 1.4;
     }
 
     .ReactVirtualized__Table__sortableHeaderIcon {
-      flex-basis: 12px;
+      flex-basis: $ufx-base-size * 1.2;
     }
 
     .ReactVirtualized__Table__headerColumn:last-of-type,
@@ -103,6 +103,7 @@ $fav-col-min-width: $ufx-base-size * 1.4;
         display: flex;
         align-items: baseline;
         justify-content: flex-start;
+        min-height: auto;
       }
     }
 
