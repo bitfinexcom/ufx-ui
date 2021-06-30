@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.8.4 (2021-06-30)
+
+#### :dizzy: Improvement
+* `bfx-containers`, `core`, `storybook`, `utils`
+  * [#75](https://github.com/bitfinexcom/ufx-ui/pull/75) (Improvement) Tickerlist UI and Table customization ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### Committers: 1
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+
+
 ## v0.8.3 (2021-06-28)
 
 #### :dizzy: Improvement
