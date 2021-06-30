@@ -13,8 +13,16 @@
       height: $ufx-base-size * 4.8;
     }
 
+    .ReactVirtualized__Table__headerColumn,
+    .ReactVirtualized__Table__rowColumn {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
     .ReactVirtualized__Table__headerColumn {
       font-weight: normal;
+      color: $ufx-heading-color;
 
       > * {
         font-size: $ufx-font-size;
@@ -43,10 +51,13 @@
 
     .interactive {
       &.ReactVirtualized__Table__row {
+        transition: all .2s;
+
         &:hover,
         &:focus {
           cursor: pointer;
           background-color: $ufx-table-hover-row-background-color !important;
+          color: $ufx-table-hover-row-color;
         }
 
         &:focus {

@@ -123,7 +123,7 @@ export const TickerList = (props) => {
         defaultSortBy={KEYS.VOLUME}
         defaultSortDirection='DESC'
         headerClassName='ufx-button ufx-button--minimal'
-        rowHeight={32}
+        rowHeight={34}
         interactive
         striped
         noRowsRenderer={noRowsRenderer(t)}

@@ -52,7 +52,6 @@
   .price-change {
     grid-area: price_change;
     justify-self: flex-end;
-    margin-top: $ufx-base-size * -1;
 
     .price {
       grid-area: change;
