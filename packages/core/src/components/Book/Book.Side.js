@@ -1,6 +1,6 @@
 import { groupPrices } from '@ufx-ui/utils'
 import PropTypes from 'prop-types'
-import React, { useMemo, memo } from 'react'
+import React, { useMemo, memo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { DATA_MAPPING } from '../../common/props'
@@ -29,6 +29,7 @@ const BookSide = (props) => {
     rowMapping,
   } = props
   const { t: trans } = useTranslation('book')
+  const rowRef = useRef()
 
   const marks = useMemo(() => groupPrices({
     psnap,
@@ -55,15 +56,17 @@ const BookSide = (props) => {
           zoom={zoom}
           bookViz={bookViz}
           isVertical={isVertical}
+          height={rowRef?.current?.clientHeight}
         />
       </div>
       <div className='rows' style={s}>
-        {psnap.map((value) => {
+        {psnap.map((value, index) => {
           const r = data[value] || {}
           const t = totals[value] || {}
 
           return (
             <Row
+              ref={index === 0 ? rowRef : undefined}
               key={`${id}-${value}`}
               total={t.total}
               isBid={isBid}

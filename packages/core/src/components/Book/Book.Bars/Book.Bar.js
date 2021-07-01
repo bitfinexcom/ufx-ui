@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { BAR_LINE_HEIGHT } from '../Book.constants'
-
 const Bar = (props) => {
   const {
     index,
@@ -36,7 +34,7 @@ Bar.propTypes = {
 
 Bar.defaultProps = {
   size: 0,
-  height: BAR_LINE_HEIGHT,
+  height: 0,
   xOffset: 1,
 }
 
