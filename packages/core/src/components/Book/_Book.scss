@@ -29,6 +29,7 @@ $ufx-book-side-min-width: $ufx-base-size * 27;
   .row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 0 ($ufx-base-size * 0.5);
     height: $ufx-base-size * 2.2;
     cursor: pointer;
