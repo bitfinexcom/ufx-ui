@@ -1,4 +1,5 @@
 import { groupPrices } from '@ufx-ui/utils'
+import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { useMemo, memo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -56,7 +57,7 @@ const BookSide = (props) => {
           zoom={zoom}
           bookViz={bookViz}
           isVertical={isVertical}
-          height={rowRef?.current?.clientHeight}
+          height={_get(rowRef, 'current.clientHeight', 0)}
         />
       </div>
       <div className='rows' style={s}>
