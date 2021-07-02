@@ -5,7 +5,6 @@ $notification-font-color: $light-gray5;
   bottom: $ufx-base-size * 1.2;
   right: $ufx-base-size * 0.6;
   z-index: 15;
-  max-height: 80%;
   overflow: auto;
 
   &__wrapper {
