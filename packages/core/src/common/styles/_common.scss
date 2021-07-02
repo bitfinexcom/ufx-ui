@@ -10,10 +10,12 @@
 
 .#{$ns}-center {
   text-align: center !important;
+  justify-content: center;
 }
 
 .#{$ns}-rtl {
   text-align: right !important;
+  justify-content: flex-end;
 }
 
 .#{$ns}-table-wrapper {
