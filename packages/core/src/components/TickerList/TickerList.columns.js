@@ -16,8 +16,10 @@ const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
 
 // label: column header
 // dataKey: represents data in table cell
-// cellStyle : td, th style
-// renderer: for content to be renderered inside td
+// headerStyle : style for table header-cell
+// style : style for table row-cell
+// headerRenderer: renderer for table header-cell
+// renderer: renderer for table row-cell
 const getColumns = ({
   t, getDisplayValue, favs, toggleFav,
   showOnlyFavs, setShowOnlyFavs,
