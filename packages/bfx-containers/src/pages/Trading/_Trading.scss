@@ -19,11 +19,6 @@
     }
   }
 
-  .#{$ns}-table-wrapper {
-    overflow-y: initial;
-    max-height: 100%;
-  }
-
   &__walletlist {
     padding: $ufx-base-size $ufx-base-size * 2.5;
 

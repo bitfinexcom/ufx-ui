@@ -29,3 +29,8 @@
 .#{$ns}-text-muted {
   font-weight: $ufx-font-weight-light;
 }
+
+.#{$ns}-table-wrapper {
+  overflow-y: initial;
+  max-height: 100%;
+}
