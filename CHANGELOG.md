@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## v0.8.5 (2021-07-02)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#83](https://github.com/bitfinexcom/ufx-ui/pull/83) (improvement) Dynamic book bar height ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### :bug: Bug Fix
+* `bfx-containers`
+  * [#81](https://github.com/bitfinexcom/ufx-ui/pull/81) (fix) orderform: remove max price limit when creating sell order with price > 10% of top ask price ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+
+
 ## v0.8.4 (2021-06-30)
 
 #### :dizzy: Improvement
