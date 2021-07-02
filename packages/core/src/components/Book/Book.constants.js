@@ -1,5 +1,3 @@
-export const BAR_LINE_HEIGHT = 17
-
 export const DISPLAYED_ROWS = 24
 
 export const DEFAULT_ZOOM = 100

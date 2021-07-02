@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { BAR_LINE_HEIGHT, BOOK_VIZ_TYPES } from '../Book.constants'
+import { BOOK_VIZ_TYPES } from '../Book.constants'
 import { calculateBarData } from '../Book.helpers'
 import { PROP_BOOK_TRADE } from '../Book.props'
 import { bar as style } from '../Book.styles'
@@ -17,6 +17,7 @@ const BookBars = (props) => {
     zoom,
     bookViz,
     isVertical,
+    height,
   } = props
 
   const barDirection = isBid
@@ -37,13 +38,14 @@ const BookBars = (props) => {
   }))
 
   return (
-    <svg style={style.svg(BAR_LINE_HEIGHT * psnap.length, barDirection)}>
+    <svg style={style.svg(height * psnap.length, barDirection)}>
       {bars.map(bar => [
         <Bar
           key={`market-${bar.index}`}
           index={bar.index}
           size={bar.size}
           color={bar.color}
+          height={height}
         />,
       ])}
     </svg>
@@ -59,6 +61,7 @@ BookBars.propTypes = {
   zoom: PropTypes.number.isRequired,
   bookViz: PropTypes.oneOf(Object.values(BOOK_VIZ_TYPES)).isRequired,
   isVertical: PropTypes.bool,
+  height: PropTypes.number,
 }
 
 BookBars.defaultProps = {
@@ -68,6 +71,7 @@ BookBars.defaultProps = {
   amountMax: null,
   isBid: false,
   isVertical: false,
+  height: 0,
 }
 
 export default memo(BookBars)
