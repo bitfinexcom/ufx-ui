@@ -30,9 +30,7 @@ const getColumns = (args = {}) => {
       headerClassName: 'intent',
       className: 'intent',
       disableSort: true,
-      renderer: ({
-        rowData,
-      }) => {
+      renderer: ({ rowData }) => {
         const id = getDisplayValue(rowData)(KEYS.ID)
 
         const amount = getDisplayValue(rowData)(KEYS.AMOUNT, false)
@@ -42,6 +40,7 @@ const getColumns = (args = {}) => {
           : t('buy_order_title', { id })
 
         const colorClass = Classes.getColors(amount, { strike: 0, includeStrike: true })
+
         if (isMobile) {
           return <span className={isSellOrder ? 'sell' : 'buy'} />
         }

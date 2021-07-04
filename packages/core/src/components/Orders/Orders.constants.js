@@ -46,6 +46,6 @@ export const getStyles = memoizeOne((isMobile) => ({
   CCY: { width: '7%' },
   PRICE: { width: isMobile ? '20%' : '17%' },
   STATUS: { width: isMobile ? '20%' : '13%' },
-  PLACED: { width: '15%' },
+  PLACED: { width: '20%' },
   ACTION: { width: '3%' },
 }))
