@@ -20,7 +20,6 @@
 
 .#{$ns}-table-wrapper {
   overflow-y: scroll;
-  max-height: $ufx-base-size * 35;
   @include styledScrollbar;
 }
 
@@ -30,9 +29,4 @@
 
 .#{$ns}-text-muted {
   font-weight: $ufx-font-weight-light;
-}
-
-.#{$ns}-table-wrapper {
-  overflow-y: initial;
-  max-height: 100%;
 }
