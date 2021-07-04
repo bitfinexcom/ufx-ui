@@ -4,7 +4,7 @@ import { Amount, Price, Order } from './Book.Cells'
 import { KEYS } from './Book.constants'
 import { size } from './Book.styles'
 
-// key: column key
+// dataKey: column key
 // label: column header
 // renderer: for content to be renderered inside td
 const getColumns = (args = {}) => {
@@ -12,7 +12,7 @@ const getColumns = (args = {}) => {
 
   return [
     {
-      key: KEYS.ORDER_COUNT,
+      dataKey: KEYS.ORDER_COUNT,
       label: '',
       cellStyle: size.XS,
       renderer: ({
@@ -26,21 +26,21 @@ const getColumns = (args = {}) => {
         />
       ),
     }, {
-      key: KEYS.COUNT,
+      dataKey: KEYS.COUNT,
       label: t('book:count'),
       cellStyle: size.S,
     }, {
-      key: KEYS.AMOUNT,
+      dataKey: KEYS.AMOUNT,
       label: t('book:amount'),
       cellStyle: size.L,
       renderer: ({ value }) => (<Amount data={value} />),
     }, {
-      key: KEYS.TOTAL,
+      dataKey: KEYS.TOTAL,
       label: t('book:total'),
       cellStyle: size.L,
       renderer: ({ total }) => (<Amount data={total} />),
     }, {
-      key: KEYS.PRICE,
+      dataKey: KEYS.PRICE,
       label: t('book:price'),
       cellStyle: size.L,
       renderer: ({ value, decimals }) => (<Price data={value} decimals={decimals} />),

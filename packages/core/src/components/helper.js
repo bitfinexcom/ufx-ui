@@ -22,7 +22,7 @@ export const getVirtualTableColumns = memoizeOne((
   getColumnsArgs,
   rowMapping,
 ) => {
-  const mappedColumns = getMappedColumns(getColumns(getColumnsArgs))
+  const mappedColumns = getMappedColumns(getColumns(getColumnsArgs), rowMapping)
 
   // transform columns to react-virtualized format
   const transformedColumns = _map(mappedColumns, (col) => {
