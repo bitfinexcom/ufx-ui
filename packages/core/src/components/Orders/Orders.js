@@ -1,9 +1,8 @@
-import { getMappedKey, getMappedColumns } from '@ufx-ui/utils'
+import { getValue } from '@ufx-ui/utils'
 import cx from 'classnames'
 import compose from 'lodash/fp/compose'
-import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { useMemo, memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
@@ -11,11 +10,16 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
-import { Table, Spinner } from '../ui'
+import { getVirtualTableColumns } from '../helper'
+import { Spinner, VirtualTable } from '../ui'
 import getColumns from './Orders.columns'
-import { KEYS } from './Orders.constants'
-import OrdersHeader from './Orders.Header'
-import OrderRow from './Orders.Row'
+import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './Orders.constants'
+
+const noRowsRenderer = (t) => () => (
+  <div className='empty'>
+    <small>{t('no_orders')}</small>
+  </div>
+)
 
 export const Orders = (props) => {
   const {
@@ -27,11 +31,22 @@ export const Orders = (props) => {
     isMobileLayout: isMobile,
   } = props
   const { t } = useTranslation('orders')
-  const keyForId = getMappedKey(KEYS.ID, rowMapping)
-  const classes = cx(Classes.ORDERS, className, {
-    'mobile-table': isMobile,
-  })
-  const columns = useMemo(() => getMappedColumns(getColumns({ t, isMobile }), rowMapping), [t, isMobile, rowMapping])
+
+  const classes = cx(Classes.ORDERS, className)
+  const getDisplayValue = useCallback(
+    (rowData) => getValue({
+      mapping: MAPPING,
+      customMapping: rowMapping,
+      data: rowData,
+    }),
+    [rowMapping],
+  )
+
+  const columns = getVirtualTableColumns(getColumns,
+    {
+      t, isMobile, cancelOrder, getDisplayValue,
+    },
+    rowMapping)
 
   if (loading) {
     return <Spinner />
@@ -39,27 +54,17 @@ export const Orders = (props) => {
 
   return (
     <div className={classes}>
-      <div className={Classes.TABLE_WRAPPER}>
-        <Table condensed striped>
-          <OrdersHeader columns={columns} />
-          <tbody>
-            {orders.map(order => (
-              <OrderRow
-                key={_get(order, keyForId)}
-                columns={columns}
-                rowMapping={rowMapping}
-                data={order}
-                cancelOrder={cancelOrder}
-              />
-            ))}
-          </tbody>
-        </Table>
-        {orders.length === 0 && (
-          <div className='empty'>
-            <small>{t('no_orders')}</small>
-          </div>
-        )}
-      </div>
+      <VirtualTable
+        columns={columns}
+        data={orders}
+          // give default key, dont give customised key
+        defaultSortBy={KEYS.PLACED}
+        defaultSortDirection='DESC'
+        rowHeight={isMobile ? 46 : 34}
+        striped
+        noRowsRenderer={noRowsRenderer(t)}
+        minTableWidth={MIN_TABLE_WIDTH}
+      />
     </div>
   )
 }

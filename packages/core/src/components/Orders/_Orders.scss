@@ -1,12 +1,4 @@
 .#{$ns}-orders {
-  table {
-    table-layout: fixed;
-  }
-  td {
-    vertical-align: middle;
-    word-wrap: break-word;
-  }
-
   .is-monospaced {
     font-feature-settings: "tnum";
   }
@@ -16,14 +8,28 @@
     padding: 1em 0.5em;
   }
 
-  .row {
+  .ReactVirtualized__Table__row {
+    .ReactVirtualized__Table__rowColumn {
+      word-wrap: break-word;
+    }
+
     .intent {
-      position: relative;
       text-align: center;
     }
 
     .pair {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
       .mobile-order-type {
+        display: block;
+        color: $gray5;
+      }
+    }
+
+    .status {
+      .mobile-order-placed {
         display: block;
         color: $gray5;
       }
@@ -44,31 +50,6 @@
 
     .sell {
       background: $intent-error;
-    }
-  }
-
-  &.mobile-table {
-    table {
-      table-layout: auto;
-    }
-
-    td {
-      white-space: nowrap;
-    }
-
-    th, td {
-      padding-right: 14px;
-    }
-  }
-}
-
-.#{$ns}-responsive--sm,
-.#{$ns}-responsive--xs {
-  .#{$ns}-orders {
-    .row {
-      .pair {
-        text-align: left;
-      }
     }
   }
 }
