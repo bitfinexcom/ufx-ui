@@ -1,4 +1,5 @@
-import { OrderHistory, withMobileLayout } from '@ufx-ui/core'
+import { OrderHistory, withMobileLayout, withResponsive } from '@ufx-ui/core'
+import compose from 'lodash/fp/compose'
 import React, { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -22,4 +23,8 @@ const OrderHistoryContainer = (props) => {
   )
 }
 
-export default withMobileLayout()(memo(OrderHistoryContainer))
+export default compose(
+  withResponsive,
+  withMobileLayout(),
+  memo,
+)(OrderHistoryContainer)
