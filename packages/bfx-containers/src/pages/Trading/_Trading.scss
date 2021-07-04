@@ -36,4 +36,9 @@
       }
     }
   }
+
+  // overwrite style
+  .#{$ns}-table-wrapper {
+    overflow-y: initial;
+  }
 }
