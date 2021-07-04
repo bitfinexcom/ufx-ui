@@ -1,9 +1,8 @@
-import { getMappedKey, getMappedColumns } from '@ufx-ui/utils'
+import { getValue } from '@ufx-ui/utils'
 import cx from 'classnames'
 import compose from 'lodash/fp/compose'
-import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { useMemo, memo } from 'react'
+import React, { useCallback, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
@@ -11,11 +10,16 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
-import { Table, Spinner } from '../ui'
+import { getVirtualTableColumns } from '../helper'
+import { VirtualTable, Spinner } from '../ui'
 import getColumns from './OrderHistory.columns'
-import { KEYS } from './OrderHistory.constants'
-import Header from './OrderHistory.Header'
-import Row from './OrderHistory.Row'
+import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './OrderHistory.constants'
+
+const noRowsRenderer = (t) => () => (
+  <div className='empty'>
+    <small>{t('no_orders')}</small>
+  </div>
+)
 
 export const OrderHistory = (props) => {
   const {
@@ -26,39 +30,41 @@ export const OrderHistory = (props) => {
     isMobileLayout: isMobile,
   } = props
   const { t } = useTranslation('orderhistory')
-  const keyForId = getMappedKey(KEYS.ID, rowMapping)
-  const columns = useMemo(() => getMappedColumns(getColumns({ t, isMobile }), rowMapping), [t, isMobile, rowMapping])
+
+  const getDisplayValue = useCallback(
+    (rowData) => getValue({
+      mapping: MAPPING,
+      customMapping: rowMapping,
+      data: rowData,
+    }),
+    [rowMapping],
+  )
+
+  const columns = getVirtualTableColumns(getColumns,
+    {
+      t, isMobile, getDisplayValue,
+    },
+    rowMapping)
 
   if (loading) {
     return <Spinner />
   }
 
-  const classes = cx(Classes.ORDER_HISTORY, className, {
-    'mobile-table': isMobile,
-  })
+  const classes = cx(Classes.ORDER_HISTORY, className)
 
   return (
     <div className={classes}>
-      <div className={Classes.TABLE_WRAPPER}>
-        <Table condensed striped>
-          <Header columns={columns} rowMapping={rowMapping} />
-          <tbody>
-            {orders.map((order) => (
-              <Row
-                key={_get(order, keyForId)}
-                columns={columns}
-                rowMapping={rowMapping}
-                data={order}
-              />
-            ))}
-          </tbody>
-        </Table>
-        {orders.length === 0 && (
-          <div className='empty'>
-            <small>{t('no_orders')}</small>
-          </div>
-        )}
-      </div>
+      <VirtualTable
+        columns={columns}
+        data={orders}
+        // give default key, dont give customised key
+        defaultSortBy={KEYS.PLACED}
+        defaultSortDirection='DESC'
+        rowHeight={isMobile ? 46 : 34}
+        striped
+        noRowsRenderer={noRowsRenderer(t)}
+        minTableWidth={MIN_TABLE_WIDTH}
+      />
     </div>
   )
 }
