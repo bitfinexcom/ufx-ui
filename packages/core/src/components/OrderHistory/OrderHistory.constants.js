@@ -11,7 +11,6 @@ const { AMOUNT_DECIMALS, PRICE_SIG_FIGS } = PLATFORM_SETTINGS
 export const MIN_TABLE_WIDTH = 600
 
 export const KEYS = {
-  ICON: 'icon',
   ID: 'id',
   PAIR: 'pair',
   TYPE: 'type',
@@ -50,8 +49,7 @@ export const getStyles = memoizeOne((isMobile) => ({
   AMOUNT: { width: '15%' },
   CCY: { width: '7%' },
   PRICE: { width: isMobile ? '20%' : '12.5%' },
-  PRICE_AVERAGE: { width: isMobile ? '18%' : '12.5%' },
-  STATUS: { width: isMobile ? '20%' : '13%' },
+  PRICE_AVERAGE: { width: isMobile ? '20%' : '12.5%' },
+  STATUS: { width: isMobile ? '18%' : '13%' },
   PLACED: { width: '15%' },
-  ACTION: { width: '3%' },
 }))
