@@ -28,7 +28,7 @@ export const MAPPING = {
   },
 }
 
-export const styles = {
+export const STYLES = {
   favorite: { width: '8%', justifyContent: 'flex-start' },
   pair: {
     width: '24%',
