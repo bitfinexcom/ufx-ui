@@ -8,7 +8,6 @@ $notification-font-color: $light-gray5;
   overflow: auto;
 
   &__wrapper {
-    max-height: calc(100vh - 100px);
     overflow-y: auto;
     padding: 0 $ufx-base-size * 0.6;
   }
