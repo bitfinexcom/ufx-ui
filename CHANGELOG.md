@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 
 
+## v0.8.7 (2021-07-05)
+
+#### :bug: Bug Fix
+* `core`
+  * [#88](https://github.com/bitfinexcom/ufx-ui/pull/88) (fix) Removed max-height in notification wrapper ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+
 ## v0.8.6 (2021-07-02)
 
 #### :bug: Bug Fix
