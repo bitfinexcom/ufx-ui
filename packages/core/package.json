@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/core",
-  "version": "0.5.3",
+  "version": "0.8.7",
   "description": "UI components",
   "main": "dist/ufx-core.cjs.js",
   "module": "dist/ufx-core.esm.js",
@@ -36,7 +36,7 @@
     "@babel/preset-react": "^7.10.1",
     "@rollup/plugin-url": "^5.0.1",
     "@svgr/rollup": "^5.4.0",
-    "@ufx-ui/eslint-config": "^0.5.0",
+    "@ufx-ui/eslint-config": "^0.8.1",
     "autoprefixer": "^9.8.4",
     "babel-eslint": "^10.0.3",
     "eslint": "^7.11.0",
@@ -62,7 +62,7 @@
     "rollup-plugin-postcss": "4.0.0",
     "rollup-plugin-replace": "2.2.0",
     "rollup-plugin-size-snapshot": "0.11.0",
-    "rollup-plugin-terser": "5.3.0",
+    "rollup-plugin-terser": "7.0.2",
     "scss-bundle": "^3.1.2"
   },
   "dependencies": {
@@ -70,7 +70,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@ufx-ui/utils": "^0.5.1",
+    "@ufx-ui/utils": "^0.8.4",
     "bignumber.js": "^9.0.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
@@ -91,6 +91,7 @@
     "react-popper-tooltip": "^2.11.1",
     "react-transition-group": "^4.4.1",
     "react-virtualized": "^9.22.3",
+    "sass": "^1.34.1",
     "yup": "^0.29.1"
   },
   "publishConfig": {

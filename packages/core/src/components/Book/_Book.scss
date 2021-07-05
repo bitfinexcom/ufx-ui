@@ -8,7 +8,8 @@ $ufx-book-side-min-width: $ufx-base-size * 27;
     justify-content: space-between;
     text-align: right;
     min-height: $ufx-book-main-min-height;
-    font-weight: $ufx-font-weight-bold;
+    font-weight: $ufx-font-weight-semibold;
+    color: $ufx-text-color;
   }
 
   .vertical {
@@ -22,13 +23,15 @@ $ufx-book-side-min-width: $ufx-base-size * 27;
   .rows {
     display: flex;
     flex-direction: column;
+    font-feature-settings: "tnum";
   }
 
   .row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 0 ($ufx-base-size * 0.5);
-    height: $ufx-base-size * 1.7;
+    height: $ufx-base-size * 2.2;
     cursor: pointer;
 
     &:hover,
@@ -69,6 +72,7 @@ $ufx-book-side-min-width: $ufx-base-size * 27;
     text-transform: none;
     padding: 3px;
     font-size: $ufx-base-size * 1.4;
+    color: $ufx-heading-color;
 
     & > div {
       padding: 0 $ufx-base-size * 0.5;

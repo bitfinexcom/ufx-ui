@@ -38,10 +38,10 @@ const TradingContainer = (props) => {
     [dispatch],
   )
 
-  const onTickerChange = useCallback((symbol, data) => {
-    const { baseCcy, quoteCcy } = data
+  const onTickerChange = useCallback(({ rowData }) => {
+    const { baseCcy, quoteCcy, id } = rowData
     dispatch(notifyInfo(`${i18n.t('trading:switching_to')} ${baseCcy}/${quoteCcy}`))
-    history.push(`/trading/${urlPairFunc(symbol)}`)
+    history.push(`/trading/${urlPairFunc(id)}`)
   }, [dispatch, history])
 
   const isAuthenticated = useSelector(getWSIsAuthenticated)

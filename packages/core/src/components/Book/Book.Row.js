@@ -2,13 +2,13 @@ import { getValue } from '@ufx-ui/utils'
 import cx from 'classnames'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { memo } from 'react'
+import React, { memo, forwardRef } from 'react'
 
 import { DATA_MAPPING } from '../../common/props'
 import * as utils from '../../common/utils'
 import { KEYS } from './Book.constants'
 
-const BookRow = (props) => {
+const BookRow = forwardRef((props, ref) => {
   const {
     total,
     isBid,
@@ -40,6 +40,7 @@ const BookRow = (props) => {
 
   return (
     <div
+      ref={ref}
       key={`${price}`}
       className={className}
       tabIndex='0'
@@ -78,7 +79,7 @@ const BookRow = (props) => {
       })}
     </div>
   )
-}
+})
 
 BookRow.propTypes = {
   total: PropTypes.number.isRequired,

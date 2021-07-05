@@ -1,15 +1,18 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import _includes from 'lodash/includes'
+import _isEmpty from 'lodash/isEmpty'
 import _isFunction from 'lodash/isFunction'
 import _keys from 'lodash/keys'
 import _pickBy from 'lodash/pickBy'
 import _toLower from 'lodash/toLower'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 
 import * as utils from '../../../common/utils'
+import Button from '../Button'
+import Input from '../Input'
 
 const DropdownList = (props) => {
   const {
@@ -17,72 +20,96 @@ const DropdownList = (props) => {
     options,
     optionRenderer,
     searchable,
-    searchModifier,
     onChange,
+    onSearchTermChange,
   } = props
   const [searchTerm, setSearchTerm] = useState('')
-  const filtered = _pickBy(options, (optionValue, optionKey) => {
-    const val = _isFunction(searchModifier) ? searchModifier(optionValue) : optionValue
-    const key = _isFunction(searchModifier) ? searchModifier(optionKey) : optionKey
-    const search = _isFunction(searchModifier) ? searchModifier(searchTerm) : searchTerm
 
-    return (
-      !searchTerm
-        || _includes(_toLower(key), _toLower(search))
-        || _includes(_toLower(val), _toLower(search))
-    )
-  })
-  const keys = _keys(filtered)
+  const filtered = useMemo(() => {
+    if (!searchable || _isEmpty(searchTerm) || _isFunction(onSearchTermChange)) {
+      return options
+    }
 
-  const handleSearchTermClick = (e) => {
-    e.stopPropagation()
-    setSearchTerm(e.target.value)
+    return _pickBy(options, (optionValue, optionKey) => !searchTerm
+          || _includes(_toLower(optionKey), _toLower(searchTerm))
+          || _includes(_toLower(optionValue), _toLower(searchTerm)))
+  },
+  [options, searchTerm, searchable, onSearchTermChange])
+
+  const keys = useMemo(() => _keys(filtered), [filtered])
+
+  const updateSearchTerm = (_value) => {
+    if (_isFunction(onSearchTermChange)) {
+      onSearchTermChange(_value)
+    }
+    setSearchTerm(_value)
+  }
+
+  const handleSearchTermChange = (_value, event) => {
+    event.stopPropagation()
+    updateSearchTerm(_value)
+  }
+
+  const onCancelClick = () => {
+    updateSearchTerm('')
   }
 
   return (
-    <ul className='list'>
+    <div className='list-wrapper'>
       {searchable && (
-        <li>
+        <div className='list-search-wrapper'>
           <div className='list-search'>
-            <input
+            <Input
+              small
+              rightElement={searchTerm
+                ? (
+                  <Button onClick={onCancelClick} minimal>
+                    <FontAwesomeIcon icon={faTimes} className='search-icon' />
+                  </Button>
+                )
+                : <FontAwesomeIcon icon={faSearch} className='search-icon' />}
+              value={searchTerm}
+              className='search-ccy'
+              onChange={handleSearchTermChange}
               type='text'
               autoComplete='off'
-              value={searchTerm}
-              onChange={handleSearchTermClick}
             />
-            <FontAwesomeIcon className='search-icon' icon={faSearch} />
           </div>
-        </li>
+        </div>
       )}
-      {keys.map((key) => (
-        <li key={key}>
-          <div
-            className={cx('list-item', {
-              'list-item--active': value === key,
-            })}
-            onClick={() => onChange(key)}
-            onKeyPress={utils.handleKeyboardEvent('Enter', () => onChange(key))}
-            tabIndex={0}
-            role='button'
-            value={key}
-          >
-            {!optionRenderer
-              ? options[key]
-              : optionRenderer(key, options[key])}
-          </div>
-        </li>
-      ))}
-    </ul>
+      <div className='list-scroller'>
+        <ul className='list'>
+          {keys.map((key) => (
+            <li key={key}>
+              <div
+                className={cx('list-item', {
+                  'list-item--active': value === key,
+                })}
+                onClick={() => onChange(key)}
+                onKeyPress={utils.handleKeyboardEvent('Enter', () => onChange(key))}
+                tabIndex={0}
+                role='button'
+                value={key}
+              >
+                {!optionRenderer
+                  ? options[key]
+                  : optionRenderer(key, options[key])}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   )
 }
 
 DropdownList.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  // eslint-disable-next-line react/forbid-prop-types
-  options: PropTypes.object.isRequired,
+  options: PropTypes.objectOf(PropTypes.string).isRequired,
   optionRenderer: PropTypes.func,
   searchable: PropTypes.bool,
   onChange: PropTypes.func,
+  onSearchTermChange: PropTypes.func,
 }
 
 DropdownList.defaultProps = {
@@ -90,6 +117,7 @@ DropdownList.defaultProps = {
   optionRenderer: null,
   searchable: false,
   onChange: () => { },
+  onSearchTermChange: null,
 }
 
 export default DropdownList

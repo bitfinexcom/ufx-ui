@@ -1,4 +1,4 @@
-export const apiUrl = process.env.REACT_APP_UFX_PUBLIC_API_URL || 'api.bitfinex.com'
+export const apiUrl = process.env.REACT_APP_UFX_PUBLIC_API_URL || 'https://api.bitfinex.com'
 
 export const wssUrl = process.env.REACT_APP_UFX_WSS_URL || 'wss://api-pub.bitfinex.com/ws/2'
 

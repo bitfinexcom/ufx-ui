@@ -14,7 +14,7 @@ $button-border-color: $gray5;
     button {
       background-color: $button-bg-color;
       font-size: $ufx-base-size * 1.5;
-      font-weight: $ufx-font-weight-bold;
+      font-weight: $ufx-font-weight-semibold;
       padding: $ufx-base-size * 0.8 $ufx-base-size * 2;
 
       &:disabled {

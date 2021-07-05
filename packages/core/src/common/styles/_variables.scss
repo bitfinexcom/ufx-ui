@@ -25,11 +25,14 @@ $ufx-base-size: 10px !default;
 
 $ufx-font-family: sans-serif !default;
 
-$ufx-font-size: $ufx-base-size * 1.4 !default;
+$ufx-font-size: $ufx-base-size * 1.3 !default;
 
 $ufx-line-height: $ufx-base-size * 1.7 !default;
 
-$ufx-font-weight-bold: 600;
+$ufx-font-weight-bold: 700;
+$ufx-font-weight-semibold: 600;
+$ufx-font-weight-medium: 500;
+$ufx-font-weight-normal: 400;
 $ufx-font-weight-light: 300;
 
 $ufx-border-radius: 4px !default;

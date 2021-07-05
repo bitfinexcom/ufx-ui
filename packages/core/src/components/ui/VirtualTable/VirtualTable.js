@@ -3,14 +3,14 @@ import cx from 'classnames'
 import _get from 'lodash/get'
 import _size from 'lodash/size'
 import PropTypes from 'prop-types'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { AutoSizer, Table, Column } from 'react-virtualized'
 
 import * as Classes from '../../../common/classes'
 import { getSortedData as getSortedDataHelper, sortData } from './VirtualTable.helpers'
 
 const VirtualTable = ({
-  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive,
+  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive, striped, headerClassName, noRowsRenderer,
 }) => {
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
@@ -60,13 +60,18 @@ const VirtualTable = ({
               rowHeight={rowHeight}
               rowGetter={({ index }) => _get(processedData, index)}
               rowCount={_size(processedData)}
-              rowClassName={interactive ? 'hover' : undefined}
+              rowClassName={cx({
+                interactive,
+                striped,
+              })}
               onRowClick={onRowClick}
               headerHeight={headerHeight}
               disableHeader={false}
               sort={onSort}
               sortBy={sortBy}
               sortDirection={sortDirection}
+              headerClassName={headerClassName}
+              noRowsRenderer={noRowsRenderer}
             >
               {columns.map((c = {}) => (
                 <Column
@@ -94,7 +99,10 @@ VirtualTable.propTypes = {
   defaultSortBy: PropTypes.string,
   defaultSortDirection: PropTypes.oneOf(['ASC', 'DESC']),
   className: PropTypes.string,
+  headerClassName: PropTypes.string,
   interactive: PropTypes.bool,
+  striped: PropTypes.bool,
+  noRowsRenderer: PropTypes.func,
 }
 
 VirtualTable.defaultProps = {
@@ -108,7 +116,10 @@ VirtualTable.defaultProps = {
   sortedDataPostProcessor: () => { },
   getSortedData: getSortedDataHelper,
   className: null,
+  headerClassName: null,
   interactive: false,
+  striped: false,
+  noRowsRenderer: () => {},
 }
 
-export default React.memo(VirtualTable)
+export default memo(VirtualTable)

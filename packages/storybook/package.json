@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/storybook",
-  "version": "0.5.3",
+  "version": "0.8.7",
   "description": "stories for ufx-ui",
   "private": true,
   "homepage": "https://github.com/bitfinexcom/ufx-ui#readme",
@@ -8,10 +8,9 @@
   "license": "Apache-2.0",
   "scripts": {
     "install:peer": "install-peers -f",
-    "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook",
-    "deploy:storybook": "storybook-to-ghpages --remote=upstream",
-    "build": "npm run build:storybook",
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook",
+    "deploy": "storybook-to-ghpages --remote=upstream",
     "test:snapshots": "jest --testPathPattern=./storyshots.test.js",
     "test:snapshots:watch": "jest --testPathPattern=./storyshots.test.js --watch",
     "test": "npm run test:snapshots"
@@ -45,6 +44,6 @@
     "react-redux": "^7.2.1"
   },
   "dependencies": {
-    "@ufx-ui/core": "^0.5.3"
+    "@ufx-ui/core": "^0.8.7"
   }
 }

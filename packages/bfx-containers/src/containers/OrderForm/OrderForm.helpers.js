@@ -24,7 +24,7 @@ export const validatePrice = (isBuy, price, topAsk, topBid) => {
   const isSell = !isBuy
 
   const topAskMax = topAsk * 1.1
-  if (price > topAskMax) {
+  if (!isSell && price > topAskMax) {
     errors.push(i18n.t('orderform:buy_price_out_of_range', { maxPrice: setSigFig(topAskMax), priceDeltaPercent: 10 }))
   }
 

@@ -29,6 +29,7 @@ export const Ticker = (props) => {
     data,
   })
 
+  const baseCcy = getDisplayValue(KEYS.BASE_CCY)
   const quoteCcy = getDisplayValue(KEYS.QUOTE_CCY)
   const changePerc = getDisplayValue(KEYS.CHANGE_PERC, false)
 
@@ -45,6 +46,7 @@ export const Ticker = (props) => {
       value,
       formattedValue,
       data,
+      baseCcy,
       quoteCcy,
       volumeUnit,
     })
@@ -54,8 +56,7 @@ export const Ticker = (props) => {
     <div className={classes}>
       <div className='info'>
         {ccyIcon && <div className='ccy-icon'>{ccyIcon}</div>}
-        <div className='highlight'>{renderCell(KEYS.BASE_CCY)}</div>
-        <div className='quote-ccy'>{renderCell(KEYS.QUOTE_CCY)}</div>
+        {renderCell(KEYS.BASE_CCY)}
         {showCoinInfoIcon && (
           <Button
             className='info-icon'

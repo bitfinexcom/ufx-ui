@@ -2,11 +2,12 @@ $ufx-table-row-height: $ufx-base-size * 4 !default;
 $ufx-table-row-height-small: $ufx-base-size * 3 !default;
 $ufx-table-border-width: 1px !default;
 $ufx-table-border-color: $ufx-divider-black !default;
-$ufx-table-header-font-weight: $ufx-font-weight-bold;
+$ufx-table-header-font-weight: $ufx-font-weight-semibold;
 
 $ufx-table-even-row-background-color: $ufx-background-color !default;
 $ufx-table-odd-row-background-color: $light-gray6 !default;
 $ufx-table-hover-row-background-color: rgba($gray5, 0.2) !default;
+$ufx-table-hover-row-color: $dark-gray1 !default;
 $ufx-table-active-row-background-color: rgba($gray5, 0.3) !default;
 
 @mixin table-base {

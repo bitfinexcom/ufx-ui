@@ -7,6 +7,7 @@ export const KEYS = {
   QUOTE_CCY: 'quoteCcy',
   LAST_PRICE: 'lastPrice',
   CHANGE_PERC: 'changePerc',
+  CCY_LABELS: 'ccyLabels',
   VOLUME: 'volume',
 }
 
@@ -25,4 +26,18 @@ export const MAPPING = {
     defaultValue: 0,
     format: formatVolume,
   },
+}
+
+export const styles = {
+  favorite: { width: '8%', justifyContent: 'flex-start' },
+  pair: {
+    width: '24%',
+    justifyContent: 'flex-start',
+    wordBreak: 'break-all',
+    whiteSpace: 'normal',
+    lineHeight: 1,
+  },
+  lastPrice: { width: '24%', justifyContent: 'flex-end' },
+  changePerc: { width: '18%', justifyContent: 'flex-end' },
+  volume: { width: '26%', justifyContent: 'flex-end' },
 }

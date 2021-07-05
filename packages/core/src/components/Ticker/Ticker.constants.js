@@ -18,8 +18,13 @@ export const KEYS = {
 }
 
 export const MAPPING = {
-  [KEYS.QUOTE_CCY]: {
-    renderer: ({ formattedValue }) => `/ ${formattedValue}`,
+  [KEYS.BASE_CCY]: {
+    renderer: ({ baseCcy, quoteCcy }) => (
+      <>
+        <div className='highlight'>{baseCcy}</div>
+        /<div className='quote-ccy'>{quoteCcy}</div>
+      </>
+    ),
   },
   [KEYS.LAST_PRICE]: {
     defaultValue: 0,

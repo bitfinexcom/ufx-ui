@@ -25,7 +25,7 @@ const props = {
   zoom: 50,
   updateZoom: () => {},
   currentPair: 'BTC/UST',
-  theme: 'eosfinex-dark-theme',
+  theme: 'dark-theme',
 }
 
 const tests = describe('DepthChart', () => {

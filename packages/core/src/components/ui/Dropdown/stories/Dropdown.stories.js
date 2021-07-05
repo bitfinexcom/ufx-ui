@@ -9,7 +9,13 @@ export default getDefaultMetadata(Dropdown, 'Components/ui/Dropdown', {}, true)
 const props = {
   options: {
     BTC: 'Bitcoin',
-    Eth: 'Ethereum',
+    ETH: 'Ethereum',
+    USDT: 'Tether',
+    ADA: 'Cardano',
+    DOGE: 'Dogecoin',
+    XRP: 'XRP',
+    DOT: 'Polkadot',
+    UNI: 'Uniswap',
   },
   value: 'BTC',
 }

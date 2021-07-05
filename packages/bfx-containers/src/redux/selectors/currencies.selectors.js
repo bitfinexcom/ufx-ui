@@ -95,19 +95,6 @@ export const getAllPaperCurrencies = createSelector(
   (currenciesInfo) => _keys(_pickBy(currenciesInfo, (ccy) => ccy.paper)),
 )
 
-// read only currencies are only used for eosfinex
-export const getIsEosfinexCurrency = createSelector(
-  getCurrenciesInfo,
-  (_, pair) => pair,
-  (currenciesInfo, pair) => {
-    const first = firstInPair(pair, true)
-    const last = lastInPair(pair, true)
-    const isReadOnly = _get(currenciesInfo, `${first}.readOnly`, false)
-      || _get(currenciesInfo, `${last}.readOnly`, false)
-    return isReadOnly
-  },
-)
-
 export const getIsFundingCcy = createSelector(
   getCurrenciesInfo,
   (ccysInfo) => (

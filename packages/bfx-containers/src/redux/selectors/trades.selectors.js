@@ -11,28 +11,39 @@ const EMPTY_OBJ = {}
 
 export const getTrades = (state) => _get(getUfxState(state), 'trades', EMPTY_OBJ)
 
-// symbol : ticker symbol/key i.e. tBTCUSD, TDUSK:USD, tXAUT:UST
-export const getTradeForChannelID = createSelector(
+export const getTradesChannel = createSelector(
   [
-    getTrades,
     getWSChannels,
     (_, symbol) => symbol,
   ],
-  (trades, wsChannels, symbol) => {
-    const tradesChannel = findMatchingChannel(wsChannels, {
-      ...SUBSCRIPTION_CONFIG,
-      symbol,
-    })
+  (wsChannels, symbol) => findMatchingChannel(wsChannels, {
+    ...SUBSCRIPTION_CONFIG,
+    symbol,
+  }),
+)
+
+// symbol : ticker symbol/key i.e. tBTCUSD, TDUSK:USD, tXAUT:UST
+export const getTradeForSymbol = createSelector(
+  [
+    getTrades,
+    getTradesChannel,
+  ],
+  (trades, tradesChannel) => {
     const chanId = _get(tradesChannel, 'chanId')
 
     return _get(trades, [chanId], EMPTY_OBJ)
   },
 )
 
-export const hasFetchedTrades = (state, symbol) => !_isEmpty(getTradeForChannelID(state, symbol))
+export const isSubscribedToTrades = createSelector(
+  getTradesChannel,
+  (channel) => !_isEmpty(channel),
+)
+
+export const hasFetchedTrades = (state, symbol) => !_isEmpty(getTradeForSymbol(state, symbol))
 
 export const getRecentTrades = createSelector(
-  [getTradeForChannelID],
+  [getTradeForSymbol],
   (trades) => {
     if (!trades) {
       return undefined // loading state
@@ -46,5 +57,5 @@ export default {
   getTrades,
   getRecentTrades,
   hasFetchedTrades,
-  getTradeForChannelID,
+  getTradeForSymbol,
 }

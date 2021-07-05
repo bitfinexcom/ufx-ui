@@ -1,6 +1,10 @@
 .#{$ns}-trades {
   line-height: $ufx-base-size * 1.4;
 
+  tbody {
+    font-feature-settings: "tnum";
+  }
+
   &__error {
     text-align: center;
     padding: 1em 0.5em;
