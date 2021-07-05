@@ -23,7 +23,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     error,
     small,
     helpMessage,
-    helpMessageClassname,
+    helpMessageClassName,
     ...rest
   } = props
   const checkboxRef = useRef(null)
@@ -91,7 +91,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
 
   if (!_isEmpty(helpMessage)) {
     return (
-      <Tooltip className={helpMessageClassname} content={helpMessage}>
+      <Tooltip className={helpMessageClassName} content={helpMessage}>
         {component}
       </Tooltip>
     )
@@ -144,7 +144,7 @@ Checkbox.propTypes = {
   /**
    * A classname for the tooltip with help message.
    */
-  helpMessageClassname: PropTypes.string,
+  helpMessageClassName: PropTypes.string,
 }
 
 Checkbox.defaultProps = {
@@ -157,7 +157,7 @@ Checkbox.defaultProps = {
   error: '',
   small: false,
   helpMessage: '',
-  helpMessageClassname: '',
+  helpMessageClassName: '',
 }
 
 export default Checkbox
