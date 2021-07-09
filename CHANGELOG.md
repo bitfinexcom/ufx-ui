@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.8.8 (2021-07-09)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#82](https://github.com/bitfinexcom/ufx-ui/pull/82) (improvement): Checkbox added classname for tooltip ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
 
 ## v0.8.7 (2021-07-05)
 
