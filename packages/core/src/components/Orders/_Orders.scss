@@ -19,7 +19,7 @@
       align-items: flex-start;
 
       .mobile-order-type {
-        display: block;
+        display: grid; // use display grid to show truncate(...) symbol
         color: $gray5;
       }
     }

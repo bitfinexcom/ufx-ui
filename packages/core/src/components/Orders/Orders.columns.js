@@ -5,7 +5,7 @@ import React from 'react'
 
 import * as Classes from '../../common/classes'
 import { getDefaultCellRenderer } from '../helper'
-import { Tooltip, CooldownButton } from '../ui'
+import { Tooltip, Truncate, CooldownButton } from '../ui'
 import { KEYS, CANCEL_TIMEOUT_MS, getStyles } from './Orders.constants'
 
 // label: column header
@@ -69,7 +69,7 @@ const getColumns = (args = {}) => {
 
         return (
           <div>
-            <span>{formattedValue}</span>
+            <Truncate><span>{formattedValue}</span></Truncate>
             {isMobile && (
               <span className='mobile-order-type'>
                 {type}
