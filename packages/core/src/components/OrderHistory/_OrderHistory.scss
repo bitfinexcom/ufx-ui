@@ -15,14 +15,13 @@
 
     .pair {
       .mobile-order-type {
-        display: block;
+        display: grid; // use display grid to show truncate(...) symbol
         color: $gray5;
       }
     }
 
     .status {
       .mobile-order-placed {
-        display: block;
         color: $gray5;
       }
     }
