@@ -1,16 +1,21 @@
-import { OrderHistory } from '@ufx-ui/core'
-import React, { memo } from 'react'
+import { OrderHistory, withMobileLayout, withResponsive } from '@ufx-ui/core'
+import compose from 'lodash/fp/compose'
+import React, { memo, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import useOrders from '../../hooks/useOrders'
-import { ROW_MAPPING } from './OrderHistory.constants'
+import { getMapping } from './OrderHistory.constants'
 
 const OrderHistoryContainer = (props) => {
   const { loading, ordersHistory: orders } = useOrders(true)
+  const { t } = useTranslation('orderhistory')
+  const { isMobileLayout } = props
+  const mapping = useMemo(() => getMapping(t, isMobileLayout), [isMobileLayout, t])
 
   return (
     <OrderHistory
       orders={orders}
-      rowMapping={ROW_MAPPING}
+      rowMapping={mapping}
       loading={loading}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
@@ -18,4 +23,8 @@ const OrderHistoryContainer = (props) => {
   )
 }
 
-export default memo(OrderHistoryContainer)
+export default compose(
+  withResponsive,
+  withMobileLayout(),
+  memo,
+)(OrderHistoryContainer)

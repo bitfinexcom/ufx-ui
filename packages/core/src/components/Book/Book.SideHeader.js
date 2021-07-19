@@ -20,13 +20,13 @@ const SideHeader = (props) => {
   return (
     <div style={s} className='header'>
       {columns.map(({
-        key,
+        dataKey,
         label,
         headerCellClassName,
         cellStyle,
       }) => (
         <div
-          key={key}
+          key={dataKey}
           style={cellStyle}
           className={headerCellClassName}
         >

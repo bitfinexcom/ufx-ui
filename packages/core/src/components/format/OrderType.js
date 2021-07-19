@@ -1,7 +1,9 @@
+import _size from 'lodash/size'
 import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Tooltip } from '../ui'
+import Truncate from '../ui/Truncate'
 
 export const ORDER_TYPES = {
   EXCHANGE_LIMIT: 'EXCHANGE LIMIT',
@@ -29,13 +31,19 @@ const OrderType = (props) => {
 
   const types = getTypes(children)
 
-  if (types.length === 0) {
+  if (_size(types) === 0) {
     return null
+  }
+
+  const type = formatType(types[0])
+
+  if (_size(types) === 1) {
+    return <Truncate>{type}</Truncate>
   }
 
   return (
     <>
-      {formatType(types[0])}
+      {type}
 
       {types.length > 1 && (
         <>

@@ -37,7 +37,7 @@ export const getMappingForKey = (customMapping = {}) => (key) => {
   return customKey || key
 }
 
-export const getVisibleColumns = (columns, customMapping = {}) => _filter(columns, ({ key }) => !_get(customMapping, [key, 'hidden'], false))
+export const getVisibleColumns = (columns, customMapping = {}) => _filter(columns, ({ dataKey }) => !_get(customMapping, [dataKey, 'hidden'], false))
 
 export const getOrderedColumns = (columns, customMapping = {}) => {
   const hasOrdering = _values(customMapping).some(row => !Number.isNaN(row.index))
@@ -46,7 +46,7 @@ export const getOrderedColumns = (columns, customMapping = {}) => {
     return columns
   }
 
-  const indexedColumns = _map(columns, column => ({ ...column, index: _get(customMapping, [column.key, 'index'], null) }))
+  const indexedColumns = _map(columns, column => ({ ...column, index: _get(customMapping, [column.dataKey, 'index'], null) }))
   const sortedColumns = _sortBy(indexedColumns, ['index', 'asc'])
 
   return sortedColumns

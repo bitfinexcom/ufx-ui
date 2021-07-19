@@ -6,7 +6,7 @@ import React from 'react'
 
 import { getColors } from '../../common/classes'
 import { Button } from '../ui'
-import { KEYS, styles } from './TickerList.constants'
+import { KEYS, STYLES } from './TickerList.constants'
 import { Favorite, Volume } from './TickerList.Header'
 
 const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
@@ -16,8 +16,10 @@ const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
 
 // label: column header
 // dataKey: represents data in table cell
-// cellStyle : td, th style
-// renderer: for content to be renderered inside td
+// headerStyle : style for table header-cell
+// style : style for table row-cell
+// headerRenderer: renderer for table header-cell
+// renderer: renderer for table row-cell
 const getColumns = ({
   t, getDisplayValue, favs, toggleFav,
   showOnlyFavs, setShowOnlyFavs,
@@ -28,8 +30,8 @@ const getColumns = ({
       <Favorite showOnlyFavs={showOnlyFavs} setShowOnlyFavs={setShowOnlyFavs} />
     ),
     dataKey: KEYS.ID,
-    headerStyle: styles.favorite,
-    style: styles.favorite,
+    headerStyle: STYLES.favorite,
+    style: STYLES.favorite,
     disableSort: true,
     renderer: ({ dataKey, rowData }) => {
       const id = _get(rowData, dataKey)
@@ -57,8 +59,8 @@ const getColumns = ({
   }, {
     label: t('tickerlist:pair'),
     dataKey: KEYS.BASE_CCY,
-    headerStyle: styles.pair,
-    style: styles.pair,
+    headerStyle: STYLES.pair,
+    style: STYLES.pair,
     renderer: ({ rowData }) => {
       const baseCcy = getDisplayValue(rowData)(KEYS.BASE_CCY)
       const quoteCcy = getDisplayValue(rowData)(KEYS.QUOTE_CCY)
@@ -75,15 +77,15 @@ const getColumns = ({
   }, {
     label: t('tickerlist:last_price'),
     dataKey: KEYS.LAST_PRICE,
-    headerStyle: styles.lastPrice,
-    style: styles.lastPrice,
+    headerStyle: STYLES.lastPrice,
+    style: STYLES.lastPrice,
     renderer: getFormattedValue(getDisplayValue),
   },
   {
     label: t('tickerlist:24h_change'),
     dataKey: KEYS.CHANGE_PERC,
-    headerStyle: styles.changePerc,
-    style: styles.changePerc,
+    headerStyle: STYLES.changePerc,
+    style: STYLES.changePerc,
     renderer: ({ dataKey, rowData }) => {
       const formattedValue = getDisplayValue(rowData)(dataKey)
       const value = getDisplayValue(rowData)(dataKey, false)
@@ -102,8 +104,8 @@ const getColumns = ({
       volumeUnitList={volumeUnitList}
     />,
     dataKey: KEYS.VOLUME,
-    headerStyle: styles.volume,
-    style: styles.volume,
+    headerStyle: STYLES.volume,
+    style: STYLES.volume,
     renderer: getFormattedValue(getDisplayValue),
   },
 ]

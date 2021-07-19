@@ -4,128 +4,158 @@ import cx from 'classnames'
 import React from 'react'
 
 import * as Classes from '../../common/classes'
-import { KEYS } from './OrderHistory.constants'
+import { getDefaultCellRenderer } from '../helper'
+import { Tooltip, Truncate } from '../ui'
+import { KEYS, getStyles } from './OrderHistory.constants'
 
-// key: column key
 // label: column header
-// cellStyle : td, th style
-// headerCellClassName: th classname
-// cellClassName: td classname
-// renderer: for content to be renderered inside td
-// truncate: for cell content to be truncated with ellipsis
+// datadataKey: represents data in table cell
+// headerStyle : style for table header-cell
+// style : style for table row-cell
+// headerRenderer: renderer for table header-cell
+// renderer: renderer for table row-cell
 const getColumns = (args = {}) => {
-  const { t, isMobile } = args
+  const { t, isMobile, getDisplayValue } = args
+
+  const styles = getStyles(isMobile)
 
   return [
     {
-      key: KEYS.ICON,
+      dataKey: KEYS.ID,
       label: '',
-      cellStyle: { width: '3%' },
-      cellClassName: 'intent',
-      truncate: false,
-      renderer: ({
-        orderTitle, colorClass, isSellOrder,
-      }) => {
+      headerStyle: styles.ID,
+      style: styles.ID,
+      headerClassName: 'intent',
+      className: 'intent',
+      renderer: ({ rowData }) => {
+        const id = getDisplayValue(rowData)(KEYS.ID)
+
+        const amount = getDisplayValue(rowData)(KEYS.AMOUNT, false)
+        const isSellOrder = amount < 0
+        const orderTitle = isSellOrder
+          ? t('sell_order_title', { id })
+          : t('buy_order_title', { id })
+
+        const colorClass = Classes.getColors(amount, { strike: 0, includeStrike: true })
+
         if (isMobile) {
           return <span className={isSellOrder ? 'sell' : 'buy'} />
         }
 
         return (
-          <span title={orderTitle}>
+          <Tooltip content={orderTitle} persistent>
             <FontAwesomeIcon
               icon={faCircle}
               className={colorClass}
               size='sm'
             />
-          </span>
+          </Tooltip>
         )
       },
     },
     {
-      key: KEYS.PAIR,
+      dataKey: KEYS.PAIR,
       label: t('pair'),
-      cellStyle: { width: isMobile ? '17%' : '12%' },
-      cellClassName: 'pair',
-      truncate: true,
-      renderer: ({
-        formattedValue, type,
-      }) => (
-        <>
-          {formattedValue}
-          {isMobile && (
-            <span className='mobile-order-type'>
-              {type}
-            </span>
-          )}
-        </>
-      ),
+      headerStyle: styles.PAIR,
+      style: styles.PAIR,
+      headerClassName: 'pair',
+      className: 'pair',
+      renderer: ({ rowData, dataKey }) => {
+        const formattedValue = getDisplayValue(rowData)(dataKey)
+        const type = getDisplayValue(rowData)(KEYS.TYPE)
+
+        return (
+          <div>
+            <Truncate><span>{formattedValue}</span></Truncate>
+            {isMobile && (
+              <span className='mobile-order-type'>
+                {type}
+              </span>
+            )}
+          </div>
+        )
+      },
     },
     ...(isMobile ? [] : [
       {
-        key: KEYS.TYPE,
+        dataKey: KEYS.TYPE,
         label: t('type'),
-        cellStyle: { width: '10%' },
-        truncate: true,
+        headerStyle: styles.TYPE,
+        style: styles.TYPE,
+        // dont truncate TYPE to avoid showing two tooltips on hover
+        renderer: getDefaultCellRenderer(getDisplayValue, false),
       },
     ]),
     {
-      key: KEYS.AMOUNT,
+      dataKey: KEYS.AMOUNT,
       label: t('amount'),
-      cellStyle: { width: '15%' },
-      headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
-      truncate: true,
+      headerStyle: styles.AMOUNT,
+      style: styles.AMOUNT,
+      headerClassName: Classes.RIGHT_TO_LEFT,
+      className: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
+      renderer: getDefaultCellRenderer(getDisplayValue),
     },
     {
-      key: KEYS.BASE_CCY,
+      dataKey: KEYS.BASE_CCY,
       label: t('ccy'),
-      cellStyle: { width: '7%' },
-      headerCellClassName: Classes.CENTER,
-      cellClassName: Classes.CENTER,
-      truncate: true,
+      headerStyle: styles.CCY,
+      style: styles.CCY,
+      headerClassName: Classes.CENTER,
+      className: Classes.CENTER,
+      renderer: getDefaultCellRenderer(getDisplayValue),
     },
     {
-      key: KEYS.PRICE,
+      dataKey: KEYS.PRICE,
       label: t('price'),
-      cellStyle: { width: isMobile ? '20%' : '12.5%' },
-      headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
-      truncate: true,
+      headerStyle: styles.PRICE,
+      style: styles.PRICE,
+      headerClassName: Classes.RIGHT_TO_LEFT,
+      className: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
+      renderer: getDefaultCellRenderer(getDisplayValue),
     },
     {
-      key: KEYS.PRICE_AVERAGE,
+      dataKey: KEYS.PRICE_AVERAGE,
       label: t('average_price'),
-      cellStyle: { width: isMobile ? '18%' : '12.5%' },
-      headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
-      truncate: true,
+      headerStyle: styles.PRICE_AVERAGE,
+      style: styles.PRICE_AVERAGE,
+      headerClassName: Classes.RIGHT_TO_LEFT,
+      className: cx(Classes.RIGHT_TO_LEFT, 'is-monospaced'),
+      renderer: getDefaultCellRenderer(getDisplayValue),
     },
     {
-      key: KEYS.STATUS,
+      dataKey: KEYS.STATUS,
       label: t('status'),
-      cellStyle: { width: isMobile ? '20%' : '13%' },
-      headerCellClassName: isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER,
-      cellClassName: cx('status', isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER),
-      truncate: true,
-      renderer: ({
-        formattedValue, placed,
-      }) => (
-        <>
-          {formattedValue}
-          {isMobile && (
-            <span className='mobile-order-placed'>
-              {placed}
-            </span>
-          )}
-        </>
-      ),
+      headerStyle: styles.STATUS,
+      style: styles.STATUS,
+      headerClassName: isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER,
+      className: cx('status', isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER),
+      renderer: ({ rowData, dataKey }) => {
+        if (!isMobile) {
+          return getDefaultCellRenderer(getDisplayValue)({ rowData, dataKey })
+        }
+
+        const formattedValue = getDisplayValue(rowData)(dataKey)
+        const placed = getDisplayValue(rowData)(KEYS.PLACED)
+
+        return (
+          <div style={{ display: 'grid' }}>
+            <Truncate><span>{formattedValue}</span></Truncate>
+            <Truncate>
+              <span className='mobile-order-placed'>
+                {placed}
+              </span>
+            </Truncate>
+          </div>
+        )
+      },
     },
     ...(isMobile ? [] : [
       {
-        key: KEYS.PLACED,
+        dataKey: KEYS.PLACED,
         label: t('placed'),
-        cellStyle: { width: '15%' },
-        truncate: true,
+        headerStyle: styles.PLACED,
+        style: styles.PLACED,
+        renderer: getDefaultCellRenderer(getDisplayValue),
       },
     ]),
   ]

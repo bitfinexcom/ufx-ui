@@ -13,7 +13,6 @@ const props = {
 }
 
 const {
-  ICON,
   ID,
   PAIR,
   TYPE,
@@ -32,9 +31,6 @@ export const basic = showTemplateStory(Component, props)
 export const customRowMapping = showTemplateStory(Component, {
   ...props,
   rowMapping: {
-    [ID]: {
-      hidden: true,
-    },
     [BASE_CCY]: {
       hidden: true,
     },
@@ -47,7 +43,7 @@ export const customRowMapping = showTemplateStory(Component, {
     [PLACED]: {
       hidden: true,
     },
-    [ICON]: {
+    [ID]: {
       index: 0,
       truncate: true,
     },
