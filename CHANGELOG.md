@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.9.0 (2021-07-19)
+
+#### :zap: Performance
+* `bfx-containers`, `core`, `storybook`, `utils`
+  * [#87](https://github.com/bitfinexcom/ufx-ui/pull/87) (improvement) Orders/OrderHistory: render with VirtualTable ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.8.8 (2021-07-09)
 
 #### :dizzy: Improvement
