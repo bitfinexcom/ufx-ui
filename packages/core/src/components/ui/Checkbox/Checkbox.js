@@ -76,7 +76,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
 
       <Label
         label={label || ''}
-        className={cx({ disabled })}
+        className={cx({ disabled, 'label-help': Boolean(helpMessage) })}
         tag='div'
         small={small}
       />
