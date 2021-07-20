@@ -11,3 +11,9 @@ export const SUBSCRIPTION_CONFIG = {
   freq: FREQUENCY.F0,
   len: '25',
 }
+
+export const BOOK_TOP_SUBSCRIPTION_CONFIG = {
+  channel: 'book',
+  freq: FREQUENCY.F0,
+  len: '100',
+}

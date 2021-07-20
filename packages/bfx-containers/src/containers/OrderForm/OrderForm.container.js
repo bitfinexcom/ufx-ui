@@ -11,7 +11,7 @@ import useCommonBfxData from '../../hooks/useCommonBfxData'
 import { notifyError } from '../../redux/actions/notifications.actions'
 import { submitOrder as submitOrderAction } from '../../redux/actions/orders.actions'
 import { WSResubscribeChannel } from '../../redux/actions/ws.actions'
-import { SUBSCRIPTION_CONFIG } from '../../redux/constants/book.constants'
+import { BOOK_TOP_SUBSCRIPTION_CONFIG } from '../../redux/constants/book.constants'
 import { ORDERS_REDUCER_SAGA_KEY, ORDERS_NOTIF_REDUCER_SAGA_KEY } from '../../redux/constants/orders.constants'
 import ordersNotifSaga from '../../redux/sagas/orderNotifications.saga'
 import ordersSaga from '../../redux/sagas/orders.saga'
@@ -37,8 +37,8 @@ const OrderFormContainer = forwardRef((props, ref) => {
     dispatch,
   } = useCommonBfxData(baseCcy, quoteCcy)
 
-  const topAsk = useSelector(getBookTopAsk)
-  const topBid = useSelector(getBookTopBid)
+  const topAsk = useSelector(state => getBookTopAsk(state, symbol))
+  const topBid = useSelector(state => getBookTopBid(state, symbol))
   const getCcySymbol = useSelector(getCurrencySymbol)
   const lastPriceReq = useSelector(getUIOrderformPrice)
 
@@ -46,8 +46,7 @@ const OrderFormContainer = forwardRef((props, ref) => {
   useEffect(() => {
     if (isWSConnected) {
       dispatch(WSResubscribeChannel({
-        ...SUBSCRIPTION_CONFIG,
-        len: '100',
+        ...BOOK_TOP_SUBSCRIPTION_CONFIG,
         symbol,
       }))
     }

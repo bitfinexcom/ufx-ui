@@ -44,12 +44,12 @@ const DepthChartContainer = ({
   const tAsks = useSelector(state => getBooktAsks(state, symbol))
   const tBids = useSelector(state => getBooktBids(state, symbol))
 
-  const asksTop = useSelector(getBookTopAsks)
-  const bidsTop = useSelector(getBookTopBids)
-  const pAsksTop = useSelector(getBookTopPasks)
-  const pBidsTop = useSelector(getBookTopPbids)
-  const tAsksTop = useSelector(getBookTopTasks)
-  const tBidsTop = useSelector(getBookTopTbids)
+  const asksTop = useSelector(state => getBookTopAsks(state, symbol))
+  const bidsTop = useSelector(state => getBookTopBids(state, symbol))
+  const pAsksTop = useSelector(state => getBookTopPasks(state, symbol))
+  const pBidsTop = useSelector(state => getBookTopPbids(state, symbol))
+  const tAsksTop = useSelector(state => getBookTopTasks(state, symbol))
+  const tBidsTop = useSelector(state => getBookTopTbids(state, symbol))
 
   const snapshotReceived = useSelector(state => getBookSnapshotReceived(state, symbol))
   const zoom = useSelector(getUIDepthChartZoom)
