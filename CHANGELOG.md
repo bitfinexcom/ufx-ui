@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## v0.9.1 (2021-07-20)
+
+#### :bug: Bug Fix
+* `core`, `storybook`
+  * [#93](https://github.com/bitfinexcom/ufx-ui/pull/93) (fix) Checkbox: showing help-cursor only if helpMessage prop is given ([@dmytroshch](https://github.com/dmytroshch))
+* `bfx-containers`
+  * [#92](https://github.com/bitfinexcom/ufx-ui/pull/92) (fix) error: can not read property of undefined ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+
 ## v0.9.0 (2021-07-19)
 
 #### :zap: Performance
