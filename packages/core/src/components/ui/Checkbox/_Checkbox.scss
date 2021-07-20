@@ -58,8 +58,12 @@ $checkbox-label-margin: 0 ($ufx-base-size * 0.5) 0 ($ufx-base-size * 2.5) !defau
   .#{$ns}-label {
     display: flex;
     margin: $checkbox-label-margin;
-    cursor: help;
+    cursor: pointer;
     @include disabled();
+  }
+
+  .label-help {
+    cursor: help;
   }
 
   .error {
