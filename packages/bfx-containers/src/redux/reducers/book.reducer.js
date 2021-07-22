@@ -37,23 +37,24 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
     : action.type
 
   switch (type) {
-    // trading snapshot
-    case types.BOOK_SNAPSHOT_MESSAGE: {
-      const chanId = payload[0]
-
-      return {
-        ...state,
-        [chanId]: {
-          channel,
-          snapshotReceived: true,
-          ...tAdapter.snapshot(payload, opts),
-        },
-      }
-    }
-
-    // trading update
+    // book snapshot and update
+    case types.BOOK_SNAPSHOT_MESSAGE:
     case types.BOOK_UPDATE_MESSAGE: {
       const chanId = payload[0]
+
+      // book snapshot
+      if (!state?.[chanId]?.snapshotReceived) {
+        return {
+          ...state,
+          [chanId]: {
+            channel,
+            snapshotReceived: true,
+            ...tAdapter.snapshot(payload, opts),
+          },
+        }
+      }
+
+      /* book update logic start */
 
       // return if there is no snapshot state for the channel
       const allChanIds = _keys(state)
@@ -62,14 +63,17 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
       }
 
       const prevState = state[chanId]
+      const newState = tAdapter.update(payload, prevState, opts)
 
       return {
         ...state,
         [chanId]: {
           ...prevState,
-          ...tAdapter.update(payload, prevState, opts),
+          ...newState,
         },
       }
+
+      /* book update logic end */
     }
 
     case types.BOOK_RESET_MESSAGE: {
