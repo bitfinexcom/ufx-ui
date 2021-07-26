@@ -31,13 +31,13 @@ export const MAPPING = {
 export const STYLES = {
   favorite: { width: '8%', justifyContent: 'flex-start' },
   pair: {
-    width: '24%',
+    width: '28%',
     justifyContent: 'flex-start',
     wordBreak: 'break-all',
     whiteSpace: 'normal',
     lineHeight: 1,
   },
-  lastPrice: { width: '24%', justifyContent: 'flex-end' },
+  lastPrice: { width: '20%', justifyContent: 'flex-end' },
   changePerc: { width: '18%', justifyContent: 'flex-end' },
   volume: { width: '26%', justifyContent: 'flex-end' },
 }
