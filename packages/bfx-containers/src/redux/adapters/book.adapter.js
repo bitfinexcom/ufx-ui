@@ -1,4 +1,6 @@
+import _isArray from 'lodash/isArray'
 import _pickBy from 'lodash/pickBy'
+import _reduce from 'lodash/reduce'
 import _size from 'lodash/size'
 
 const getId = (row = {}) => row.price
@@ -42,13 +44,11 @@ const snapshot = (payload = [], args = {}) => {
   }
 }
 
-const update = (payload = [], state = {}, args = {}) => {
+const updateRow = (rawData, state = {}, opts = {}) => {
   const {
-    getRawData,
     getSides,
     isBookTop = false,
-  } = args
-  const rawData = getRawData(payload)
+  } = opts
   const row = adapter(rawData)
   const id = getId(row)
   const { side, other } = getSides(row, isBid)
@@ -78,9 +78,25 @@ const update = (payload = [], state = {}, args = {}) => {
     : remaining
 
   return {
+    ...state,
     [side]: sideData,
     [other]: otherData,
   }
+}
+
+function update(payload = [], state, opts = {}) {
+  const {
+    getRawData,
+  } = opts
+  const raw = getRawData(payload)
+
+  // bulk update
+  if (_isArray(raw[0])) {
+    return _reduce(raw, (newState, rawRow) => updateRow(rawRow, newState, opts), state)
+  }
+
+  // update single row
+  return updateRow(raw, state, opts)
 }
 
 export default {

@@ -1,6 +1,6 @@
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Tooltip } from '@ufx-ui/core'
+import { Tooltip, Truncate } from '@ufx-ui/core'
 import _capitalize from 'lodash/capitalize'
 import _head from 'lodash/head'
 import _trim from 'lodash/trim'
@@ -58,10 +58,10 @@ const OrderStatus = (props = {}) => {
           <FontAwesomeIcon size='sm' icon={faInfoCircle} />
         </Tooltip>
       </>
-    ) : mainStatus
+    ) : <Truncate>{mainStatus}</Truncate>
   }
 
-  return formatStatus(status)
+  return <Truncate>{formatStatus(status)}</Truncate>
 }
 
 OrderStatus.propTypes = {

@@ -26,21 +26,21 @@ const Spread = (props) => {
     <div className='spread'>
       <div className='row'>
         {columns.map(({
-          key,
+          dataKey,
           cellClassName,
           cellStyle,
           renderer: defRenderer,
         }) => {
-          const renderer = _get(customMapping, [key, 'renderer'], defRenderer)
+          const renderer = _get(customMapping, [dataKey, 'renderer'], defRenderer)
 
           return (
             <div
-              key={key}
+              key={dataKey}
               className={cellClassName}
               style={cellStyle}
             >
-              {renderer && (key === KEYS.TOTAL || key === KEYS.PRICE) ? renderer({
-                value: key === KEYS.TOTAL ? total : spread,
+              {renderer && (dataKey === KEYS.TOTAL || dataKey === KEYS.PRICE) ? renderer({
+                value: dataKey === KEYS.TOTAL ? total : spread,
                 decimals,
                 total,
               }) : ''}

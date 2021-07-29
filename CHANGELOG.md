@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 
 
 
+## v0.9.1 (2021-07-20)
+
+#### :bug: Bug Fix
+* `core`, `storybook`
+  * [#93](https://github.com/bitfinexcom/ufx-ui/pull/93) (fix) Checkbox: showing help-cursor only if helpMessage prop is given ([@dmytroshch](https://github.com/dmytroshch))
+* `bfx-containers`
+  * [#92](https://github.com/bitfinexcom/ufx-ui/pull/92) (fix) error: can not read property of undefined ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+
+## v0.9.0 (2021-07-19)
+
+#### :zap: Performance
+* `bfx-containers`, `core`, `storybook`, `utils`
+  * [#87](https://github.com/bitfinexcom/ufx-ui/pull/87) (improvement) Orders/OrderHistory: render with VirtualTable ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.8.8 (2021-07-09)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#82](https://github.com/bitfinexcom/ufx-ui/pull/82) (improvement): Checkbox added classname for tooltip ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 ## v0.8.7 (2021-07-05)
 
 #### :bug: Bug Fix

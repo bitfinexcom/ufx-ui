@@ -5,14 +5,47 @@ import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import { createSelector } from 'reselect'
 
+import { BOOK_TOP_SUBSCRIPTION_CONFIG } from '../constants/book.constants'
 import { getTotals } from './book.selectors'
 import { getUfxState } from './common'
+import { getWSChannels, findMatchingChannel } from './ws.selectors'
 
 const EMPTY_OBJ = {}
 
 export const getBookTop = (state) => _get(getUfxState(state), 'bookTop', EMPTY_OBJ)
-export const getBookTopAsks = (state) => getBookTop(state).asks
-export const getBookTopBids = (state) => getBookTop(state).bids
+
+export const getBookTopChannel = createSelector(
+  [
+    getWSChannels,
+    (_, symbol) => symbol,
+  ],
+  (wsChannels, symbol) => findMatchingChannel(wsChannels, {
+    ...BOOK_TOP_SUBSCRIPTION_CONFIG,
+    symbol,
+  }),
+)
+
+export const getBookTopForSymbol = createSelector(
+  [
+    getBookTop,
+    getBookTopChannel,
+  ],
+  (book, bookChannel) => {
+    const chanId = _get(bookChannel, 'chanId')
+
+    return _get(book, [chanId], EMPTY_OBJ)
+  },
+)
+
+export const getBookTopAsks = createSelector(
+  getBookTopForSymbol,
+  (book) => _get(book, 'asks'),
+)
+
+export const getBookTopBids = createSelector(
+  getBookTopForSymbol,
+  (book) => _get(book, 'bids'),
+)
 
 export const getBookTopPasks = createSelector(
   [getBookTopAsks],

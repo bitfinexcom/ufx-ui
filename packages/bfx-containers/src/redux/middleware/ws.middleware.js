@@ -2,6 +2,7 @@ import { i18n } from '@ufx-ui/core'
 import _get from 'lodash/get'
 
 import { wssUrl } from '../../functions/config.selectors'
+import { SOCKET_FLAGS } from '../../utils/ws'
 import {
   notifySuccess,
   notifyError,
@@ -11,6 +12,7 @@ import {
   WSConnected,
   WSDisconnected,
   WSMessage,
+  WSSend,
 } from '../actions/ws.actions'
 import types from '../constants/ws.constants'
 import { getWSConnected, getWSReconnectRetries } from '../selectors/ws.selectors'
@@ -27,6 +29,8 @@ const isOffline = (socket) => (_get(socket, 'readyState') !== SOCKET_STATE_OPEN)
 
 const onOpen = ({ dispatch }) => () => {
   dispatch(WSConnected())
+  dispatch(WSSend({ event: 'conf', flags: SOCKET_FLAGS }))
+
   dispatch(notifySuccess(i18n.t('common:websocket_connected')))
 }
 

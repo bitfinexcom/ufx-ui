@@ -6,6 +6,6 @@ import OrderStatus from '../format/OrderStatus'
 
 export const ROW_MAPPING = {
   [KEYS.STATUS]: {
-    renderer: ({ value }) => <OrderStatus status={value} />,
+    renderer: ({ cellData }) => <OrderStatus status={cellData} />,
   },
 }

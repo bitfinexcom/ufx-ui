@@ -1,16 +1,4 @@
 .#{$ns}-order-history {
-  .#{$ns}-table-wrapper {
-    max-height: none;
-  }
-
-  table {
-    table-layout: fixed;
-  }
-
-  td {
-    word-wrap: break-word;
-  }
-
   .is-monospaced {
     font-feature-settings: "tnum";
   }
@@ -20,22 +8,20 @@
     padding: 1em 0.5em;
   }
 
-  .row {
+  .ReactVirtualized__Table__row {
     .intent {
-      position: relative;
       text-align: center;
     }
 
     .pair {
       .mobile-order-type {
-        display: block;
+        display: grid; // use display grid to show truncate(...) symbol
         color: $gray5;
       }
     }
 
     .status {
       .mobile-order-placed {
-        display: block;
         color: $gray5;
       }
     }
@@ -59,33 +45,6 @@
 
     .amount {
       white-space: nowrap;
-    }
-  }
-
-  &.mobile-table {
-    table {
-      table-layout: auto;
-    }
-
-    td {
-      white-space: nowrap;
-    }
-
-    th,
-    td {
-      padding-right: $ufx-base-size * 1.4;
-      white-space: nowrap;
-    }
-  }
-}
-
-.#{$ns}-responsive--sm,
-.#{$ns}-responsive--xs {
-  .#{$ns}-order-history {
-    .row {
-      .pair {
-        text-align: left;
-      }
     }
   }
 }

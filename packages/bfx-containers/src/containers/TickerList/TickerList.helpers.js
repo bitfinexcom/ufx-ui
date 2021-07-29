@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { buildPair, getPairParts } from '@ufx-ui/utils'
+import _get from 'lodash/get'
 import _isEmpty from 'lodash/isEmpty'
 
 import { convertVolume as convertVolumeFunc } from '../../utils/ticker'
@@ -17,8 +18,8 @@ export const prepareTickers = (keys, tickers, tickerVolUnit = 'USD', getCurrency
     .map(symbol => {
       const [baseCcy, quoteCcy] = getPairParts(symbol)
       const ticker = tickers[symbol]
-      const tickerVolume = ticker.volume || 0
-      const tickerPrice = ticker.lastPrice || 0
+      const tickerVolume = _get(ticker, 'volume', 0)
+      const tickerPrice = _get(ticker, 'lastPrice', 0)
 
       const volumeConverted = convertVolume({
         volume: tickerVolume,
