@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.1 (2021-07-30)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#96](https://github.com/bitfinexcom/ufx-ui/pull/96) (improvement) TickerList: improved styles of TickerList (row height) ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+## v0.10.0 (2021-07-22)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#94](https://github.com/bitfinexcom/ufx-ui/pull/94) (improvement) book: receive bulk updates ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 
 ## v0.9.1 (2021-07-20)
 
