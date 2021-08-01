@@ -20,7 +20,7 @@ const getColumns = (args = {}) => {
     {
       key: KEYS.ID,
       label: '',
-      cellStyle: { width: '10%' },
+      cellStyle: { width: '5%' },
       renderer: ({ isBuy }) => {
         const icon = isBuy
           ? faChevronUp
@@ -32,13 +32,25 @@ const getColumns = (args = {}) => {
     {
       key: KEYS.MTS,
       label: t('trades:time'),
-      cellStyle: { width: '30%' },
+      cellStyle: { width: '25%' },
       renderer: ({ formattedValue }) => <Time mts={formattedValue} />,
+    },
+    {
+      key: KEYS.PRICE,
+      label: t('trades:price'),
+      cellStyle: { width: '28%', textAlign: 'right' },
+      renderer: ({ formattedValue }) => (
+        <PrettyValue
+          value={formattedValue}
+          sigFig={PRICE_SIG_FIGS}
+          fadeTrailingZeros
+        />
+      ),
     },
     {
       key: KEYS.AMOUNT,
       label: t('trades:amount'),
-      cellStyle: { width: '30%' },
+      cellStyle: { width: '42%', textAlign: 'right' },
       renderer: ({ formattedValue }) => (
         <PrettyValue
           value={formattedValue}
@@ -46,18 +58,6 @@ const getColumns = (args = {}) => {
           decimals={TRADE_AMOUNT_DECIMALS}
           fadeTrailingZeros
           absolute
-        />
-      ),
-    },
-    {
-      key: KEYS.PRICE,
-      label: t('trades:price'),
-      cellStyle: { width: '30%' },
-      renderer: ({ formattedValue }) => (
-        <PrettyValue
-          value={formattedValue}
-          sigFig={PRICE_SIG_FIGS}
-          fadeTrailingZeros
         />
       ),
     },
