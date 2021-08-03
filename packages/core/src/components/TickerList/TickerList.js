@@ -117,7 +117,8 @@ export const TickerList = (props) => {
     if (width > 370) {
       return 34
     }
-    return 50
+
+    return 42
   }
 
   return (
