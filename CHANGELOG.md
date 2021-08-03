@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.2 (2021-08-03)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#99](https://github.com/bitfinexcom/ufx-ui/pull/99) (improvement) trades: reorder columns, right-align price and amount ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.10.1 (2021-07-30)
 
 #### :dizzy: Improvement
