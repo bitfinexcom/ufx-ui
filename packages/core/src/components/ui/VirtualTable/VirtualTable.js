@@ -5,13 +5,15 @@ import _isNumber from 'lodash/isNumber'
 import _size from 'lodash/size'
 import PropTypes from 'prop-types'
 import React, { useState, useEffect, memo } from 'react'
-import { AutoSizer, Table, Column } from 'react-virtualized'
+import {
+  AutoSizer, Table, Column, defaultTableRowRenderer,
+} from 'react-virtualized'
 
 import * as Classes from '../../../common/classes'
 import { getSortedData as getSortedDataHelper, sortData } from './VirtualTable.helpers'
 
 const VirtualTable = ({
-  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive, striped, headerClassName, noRowsRenderer, minTableWidth,
+  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive, striped, headerClassName, noRowsRenderer, minTableWidth, rowRenderer,
 }) => {
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
@@ -73,6 +75,7 @@ const VirtualTable = ({
               sortDirection={sortDirection}
               headerClassName={headerClassName}
               noRowsRenderer={noRowsRenderer}
+              rowRenderer={rowRenderer}
             >
               {columns.map((c = {}) => (
                 <Column
@@ -104,6 +107,7 @@ VirtualTable.propTypes = {
   interactive: PropTypes.bool,
   striped: PropTypes.bool,
   noRowsRenderer: PropTypes.func,
+  rowRenderer: PropTypes.func,
   minTableWidth: PropTypes.number,
 }
 
@@ -122,6 +126,7 @@ VirtualTable.defaultProps = {
   interactive: false,
   striped: false,
   noRowsRenderer: () => {},
+  rowRenderer: defaultTableRowRenderer,
   minTableWidth: null,
 }
 
