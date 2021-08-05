@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.3 (2021-08-05)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#102](https://github.com/bitfinexcom/ufx-ui/pull/102) (improvement) Tickerlist improvements ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.10.2 (2021-08-03)
 
 #### :dizzy: Improvement
