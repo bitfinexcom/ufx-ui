@@ -19,6 +19,7 @@ import withI18nProvider from '../../hoc/withI18nProvider'
 import { VirtualTable } from '../ui'
 import getColumns from './TickerList.columns'
 import { MAPPING, KEYS } from './TickerList.constants'
+import { rowRenderer } from './TickerList.helpers'
 import TickerListToolbar from './TickerList.Toolbar'
 
 const noRowsRenderer = (t) => () => (
@@ -117,7 +118,8 @@ export const TickerList = (props) => {
     if (width > 370) {
       return 34
     }
-    return 50
+
+    return 42
   }
 
   return (
@@ -138,6 +140,7 @@ export const TickerList = (props) => {
         interactive
         striped
         noRowsRenderer={noRowsRenderer(t)}
+        rowRenderer={rowRenderer}
       />
     </div>
   )
