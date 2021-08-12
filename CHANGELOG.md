@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.5 (2021-08-12)
+
+#### :dizzy: Improvement
+* `core`
+  * [#107](https://github.com/bitfinexcom/ufx-ui/pull/107) (improvement) tickers: truncate columns ([@bhoomij](https://github.com/bhoomij))
+* `core`, `storybook`
+  * [#106](https://github.com/bitfinexcom/ufx-ui/pull/106) (improvement) style updates ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.10.4 (2021-08-10)
 
 #### :bug: Bug Fix
