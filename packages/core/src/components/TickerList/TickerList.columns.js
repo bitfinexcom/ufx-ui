@@ -5,14 +5,10 @@ import _get from 'lodash/get'
 import React from 'react'
 
 import { getColors } from '../../common/classes'
-import { Button } from '../ui'
+import { getDefaultCellRenderer } from '../helper'
+import { Button, Truncate } from '../ui'
 import { KEYS, STYLES } from './TickerList.constants'
 import { Favorite, Volume } from './TickerList.Header'
-
-const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
-  const formattedValue = getDisplayValue(rowData)(dataKey, true)
-  return formattedValue
-}
 
 // label: column header
 // dataKey: represents data in table cell
@@ -85,7 +81,7 @@ const getColumns = ({
     style: STYLES.lastPrice,
     width: 63,
     flexGrow: 1,
-    renderer: getFormattedValue(getDisplayValue),
+    renderer: getDefaultCellRenderer(getDisplayValue),
   },
   {
     label: t('tickerlist:24h_change'),
@@ -99,9 +95,11 @@ const getColumns = ({
       const value = getDisplayValue(rowData)(dataKey, false)
 
       return (
-        <span className={getColors(value, { strike: 0, includeStrike: true })}>
-          {formattedValue}
-        </span>
+        <Truncate>
+          <span className={getColors(value, { strike: 0, includeStrike: true })}>
+            {formattedValue}
+          </span>
+        </Truncate>
       )
     },
   }, {
@@ -116,7 +114,7 @@ const getColumns = ({
     style: STYLES.volume,
     width: 82,
     flexGrow: 1,
-    renderer: getFormattedValue(getDisplayValue),
+    renderer: getDefaultCellRenderer(getDisplayValue),
   },
 ]
 
