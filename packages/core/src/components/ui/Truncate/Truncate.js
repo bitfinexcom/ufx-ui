@@ -13,6 +13,7 @@ const Truncate = forwardRef(function Truncate({ className, children, ...rest }, 
         content={children}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
+        className={`${Classes.TRUNCATE}--tooltip`}
       >
         {children}
       </Tooltip>

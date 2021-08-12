@@ -13,6 +13,7 @@ module.exports = {
     '../../core/src/components/TickerList/**/*.stories.js',
     '../../bfx-containers/src/containers/TickerList/**/*.stories.js',
     '../../core/src/components/ui/VirtualTable/**/*.stories.js',
+    '../../core/src/components/format/**/*.stories.js',
   ],
   addons: [
     '@storybook/preset-scss',
