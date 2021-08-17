@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.6 (2021-08-17)
+
+#### :bug: Bug Fix
+* `core`
+  * [#109](https://github.com/bitfinexcom/ufx-ui/pull/109) (fix) book: row visualisation color not working ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.10.5 (2021-08-12)
 
 #### :dizzy: Improvement
