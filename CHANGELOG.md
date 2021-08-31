@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.7 (2021-08-31)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#111](https://github.com/bitfinexcom/ufx-ui/pull/111) (improvement) tickerlist, currencies updates ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.10.6 (2021-08-17)
 
 #### :bug: Bug Fix
