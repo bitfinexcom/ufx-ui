@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/bfx-containers",
-  "version": "0.10.6",
+  "version": "0.10.7",
   "description": "",
   "main": "dist/ufx-bfx-containers.cjs.js",
   "module": "dist/ufx-bfx-containers.esm.js",
