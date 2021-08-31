@@ -26,6 +26,7 @@ const requests = [
   'pub:list:currency:paper',
   'pub:list:currency:viewonly',
   'pub:info:tx:status', // [CURRENCY, status_dep, status_wd, null, null, null, null, payment_id_dep, payment_id_wd]
+  'pub:list:pair:securities',
 ]
 
 export function* requestCurrenciesInfo() {

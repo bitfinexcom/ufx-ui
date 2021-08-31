@@ -9,6 +9,7 @@ import {
   getIsPaperCcy,
   getIsTradingPair,
   getIsReadonlyCurrency,
+  getIsSecuritiesPair,
 } from './currencies.selectors'
 import { getUIIsPaperTrading } from './UI.selectors'
 
@@ -26,19 +27,20 @@ export const getTicker = createSelector(
 export const getTradingTickerKeys = createSelector(
   getTickers,
   getIsTradingPair,
+  getIsSecuritiesPair,
   getUIIsPaperTrading,
   getIsPaperCcy,
   getIsReadonlyCurrency,
-  (tickers, isTradingPair, isPaperTrading, isPaperCcy, isReadonlyCcy) => {
+  (tickers, isTradingPair, isSecuritiesPair, isPaperTrading, isPaperCcy, isReadonlyCcy) => {
     if (_isEmpty(tickers)) {
       return EMPTY_ARR
     }
 
     return _keys(tickers).filter(symbol => {
       const ccy = firstInPair(symbol)
-      return isTradingPair(symbol)
+
+      return isTradingPair(symbol) && !isReadonlyCcy(symbol) && !isSecuritiesPair(symbol)
       && ((isPaperTrading && isPaperCcy(ccy)) || (!isPaperTrading && !isPaperCcy(ccy)))
-      && !isReadonlyCcy(symbol)
     })
   },
 )

@@ -25,6 +25,7 @@ const CCY_FUTURES_INDEX = 10
 const CCY_PAPER_INDEX = 11
 const CCY_READONLY_INDEX = 12
 const CCY_TX_STATUS_INDEX = 13
+const PAIR_SECURITIES_INDEX = 14
 
 const CCY_TX_STATUS_PAYLOAD = {
   CCY_INDEX: 0,
@@ -183,6 +184,7 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
             exchange: payload[PAIR_EXCHANGE_INDEX],
             margin: payload[PAIR_MARGIN_INDEX],
             derivative: payload[PAIR_DERIVATIVE_INDEX],
+            securities: payload[PAIR_SECURITIES_INDEX],
           },
         )
       )

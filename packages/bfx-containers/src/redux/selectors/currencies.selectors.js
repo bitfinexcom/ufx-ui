@@ -78,6 +78,15 @@ export const getIsDerivativePair = createSelector(
   ),
 )
 
+export const getIsSecuritiesPair = createSelector(
+  getPairsInfo,
+  (pairsInfo) => (
+    pairsInfo
+      ? (pair) => _get(pairsInfo[removePrefix(pair)], 'securities', false)
+      : () => null
+  ),
+)
+
 export const getIsPaperCcy = createSelector(
   getCurrenciesInfo,
   (currenciesInfo) => (
@@ -246,4 +255,5 @@ export default {
   getCurrencyPool,
   getCurrencyTxMethod,
   getCurrencyLabel,
+  getIsSecuritiesPair,
 }
