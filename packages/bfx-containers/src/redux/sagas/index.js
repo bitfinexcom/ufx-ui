@@ -6,7 +6,7 @@ import notificationsSaga from './notifications.saga'
 import tickersSaga from './ticker.saga'
 import wsSaga from './ws.saga'
 
-export { wsSaga, tickersSaga }
+export { wsSaga, tickersSaga, currenciesSaga }
 
 export default function* rootSaga() {
   // add common non-injected sagas here...
