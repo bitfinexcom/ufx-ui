@@ -4,6 +4,7 @@ import { Transition } from 'react-transition-group'
 
 import * as Classes from '../../../common/classes'
 import Portal from '../Portal'
+import { DIALOG_CONTAINER_ID } from './Dialog.constants'
 import Modal from './Dialog.Modal'
 
 // eslint-disable-next-line prefer-arrow-callback
@@ -45,7 +46,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
   }, [isOpen])
 
   return (
-    <Portal ref={ref} id='dialog-container' target={document.body}>
+    <Portal ref={ref} id={DIALOG_CONTAINER_ID} target={document.body}>
       <Transition
         in={isOpen}
         timeout={300}

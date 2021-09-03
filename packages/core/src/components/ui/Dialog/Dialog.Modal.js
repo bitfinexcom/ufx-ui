@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
 
 import * as Classes from '../../../common/classes'
+import { DIALOG_CONTAINER_ID } from './Dialog.constants'
 
 const Modal = forwardRef(({
   state,
@@ -21,7 +22,11 @@ const Modal = forwardRef(({
   textAlign,
 }, ref) => (
   /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-  <FocusTrap>
+  <FocusTrap
+    focusTrapOptions={{
+      fallbackFocus: document.getElementById(DIALOG_CONTAINER_ID),
+    }}
+  >
     <div className={cx(Classes.DIALOG)}>
       <div
         className={cx('background', state, {
