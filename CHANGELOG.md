@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## v0.10.8 (2021-09-03)
+
+#### :bug: Bug Fix
+* `core`
+  * [#113](https://github.com/bitfinexcom/ufx-ui/pull/113) (fix) Dialog: provide fallbackFocus to FocusTrap to avoid crash when no tabbable node ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.10.7 (2021-08-31)
 
 #### :dizzy: Improvement
