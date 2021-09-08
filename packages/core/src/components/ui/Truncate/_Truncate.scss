@@ -3,4 +3,10 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+
+  &--tooltip {
+    .#{$ns}-fade-trailing-zeros {
+      opacity: 1;
+    }
+  }
 }

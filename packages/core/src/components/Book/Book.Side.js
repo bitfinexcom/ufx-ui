@@ -1,7 +1,9 @@
 import { groupPrices } from '@ufx-ui/utils'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
-import React, { useMemo, memo, useRef } from 'react'
+import React, {
+  useMemo, memo, useRef, useEffect, useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { DATA_MAPPING } from '../../common/props'
@@ -10,6 +12,8 @@ import { BOOK_VIZ_TYPES } from './Book.constants'
 import { PROP_ORDER, PROP_BOOK, PROP_BOOK_TRADE } from './Book.props'
 import Row from './Book.Row'
 import SideHeader from './Book.SideHeader'
+
+const getHeight = ref => _get(ref, 'current.clientHeight', 0)
 
 const BookSide = (props) => {
   const {
@@ -31,6 +35,11 @@ const BookSide = (props) => {
   } = props
   const { t: trans } = useTranslation('book')
   const rowRef = useRef()
+  const [height, setHeight] = useState(getHeight(rowRef))
+
+  useEffect(() => {
+    setHeight(getHeight(rowRef))
+  }, [rowRef])
 
   const marks = useMemo(() => groupPrices({
     psnap,
@@ -57,7 +66,7 @@ const BookSide = (props) => {
           zoom={zoom}
           bookViz={bookViz}
           isVertical={isVertical}
-          height={_get(rowRef, 'current.clientHeight', 0)}
+          height={height}
         />
       </div>
       <div className='rows' style={s}>

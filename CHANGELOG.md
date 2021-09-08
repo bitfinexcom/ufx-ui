@@ -3,6 +3,115 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.9 (2021-09-08)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#116](https://github.com/bitfinexcom/ufx-ui/pull/116) (improvement) export currencies.actions ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.10.8 (2021-09-03)
+
+#### :bug: Bug Fix
+* `core`
+  * [#113](https://github.com/bitfinexcom/ufx-ui/pull/113) (fix) Dialog: provide fallbackFocus to FocusTrap to avoid crash when no tabbable node ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.10.7 (2021-08-31)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#111](https://github.com/bitfinexcom/ufx-ui/pull/111) (improvement) tickerlist, currencies updates ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.10.6 (2021-08-17)
+
+#### :bug: Bug Fix
+* `core`
+  * [#109](https://github.com/bitfinexcom/ufx-ui/pull/109) (fix) book: row visualisation color not working ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.10.5 (2021-08-12)
+
+#### :dizzy: Improvement
+* `core`
+  * [#107](https://github.com/bitfinexcom/ufx-ui/pull/107) (improvement) tickers: truncate columns ([@bhoomij](https://github.com/bhoomij))
+* `core`, `storybook`
+  * [#106](https://github.com/bitfinexcom/ufx-ui/pull/106) (improvement) style updates ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.10.4 (2021-08-10)
+
+#### :bug: Bug Fix
+* `core`
+  * [#104](https://github.com/bitfinexcom/ufx-ui/pull/104) (chore) bump focus-trap-react to 8.7.0 ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+## v0.10.3 (2021-08-05)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#102](https://github.com/bitfinexcom/ufx-ui/pull/102) (improvement) Tickerlist improvements ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.10.2 (2021-08-03)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#99](https://github.com/bitfinexcom/ufx-ui/pull/99) (improvement) trades: reorder columns, right-align price and amount ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.10.1 (2021-07-30)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#96](https://github.com/bitfinexcom/ufx-ui/pull/96) (improvement) TickerList: improved styles of TickerList (row height) ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+## v0.10.0 (2021-07-22)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#94](https://github.com/bitfinexcom/ufx-ui/pull/94) (improvement) book: receive bulk updates ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 
 ## v0.9.1 (2021-07-20)
 

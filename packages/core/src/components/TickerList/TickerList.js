@@ -9,6 +9,7 @@ import _toLower from 'lodash/toLower'
 import PropTypes from 'prop-types'
 import React, {
   useCallback, useState, useMemo, memo,
+  useRef,
 } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -18,6 +19,7 @@ import withI18nProvider from '../../hoc/withI18nProvider'
 import { VirtualTable } from '../ui'
 import getColumns from './TickerList.columns'
 import { MAPPING, KEYS } from './TickerList.constants'
+import { rowRenderer } from './TickerList.helpers'
 import TickerListToolbar from './TickerList.Toolbar'
 
 const noRowsRenderer = (t) => () => (
@@ -41,6 +43,8 @@ export const TickerList = (props) => {
     setShowOnlyFavs,
     className,
   } = props
+
+  const containerRef = useRef()
   const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -109,8 +113,17 @@ export const TickerList = (props) => {
     return customisedRenderer
   }, [getDisplayValue, favs, toggleFav, showOnlyFavs, setShowOnlyFavs, showVolumeUnit, volumeUnit, setVolumeUnit, volumeUnitList, rowMapping, t])
 
+  const calculateRowHeight = () => {
+    const width = _get(containerRef, 'current.offsetWidth', 0)
+    if (width > 370) {
+      return 34
+    }
+
+    return 42
+  }
+
   return (
-    <div className={cx(Classes.TICKER_LIST, className)}>
+    <div className={cx(Classes.TICKER_LIST, className)} ref={containerRef}>
       <TickerListToolbar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -123,10 +136,11 @@ export const TickerList = (props) => {
         defaultSortBy={KEYS.VOLUME}
         defaultSortDirection='DESC'
         headerClassName='ufx-button ufx-button--minimal'
-        rowHeight={34}
+        rowHeight={calculateRowHeight()}
         interactive
         striped
         noRowsRenderer={noRowsRenderer(t)}
+        rowRenderer={rowRenderer}
       />
     </div>
   )

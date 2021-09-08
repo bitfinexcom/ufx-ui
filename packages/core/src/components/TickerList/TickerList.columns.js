@@ -5,14 +5,10 @@ import _get from 'lodash/get'
 import React from 'react'
 
 import { getColors } from '../../common/classes'
-import { Button } from '../ui'
+import { getDefaultCellRenderer } from '../helper'
+import { Button, Truncate } from '../ui'
 import { KEYS, STYLES } from './TickerList.constants'
 import { Favorite, Volume } from './TickerList.Header'
-
-const getFormattedValue = getDisplayValue => ({ dataKey, rowData }) => {
-  const formattedValue = getDisplayValue(rowData)(dataKey, true)
-  return formattedValue
-}
 
 // label: column header
 // dataKey: represents data in table cell
@@ -32,6 +28,8 @@ const getColumns = ({
     dataKey: KEYS.ID,
     headerStyle: STYLES.favorite,
     style: STYLES.favorite,
+    width: 30,
+    flexGrow: 0.1,
     disableSort: true,
     renderer: ({ dataKey, rowData }) => {
       const id = _get(rowData, dataKey)
@@ -61,6 +59,8 @@ const getColumns = ({
     dataKey: KEYS.BASE_CCY,
     headerStyle: STYLES.pair,
     style: STYLES.pair,
+    width: 88,
+    flexGrow: 1,
     renderer: ({ rowData }) => {
       const baseCcy = getDisplayValue(rowData)(KEYS.BASE_CCY)
       const quoteCcy = getDisplayValue(rowData)(KEYS.QUOTE_CCY)
@@ -79,21 +79,27 @@ const getColumns = ({
     dataKey: KEYS.LAST_PRICE,
     headerStyle: STYLES.lastPrice,
     style: STYLES.lastPrice,
-    renderer: getFormattedValue(getDisplayValue),
+    width: 63,
+    flexGrow: 1,
+    renderer: getDefaultCellRenderer(getDisplayValue),
   },
   {
     label: t('tickerlist:24h_change'),
     dataKey: KEYS.CHANGE_PERC,
     headerStyle: STYLES.changePerc,
     style: STYLES.changePerc,
+    width: 57,
+    flexGrow: 1,
     renderer: ({ dataKey, rowData }) => {
       const formattedValue = getDisplayValue(rowData)(dataKey)
       const value = getDisplayValue(rowData)(dataKey, false)
 
       return (
-        <span className={getColors(value, { strike: 0, includeStrike: true })}>
-          {formattedValue}
-        </span>
+        <Truncate>
+          <span className={getColors(value, { strike: 0, includeStrike: true })}>
+            {formattedValue}
+          </span>
+        </Truncate>
       )
     },
   }, {
@@ -106,7 +112,9 @@ const getColumns = ({
     dataKey: KEYS.VOLUME,
     headerStyle: STYLES.volume,
     style: STYLES.volume,
-    renderer: getFormattedValue(getDisplayValue),
+    width: 82,
+    flexGrow: 1,
+    renderer: getDefaultCellRenderer(getDisplayValue),
   },
 ]
 
