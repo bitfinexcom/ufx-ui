@@ -1,0 +1,115 @@
+{
+  "http_errors": {
+    "rate_limit": "You are being rate-limited, please try again in a moment"
+  },
+  "common": {
+    "no_data_available": "No data available",
+    "websocket_offiline": "Websocket connection offline",
+    "websocket_connected": "Websocket connected",
+    "websocket_disconnected": "Websocket disconnected",
+    "cancel": "Cancel",
+    "filter": "Filter",
+    "search": "Search",
+    "no_results_found": "No results found",
+    "created": "Created",
+    "modified": "Modified",
+    "at": " at ",
+    "yes": "Yes",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copy_to_clipboard": "Copy to clipboard",
+    "no": "No"
+  },
+  "error": {
+    "not_enough_balance": "Not enough balance, available balance is {{amount}}",
+    "must_be_number": "Must be a number",
+    "must_be_positive": "Must be a positive number",
+    "required": "{{fieldLabel}} is required",
+    "max_length": "{{fieldLabel}} cannot be longer than {{maxLength}} characters",
+    "no_decimals": "{{fieldLabel}} cannot have any decimal places",
+    "max_decimals": "Maximum {{allowedDecimals}} decimal places",
+    "invalid_date": "Invalid Date",
+    "must_be_date": "Date must be a valid date",
+    "date_must_be_within_interval": "Date must be between 1 to 7 days from today",
+    "must_be_before_max_date": "Date after max date",
+    "must_be_after_min_date": "Date before min date"
+  },
+  "marketlist": {
+    "symbol": "Symbol",
+    "last_price": "Last Price",
+    "last": "Last",
+    "24h_change": "24h Change",
+    "change": "Change",
+    "24h_high": "24h High",
+    "24h_low": "24h Low",
+    "24h_volume": "24h Volume",
+    "volume": "Volume",
+    "favorites": "Favorites"
+  },
+  "ticker": {
+    "volume": "Volume",
+    "high": "High",
+    "low": "Low"
+  },
+  "tickerlist": {
+    "pair": "Pair",
+    "last_price": "Last Price",
+    "last": "Last",
+    "24h_change": "24h",
+    "volume": "Vol.",
+    "favorites": "Favorites",
+    "empty": "No elements to show",
+    "fav_tooltip": "Show favorite tickers only",
+    "volume_tooltip": "Viewing 24h volume in terms of {{volumeUnit}} equivalent. Click to toggle",
+    "volume_tooltip_self": "Viewing 24h volume in terms of each currency. Click to toggle"
+  },
+  "trades": {
+    "time": "Time",
+    "amount": "Amount",
+    "price": "Price",
+    "market": "Market",
+    "user": "User",
+    "change_to_market": "Change to market",
+    "change_to_user": "Change to user"
+  },
+  "orderhistory": {
+    "pair": "Pair",
+    "type": "Type",
+    "amount": "Amount",
+    "ccy": "Ccy",
+    "price": "Price",
+    "average_price": "Avg. Price",
+    "status": "Status",
+    "placed": "Placed",
+    "no_orders": "No historic orders",
+    "sell_order_title": "Sell order (id: {{id}})",
+    "buy_order_title": "Buy order (id: {{id}})"
+  },
+  "orders": {
+    "pair": "Pair",
+    "type": "Type",
+    "amount": "Amount",
+    "ccy": "Ccy",
+    "price": "Price",
+    "status": "Status",
+    "placed": "Placed",
+    "no_orders": "No active orders",
+    "sell_order_title": "Sell order (id: {{id}})",
+    "buy_order_title": "Buy order (id: {{id}})"
+  },
+  "book": {
+    "cancel_order": "Cancel order",
+    "count": "Count",
+    "amount": "Amount",
+    "total": "Total",
+    "price": "Price",
+    "decrease_precision": "Decrease Precision",
+    "increase_precision": "Increase Precision",
+    "decrease_zoom": "Decrease Zoom",
+    "increase_zoom": "Increase Zoom"
+  },
+  "depthchart": {
+    "decrease_zoom": "Decrease Zoom",
+    "increase_zoom": "Increase Zoom"
+  }
+}

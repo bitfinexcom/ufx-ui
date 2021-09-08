@@ -258,31 +258,6 @@
     "ampl_deposit_warning": "Please note, any deposits confirmed during the AMPL rebase (approximately from 01:50 am to 02:20 am UTC daily) will require manual processing and will be charged a fee - please see <0>the Ampleforth Support Article</0>.",
     "error_get_address": "Error: Falied to get address"
   },
-  "withdrawals": {
-    "title": "Withdraw",
-    "withdrawals": "Withdrawals",
-    "currency_available": "Available {{currency}} Balance",
-    "available_balance_explain": "If you have limit orders, this will decrease your available balance. To increase it, you can cancel limit orders",
-    "no_payment_id_info_1": "In some unusual situations a {{type}} is not needed when withdrawing {{ccy}}.",
-    "no_payment_id_info_2": "Please do not check this box unless you are ",
-    "no_payment_id_info_3": "CERTAIN",
-    "no_payment_id_info_4": " you do not need a {{type}}.",
-    "whats_this": "What's this?",
-    "wallet": "Wallet",
-    "withdraw_success": "Your withdrawal request has been successfully submitted.",
-    "request_for_withdrawal": "Request Withdrawal",
-    "invalid_payment_request": "Invoice is not a proper lightning payment request",
-    "invoice": "Invoice",
-    "invalid_fields": " invalid fields",
-    "tether_what": "What is Tether?",
-    "important": "Important:",
-    "tether_warning1": "Please confirm that you are sending tethers to a ",
-    "tether_enabled": "Tether-enabled wallet.",
-    "tether_warning2": "Tethers sent to a non-Tether compatible address may be non-retrievable by the recipient.",
-    "warnings": {
-      "erc20_only": "Bitfinex supports ERC20 version of {{currency}} only. Do not withdraw to a new mainnet {{label}} wallet."
-    }
-  },
   "movements": {
     "deposit": "Deposit",
     "withdraw": "Withdraw",
@@ -311,16 +286,6 @@
       "required_field": "This field is required",
       "invalid_invoice_amount": "Invoice amount must be greater than or equal to {{min}} and less than or equal to {{max}}"
     }
-  },
-  "iota_notice": {
-    "part0": "Understanding IOTA, Wallets, Nodes, and Tangle",
-    "part1": "IOTA is different than other major cryptocurrencies in several important ways.",
-    "part2": "Before using IOTA on Bitfinex, please review the following critical items.",
-    "part3": "Select each checkbox below to indicate that you have read, agree, and understand.",
-    "part4": "Learn more",
-    "link_intro": "An introduction to IOTA",
-    "link_wallet": "IOTA Node/Wallet Types",
-    "part5": "Connect your light wallet to {{address}}"
   },
   "wallets": {
     "title": "Wallets",
