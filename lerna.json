@@ -3,7 +3,7 @@
     "packages/*"
   ],
   "hoist": true,
-  "version": "0.10.8",
+  "version": "0.10.9",
   "changelog": {
     "repo": "bitfinexcom/ufx-ui",
     "cacheDir": ".changelog",
