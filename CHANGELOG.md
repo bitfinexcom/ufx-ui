@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.9 (2021-09-08)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#116](https://github.com/bitfinexcom/ufx-ui/pull/116) (improvement) export currencies.actions ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 
 ## v0.10.8 (2021-09-03)
 
