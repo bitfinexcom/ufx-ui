@@ -39,7 +39,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
 
   const handleLabelClick = (e) => {
     // use DOM input click to trigger checkbox change event, so it triggers an actual Input Change event, rather than label onClick
-    e.stopPropagation()
+    stopPropagationOnClick(e)
     checkboxRef.current.click()
   }
 
