@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.10 (2021-09-26)
+
+#### :bug: Bug Fix
+* `core`, `storybook`
+  * [#119](https://github.com/bitfinexcom/ufx-ui/pull/119) (fix) Ticker: resolve issues with initial and change language ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :art: Refactor
+* `core`, `storybook`
+  * [#120](https://github.com/bitfinexcom/ufx-ui/pull/120) (refactor) checkbox: remove help message props ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+
 ## v0.10.9 (2021-09-08)
 
 #### :dizzy: Improvement
