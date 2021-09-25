@@ -11,7 +11,10 @@ export const changeLanguage = (lang) => {
 
 export const initialiseI18n = (lang, resources) => {
   const debug = isDevelopmentMode
-
+  if (i18n.isInitialized) {
+    changeLanguage(lang)
+    return
+  }
   const i18nConfig = {
     interpolation: { escapeValue: false }, // React already does escaping
     lng: lang || DEFAULT_LANG, // language to use

@@ -5,6 +5,7 @@ import cx from 'classnames'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
@@ -35,6 +36,7 @@ export const Ticker = (props) => {
 
   const classes = cx(Classes.TICKER, className)
   const colorClass = Classes.getColors(changePerc, { strike: 0, includeStrike: true })
+  const { t } = useTranslation()
 
   const renderCell = (key) => {
     const value = getDisplayValue(key, false)
@@ -49,6 +51,7 @@ export const Ticker = (props) => {
       baseCcy,
       quoteCcy,
       volumeUnit,
+      t,
     })
   }
 
