@@ -1,26 +1,18 @@
 import { Chart } from '@ufx-ui/core'
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 
-import { getCandles } from '../../redux/selectors/candles.selectors'
+import useCommonBfxData from '../../hooks/useCommonBfxData'
 
 const ChartContainer = ({
   baseCcy,
   quoteCcy,
-  // parentWidth,
-  // parentHeight,
-  // paddingX,
-  // paddingY,
-  ...props
 }) => {
-  console.log('TCL: baseCcy', baseCcy)
-  console.log('TCL: quoteCcy', quoteCcy)
-  const [state, setState] = useState()
+  const { symbol } = useCommonBfxData(baseCcy, quoteCcy)
 
   return (
     <Chart
       market={{
-        wsID: '',
+        wsID: symbol,
         base: baseCcy,
         quote: quoteCcy,
       }}

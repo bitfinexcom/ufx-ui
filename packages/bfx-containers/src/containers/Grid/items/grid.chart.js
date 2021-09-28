@@ -7,9 +7,9 @@ export default {
   id: 'chart',
   component: Chart,
   defaults: {
-    h: 10,
+    h: 20,
     minW: 4,
-    minH: 10,
+    minH: 20,
     static: false,
   },
   title: (args) => {
