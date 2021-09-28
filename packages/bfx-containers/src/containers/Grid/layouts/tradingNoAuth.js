@@ -6,6 +6,7 @@ import {
   GRID_XXSMALL,
 } from '../Grid.constants'
 import gridBook from '../items/grid.book'
+import gridChart from '../items/grid.chart'
 import gridDepthChart from '../items/grid.depthchart'
 import gridOrderform from '../items/grid.orderform'
 import gridTicker from '../items/grid.ticker'
@@ -17,6 +18,7 @@ const available = [
   gridTickerList,
   gridOrderform,
   gridBook,
+  gridChart,
   gridDepthChart,
   gridTrades,
 ]
@@ -40,13 +42,14 @@ const columns = {
 
 const grid = [
   [gridTicker, gridTickerList, gridOrderform],
-  [gridDepthChart, gridBook, gridTrades],
+  [gridChart, gridDepthChart, gridBook, gridTrades],
 ]
 
 const mobileGrid = [
   [
     gridTicker,
     gridTickerList,
+    gridChart,
     gridDepthChart,
     gridOrderform,
     () => ({
@@ -63,6 +66,7 @@ const tabletGrid = [
   [
     gridTicker,
     gridTickerList,
+    gridChart,
     gridDepthChart,
     gridOrderform,
     gridBook,
