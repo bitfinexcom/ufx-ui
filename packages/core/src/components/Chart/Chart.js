@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import * as Classes from '../../common/classes'
+
 const CHART_URL = 'https://bitfinexcom.github.io/bfx-hf-tradingview'
 
 const Chart = ({ market: { wsID, base, quote } }) => {
@@ -9,11 +11,12 @@ const Chart = ({ market: { wsID, base, quote } }) => {
     base,
     quote,
     apiBaseUrl: 'https://api-pub.bitfinex.com',
+    theme: 'default-theme:light-mode',
   }).toString()
 
   return (
     <iframe
-      className='hfui-chart-iframe'
+      className={Classes.CHART}
       src={`${CHART_URL}/?${queryString}`}
       title='thumbnails'
     />

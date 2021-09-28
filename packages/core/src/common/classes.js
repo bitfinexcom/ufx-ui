@@ -108,6 +108,9 @@ export const ORDERS = `${NS}-orders`
 // Book
 export const BOOK = `${NS}-book`
 
+// Chart
+export const CHART = `${NS}-chart`
+
 // Depth chart
 export const DEPTH_CHART = `${NS}-depth-chart`
 
