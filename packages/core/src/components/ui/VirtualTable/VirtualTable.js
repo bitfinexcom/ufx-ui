@@ -84,7 +84,7 @@ const VirtualTable = (props) => {
 }
 
 VirtualTable.propTypes = {
-  data: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   columns: PropTypes.array, // eslint-disable-line
   rowHeight: PropTypes.number,
   headerHeight: PropTypes.number,
