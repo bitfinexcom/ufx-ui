@@ -5,12 +5,12 @@ import { Switch } from 'react-router-dom'
 import { MovementsPage } from '../../Movements'
 import { TradingPage } from '../../Trading'
 import Footer from '../Footer'
-// import Header from '../Header'
+import Header from '../Header'
 
 const Layout = ({ history }) => (
   <div className={Classes.LAYOUT}>
     <Switch>
-      {/* <Header history={history} /> */}
+      <Header history={history} />
     </Switch>
     <div className={`${Classes.LAYOUT}__body`}>
       <TradingPage />

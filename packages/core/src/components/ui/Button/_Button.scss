@@ -4,7 +4,6 @@ $button-padding-vertical: $ufx-base-size * 1.4 !default;
 @mixin button-base() {
   text-decoration: none;
   text-align: center;
-  width: 800px !important;
   vertical-align: middle;
   cursor: pointer;
   outline: none;
