@@ -6,6 +6,7 @@ import useCommonBfxData from '../../hooks/useCommonBfxData'
 const ChartContainer = ({
   baseCcy,
   quoteCcy,
+  theme,
 }) => {
   const { symbol } = useCommonBfxData(baseCcy, quoteCcy)
 
@@ -16,8 +17,12 @@ const ChartContainer = ({
         base: baseCcy,
         quote: quoteCcy,
       }}
+      theme={theme}
     />
   )
 }
+
+ChartContainer.propTypes = Chart.propTypes
+ChartContainer.defaultProps = Chart.defaultProps
 
 export default ChartContainer
