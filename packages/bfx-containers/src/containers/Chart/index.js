@@ -1,3 +1,3 @@
-import ChartPanel from './ChartPanel.container'
+import Chart from './Chart.container'
 
-export default ChartPanel
+export default Chart

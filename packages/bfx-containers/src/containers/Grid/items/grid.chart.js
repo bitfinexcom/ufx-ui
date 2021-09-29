@@ -1,5 +1,4 @@
 import { i18n } from '@ufx-ui/core'
-import React from 'react'
 
 import Chart from '../../Chart'
 
