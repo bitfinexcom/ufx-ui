@@ -1,10 +1,9 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import cx from 'classnames'
 import _get from 'lodash/get'
 import _isNumber from 'lodash/isNumber'
 import _size from 'lodash/size'
 import PropTypes from 'prop-types'
-import React, { useState, useEffect, memo } from 'react'
+import React, { useState, memo } from 'react'
 import {
   AutoSizer, Table, Column, defaultTableRowRenderer,
 } from 'react-virtualized'
@@ -12,22 +11,21 @@ import {
 import * as Classes from '../../../common/classes'
 import { getSortedData as getSortedDataHelper, sortData } from './VirtualTable.helpers'
 
-const VirtualTable = ({
-  data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive, striped, headerClassName, noRowsRenderer, minTableWidth, rowRenderer,
-}) => {
+const VirtualTable = (props) => {
+  const {
+    data, columns, onRowClick, rowHeight, headerHeight, defaultSortBy, defaultSortDirection, getSortedData, sortedDataPostProcessor, className, interactive, striped, headerClassName, noRowsRenderer, minTableWidth, rowRenderer,
+  } = props
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
-  const [processedData, setProcessedData] = useState([])
 
   const classes = cx(Classes.VIRTUAL_TABLE_CONTAINER, className)
 
-  useEffect(() => {
-    setProcessedData(sortData({
-      data, sortBy, sortDirection, columns,
-    }, {
-      getSortedData, sortedDataPostProcessor,
-    }))
-  }, [data, columns, getSortedData, sortBy, sortDirection, sortedDataPostProcessor])
+  const processedData = sortData(
+    {
+      data, columns, sortBy, sortDirection,
+    },
+    { getSortedData, sortedDataPostProcessor },
+  )
 
   const onSort = ({
     sortDirection: postSortDirection,
@@ -42,14 +40,6 @@ const VirtualTable = ({
 
     setSortBy(postSortBy)
     setSortDirection(postSortDirection)
-    setProcessedData(sortData({
-      data,
-      columns,
-      sortBy: postSortBy,
-      sortDirection: postSortDirection,
-    }, {
-      getSortedData, sortedDataPostProcessor,
-    }))
   }
 
   return (
@@ -81,6 +71,7 @@ const VirtualTable = ({
                 <Column
                   key={c.dataKey}
                   dataKey={c.dataKey}
+                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...c}
                 />
               ))}
@@ -93,7 +84,7 @@ const VirtualTable = ({
 }
 
 VirtualTable.propTypes = {
-  data: PropTypes.array, // eslint-disable-line
+  data: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
   columns: PropTypes.array, // eslint-disable-line
   rowHeight: PropTypes.number,
   headerHeight: PropTypes.number,
