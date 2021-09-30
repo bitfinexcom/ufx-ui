@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 
 import * as Classes from '../../../common/classes'
 import { getIcon } from './Notifications.helpers'
@@ -8,13 +8,18 @@ import { PROP_NOTIFICATION } from './Notifications.props'
 
 const NotificationMessage = (props) => {
   const {
+    onClose: _onClose,
+    ...notification
+  } = props
+  const {
     level,
     message,
     group,
-    onClose,
-  } = props
+  } = notification
   const [groupIsExpanded, setGroupIsExpanded] = useState(false)
   const classes = cx(`${Classes.NOTIFICATIONS}__level`, `${Classes.NOTIFICATIONS}__level--${level}`)
+
+  const onClose = () => _onClose(notification)
 
   return (
     <div className={classes}>
@@ -40,13 +45,13 @@ const NotificationMessage = (props) => {
       </div>
 
       {group && (
-      <button
-        type='button'
-        className='expand-button'
-        onClick={() => setGroupIsExpanded(!groupIsExpanded)}
-      >
-        {groupIsExpanded ? 'Collapse' : `Expand (${group.length} more)`}
-      </button>
+        <button
+          type='button'
+          className='expand-button'
+          onClick={() => setGroupIsExpanded(!groupIsExpanded)}
+        >
+          {groupIsExpanded ? 'Collapse' : `Expand (${group.length} more)`}
+        </button>
       )}
     </div>
   )
@@ -54,4 +59,4 @@ const NotificationMessage = (props) => {
 
 NotificationMessage.propTypes = PROP_NOTIFICATION
 
-export default NotificationMessage
+export default memo(NotificationMessage)

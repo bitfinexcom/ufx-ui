@@ -18,7 +18,7 @@ const Notifications = forwardRef(function Notifications(props, ref) {
         {groupedNotifications.map(notification => (
           <NotificationMessage
             key={notification.cid}
-            onClose={onClose ? () => onClose(notification) : null}
+            onClose={onClose}
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...notification}
           />
@@ -46,6 +46,6 @@ Notifications.propTypes = {
 Notifications.defaultProps = {
   notifications: [],
   className: '',
-  onClose: null,
+  onClose: () => {},
 }
 export default memo(Notifications)
