@@ -4,6 +4,7 @@ module.exports = {
     '../../core/src/components/ui/**/*.stories.js',
     '../../core/src/components/Book/**/*.stories.js',
     '../../bfx-containers/src/containers/Book/**/*.stories.js',
+    '../../bfx-containers/src/containers/Chart/**/*.stories.js',
     '../../core/src/components/OrderHistory/**/*.stories.js',
     '../../bfx-containers/src/containers/OrderHistory/**/*.stories.js',
     '../../core/src/components/Trades/**/*.stories.js',

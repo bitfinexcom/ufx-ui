@@ -8,6 +8,7 @@ import {
 } from '../Grid.constants'
 import gridBalances from '../items/grid.balances'
 import gridBook from '../items/grid.book'
+import gridChart from '../items/grid.chart'
 import gridDepthChart from '../items/grid.depthchart'
 import gridOrderform from '../items/grid.orderform'
 import gridOrderHistory from '../items/grid.orderHistory'
@@ -22,6 +23,7 @@ const available = [
   gridOrderform,
   gridBook,
   gridDepthChart,
+  gridChart,
   gridTrades,
   gridOrders,
   gridOrderHistory,
@@ -48,6 +50,7 @@ const columns = {
 const grid = [
   [gridTicker, gridTickerList, gridOrderform, gridBalances],
   [
+    gridChart,
     gridDepthChart,
     gridOrders,
     gridOrderHistory,
@@ -83,6 +86,7 @@ const mobileGrid = [
   [
     gridTicker,
     gridTickerList,
+    gridChart,
     gridDepthChart,
     gridOrderform,
     gridBalances,
@@ -114,6 +118,7 @@ const tabletGrid = [
       }
     },
     gridBalances,
+    gridChart,
     gridDepthChart,
     () => ({
       component: gridOrders,
