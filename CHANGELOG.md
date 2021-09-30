@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.10.12 (2021-09-30)
+
+#### :rocket: Feature
+* `bfx-containers`, `core`, `example`, `storybook`
+  * [#122](https://github.com/bitfinexcom/ufx-ui/pull/122) (feature) Chart ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+#### Committers: 1
+- Jason M. Hasperhoven ([@JasonMHasperhoven](https://github.com/JasonMHasperhoven))
+
+
+## v0.10.11 (2021-09-30)
+
+#### :zap: Performance
+* `core`
+  * [#124](https://github.com/bitfinexcom/ufx-ui/pull/124) (improvement) Notifications: rendering improvements ([@bhoomij](https://github.com/bhoomij))
+  * [#123](https://github.com/bitfinexcom/ufx-ui/pull/123) (improvement) VirtualTable ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 ## v0.10.10 (2021-09-26)
 
 #### :bug: Bug Fix
