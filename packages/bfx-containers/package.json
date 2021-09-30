@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/bfx-containers",
-  "version": "0.10.10",
+  "version": "0.10.11",
   "description": "",
   "main": "dist/ufx-bfx-containers.cjs.js",
   "module": "dist/ufx-bfx-containers.esm.js",
@@ -57,7 +57,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@ufx-ui/core": "^0.10.10",
+    "@ufx-ui/core": "^0.10.11",
     "@ufx-ui/eslint-config": "^0.10.0",
     "@ufx-ui/utils": "^0.10.2",
     "axios": "^0.21.1",
