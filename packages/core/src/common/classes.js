@@ -108,9 +108,6 @@ export const ORDERS = `${NS}-orders`
 // Book
 export const BOOK = `${NS}-book`
 
-// Chart
-export const CHART = `${NS}-chart`
-
 // Depth chart
 export const DEPTH_CHART = `${NS}-depth-chart`
 
@@ -154,6 +151,9 @@ export const WITHDRAWAL_TERMS = `${NS}-withdrawal-terms`
 export const WITHDRAWAL_FEES_EXPLAIN = `${NS}-withdrawal-fees-explain`
 export const AVAILABLE_BALANCE_BOX = `${NS}-available-balance-box`
 export const NEW_WITHDRAWAL = `${NS}-new-withdrawal`
+
+// Chart
+export const CHART = `${NS}-chart`
 
 /* page/containers - end */
 
