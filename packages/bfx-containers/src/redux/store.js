@@ -17,7 +17,6 @@ import authTrades from './reducers/authTrades.reducer'
 import balances from './reducers/balances.reducer'
 import bookTop from './reducers/book-top.reducer'
 import book from './reducers/book.reducer'
-import candles from './reducers/candles.reducer'
 import conversions from './reducers/conversions.reducer'
 import currencies from './reducers/currencies.reducer'
 import layouts from './reducers/layouts.reducer'
@@ -50,7 +49,6 @@ const createReducer = (injectedReducers = {}) => {
     [REDUX_STATE_PREFIX]: combineReducers({
       ...injectedReducers,
       // other common non-injected reducers can go here...
-      candles,
       currencies,
       conversions,
       symbols,
