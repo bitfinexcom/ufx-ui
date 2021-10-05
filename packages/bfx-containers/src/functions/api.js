@@ -5,6 +5,7 @@ import { createErrorHandler } from './api_handlers'
 import {
   apiUrl,
   corsProxyUrl,
+  pubApiUrl,
 } from './config.selectors'
 import interceptor from './interceptor'
 
@@ -18,7 +19,7 @@ const createApiInstance = (baseURL) => axios.create({
   headers: DEFAULT_REQUEST_HEADERS,
 })
 
-export const pubApi = createApiInstance(apiUrl)
+export const pubApi = createApiInstance(pubApiUrl)
 export const api = createApiInstance(apiUrl)
 
 let apiResponseInterceptor
