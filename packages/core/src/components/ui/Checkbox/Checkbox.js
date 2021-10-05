@@ -1,12 +1,10 @@
 import cx from 'classnames'
-import _isEmpty from 'lodash/isEmpty'
 import PropTypes from 'prop-types'
 import React, { useRef, forwardRef } from 'react'
 
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
 import Label from '../Label'
-import Tooltip from '../Tooltip'
 
 const stopPropagationOnClick = (e) => e.stopPropagation()
 
@@ -22,8 +20,6 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     onChange,
     error,
     small,
-    helpMessage,
-    helpMessageClassName,
     ...rest
   } = props
   const checkboxRef = useRef(null)
@@ -39,7 +35,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
 
   const handleLabelClick = (e) => {
     // use DOM input click to trigger checkbox change event, so it triggers an actual Input Change event, rather than label onClick
-    e.stopPropagation()
+    stopPropagationOnClick(e)
     checkboxRef.current.click()
   }
 
@@ -58,7 +54,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
     ref: checkboxRef,
   }
 
-  const component = (
+  return (
     <div
       ref={ref}
       className={classes}
@@ -76,7 +72,7 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
 
       <Label
         label={label || ''}
-        className={cx({ disabled, 'label-help': Boolean(helpMessage) })}
+        className={cx({ disabled })}
         tag='div'
         small={small}
       />
@@ -88,16 +84,6 @@ const Checkbox = forwardRef(function Checkbox(props, ref) {
       )}
     </div>
   )
-
-  if (!_isEmpty(helpMessage)) {
-    return (
-      <Tooltip className={helpMessageClassName} content={helpMessage}>
-        {component}
-      </Tooltip>
-    )
-  }
-
-  return component
 })
 
 Checkbox.propTypes = {
@@ -137,14 +123,6 @@ Checkbox.propTypes = {
    * If true, shows the Button in a small style.
    */
   small: PropTypes.bool,
-  /**
-   * A help message to be shown in the tooltip.
-   */
-  helpMessage: PropTypes.string,
-  /**
-   * A classname for the tooltip with help message.
-   */
-  helpMessageClassName: PropTypes.string,
 }
 
 Checkbox.defaultProps = {
@@ -156,8 +134,6 @@ Checkbox.defaultProps = {
   onChange: () => { },
   error: '',
   small: false,
-  helpMessage: '',
-  helpMessageClassName: '',
 }
 
 export default Checkbox

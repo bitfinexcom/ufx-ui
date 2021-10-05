@@ -1,10 +1,12 @@
+import _forEach from 'lodash/forEach'
 import _get from 'lodash/get'
 import _isFunction from 'lodash/isFunction'
+import _values from 'lodash/values'
 
 export const getTransformers = (columns = []) => {
   const transformers = {}
 
-  columns.forEach((col) => {
+  _forEach(columns, (col) => {
     if (col.dataKey && col.transformData) {
       transformers[col.dataKey] = col.transformData
     }
@@ -16,25 +18,13 @@ export const getTransformers = (columns = []) => {
 export const getSortKeys = (columns = []) => {
   const sortKeys = {}
 
-  columns.forEach((col) => {
+  _forEach(columns, (col) => {
     if (col.sortKey) {
       sortKeys[col.dataKey] = col.sortKey
     }
   })
 
   return sortKeys
-}
-
-export const getSortFunctions = (columns = []) => {
-  const sortFunctions = {}
-
-  columns.forEach((col) => {
-    if (col.sortKey) {
-      sortFunctions[col.dataKey] = col.sortKey
-    }
-  })
-
-  return sortFunctions
 }
 
 /**
@@ -56,18 +46,16 @@ export const getSortedData = (args = {}) => {
 
   const transformers = getTransformers(columns)
   const sortKeys = getSortKeys(columns)
-  const sortFunctions = getSortFunctions(columns)
   const transform = transformers[sortBy] || (v => v)
-  const sortedData = [...data]
   const asc = sortDirection === 'ASC'
   const key = sortKeys[sortBy] || sortBy
 
-  sortedData.sort((aRow = {}, bRow = {}) => {
+  return _values(data).sort((aRow = {}, bRow = {}) => {
     const a = transform(_get(aRow, key), aRow)
     const b = transform(_get(bRow, key), bRow)
 
-    if (_isFunction(sortFunctions[key])) {
-      return sortFunctions[key](a, b)
+    if (_isFunction(sortKeys[key])) {
+      return sortKeys[key](a, b)
     }
 
     if (!Number.isNaN(+a) && !Number.isNaN(+b)) {
@@ -78,8 +66,6 @@ export const getSortedData = (args = {}) => {
       ? (`${a}`).localeCompare(b)
       : (`${b}`).localeCompare(a)
   })
-
-  return sortedData
 }
 
 export function sortData(args = {}, props = {}) {

@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { formatPrice, formatVolume, formatVolumePercentChange } from '@ufx-ui/utils'
 import React from 'react'
 
-import { i18n } from '../../i18n'
-
 export const KEYS = {
   BASE_CCY: 'baseCcy',
   QUOTE_CCY: 'quoteCcy',
@@ -51,9 +49,9 @@ export const MAPPING = {
   [KEYS.VOLUME]: {
     defaultValue: 0,
     format: formatVolume,
-    renderer: ({ formattedValue, volumeUnit }) => (
+    renderer: ({ formattedValue, volumeUnit, t }) => (
       <>
-        <div className='label'>{i18n.t('ticker:volume')}</div>
+        <div className='label'>{t('ticker:volume')}</div>
         {/* Use &nbsp; as space here so that the volume unit doesn’t appear on the next line */}
         <div className='value'>{formattedValue}&nbsp;{volumeUnit}</div>
       </>
@@ -62,9 +60,9 @@ export const MAPPING = {
   [KEYS.HIGH]: {
     defaultValue: 0,
     format: formatPrice,
-    renderer: ({ formattedValue }) => (
+    renderer: ({ formattedValue, t }) => (
       <>
-        <div className='label'>{i18n.t('ticker:high')}</div>
+        <div className='label'>{t('ticker:high')}</div>
         <div className='value'>{formattedValue}</div>
       </>
     ),
@@ -72,9 +70,9 @@ export const MAPPING = {
   [KEYS.LOW]: {
     defaultValue: 0,
     format: formatPrice,
-    renderer: ({ formattedValue }) => (
+    renderer: ({ formattedValue, t }) => (
       <>
-        <div className='label'>{i18n.t('ticker:low')}</div>
+        <div className='label'>{t('ticker:low')}</div>
         <div className='value'>{formattedValue}</div>
       </>
     ),
