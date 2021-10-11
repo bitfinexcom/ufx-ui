@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.11.0 (2021-10-11)
+
+#### :boom: Breaking Change
+* `bfx-containers`, `core`, `example`, `storybook`
+  * [#127](https://github.com/bitfinexcom/ufx-ui/pull/127) (chore) upgrade to react 17 ([@bhoomij](https://github.com/bhoomij))
+
+#### :art: Refactor
+* `bfx-containers`
+  * [#129](https://github.com/bitfinexcom/ufx-ui/pull/129) (refactor) Add env `REACT_APP_UFX_API_URL` ([@bhoomij](https://github.com/bhoomij))
+* `bfx-containers`, `core`
+  * [#128](https://github.com/bitfinexcom/ufx-ui/pull/128) (refactor) remove dead code ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 
 ## v0.10.12 (2021-09-30)
 
