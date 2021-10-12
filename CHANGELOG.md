@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.11.1 (2021-10-12)
+
+#### :bug: Bug Fix
+* `bfx-containers`, `core`, `cypress-tests`, `eslint-config`, `example`, `storybook`, `utils`
+  * [#132](https://github.com/bitfinexcom/ufx-ui/pull/132) (chore) auto fix dependency vulnerabilities ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 ## v0.11.0 (2021-10-11)
 
 #### :boom: Breaking Change
