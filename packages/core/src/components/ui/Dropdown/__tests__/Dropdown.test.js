@@ -30,7 +30,7 @@ const tests = describe('Dropdown', () => {
     const wrapper = mount(story)
 
     // click to open dropdown list
-    wrapper.find(`.${Classes.DROPDOWN} #${id}`).simulate('click')
+    wrapper.find(`.${Classes.DROPDOWN} .dropdown-field#${id}`).simulate('click')
     expect(wrapper.exists('.list')).toEqual(true)
 
     // verify using click
@@ -39,8 +39,8 @@ const tests = describe('Dropdown', () => {
 
     // verify using keypress
     value = 'btc'
-    wrapper.find(`.${Classes.DROPDOWN} #${id}`).simulate('click')
-    wrapper.find(`.list-item[value="${value}"]`).simulate('keypress', { key: 'Enter' })
+    wrapper.find(`.${Classes.DROPDOWN} .dropdown-field#${id}`).simulate('click')
+    wrapper.find(`.list-item[value="${value}"]`).simulate('keypress', { code: 'Enter' })
     expect(onChange).toHaveBeenCalledWith(value)
 
     // close dropdown list
