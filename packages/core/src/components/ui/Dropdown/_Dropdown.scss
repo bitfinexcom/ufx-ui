@@ -1,10 +1,10 @@
-$ufx-dropdown-height: 40px !default;
+$ufx-dropdown-height: $ufx-base-size * 4 !default;
 $ufx-dropdown-padding: $ufx-base-size !default;
-$ufx-dropdown-background-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-border-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-text-color: $ufx-text-color !default;
 $ufx-dropdown-list-background-color: white !default;
-$ufx-dropdown-list-border: 1px solid darken($ufx-dropdown-list-background-color, 10%) !default;
+$ufx-dropdown-list-border: 1px solid
+  darken($ufx-dropdown-list-background-color, 10%) !default;
 $ufx-dropdown-list-box-shadow: 0 1px 2px 0 rgba($black, 0.1) !default;
 
 $ufx-dropdown-active-item-background-color: rgba($intent-primary, 0.3) !default;
@@ -16,45 +16,75 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
   height: $ufx-dropdown-height;
   min-width: 120px;
 
-  .dropdown-field {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    border-radius: $ufx-border-radius;
-    width: 100%;
-    height: 100%;
-    padding: 0 $ufx-dropdown-padding;
-    background-color: $ufx-dropdown-background-color;
-    border: 1px solid $ufx-dropdown-border-color;
-    cursor: pointer;
-    color: $ufx-dropdown-text-color;
-    transition: background-color .2s;
-    outline: 0;
+  .ufx-input.dropdown-field {
+    border-radius: 4px;
+    border: 1px solid transparent;
 
-    &:hover,
-    &:focus {
-      background-color: mix(white, lighten($ufx-dropdown-background-color, 3%), 4%);
+    .input-field-container.disabled,
+    .input-field-container:disabled .input-field.disabled,
+    .input-field:disabled {
+      opacity: 1;
+      cursor: unset;
+      background: $input-background-color;
+      color: unset;
     }
 
-    &:active {
-      background-color: $ufx-dropdown-background-color;
-    }
+    .input-field-container {
+      color: red;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      border-radius: $ufx-border-radius;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $ufx-dropdown-border-color;
+      cursor: pointer;
+      color: $ufx-dropdown-text-color;
+      transition: background-color 0.2s;
+      outline: 0;
+      border: none;
 
-    .selected-text,
-    * {
-      @include overflow-ellipsis();
-      outline: none;
-    }
+      input {
+        height: $ufx-dropdown-height;
+        color: $ufx-dropdown-text-color;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
-    svg {
-      margin-left: $ufx-dropdown-padding * 0.5;
+      .arrow-icon {
+        width: $ufx-base-size * 3;
+        height: $ufx-dropdown-height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $ufx-dropdown-border-color;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: mix(
+          white,
+          lighten($ufx-dropdown-border-color, 3%),
+          4%
+        );
+      }
+
+      &:active {
+        background-color: $ufx-dropdown-border-color;
+      }
+
+      .selected-text,
+      * {
+        @include overflow-ellipsis();
+        outline: none;
+      }
     }
   }
 
   &.is-open .dropdown-field {
     border-color: mix(white, lighten($ufx-dropdown-border-color, 6%), 8%);
-    background-color: $ufx-dropdown-background-color;
+    background-color: $ufx-dropdown-border-color;
   }
 
   .list-wrapper {
@@ -89,7 +119,7 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
   .list-item {
     display: block;
     padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
-    transition: background-color .2s;
+    transition: background-color 0.2s;
     cursor: pointer;
 
     &:hover,
@@ -99,7 +129,7 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
     }
 
     &:active {
-      transition-duration: .05s;
+      transition-duration: 0.05s;
       background-color: darken($ufx-dropdown-list-background-color, 5%);
     }
   }
@@ -107,33 +137,6 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
   .list-search-wrapper {
     display: block;
     padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
-  }
-    
-  .list-search {
-    position: relative;
-
-    input {
-      background-color: $ufx-dropdown-input-background-color;
-      border: $ufx-dropdown-input-border;
-      border-radius: $ufx-border-radius;
-      width: 100%;
-      padding: ($ufx-dropdown-padding * 0.5) ($ufx-dropdown-padding * 1.5) ($ufx-dropdown-padding * 0.5) ($ufx-dropdown-padding * 0.75);
-      color: $ufx-dropdown-text-color;
-
-      &:focus {
-        outline: none;
-        border-bottom-color: $ufx-border-focus-color;
-      }
-    }
-
-    .search-icon {
-      position: absolute;
-      top: 0;
-      right: $ufx-dropdown-padding * 0.5;
-      height: 100%;
-      color: $ufx-dropdown-text-color;
-      margin: 0;
-    }
   }
 
   &--small {

@@ -1,12 +1,14 @@
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
+import _isFunction from 'lodash/isFunction'
 import PropTypes from 'prop-types'
 import React, { useState, forwardRef, useEffect } from 'react'
 import OutsideClickHandler from 'react-outside-click-handler'
 
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
+import Input from '../Input'
 import DropdownList from './Dropdown.List'
 
 // eslint-disable-next-line prefer-arrow-callback
@@ -40,37 +42,91 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     setIsOpen(isOpenProp)
   }, [isOpenProp])
 
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const updateSearchTerm = (_value) => {
+    if (_isFunction(onSearchTermChange)) {
+      onSearchTermChange(_value)
+    }
+    setSearchTerm(_value)
+  }
+
+  const handleSearchTermChange = (_value, e) => {
+    e.stopPropagation()
+    setIsOpen(true)
+    updateSearchTerm(_value)
+  }
+
+  const val = content || options[value] || placeholder
+
+  useEffect(() => {
+    setSearchTerm(val)
+  }, [val])
+
+  const handleDropDownToggle = (_value) => {
+    setIsOpen(_value)
+    if (!searchable) {
+      return
+    }
+
+    if (_value) {
+      setSearchTerm('')
+    } else {
+      setSearchTerm(options[value])
+    }
+  }
+
   const toggle = () => {
-    setIsOpen(!isOpen)
+    handleDropDownToggle(!isOpen)
+  }
+
+  const onDropdownClick = (e) => {
+    e.stopPropagation()
+    handleDropDownToggle(true)
+  }
+
+  const onOutsideClick = () => {
+    handleDropDownToggle(false)
+  }
+
+  const onDropdownArrowClick = (e) => {
+    e.stopPropagation()
+    handleDropDownToggle(!isOpen)
   }
 
   const buttonElement = (
-    <div
+    <Input
       className='dropdown-field'
-      onClick={toggle}
+      disabled={!searchable}
+      onClick={onDropdownClick}
       onKeyPress={utils.handleKeyboardEvent('Enter', toggle)}
-      role='button'
       id={id}
       name={name}
       data-qa={options[value] || placeholder}
-      tabIndex={0}
-    >
-      {content || (
-        <div className={cx('selected-text')}>
-          {options[value] || placeholder}
+      onChange={handleSearchTermChange}
+      value={searchTerm}
+      placeholder='Type to search..'
+      rightElement={(
+        <div
+          className='arrow-icon'
+          role='button'
+          tabIndex={0}
+          onClick={onDropdownArrowClick}
+          onKeyPress={utils.handleKeyboardEvent('Enter', onDropdownArrowClick)}
+        >
+          <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} size='lg' />
         </div>
       )}
-      <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} />
-    </div>
+    />
   )
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (key) => {
     setIsOpen(false)
-    onChange(e)
+    onChange(key)
   }
 
   return (
-    <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
+    <OutsideClickHandler onOutsideClick={onOutsideClick}>
       <div
         ref={ref}
         className={classes}
@@ -88,6 +144,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
             optionRenderer={optionRenderer}
             onChange={handleOnChange}
             onSearchTermChange={onSearchTermChange}
+            searchTerm={searchTerm}
           />
         )}
       </div>
