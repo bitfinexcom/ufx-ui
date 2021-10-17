@@ -114,9 +114,10 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
           onClick={onDropdownArrowClick}
           onKeyPress={utils.handleKeyboardEvent('Enter', onDropdownArrowClick)}
         >
-          <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} size='lg' />
+          <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} size={small ? 'md' : 'lg'} />
         </div>
       )}
+      small={small}
     />
   )
 
