@@ -3,9 +3,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { mount } from 'enzyme'
 import React from 'react'
-import { StoreProvider } from '../../../../store'
 
 import * as Classes from '../../../../common/classes'
+import { StoreProvider } from '../../../../store'
 import Component from '../Dropdown'
 
 const data = {
@@ -22,11 +22,11 @@ const tests = describe.only('Dropdown', () => {
     const id = 'test-dropdown'
     const story = (
       <StoreProvider>
-      <Component
-        id={id}
-        onChange={onChange}
-        {...data}
-      />
+        <Component
+          id={id}
+          onChange={onChange}
+          {...data}
+        />
       </StoreProvider>
     )
     let value = 'eth'
