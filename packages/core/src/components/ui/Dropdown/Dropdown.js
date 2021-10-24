@@ -5,7 +5,9 @@ import _isFunction from 'lodash/isFunction'
 import PropTypes from 'prop-types'
 import React, { useState, forwardRef, useEffect } from 'react'
 import OutsideClickHandler from 'react-outside-click-handler'
+import { useTranslation } from 'react-i18next'
 
+import withI18nProvider from '../../../hoc/withI18nProvider'
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
 import Input from '../Input'
@@ -30,7 +32,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     onSearchTermChange,
     ...rest
   } = props
-
+  const { t } = useTranslation('ui')
   const [isOpen, setIsOpen] = useState(isOpenProp)
   const content = valueRenderer && valueRenderer(value, options[value])
   const classes = cx(Classes.DROPDOWN, className, {
@@ -94,6 +96,8 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
 
   const dropdownValue = searchable && isOpen ? searchTerm : val
 
+  const defPlaceholder = searchable ? t('typeToSearch') : t('selectOption')
+
   const element = (
     <Input
       ref={ref}
@@ -105,7 +109,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
       onChange={handleSearchTermChange}
       data-qa={dropdownValue}
       value={dropdownValue}
-      placeholder={placeholder || 'Type to search..'}
+      placeholder={placeholder || defPlaceholder}
       rightElement={(
         <div
           className='arrow-icon'
@@ -207,4 +211,4 @@ Dropdown.defaultProps = {
   ...DropdownList.defaultProps,
 }
 
-export default Dropdown
+export default withI18nProvider(Dropdown)
