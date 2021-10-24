@@ -3,6 +3,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { mount } from 'enzyme'
 import React from 'react'
+import { StoreProvider } from '../../../../store'
 
 import * as Classes from '../../../../common/classes'
 import Component from '../Dropdown'
@@ -15,16 +16,18 @@ const data = {
   value: 'btc',
 }
 
-const tests = describe('Dropdown', () => {
+const tests = describe.only('Dropdown', () => {
   it('Should call onChange prop when dropdown value is changed', () => {
     const onChange = jest.fn()
     const id = 'test-dropdown'
     const story = (
+      <StoreProvider>
       <Component
         id={id}
         onChange={onChange}
         {...data}
       />
+      </StoreProvider>
     )
     let value = 'eth'
     const wrapper = mount(story)
