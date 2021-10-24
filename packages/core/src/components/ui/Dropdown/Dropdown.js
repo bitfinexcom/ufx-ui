@@ -82,7 +82,8 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
   // open dropdown-menu, reset searchterm
   const onDropdownClick = (e) => {
     e.stopPropagation()
-    handleDropDownToggle(true)
+    const flag = searchable ? true : !isOpen
+    handleDropDownToggle(flag)
   }
 
   // toggle dropdown-menu, reset searchterm
