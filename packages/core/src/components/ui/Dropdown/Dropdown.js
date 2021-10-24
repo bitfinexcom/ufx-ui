@@ -42,7 +42,14 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     setIsOpen(isOpenProp)
   }, [isOpenProp])
 
+  const val = content || options[value]
   const [searchTerm, setSearchTerm] = useState('')
+
+  useEffect(() => {
+    if (!_isFunction(onSearchTermChange)) {
+      setSearchTerm(val)
+    }
+  }, [onSearchTermChange, val])
 
   const updateSearchTerm = (_value) => {
     if (_isFunction(onSearchTermChange)) {
@@ -57,55 +64,47 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     updateSearchTerm(_value)
   }
 
-  const val = content || options[value] || placeholder
-
-  useEffect(() => {
-    setSearchTerm(val)
-  }, [val])
-
-  const handleDropDownToggle = (_value) => {
-    setIsOpen(_value)
+  const handleDropDownToggle = (_isOpen) => {
+    setIsOpen(_isOpen)
     if (!searchable) {
       return
     }
 
-    if (_value) {
-      setSearchTerm('')
-    } else {
-      setSearchTerm(options[value])
-    }
+    updateSearchTerm('')
   }
 
-  const toggle = () => {
-    handleDropDownToggle(!isOpen)
+  // close dropdown-menu, reset searchterm
+  const onOutsideClick = (e) => {
+    e.stopPropagation()
+    handleDropDownToggle(false)
   }
 
+  // open dropdown-menu, reset searchterm
   const onDropdownClick = (e) => {
     e.stopPropagation()
     handleDropDownToggle(true)
   }
 
-  const onOutsideClick = () => {
-    handleDropDownToggle(false)
-  }
-
+  // toggle dropdown-menu, reset searchterm
   const onDropdownArrowClick = (e) => {
     e.stopPropagation()
     handleDropDownToggle(!isOpen)
   }
 
-  const buttonElement = (
+  const dropdownValue = searchable && isOpen ? searchTerm : val
+
+  const element = (
     <Input
+      ref={ref}
       className='dropdown-field'
       disabled={!searchable}
       onClick={onDropdownClick}
-      onKeyPress={utils.handleKeyboardEvent('Enter', toggle)}
       id={id}
       name={name}
-      data-qa={options[value] || placeholder}
       onChange={handleSearchTermChange}
-      value={searchTerm}
-      placeholder='Type to search..'
+      data-qa={dropdownValue}
+      value={dropdownValue}
+      placeholder={placeholder || 'Type to search..'}
       rightElement={(
         <div
           className='arrow-icon'
@@ -121,7 +120,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     />
   )
 
-  const handleOnChange = (key) => {
+  const handleDropdownItemChange = (key) => {
     setIsOpen(false)
     onChange(key)
   }
@@ -129,13 +128,12 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
   return (
     <OutsideClickHandler onOutsideClick={onOutsideClick}>
       <div
-        ref={ref}
         className={classes}
         onMouseLeave={closeOnMouseLeave ? () => setIsOpen(false) : undefined}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       >
-        {buttonElement}
+        {element}
 
         {isOpen && (
           <DropdownList
@@ -143,7 +141,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
             value={value}
             searchable={searchable}
             optionRenderer={optionRenderer}
-            onChange={handleOnChange}
+            onChange={handleDropdownItemChange}
             onSearchTermChange={onSearchTermChange}
             searchTerm={searchTerm}
           />

@@ -20,14 +20,15 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
   .ufx-input.dropdown-field {
     border-radius: 4px;
     border: 1px solid transparent;
-    height: 100%;
+    height: auto;
 
+    .input-field,
     .input-field-container.disabled,
-    .input-field-container:disabled .input-field.disabled,
+    .input-field.disabled,
     .input-field:disabled {
       opacity: 1;
       cursor: unset;
-      background: $input-background-color;
+      background: $ufx-dropdown-input-background-color;
       color: unset;
     }
 
@@ -59,13 +60,13 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $ufx-dropdown-border-color;
+        background-color: $ufx-dropdown-input-background-color;
 
         &:hover,
         &:focus {
           background-color: mix(
             white,
-            lighten($ufx-dropdown-border-color, 3%),
+            lighten($ufx-dropdown-input-background-color, 3%),
             4%
           );
         }
