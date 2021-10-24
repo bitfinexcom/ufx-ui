@@ -42,20 +42,13 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     setIsOpen(isOpenProp)
   }, [isOpenProp])
 
-  const val = content || options[value]
   const [searchTerm, setSearchTerm] = useState('')
 
-  useEffect(() => {
-    if (!_isFunction(onSearchTermChange)) {
-      setSearchTerm(val)
-    }
-  }, [onSearchTermChange, val])
-
-  const updateSearchTerm = (_value) => {
+  const updateSearchTerm = (term) => {
     if (_isFunction(onSearchTermChange)) {
-      onSearchTermChange(_value)
+      onSearchTermChange(term)
     }
-    setSearchTerm(_value)
+    setSearchTerm(options[term])
   }
 
   const handleSearchTermChange = (_value, e) => {
@@ -64,47 +57,76 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
     updateSearchTerm(_value)
   }
 
-  const handleDropDownToggle = (_isOpen) => {
-    setIsOpen(_isOpen)
+  // console.log('value: ', value)
+  // console.log('options: ', options)
+  const val = content || options[value] || searchTerm
+  // console.log('options[value]: ', options[value])
+  // console.log('placeholder: ', placeholder)
+  // console.log('content: ', content)
+  console.log('val: ', val)
+
+  useEffect(() => {
+    setSearchTerm(val)
+  }, [val])
+
+  const handleDropDownToggle = (_value) => {
+    setIsOpen(_value)
     if (!searchable) {
       return
     }
 
-    updateSearchTerm('')
+    if (_value) {
+      updateSearchTerm('')
+    } else {
+      console.log('options[value]: ', options[value])
+      updateSearchTerm(value)
+      // if (options[value]) {
+      // }
+    }
   }
 
-  // close dropdown-menu, reset searchterm
-  const onOutsideClick = (e) => {
-    e.stopPropagation()
-    handleDropDownToggle(false)
-  }
-
-  // open dropdown-menu, reset searchterm
-  const onDropdownClick = (e) => {
-    e.stopPropagation()
-    const flag = searchable ? true : !isOpen
-    handleDropDownToggle(flag)
-  }
-
-  // toggle dropdown-menu, reset searchterm
-  const onDropdownArrowClick = (e) => {
-    e.stopPropagation()
+  const toggle = () => {
     handleDropDownToggle(!isOpen)
   }
 
-  const dropdownValue = searchable && isOpen ? searchTerm : val
+  const onDropdownClick = (e) => {
+    e.stopPropagation()
+    handleDropDownToggle(true)
+  }
 
-  const element = (
-    <Input
-      ref={ref}
+  const onDropdownArrowClick = (e) => {
+    e.stopPropagation()
+    console.log('isOpen: ', isOpen)
+    handleDropDownToggle(!isOpen)
+  }
+
+  const onOutsideClick = () => {
+    console.log('onOutsideClick: ')
+    setIsOpen(false)
+    // if (searchTerm) {
+    //   console.log('options[value]: ', options[value])
+    //   if (options[value]) {
+    //     updateSearchTerm(options[value])
+    //   }
+    // } else {
+    //   updateSearchTerm('')
+    // }
+    updateSearchTerm(value)
+  }
+
+  const Tag = !searchable ? 'div' : Input
+
+  const buttonElement = (
+    <Tag
       className='dropdown-field'
       disabled={!searchable}
       onClick={onDropdownClick}
+      onKeyPress={utils.handleKeyboardEvent('Enter', toggle)}
       id={id}
       name={name}
+      data-qa={options[value] || placeholder}
       onChange={handleSearchTermChange}
-      data-qa={dropdownValue}
-      value={dropdownValue}
+      value={searchTerm}
       placeholder={placeholder || 'Type to search..'}
       rightElement={(
         <div
@@ -114,14 +136,16 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
           onClick={onDropdownArrowClick}
           onKeyPress={utils.handleKeyboardEvent('Enter', onDropdownArrowClick)}
         >
-          <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} size={small ? 'sm' : 'lg'} />
+          <FontAwesomeIcon icon={isOpen ? faAngleUp : faAngleDown} size={small ? 'md' : 'lg'} />
         </div>
       )}
       small={small}
-    />
+    >
+      {!searchable && val }
+    </Tag>
   )
 
-  const handleDropdownItemChange = (key) => {
+  const handleOnChange = (key) => {
     setIsOpen(false)
     onChange(key)
   }
@@ -129,12 +153,13 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
   return (
     <OutsideClickHandler onOutsideClick={onOutsideClick}>
       <div
+        ref={ref}
         className={classes}
-        onMouseLeave={closeOnMouseLeave ? () => setIsOpen(false) : undefined}
+        onMouseLeave={closeOnMouseLeave ? onOutsideClick : undefined}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       >
-        {element}
+        {buttonElement}
 
         {isOpen && (
           <DropdownList
@@ -142,7 +167,7 @@ const Dropdown = forwardRef(function Dropdown(props, ref) {
             value={value}
             searchable={searchable}
             optionRenderer={optionRenderer}
-            onChange={handleDropdownItemChange}
+            onChange={handleOnChange}
             onSearchTermChange={onSearchTermChange}
             searchTerm={searchTerm}
           />

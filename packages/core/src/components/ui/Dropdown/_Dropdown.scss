@@ -1,35 +1,47 @@
 $ufx-dropdown-height: $ufx-base-size * 4 !default;
 $ufx-dropdown-height-small: $ufx-dropdown-height * 0.75 !default;
 $ufx-dropdown-padding: $ufx-base-size !default;
-$ufx-dropdown-border-color: rgba($intent-primary, 0.3) !default;
+$ufx-dropdown-arrow-background-color: rgba($intent-primary, 0.3) !default;
+$ufx-dropdown-border-color: mix(
+  white,
+  lighten($ufx-dropdown-arrow-background-color, 6%),
+  8%
+) !default;
 $ufx-dropdown-text-color: $ufx-text-color !default;
+
 $ufx-dropdown-list-background-color: white !default;
 $ufx-dropdown-list-border: 1px solid
   darken($ufx-dropdown-list-background-color, 10%) !default;
 $ufx-dropdown-list-box-shadow: 0 1px 2px 0 rgba($black, 0.1) !default;
+$ufx-dropdown-list-active-item-background-color: rgba(
+  $intent-primary,
+  0.3
+) !default;
 
-$ufx-dropdown-active-item-background-color: rgba($intent-primary, 0.3) !default;
 $ufx-dropdown-input-background-color: $light-gray6 !default;
-$ufx-dropdown-input-border: 1px solid $light-gray1 !default;
 
 .#{$ns}-dropdown {
   position: relative;
   height: $ufx-dropdown-height;
-  min-width: 120px;
+  min-width: $ufx-base-size * 12;
 
   .ufx-input.dropdown-field {
-    border-radius: 4px;
+    border-radius: $ufx-border-radius;
     border: 1px solid transparent;
     height: auto;
 
-    .input-field,
+    &:focus-within {
+      border-color: $ufx-dropdown-border-color;
+    }
+
     .input-field-container.disabled,
+    .input-field,
     .input-field.disabled,
     .input-field:disabled {
-      opacity: 1;
-      cursor: unset;
       background: $ufx-dropdown-input-background-color;
-      color: unset;
+      cursor: default;
+      opacity: 1;
+      user-select: none;
     }
 
     .input-field-container {
@@ -40,18 +52,16 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
       border-radius: $ufx-border-radius;
       width: 100%;
       height: 100%;
-      border: 1px solid $ufx-dropdown-border-color;
-      cursor: pointer;
       color: $ufx-dropdown-text-color;
       transition: background-color 0.2s;
       outline: 0;
       border: none;
 
       input {
-        height: auto;
         color: $ufx-dropdown-text-color;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
+        @include overflow-ellipsis();
       }
 
       .arrow-icon {
@@ -61,32 +71,25 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
         justify-content: center;
         align-items: center;
         background-color: $ufx-dropdown-input-background-color;
+        border-top-right-radius: $ufx-border-radius;
+        border-bottom-right-radius: $ufx-border-radius;
 
         &:hover,
-        &:focus {
-          background-color: mix(
-            white,
-            lighten($ufx-dropdown-input-background-color, 3%),
-            4%
-          );
-        }
-
+        &:focus,
         &:active {
-          background-color: $ufx-dropdown-border-color;
+          background-color: $ufx-dropdown-arrow-background-color;
         }
-      }
 
-      .selected-text,
-      * {
-        @include overflow-ellipsis();
-        outline: none;
+        &:focus-visible {
+          outline: none;
+        }
       }
     }
   }
 
   &.is-open .dropdown-field {
-    border: 1px solid mix(white, lighten($ufx-dropdown-border-color, 6%), 8%);
-    background-color: $ufx-dropdown-border-color;
+    border-color: $ufx-dropdown-border-color;
+    background-color: $ufx-dropdown-input-background-color;
   }
 
   .list-wrapper {
@@ -123,11 +126,12 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
     padding: ($ufx-dropdown-padding * 0.5) $ufx-dropdown-padding;
     transition: background-color 0.2s;
     cursor: pointer;
+    @include overflow-ellipsis();
 
     &:hover,
     &--active,
     &:focus {
-      background-color: $ufx-dropdown-active-item-background-color;
+      background-color: $ufx-dropdown-list-active-item-background-color;
     }
 
     &:active {
@@ -149,7 +153,7 @@ $ufx-dropdown-input-border: 1px solid $light-gray1 !default;
     }
 
     .list-wrapper {
-      top: $ufx-dropdown-height-small;
+      top: $ufx-dropdown-height-small + 2;
     }
   }
 }
