@@ -1,6 +1,9 @@
 import {
   faInfo, faExclamationCircle, faBan, faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons'
+import _reduce from 'lodash/reduce'
+import _map from 'lodash/map'
+import _reverse from 'lodash/reverse'
 
 import Intent from '../../../common/intent'
 
@@ -39,7 +42,7 @@ export const mergeCreateGroup = (notification = {}, groupN = {}) => ({
 })
 
 export const groupNotifications = (notifications = []) => {
-  const groupedNotifications = notifications.reduce((all, current) => {
+  const groupedNotifications = _reduce(notifications, (all, current) => {
     if (all.length === 0) {
       return [current]
     }
@@ -54,7 +57,7 @@ export const groupNotifications = (notifications = []) => {
     }
 
     // should be grouped, replace last index
-    return all.map((item, idx) => {
+    return _map(all, (item, idx) => {
       if (idx === prevIndex) {
         return mergeCreateGroup(current, prevNotification)
       }
@@ -63,7 +66,7 @@ export const groupNotifications = (notifications = []) => {
   }, [])
 
   // after calculating the groups, we reverse the array to allow newest groups on top
-  return groupedNotifications.reverse()
+  return _reverse(groupedNotifications)
 }
 
 export const getIcon = (level) => {
