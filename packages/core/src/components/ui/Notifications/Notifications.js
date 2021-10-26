@@ -1,7 +1,7 @@
 import cx from 'classnames'
+import _map from 'lodash/map'
 import PropTypes from 'prop-types'
 import React, { memo, forwardRef } from 'react'
-import _map from 'lodash/map'
 
 import * as Classes from '../../../common/classes'
 import { groupNotifications } from './Notifications.helpers'

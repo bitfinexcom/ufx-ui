@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
-import React, { useState, memo } from 'react'
-import _size from 'lodash/size'
 import _map from 'lodash/map'
+import _size from 'lodash/size'
+import React, { useState, memo } from 'react'
 
 import * as Classes from '../../../common/classes'
 import { getIcon } from './Notifications.helpers'

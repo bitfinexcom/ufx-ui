@@ -1,8 +1,8 @@
 import {
   faInfo, faExclamationCircle, faBan, faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons'
-import _reduce from 'lodash/reduce'
 import _map from 'lodash/map'
+import _reduce from 'lodash/reduce'
 import _reverse from 'lodash/reverse'
 
 import Intent from '../../../common/intent'
