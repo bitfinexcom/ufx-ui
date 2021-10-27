@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 
 
+
+
+## v0.11.2 (2021-10-27)
+
+#### :boom: Breaking Change
+* `core`, `storybook`
+  * [#134](https://github.com/bitfinexcom/ufx-ui/pull/134) (improvement) UX improvement for Dropdown search ([@bhoomij](https://github.com/bhoomij))
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#134](https://github.com/bitfinexcom/ufx-ui/pull/134) (improvement) UX improvement for Dropdown search ([@bhoomij](https://github.com/bhoomij))
+
+#### :bug: Bug Fix
+* `core`
+  * [#135](https://github.com/bitfinexcom/ufx-ui/pull/135) (fix) notification grouping counter ([@Blaumaus](https://github.com/Blaumaus))
+
+#### Committers: 2
+- Andrii R. ([@Blaumaus](https://github.com/Blaumaus))
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.11.1 (2021-10-12)
 
 #### :bug: Bug Fix
