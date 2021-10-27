@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.11.3 (2021-10-27)
+
+#### :bug: Bug Fix
+* `core`
+  * [#137](https://github.com/bitfinexcom/ufx-ui/pull/137) (fix) tickerlist: accept custom format for ccyLabels key ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
 
 
 ## v0.11.2 (2021-10-27)
