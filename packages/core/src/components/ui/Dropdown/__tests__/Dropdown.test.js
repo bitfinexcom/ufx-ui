@@ -5,6 +5,7 @@ import { mount } from 'enzyme'
 import React from 'react'
 
 import * as Classes from '../../../../common/classes'
+import { StoreProvider } from '../../../../store'
 import Component from '../Dropdown'
 
 const data = {
@@ -15,22 +16,24 @@ const data = {
   value: 'btc',
 }
 
-const tests = describe('Dropdown', () => {
+const tests = describe.only('Dropdown', () => {
   it('Should call onChange prop when dropdown value is changed', () => {
     const onChange = jest.fn()
     const id = 'test-dropdown'
     const story = (
-      <Component
-        id={id}
-        onChange={onChange}
-        {...data}
-      />
+      <StoreProvider>
+        <Component
+          id={id}
+          onChange={onChange}
+          {...data}
+        />
+      </StoreProvider>
     )
     let value = 'eth'
     const wrapper = mount(story)
 
     // click to open dropdown list
-    wrapper.find(`.${Classes.DROPDOWN} #${id}`).simulate('click')
+    wrapper.find(`.${Classes.DROPDOWN} .dropdown-field#${id}`).simulate('click')
     expect(wrapper.exists('.list')).toEqual(true)
 
     // verify using click
@@ -39,8 +42,8 @@ const tests = describe('Dropdown', () => {
 
     // verify using keypress
     value = 'btc'
-    wrapper.find(`.${Classes.DROPDOWN} #${id}`).simulate('click')
-    wrapper.find(`.list-item[value="${value}"]`).simulate('keypress', { key: 'Enter' })
+    wrapper.find(`.${Classes.DROPDOWN} .dropdown-field#${id}`).simulate('click')
+    wrapper.find(`.list-item[value="${value}"]`).simulate('keypress', { code: 'Enter' })
     expect(onChange).toHaveBeenCalledWith(value)
 
     // close dropdown list

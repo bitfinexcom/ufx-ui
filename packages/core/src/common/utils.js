@@ -1,8 +1,8 @@
 import { i18n } from '../i18n'
 
 export const handleKeyboardEvent = (targetKeys, handler) => (event) => {
-  const { key } = event
-  if (targetKeys.includes(key)) {
+  const { code } = event
+  if (targetKeys.includes(code)) {
     handler(event)
   }
 }

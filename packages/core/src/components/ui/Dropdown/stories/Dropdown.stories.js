@@ -27,14 +27,16 @@ export const searchable = showTemplateStory(Dropdown, {
   searchable: true,
 })
 
-const renderer = (key, value) => (
+const optionRenderer = (key, value) => (
   <div className='custom-renderer'>
     {key} - {value}
   </div>
 )
 
+const valueRenderer = (key, value) => `${key} - ${value}`
+
 export const customRenderer = showTemplateStory(Dropdown, {
   ...props,
-  valueRenderer: renderer,
-  optionRenderer: renderer,
+  optionRenderer,
+  valueRenderer,
 })
