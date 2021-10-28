@@ -46,8 +46,6 @@ const types = createTypes(
   'ON_MESSAGE',
   'OC_MESSAGE',
   'N_MESSAGE', // notification message
-  'CANDLES_SNAPSHOT_MESSAGE',
-  'CANDLES_UPDATE_MESSAGE',
 )
 
 export default types

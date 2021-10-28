@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.11.3 (2021-10-27)
+
+#### :bug: Bug Fix
+* `core`
+  * [#137](https://github.com/bitfinexcom/ufx-ui/pull/137) (fix) tickerlist: accept custom format for ccyLabels key ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.11.2 (2021-10-27)
+
+#### :boom: Breaking Change
+* `core`, `storybook`
+  * [#134](https://github.com/bitfinexcom/ufx-ui/pull/134) (improvement) UX improvement for Dropdown search ([@bhoomij](https://github.com/bhoomij))
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#134](https://github.com/bitfinexcom/ufx-ui/pull/134) (improvement) UX improvement for Dropdown search ([@bhoomij](https://github.com/bhoomij))
+
+#### :bug: Bug Fix
+* `core`
+  * [#135](https://github.com/bitfinexcom/ufx-ui/pull/135) (fix) notification grouping counter ([@Blaumaus](https://github.com/Blaumaus))
+
+#### Committers: 2
+- Andrii R. ([@Blaumaus](https://github.com/Blaumaus))
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.11.1 (2021-10-12)
+
+#### :bug: Bug Fix
+* `bfx-containers`, `core`, `cypress-tests`, `eslint-config`, `example`, `storybook`, `utils`
+  * [#132](https://github.com/bitfinexcom/ufx-ui/pull/132) (chore) auto fix dependency vulnerabilities ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+## v0.11.0 (2021-10-11)
+
+#### :boom: Breaking Change
+* `bfx-containers`, `core`, `example`, `storybook`
+  * [#127](https://github.com/bitfinexcom/ufx-ui/pull/127) (chore) upgrade to react 17 ([@bhoomij](https://github.com/bhoomij))
+
+#### :art: Refactor
+* `bfx-containers`
+  * [#129](https://github.com/bitfinexcom/ufx-ui/pull/129) (refactor) Add env `REACT_APP_UFX_API_URL` ([@bhoomij](https://github.com/bhoomij))
+* `bfx-containers`, `core`
+  * [#128](https://github.com/bitfinexcom/ufx-ui/pull/128) (refactor) remove dead code ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.10.12 (2021-09-30)
 
 #### :rocket: Feature

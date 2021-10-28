@@ -1,6 +1,6 @@
-import { pubApi } from '../functions/api'
+import { api } from '../functions/api'
 
-export const getSymbolDetails = () => pubApi({
+export const getSymbolDetails = () => api({
   url: '/v1/symbols_details',
 })
 

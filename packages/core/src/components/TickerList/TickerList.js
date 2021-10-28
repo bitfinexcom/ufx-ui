@@ -51,7 +51,15 @@ export const TickerList = (props) => {
   const keyForId = getMappedKey(KEYS.ID, rowMapping)
   const keyForBaseCcy = getMappedKey(KEYS.BASE_CCY, rowMapping)
   const keyForQuoteCcy = getMappedKey(KEYS.QUOTE_CCY, rowMapping)
-  const keyForCcyLabels = getMappedKey(KEYS.CCY_LABELS, rowMapping)
+
+  const getDisplayValue = useCallback(
+    (rowData) => getValue({
+      mapping: MAPPING,
+      customMapping: rowMapping,
+      data: rowData,
+    }),
+    [rowMapping],
+  )
 
   // filter ccys matching search-term and marked as fav
   const filtered = _filter(data,
@@ -59,7 +67,7 @@ export const TickerList = (props) => {
       const baseCcy = _get(row, keyForBaseCcy)
       const quoteCcy = _get(row, keyForQuoteCcy)
       const defaultLabels = [baseCcy, quoteCcy, baseCcy + quoteCcy, `${baseCcy}/${quoteCcy}`]
-      const ccyLabels = _get(row, keyForCcyLabels, [])
+      const ccyLabels = getDisplayValue(row)(KEYS.CCY_LABELS) || []
 
       const matches = _toLower(_join([...ccyLabels, ...defaultLabels]))
 
@@ -76,15 +84,6 @@ export const TickerList = (props) => {
     }
     saveFavs(newFavs)
   }, [favs, saveFavs])
-
-  const getDisplayValue = useCallback(
-    (rowData) => getValue({
-      mapping: MAPPING,
-      customMapping: rowMapping,
-      data: rowData,
-    }),
-    [rowMapping],
-  )
 
   const columns = useMemo(() => {
     const cols = getColumns({

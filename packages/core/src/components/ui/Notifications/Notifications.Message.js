@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
+import _map from 'lodash/map'
+import _size from 'lodash/size'
 import React, { useState, memo } from 'react'
 
 import * as Classes from '../../../common/classes'
@@ -31,7 +33,7 @@ const NotificationMessage = (props) => {
 
         <ul>
           {group && groupIsExpanded
-            ? group.map(groupedMessage => (
+            ? _map(group, groupedMessage => (
               <li key={groupedMessage.cid}>
                 {groupedMessage.message}
               </li>
@@ -50,7 +52,7 @@ const NotificationMessage = (props) => {
           className='expand-button'
           onClick={() => setGroupIsExpanded(!groupIsExpanded)}
         >
-          {groupIsExpanded ? 'Collapse' : `Expand (${group.length} more)`}
+          {groupIsExpanded ? 'Collapse' : `Expand (${_size(group) - 1} more)`}
         </button>
       )}
     </div>
