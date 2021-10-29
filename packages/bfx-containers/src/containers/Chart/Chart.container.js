@@ -3,7 +3,7 @@ import { defaultBaseCcy, defaultQuoteCcy } from '@ufx-ui/utils'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { pubApiUrl } from '../../functions/config.selectors'
+import { corsProxyUrl, pubApiUrl } from '../../functions/config.selectors'
 import useCommonBfxData from '../../hooks/useCommonBfxData'
 import { CHART_URL, DEFAULT_THEME } from './Chart.constants'
 
@@ -18,7 +18,7 @@ const ChartContainer = ({
     wsID: symbol,
     base: baseCcy,
     quote: quoteCcy,
-    apiBaseUrl: pubApiUrl,
+    apiBaseUrl: `${corsProxyUrl}${pubApiUrl}`,
     theme: theme || DEFAULT_THEME,
   }).toString()
 
