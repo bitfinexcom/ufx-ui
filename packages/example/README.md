@@ -13,7 +13,7 @@ REACT_APP_UFX_API_SECRET=<api-secret>
 
 Environment variable to provide cors proxy url:
 ```
-REACT_APP_UFX_CORS_PROXY_URL=<your-cors-url>
+REACT_APP_UFX_CORS_PROXY_URL=<your-url>
 ```
 
 ```bash
