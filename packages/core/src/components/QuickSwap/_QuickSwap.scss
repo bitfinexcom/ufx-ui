@@ -78,6 +78,7 @@ $quickswap-dropdown-width: $ufx-base-size * 13;
   }
 
   .token-dropdown {
+    height: 47px;
     min-width: $quickswap-dropdown-width;
     max-width: $quickswap-dropdown-width;
     border-radius: 2px;

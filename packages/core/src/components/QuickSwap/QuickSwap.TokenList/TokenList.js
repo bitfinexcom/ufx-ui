@@ -8,7 +8,6 @@ import renderer from './TokenList.renderer'
 const TokenList = (props) => (
   <Dropdown
     searchable
-    valueRenderer={renderer}
     optionRenderer={renderer}
     // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}

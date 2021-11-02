@@ -20,6 +20,10 @@
     "copy_to_clipboard": "Copy to clipboard",
     "no": "No"
   },
+  "ui": {
+    "typeToSearch": "Type to search..",
+    "selectOption": "Select an option"
+  },
   "quickswap": {
     "title": "Choose which assets to Swap",
     "amount": "Amount",
