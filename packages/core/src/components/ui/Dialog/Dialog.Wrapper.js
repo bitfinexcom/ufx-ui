@@ -13,6 +13,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
     children,
     isOpen,
     onClose,
+    onSubmit,
     canEscapeKeyClose,
     canOutsideClickClose,
     className,
@@ -27,9 +28,12 @@ const Dialog = forwardRef(function Dialog(props, ref) {
   } = props
 
   useEffect(() => {
-    const handleKeydown = e => {
+    const handleKeydown = (e) => {
       if (e.key === 'Escape' && isOpen && canEscapeKeyClose) {
         onClose()
+      }
+      if (e.key === 'Enter' && isOpen) {
+        onSubmit()
       }
     }
 
@@ -38,7 +42,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
     return () => {
       window.removeEventListener('keydown', handleKeydown)
     }
-  }, [onClose, isOpen, canEscapeKeyClose])
+  }, [onClose, isOpen, canEscapeKeyClose, onSubmit])
 
   useEffect(() => {
     const addOrRemove = isOpen ? 'add' : 'remove'
@@ -50,11 +54,11 @@ const Dialog = forwardRef(function Dialog(props, ref) {
       <Transition
         in={isOpen}
         timeout={300}
-        onEnter={node => node.offsetHeight}
+        onEnter={(node) => node.offsetHeight}
         mountOnEnter
         unmountOnExit
       >
-        {state => (
+        {(state) => (
           <Modal
             state={state}
             className={className}
@@ -92,6 +96,10 @@ Dialog.propTypes = {
    * will not actually close itself until that prop becomes `false`.
    */
   onClose: PropTypes.func.isRequired,
+  /**
+   * A callback that is invoked when user click Enter button
+   */
+  onSubmit: PropTypes.func.isRequired,
   /**
    * Title of the dialog. If provided, an element with `Classes.DIALOG_HEADER`
    * will be rendered inside the dialog before any children elements.
