@@ -37,7 +37,9 @@ const Dialog = forwardRef(function Dialog(props, ref) {
       }
     }
 
-    window.addEventListener('keydown', handleKeydown)
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeydown)
+    }
 
     return () => {
       window.removeEventListener('keydown', handleKeydown)
