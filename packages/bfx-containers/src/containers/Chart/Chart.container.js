@@ -58,7 +58,7 @@ ChartContainer.propTypes = {
     'staging',
     'electron',
     'production',
-  ])
+  ]),
 }
 
 ChartContainer.defaultProps = {
