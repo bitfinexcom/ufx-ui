@@ -28,7 +28,8 @@ const Dialog = forwardRef(function Dialog(props, ref) {
   } = props
 
   useEffect(() => {
-    const handleKeydown = (e) => {
+    // eslint-disable-next-line prefer-arrow-callback
+    function handleKeydown(e) {
       if (e.key === 'Escape' && isOpen && canEscapeKeyClose) {
         onClose()
       }
