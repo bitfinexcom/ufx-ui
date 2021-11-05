@@ -1,6 +1,6 @@
 import types from '../constants/layouts.constants'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   editEnabled: false,
 }
 
