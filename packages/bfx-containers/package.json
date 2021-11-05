@@ -10,7 +10,8 @@
     "start": "rollup -c -w",
     "prepare": "npm run build",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "test": "jest"
   },
   "author": "Bitfinex",
   "license": "Apache-2.0",
