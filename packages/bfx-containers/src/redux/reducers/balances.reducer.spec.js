@@ -50,48 +50,62 @@ describe('REDUCER: balances', () => {
     })
   })
   describe('action: WU_MESSAGE', () => {
+    const initialState = {
+      ...INITIAL_STATE,
+      wallets: {
+        BTC: {
+          exchange: {
+            available: 3,
+            total: 5,
+          },
+        },
+      },
+    }
+
     it('empty payload', () => {
       const action = {
         type: types.WU_MESSAGE,
         payload: null,
       }
-      expect(balanceReducer(INITIAL_STATE, action)).toEqual(INITIAL_STATE)
+      expect(balanceReducer(initialState, action)).toEqual(initialState)
     })
     it('empty rowData', () => {
       const action = {
         type: types.WU_MESSAGE,
         payload: [null, null, []],
       }
-      expect(balanceReducer(INITIAL_STATE, action)).toEqual(INITIAL_STATE)
+      expect(balanceReducer(initialState, action)).toEqual(initialState)
     })
-    // it('full rowData', () => {
-    //   const initialState = {
-    //     ...INITIAL_STATE,
-    //     wallets: {
-    //       BTC: {
-    //         exchange: {
-    //           available: 3,
-    //           total: 5,
-    //         },
-    //       },
-    //     },
-    //   }
-    //   const action = {
-    //     type: types.WU_MESSAGE,
-    //     payload: [null, null, ['exchange']],
-    //   }
-    //   expect(balanceReducer(initialState, action)).toEqual({
-    //     ...initialState,
-    //     wallets: {
-    //       BTC: {
-    //         exchange: {
-    //           available: 3,
-    //           total: 5,
-    //         },
-    //       },
-    //     },
-    //     snapshotReceived: true,
-    //   })
-    // })
+    it('is not exchange type of wallet', () => {
+      const action = {
+        type: types.WU_MESSAGE,
+        payload: [null, null, ['funding', 'ETH', 0.5, null, 0.1]],
+      }
+      expect(balanceReducer(initialState, action)).toEqual(initialState)
+    })
+
+    it('full rowData', () => {
+      const action = {
+        type: types.WU_MESSAGE,
+        payload: [null, null, ['exchange', 'ETH', 10, null, 8.2]],
+      }
+      expect(balanceReducer(initialState, action)).toEqual({
+        ...initialState,
+        wallets: {
+          BTC: {
+            exchange: {
+              available: 3,
+              total: 5,
+            },
+          },
+          ETH: {
+            exchange: {
+              available: 8.2,
+              total: 10,
+            },
+          },
+        },
+      })
+    })
   })
 })
