@@ -5,7 +5,7 @@ import orderAdapter, { orderListAdapter, orderMapAdapter } from '../adapters/ord
 import types from '../constants/orders.constants'
 import wsTypes from '../constants/ws.constants'
 
-const INITIAL_STATE = {}
+export const INITIAL_STATE = {}
 
 const reducer = (state = INITIAL_STATE, action = {}) => {
   const {
