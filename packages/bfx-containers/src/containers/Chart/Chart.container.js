@@ -3,14 +3,12 @@ import { defaultBaseCcy, defaultQuoteCcy } from '@ufx-ui/utils'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { corsProxyUrl, pubApiUrl } from '../../functions/config.selectors'
+import { corsProxyUrl as proxyURL } from '../../functions/config.selectors'
 import useCommonBfxData from '../../hooks/useCommonBfxData'
 import { CHART_URL, DEFAULT_THEME } from './Chart.constants'
 
 const ChartContainer = ({
-  baseCcy,
-  quoteCcy,
-  theme,
+  baseCcy, quoteCcy, theme, env,
 }) => {
   const { symbol } = useCommonBfxData(baseCcy, quoteCcy)
 
@@ -18,8 +16,9 @@ const ChartContainer = ({
     wsID: symbol,
     base: baseCcy,
     quote: quoteCcy,
-    apiBaseUrl: `${corsProxyUrl}${pubApiUrl}`,
     theme: theme || DEFAULT_THEME,
+    proxyURL,
+    env,
   }).toString()
 
   return (
@@ -52,12 +51,21 @@ ChartContainer.propTypes = {
     'colourblind-theme:dark-mode',
     'honeyframework-theme:dark-mode',
   ]),
+  /**
+   * The environment of the chart.
+   */
+  env: PropTypes.oneOf([
+    'staging',
+    'electron',
+    'production',
+  ]),
 }
 
 ChartContainer.defaultProps = {
   baseCcy: defaultBaseCcy,
   quoteCcy: defaultQuoteCcy,
   theme: DEFAULT_THEME,
+  env: 'production',
 }
 
 export default memo(ChartContainer)
