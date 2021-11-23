@@ -4,7 +4,7 @@ import _isNull from 'lodash/isNull'
 import detailAdapter from '../adapters/symbols.adapter'
 import types from '../constants/currencies.constants'
 
-const INITIAL_STATE = {}
+export const INITIAL_STATE = {}
 
 const reducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload = [] } = action

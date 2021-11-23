@@ -3,7 +3,7 @@ import _omit from 'lodash/omit'
 
 import types from '../constants/UI.constants'
 
-const INITIAL_STATE = {}
+export const INITIAL_STATE = {}
 
 const UIReducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload = {} } = action
