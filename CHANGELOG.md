@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.11.5 (2021-11-23)
+
+#### :dizzy: Improvement
+* `core`
+  * [#143](https://github.com/bitfinexcom/ufx-ui/pull/143) (improvement) Modal: added Enter button support ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :house: Internal
+* `bfx-containers`
+  * [#144](https://github.com/bitfinexcom/ufx-ui/pull/144) (improvement) Redux reducers tests ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+
+
 ## v0.11.4 (2021-11-15)
 
 #### :dizzy: Improvement
