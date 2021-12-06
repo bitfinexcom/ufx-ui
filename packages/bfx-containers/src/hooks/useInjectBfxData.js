@@ -11,6 +11,7 @@ import {
   WSUnsubscribeAuthChannel,
 } from '../redux/actions/ws.actions'
 import { getWSConnected, getWSIsAuthenticated } from '../redux/selectors/ws.selectors'
+import { getAPICredentials } from '../utils/authStorage'
 
 const useInjectBfxData = ({
   shouldFetchWSData = true,
@@ -45,7 +46,10 @@ const useInjectBfxData = ({
   useEffect(() => {
     if (shouldFetchWSData) {
       if (isWSConnected && !isAuthenticated) {
-        dispatch(WSSubscribeAuthChannel())
+        const [key, secret] = getAPICredentials()
+        if (key && secret) {
+          dispatch(WSSubscribeAuthChannel())
+        }
       }
     }
 

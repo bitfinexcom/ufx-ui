@@ -333,5 +333,16 @@
       "trading_wallet_name": "Margin",
       "deposit_wallet_name": "Funding"
     }
+  },
+  "login": {
+    "apiKey": "API Key",
+    "apiSecret": "API Secret",
+    "apiKeyRequired": "API Key is required.",
+    "apiSecretRequired": "API Secret is required.",
+    "title": "Login with Bitfinex API credentials",
+    "warning": "Warning!",
+    "warningText": "This is only for DEMO mode and it is advised to login with only READONLY API keys.",
+    "login": "LogIn",
+    "logout":"Logout"
   }
 }

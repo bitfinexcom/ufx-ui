@@ -6,6 +6,7 @@ import {
   put, select, takeEvery, delay, fork, call,
 } from 'redux-saga/effects'
 
+import { notify } from '../actions/notifications.actions'
 import {
   WSSend,
   WSSubscribed,
@@ -59,7 +60,15 @@ function* processWSMessage({ payload: actionPayload }) {
         }
 
         case WS_EVENT_TYPES.AUTH: {
+          const { status, msg: message } = payload || {}
+          if (status === 'FAILED') {
+            yield put(notify({
+              level: 'error',
+              message,
+            }))
+          }
           yield put(WSAuthenticated(payload))
+
           break
         }
 

@@ -39,10 +39,10 @@ function* processSubmitOrder(action) {
   yield put(send)
 }
 
-function* tradesSaga() {
+function* ordersSaga() {
   yield takeLatest(types.FETCH_ORDER_HISTORY, processOrderHistoryRequest)
   yield takeLatest(types.CANCEL_ORDER, processCancelOrder)
   yield takeLatest(types.SUBMIT_ORDER, processSubmitOrder)
 }
 
-export default tradesSaga
+export default ordersSaga
