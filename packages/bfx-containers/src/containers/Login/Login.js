@@ -2,7 +2,8 @@ import {
   Dialog, Input, Button, Intent, Classes,
 } from '@ufx-ui/core'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 
@@ -12,83 +13,79 @@ import { saveAPICredentials } from '../../utils/authStorage'
 
 const Login = (props) => {
   const { onClose, isOpen } = props
-  const [apiKey, setApiKey] = useState('')
-  const [apiSecret, setApiSecret] = useState('')
-  const [apiKeyError, setApiKeyError] = useState('')
-  const [apiSecretError, setApiSecretError] = useState('')
+  const {
+    handleSubmit, formState: { errors }, control, reset,
+  } = useForm()
+
   const dispatch = useDispatch()
   const { t } = useTranslation('login')
 
-  const handleLoginClick = (e) => {
-    e.stopPropagation()
-
-    setApiKeyError('')
-    setApiSecretError('')
-
-    if (!apiKey || !apiSecret) {
-      if (!apiKey) {
-        setApiKeyError(t('apiKeyRequired'))
-      }
-      if (!apiSecret) {
-        setApiSecretError(t('apiSecretRequired'))
-      }
-
-      return false
-    }
+  const handleLoginClick = (data) => {
+    const { apiKey, apiSecret } = data
 
     saveAPICredentials(apiKey, apiSecret)
     dispatch(WSSubscribeAuthChannel())
-    setApiKey('')
-    setApiSecret('')
+    reset()
     onClose()
-
-    return true
   }
 
   const handleOnClose = (e) => {
     e.stopPropagation()
-    setApiKey('')
-    setApiSecret('')
-    setApiKeyError('')
-    setApiSecretError('')
+    reset()
     onClose()
   }
 
   return (
     <Dialog isOpen={isOpen} onClose={handleOnClose} title={t('title')}>
-      <div className={Classes.LOGIN}>
+      <form className={Classes.LOGIN} onSubmit={handleSubmit(handleLoginClick)}>
         <div>
           <p className='text warning'>{t('warning')}</p>
           <div className='text warning'>{t('warningText')}</div>
         </div>
-        <Input
-          small
-          type='password'
-          autoComplete='off'
+
+        <Controller
           name='apiKey'
-          label={t('apiKey')}
-          value={apiKey}
-          onChange={setApiKey}
-          error={apiKeyError}
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Input
+              small
+              type='password'
+              autoComplete='off'
+              label={t('apiKey')}
+              error={errors.apiKey?.type === 'required' && t('apiKeyRequired')}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...field}
+            />
+          )}
         />
-        <Input
-          small
-          type='password'
-          autoComplete='off'
-          name='apiKey'
-          label={t('apiSecret')}
-          value={apiSecret}
-          onChange={setApiSecret}
-          error={apiSecretError}
+
+        <Controller
+          name='apiSecret'
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <Input
+              small
+              type='password'
+              autoComplete='off'
+              label={t('apiSecret')}
+              error={errors.apiSecret?.type === 'required' && t('apiSecretRequired')}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...field}
+            />
+          )}
         />
+
         <Button
           small
           intent={Intent.SUCCESS}
           className='submit'
-          onClick={handleLoginClick}
+          type='submit'
         >{t('login')}
         </Button>
-      </div>
+
+      </form>
     </Dialog>
   )
 }
