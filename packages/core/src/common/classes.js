@@ -155,6 +155,9 @@ export const NEW_WITHDRAWAL = `${NS}-new-withdrawal`
 // Chart
 export const CHART = `${NS}-chart`
 
+// Login
+export const LOGIN = `${NS}-login`
+
 /* page/containers - end */
 
 // class helper functions
