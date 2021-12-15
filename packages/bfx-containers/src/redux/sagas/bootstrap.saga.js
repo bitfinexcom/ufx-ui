@@ -18,8 +18,7 @@ function* processBootstrap() {
 }
 
 function* bootstrapSaga() {
-  // @TODO request UI data
-  // yield takeLatest(types.REQUEST_UI_BOOTSTRAP_DATA, processBootstrap)
+  yield takeLatest(types.REQUEST_UI_BOOTSTRAP_DATA, processBootstrap)
 }
 
 export default bootstrapSaga

@@ -1,4 +1,5 @@
 import _forEach from 'lodash/forEach'
+import _reduce from 'lodash/reduce'
 import _set from 'lodash/set'
 import _startsWith from 'lodash/startsWith'
 import _toUpper from 'lodash/toUpper'
@@ -29,15 +30,23 @@ const PAIR_SECURITIES_INDEX = 14
 
 const CCY_TX_STATUS_PAYLOAD = {
   CCY_INDEX: 0,
+  IS_DEPOSIT_ACTIVE_INDEX: 1,
+  IS_WITHDRAW_ACTIVE_INDEX: 2,
   HAS_PAYMENT_ID_DEPOSITS_INDEX: 7,
   HAS_PAYMENT_ID_WITHDRAWALS_INDEX: 8,
 }
 
-const getCcyListFromTxStatusPayload = (payload, index) => (
-  (payload[CCY_TX_STATUS_INDEX] || [])
-    .filter((entry) => entry[index] === 1)
-    .map((entry) => entry[CCY_TX_STATUS_PAYLOAD.CCY_INDEX])
-)
+const getTxMethodsMapping = (state, payload) => _reduce(payload?.[CCY_TX_STATUS_INDEX], (res, entry) => {
+  const txMethod = entry[CCY_TX_STATUS_PAYLOAD.CCY_INDEX]
+  res[txMethod] = {
+    ...state[txMethod],
+    isDepositActive: entry[CCY_TX_STATUS_PAYLOAD.IS_DEPOSIT_ACTIVE_INDEX],
+    isWithdrawActive: entry[CCY_TX_STATUS_PAYLOAD.IS_WITHDRAW_ACTIVE_INDEX],
+    hasPaymentIdForDeposits: entry[CCY_TX_STATUS_PAYLOAD.HAS_PAYMENT_ID_DEPOSITS_INDEX],
+    hasPaymentIdForWithdrawals: entry[CCY_TX_STATUS_PAYLOAD.HAS_PAYMENT_ID_WITHDRAWALS_INDEX],
+  }
+  return res
+}, { })
 
 const EXPECTED_CURRENCY_INFO_FIELDS = [
   CURRENCY_LABEL,
@@ -72,6 +81,9 @@ const addPropertyIfPresentInList = (map, lists) => {
 
 const reduceCurrencyInfo = (infoArray, fieldName, currenciesInfo, currencyLabelToCurrencyCodeMap) => {
   _forEach(infoArray, (value) => {
+    if (fieldName === CURRENCY_COLLATERAL_MARGIN) {
+      return _set(currenciesInfo, [value, CURRENCY_COLLATERAL_MARGIN], true)
+    }
     const [code, fieldValue] = value
     if (fieldName === CURRENCY_LABEL) {
       // use _set will auto convert path (oo.xx) format to object
@@ -149,6 +161,17 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
               }
               return acc
             }, {})
+
+            const txMethods = {}
+            array.forEach((fv) => {
+              const [txMethod, symbolArr] = fv
+              txMethods[txMethod] = {
+                ...txMethods[txMethod],
+                symbol: symbolArr,
+              }
+            })
+
+            stateUpdate.txMethods = txMethods
             stateUpdate.tetherProtocolToCurrencyMapping = tetherMethods
           }
         }
@@ -164,17 +187,7 @@ const reducer = (state = INITIAL_STATE, action = {}) => {
         },
       )
 
-      stateUpdate.txMethods = addPropertyIfPresentInList(
-        {},
-        {
-          hasPaymentIdForDeposits: getCcyListFromTxStatusPayload(
-            payload, CCY_TX_STATUS_PAYLOAD.HAS_PAYMENT_ID_DEPOSITS_INDEX,
-          ),
-          hasPaymentIdForWithdrawals: getCcyListFromTxStatusPayload(
-            payload, CCY_TX_STATUS_PAYLOAD.HAS_PAYMENT_ID_WITHDRAWALS_INDEX,
-          ),
-        },
-      )
+      stateUpdate.txMethods = getTxMethodsMapping(stateUpdate.txMethods, payload)
 
       stateUpdate.currencyLabelToCurrencyCodeMap = currencyLabelToCurrencyCodeMap
       stateUpdate.pairsInfo = (
