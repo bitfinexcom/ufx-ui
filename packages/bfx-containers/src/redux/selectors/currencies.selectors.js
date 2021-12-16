@@ -231,7 +231,7 @@ export const getHasPaymentIdForWithdrawals = createSelector(
   [getCurrenciesInfo, getTxMethods],
   (ccysInfo, txMethods) => (ccy) => {
     const txMethod = getTxMethodForCcy(ccysInfo, ccy)
-    return _get(txMethods, [txMethod, 'hasPaymentIdForWithdrawals'], false)
+    return !!_get(txMethods, [txMethod, 'hasPaymentIdForWithdrawals'], false)
   },
 )
 
@@ -239,7 +239,7 @@ export const getHasPaymentIdForDeposits = createSelector(
   [getCurrenciesInfo, getTxMethods],
   (ccysInfo, txMethods) => (ccy) => {
     const txMethod = getTxMethodForCcy(ccysInfo, ccy)
-    return _get(txMethods, [txMethod, 'hasPaymentIdForDeposits'], false)
+    return !!_get(txMethods, [txMethod, 'hasPaymentIdForDeposits'], false)
   },
 )
 
