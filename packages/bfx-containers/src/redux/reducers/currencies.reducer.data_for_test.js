@@ -1646,211 +1646,13 @@ export const payload = [
     ['BITCOIN', 1, 1, null, null, null, null, 0, 0, null, null, 3],
     ['LITECOIN', 1, 1, null, null, null, null, 0, 0, null, null, 6],
     ['ETHEREUM', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ETHEREUMC', 1, 1, null, null, null, null, 0, 0, null, null, 100],
     ['ZCASH', 1, 1, null, null, null, null, 0, 0, null, null, 15],
-    ['MONERO', 1, 1, null, null, null, null, 0, 0, null, null, 15],
     ['DASH', 1, 1, null, null, null, null, 0, 0, null, null, 9],
     ['RIPPLE', 1, 1, null, null, null, null, 1, 1, null, null, 1],
     ['IOTA', 1, 1, null, null, null, null, 0, 0, null, null, 1],
     ['TETHERUSO', 1, 1, null, null, null, null, 0, 0, null, null, 3],
-    ['EOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['SANTIMENT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['OMISEGO', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['NEO', 1, 1, null, null, null, null, 0, 0, null, null, 1],
-    ['METAVERSE', 1, 1, null, null, null, null, 0, 0, null, null, 60],
-    ['QTUM', 1, 1, null, null, null, null, 0, 0, null, null, 20],
-    ['AVENTUS', 0, 1, null, null, null, null, 0, 0, null, null, null],
-    ['EIDOO', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BGOLD', 1, 1, null, null, null, null, 0, 0, null, null, 50],
-    ['DATACOIN', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERUSE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['QASH', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['GOLEM', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['STATUS', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHEREUE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BAT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['MNA', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['FUN', 1, 1, null, null, null, null, 0, 0, null, null, 5],
     ['ZRX', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TRX', 1, 1, null, null, null, null, 0, 0, null, null, 20],
-    ['SNG', 0, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['REP', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['NEC', 0, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['REQ', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['LRC', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['WAX', 1, 1, null, null, null, null, 1, 1, null, null, null],
-    ['DAI', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BFT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ODE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ANT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['STJ', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['XLM', 1, 1, null, null, null, null, 1, 1, null, null, 1],
-    ['XVG', 1, 1, null, null, null, null, 0, 0, null, null, 12],
-    ['MKR', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['KNC', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['EVT', 0, 0, null, null, null, null, 0, 0, null, null, 5],
-    ['LYM', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['UTK', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['VEE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['DAD', 0, 0, null, null, null, null, 0, 0, null, null, 5],
-    ['ORS', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ZCN', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ESS', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ATD', 0, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['ADD', 0, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['MTO', 0, 1, null, null, null, null, 0, 0, null, null, 15],
-    ['IQX', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['ZIL', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['BNT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['XRA', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['VET', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['GOT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['XTZ', 1, 1, null, null, null, null, 0, 0, null, null, 30],
-    ['YGG', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['MLN', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['OMN', 1, 1, null, null, null, null, 0, 0, null, null, 3],
-    ['PNK', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['DGB', 1, 1, null, null, null, null, 0, 0, null, null, 100],
-    ['BSV', 1, 1, null, null, null, null, 0, 0, null, null, 20],
-    ['ENJ', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['RBT', 1, 1, null, null, null, null, 0, 0, null, null, 15],
-    ['UDC', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TSD', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['PAX', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['PAS', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['VSY', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['BTT', 1, 1, null, null, null, null, 0, 0, null, null, 20],
-    ['CLO', 1, 1, null, null, null, null, 0, 0, null, null, 75],
-    ['GNO', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ATO', 1, 1, null, null, null, null, 0, 1, null, null, 15],
-    ['WBT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['XCH', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['EUS', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['LBT', 1, 1, null, null, null, null, 0, 0, null, null, 2],
-    ['LES', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['LET', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['GTX', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['KAN', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['AMP', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ALG', 1, 1, null, null, null, null, 0, 0, null, null, 3],
-    ['DUSK', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['UOS', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERUSX', 1, 1, null, null, null, null, 0, 0, null, null, 20],
-    ['TETHERUSL', 1, 1, null, null, null, null, 0, 0, null, null, 2],
-    ['RRB', 0, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERUSS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['FTT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERCNHTE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['CHZ', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['LNX', 1, 1, null, null, null, null, 0, 0, null, null, 1],
-    ['TETHERXAUTE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERUSDTALG', 1, 1, null, null, null, null, 0, 0, null, null, 1],
-    ['TETHERUSDTBCH', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['RINGX', 0, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BTSE', 1, 1, null, null, null, null, 0, 0, null, null, 2],
-    ['DOG', 0, 0, null, null, null, null, 0, 0, null, null, 5],
-    ['DOT', 1, 1, null, null, null, null, 0, 0, null, null, 10],
-    ['ADA', 1, 1, null, null, null, null, 0, 0, null, null, 15],
-    ['FET', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERUSDTOMG', 1, 1, null, null, null, null, 0, 0, null, null, 10],
-    ['LINK', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['COMP', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['KSM', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['EGLD', 1, 1, null, null, null, null, 0, 1, null, null, 15],
-    ['UNI', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BAND', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['AVAX', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['SNX', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['YFI', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BAL', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['PBTCEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['EOSDT', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PLTCEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PETHEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['FIL', 1, 1, null, null, null, null, 0, 0, null, null, 100],
-    ['PBTCETH', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['PEOSETH', 0, 0, null, null, null, null, 0, 0, null, null, 5],
-    ['PLTCETH', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['PPNTEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PLINKEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PMKREOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PYFIEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['JST', 1, 1, null, null, null, null, 0, 0, null, null, 20],
-    ['HEZ', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BCHABC', 1, 1, null, null, null, null, 0, 0, null, null, 10],
-    ['BCHN', 1, 1, null, null, null, null, 0, 0, null, null, 30],
-    ['XDC', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['PLU', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['SUN', 1, 1, null, null, null, null, 0, 0, null, null, 20],
-    ['PUNIEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PBANDEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PBALEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PCOMPEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PSNXEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['UOP', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['POMGEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PANTEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PDAIEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PLRCEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['B21X', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['PUOSEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PBATEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PREPEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PZRXEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['PPNKEOS', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['SUSHI', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['XSN', 1, 1, null, null, null, null, 0, 0, null, null, 30],
-    ['EXRD', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['AAVE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['CTK', 1, 1, null, null, null, null, 0, 1, null, null, null],
-    ['SOL', 1, 1, null, null, null, null, 0, 0, null, null, 32],
-    ['BEST', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERUSDTSOL', 1, 1, null, null, null, null, 0, 0, null, null, 3],
-    ['ALBT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['CEL', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['SUKU', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['BMI', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['MOB', 1, 1, null, null, null, null, 0, 0, null, null, 1],
-    ['NEAR', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['BOSON', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['LUNA', 1, 1, null, null, null, null, 0, 1, null, null, 10],
-    ['TETHERUSDTHEZ', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['ICE', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['DOGE', 1, 1, null, null, null, null, 0, 0, null, null, 15],
-    ['OXY', 1, 1, null, null, null, null, 0, 0, null, null, 15],
-    ['1INCH', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['IDX', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['FORTH', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['CHEX', 1, 1, null, null, null, null, 1, 1, null, null, 15],
-    ['QTF', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['OCEAN', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['PLANETS', 1, 1, null, null, null, null, 0, 0, null, null, 10],
-    ['FTM', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['NEXO', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['VELO', 1, 1, null, null, null, null, 1, 1, null, null, 1],
-    ['ICP', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['FCL', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TERRAUST', 1, 1, null, null, null, null, 0, 1, null, null, 10],
-    ['MIR', 1, 1, null, null, null, null, 0, 0, null, null, 10],
-    ['GRT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['WAVES', 1, 1, null, null, null, null, 0, 0, null, null, 3],
-    ['REEF', 1, 1, null, null, null, null, 0, 0, null, null, 30],
-    ['DCR', 1, 1, null, null, null, null, 0, 0, null, null, 3],
-    ['CHSB', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['XRD', 1, 1, null, null, null, null, 0, 0, null, null, null],
-    ['EXO', 0, 0, null, null, null, null, 0, 0, null, null, null],
-    ['ROSE', 1, 1, null, null, null, null, 0, 0, null, null, 1],
-    ['MATIC', 1, 1, null, null, null, null, 0, 0, null, null, 10],
-    ['AXS', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['HMT', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['TETHERUSDTDVF', 1, 1, null, null, null, null, 1, 1, null, null, 3],
-    ['DORA', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['JASMY', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['ANC', 1, 1, null, null, null, null, 0, 0, null, null, 10],
-    ['AIX', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['SHIB', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['MIM', 1, 1, null, null, null, null, 0, 0, null, null, 5],
-    ['QRDO', 1, 1, null, null, null, null, 0, 0, null, null, 5],
+    ['TRX', 1, 1, null, null, null, null, 0, 0, null, null, 1],
   ],
   ['EXOUSD'],
 ]
@@ -1868,6 +1670,7 @@ export const newState = {
       txMethod: 'AAVE',
     },
     ADA: {
+      collateralMargin: true,
       label: 'Cardano ADA',
       explorer: [
         'https://cardanoexplorer.com',
@@ -1894,6 +1697,7 @@ export const newState = {
       txMethod: 'ALBT',
     },
     ALG: {
+      collateralMargin: true,
       label: 'Algorand',
       sym: 'ALGO',
       explorer: [
@@ -1905,6 +1709,7 @@ export const newState = {
       funding: true,
     },
     AMP: {
+      collateralMargin: true,
       label: 'Ampleforth',
       sym: 'AMPL',
       pool: 'ETH',
@@ -1927,6 +1732,7 @@ export const newState = {
       txMethod: 'ATD',
     },
     ATO: {
+      collateralMargin: true,
       label: 'Cosmos-Atom',
       sym: 'ATOM',
       explorer: [
@@ -1938,6 +1744,7 @@ export const newState = {
       funding: true,
     },
     AVAX: {
+      collateralMargin: true,
       label: 'Avalanche',
       explorer: [
         'https://explorer.avax.network',
@@ -1948,6 +1755,7 @@ export const newState = {
       funding: true,
     },
     AXS: {
+      collateralMargin: true,
       label: 'Axie Infinity',
       pool: 'ETH',
       txMethod: 'AXS',
@@ -1978,6 +1786,7 @@ export const newState = {
       label: 'Bitcoin Cash',
     },
     BCHABC: {
+      collateralMargin: true,
       label: 'XEC',
       sym: 'XEC',
       explorer: [
@@ -1989,6 +1798,7 @@ export const newState = {
       funding: true,
     },
     BCHN: {
+      collateralMargin: true,
       label: 'Bitcoin Cash',
       explorer: [
         'https://blockdozer.com',
@@ -2027,6 +1837,7 @@ export const newState = {
       txMethod: 'BOSON',
     },
     BSV: {
+      collateralMargin: true,
       label: 'Bitcoin SV',
       explorer: [
         'https://whatsonchain.com',
@@ -2037,6 +1848,7 @@ export const newState = {
       funding: true,
     },
     BTC: {
+      collateralMargin: true,
       label: 'Bitcoin',
       explorer: [
         'https://blockstream.info',
@@ -2047,6 +1859,7 @@ export const newState = {
       funding: true,
     },
     BTG: {
+      collateralMargin: true,
       label: 'Bitcoin Gold',
       explorer: [
         'https://explorer.bitcoingold.org/insight',
@@ -2067,6 +1880,7 @@ export const newState = {
       txMethod: 'BTT',
     },
     CEL: {
+      collateralMargin: true,
       label: 'Celsius',
       pool: 'ETH',
       txMethod: 'CEL',
@@ -2126,6 +1940,7 @@ export const newState = {
       txMethod: 'CTK',
     },
     DAI: {
+      collateralMargin: true,
       label: 'Dai Stablecoin',
       pool: 'ETH',
       txMethod: 'DAI',
@@ -2166,6 +1981,7 @@ export const newState = {
       txMethod: 'DOG',
     },
     DOGE: {
+      collateralMargin: true,
       label: 'DOGE',
       explorer: [
         'https://dogechain.info',
@@ -2181,6 +1997,7 @@ export const newState = {
       txMethod: 'DORA',
     },
     DOT: {
+      collateralMargin: true,
       label: 'Polkadot',
       explorer: [
         'https://polkadot.subscan.io',
@@ -2191,6 +2008,7 @@ export const newState = {
       funding: true,
     },
     DSH: {
+      collateralMargin: true,
       label: 'Dash',
       sym: 'DASH',
       explorer: [
@@ -2207,6 +2025,7 @@ export const newState = {
       txMethod: 'DUSK',
     },
     EDO: {
+      collateralMargin: true,
       label: 'pNetwork',
       sym: 'PNT',
       pool: 'ETH',
@@ -2214,6 +2033,7 @@ export const newState = {
       funding: true,
     },
     EGLD: {
+      collateralMargin: true,
       label: 'Elrond',
       explorer: [
         'https://explorer.elrond.com',
@@ -2239,6 +2059,7 @@ export const newState = {
       txMethod: 'ESS',
     },
     ETC: {
+      collateralMargin: true,
       label: 'Ethereum Classic',
       explorer: [
         'https://blockscout.com/etc/mainnet',
@@ -2249,6 +2070,7 @@ export const newState = {
       funding: true,
     },
     ETH: {
+      collateralMargin: true,
       label: 'Ethereum',
       explorer: [
         'https://etherscan.io',
@@ -2259,6 +2081,7 @@ export const newState = {
       funding: true,
     },
     ETP: {
+      collateralMargin: true,
       label: 'ETP',
       explorer: [
         'http://explorer.mvs.live/#!',
@@ -2273,6 +2096,7 @@ export const newState = {
       pool: 'ETH',
     },
     EUR: {
+      collateralMargin: true,
       label: 'Euro',
       txMethod: 'WIRE',
       funding: true,
@@ -2284,6 +2108,7 @@ export const newState = {
       txMethod: 'EUS',
     },
     EUT: {
+      collateralMargin: true,
       label: 'Tether EURt',
       sym: 'EURt',
       txMethod: 'TETHEREUE',
@@ -2309,6 +2134,7 @@ export const newState = {
       txMethod: 'FET',
     },
     FIL: {
+      collateralMargin: true,
       label: 'Filecoin',
       explorer: [
         'https://filfox.info/en',
@@ -2324,6 +2150,7 @@ export const newState = {
       txMethod: 'FORTH',
     },
     FTM: {
+      collateralMargin: true,
       label: 'Fantom',
       explorer: [
         'https://ftmscan.com',
@@ -2334,6 +2161,7 @@ export const newState = {
       funding: true,
     },
     FTT: {
+      collateralMargin: true,
       label: 'FTX.com',
       pool: 'ETH',
       txMethod: 'FTT',
@@ -2345,6 +2173,7 @@ export const newState = {
       txMethod: 'FUN',
     },
     GBP: {
+      collateralMargin: true,
       label: 'Pound Sterling',
       txMethod: 'WIRE',
       funding: true,
@@ -2405,6 +2234,7 @@ export const newState = {
       txMethod: 'IDX',
     },
     IOT: {
+      collateralMargin: true,
       label: 'Iota',
       sym: 'IOTA',
       unitLabel: 'Mi',
@@ -2428,6 +2258,7 @@ export const newState = {
       txMethod: 'JASMY',
     },
     JPY: {
+      collateralMargin: true,
       label: 'Japanese Yen',
       txMethod: 'WIRE',
       funding: true,
@@ -2467,6 +2298,7 @@ export const newState = {
       txMethod: 'LBT',
     },
     LEO: {
+      collateralMargin: true,
       label: 'Unus Sed LEO',
       funding: true,
     },
@@ -2483,6 +2315,7 @@ export const newState = {
       txMethod: 'LET',
     },
     LINK: {
+      collateralMargin: true,
       label: 'ChainLink',
       pool: 'ETH',
       txMethod: 'LINK',
@@ -2499,11 +2332,13 @@ export const newState = {
       txMethod: 'LRC',
     },
     LTC: {
+      collateralMargin: true,
       label: 'Litecoin',
       txMethod: 'LITECOIN',
       funding: true,
     },
     LUNA: {
+      collateralMargin: true,
       label: 'LUNA',
       explorer: [
         'https://finder.terra.money/columbus-4',
@@ -2519,6 +2354,7 @@ export const newState = {
       txMethod: 'LYM',
     },
     MATIC: {
+      collateralMargin: true,
       label: 'MATIC (Polygon)',
       explorer: [
         'https://polygonscan.com',
@@ -2578,6 +2414,7 @@ export const newState = {
       txMethod: 'NEC',
     },
     NEO: {
+      collateralMargin: true,
       label: 'NEO',
       explorer: [
         'https://neotracker.io',
@@ -2603,6 +2440,7 @@ export const newState = {
       txMethod: 'ODE',
     },
     OMG: {
+      collateralMargin: true,
       label: 'OmiseGO',
       pool: 'ETH',
       txMethod: 'OMISEGO',
@@ -2856,6 +2694,7 @@ export const newState = {
       label: 'Recovery Right Tokens',
     },
     SAN: {
+      collateralMargin: true,
       label: 'Santiment',
       pool: 'ETH',
       txMethod: 'SANTIMENT',
@@ -2883,6 +2722,7 @@ export const newState = {
       txMethod: 'SNX',
     },
     SOL: {
+      collateralMargin: true,
       label: 'Solana',
       explorer: [
         'https://explorer.solana.com',
@@ -2909,6 +2749,7 @@ export const newState = {
       txMethod: 'SUN',
     },
     SUSHI: {
+      collateralMargin: true,
       label: 'SUSHI',
       pool: 'ETH',
       txMethod: 'SUSHI',
@@ -2920,6 +2761,7 @@ export const newState = {
       txMethod: 'TERRAUST',
     },
     TRX: {
+      collateralMargin: true,
       label: 'TRON',
       explorer: [
         'https://tronscan.org/#',
@@ -2942,6 +2784,7 @@ export const newState = {
       txMethod: 'UDC',
     },
     UNI: {
+      collateralMargin: true,
       label: 'Uniswap',
       pool: 'ETH',
       txMethod: 'UNI',
@@ -2958,6 +2801,7 @@ export const newState = {
       txMethod: 'UOS',
     },
     USD: {
+      collateralMargin: true,
       label: 'US Dollar',
       txMethod: 'WIRE',
       funding: true,
@@ -2987,6 +2831,7 @@ export const newState = {
       pool: 'EOS',
     },
     UST: {
+      collateralMargin: true,
       label: 'Tether USDt',
       sym: 'USDt',
       txMethod: 'TETHERUSDTDVF',
@@ -3055,6 +2900,7 @@ export const newState = {
       txMethod: 'WBT',
     },
     XAUT: {
+      collateralMargin: true,
       label: 'Tether XAUt',
       sym: 'XAUt',
       txMethod: 'TETHERXAUTE',
@@ -3075,6 +2921,7 @@ export const newState = {
       txMethod: 'XDC',
     },
     XLM: {
+      collateralMargin: true,
       label: 'Stellar Lumen',
       explorer: [
         'https://stellarchain.io',
@@ -3085,6 +2932,7 @@ export const newState = {
       funding: true,
     },
     XMR: {
+      collateralMargin: true,
       label: 'Monero',
       explorer: [
         'https://moneroblocks.info',
@@ -3109,6 +2957,7 @@ export const newState = {
       txMethod: 'XRD',
     },
     XRP: {
+      collateralMargin: true,
       label: 'Ripple',
       explorer: [
         'https://xrpscan.com',
@@ -3128,6 +2977,7 @@ export const newState = {
       txMethod: 'XSN',
     },
     XTZ: {
+      collateralMargin: true,
       label: 'Tezos',
       explorer: [
         'https://tzstats.com',
@@ -3147,6 +2997,7 @@ export const newState = {
       txMethod: 'XVG',
     },
     YFI: {
+      collateralMargin: true,
       label: 'Yearn.Finance',
       pool: 'ETH',
       txMethod: 'YFI',
@@ -3164,6 +3015,7 @@ export const newState = {
       txMethod: 'ZCN',
     },
     ZEC: {
+      collateralMargin: true,
       label: 'Zcash',
       explorer: [
         'https://explorer.zcha.in',
@@ -3183,12 +3035,14 @@ export const newState = {
       txMethod: 'ZIL',
     },
     ZRX: {
+      collateralMargin: true,
       label: '0x',
       pool: 'ETH',
       txMethod: 'ZRX',
       funding: true,
     },
     AAA: {
+      collateralMargin: true,
       sym: 'TESTAAA',
       funding: true,
       paper: true,
@@ -3197,6 +3051,7 @@ export const newState = {
       sym: 'AMPLF0',
     },
     BBB: {
+      collateralMargin: true,
       sym: 'TESTBBB',
       funding: true,
       paper: true,
@@ -3218,63 +3073,6 @@ export const newState = {
       sym: 'USDt',
       futures: true,
     },
-    A: {
-      collateralMargin: 'X',
-    },
-    B: {
-      collateralMargin: 'T',
-    },
-    C: {
-      collateralMargin: 'E',
-    },
-    D: {
-      collateralMargin: 'S',
-    },
-    E: {
-      collateralMargin: 'U',
-    },
-    F: {
-      collateralMargin: 'T',
-    },
-    G: {
-      collateralMargin: 'B',
-    },
-    I: {
-      collateralMargin: 'O',
-    },
-    J: {
-      collateralMargin: 'P',
-    },
-    L: {
-      collateralMargin: 'U',
-    },
-    M: {
-      collateralMargin: 'A',
-    },
-    N: {
-      collateralMargin: 'E',
-    },
-    O: {
-      collateralMargin: 'M',
-    },
-    S: {
-      collateralMargin: 'U',
-    },
-    T: {
-      collateralMargin: 'R',
-    },
-    U: {
-      collateralMargin: 'S',
-    },
-    X: {
-      collateralMargin: 'T',
-    },
-    Y: {
-      collateralMargin: 'F',
-    },
-    Z: {
-      collateralMargin: 'R',
-    },
     CNHTE: {
       pool: 'ETH',
     },
@@ -3282,6 +3080,7 @@ export const newState = {
       pool: 'LBT',
     },
     EOS: {
+      collateralMargin: true,
       explorer: [
         'https://bloks.io',
         'https://bloks.io/account/VAL',
@@ -3310,14 +3109,17 @@ export const newState = {
       txMethod: 'TETHERUSDTDVF',
     },
     TESTBTC: {
+      collateralMargin: true,
       funding: true,
       paper: true,
     },
     TESTUSD: {
+      collateralMargin: true,
       funding: true,
       paper: true,
     },
     TESTUSDT: {
+      collateralMargin: true,
       funding: true,
       paper: true,
     },
@@ -3333,156 +3135,95 @@ export const newState = {
     },
   },
   txMethods: {
+    BITCOIN: {
+      symbol: [
+        'BTC',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
+    },
+    LITECOIN: {
+      symbol: [
+        'LTC',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
+    },
+    ETHEREUM: {
+      symbol: [
+        'ETH',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
+    },
+    ZCASH: {
+      symbol: [
+        'ZEC',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
+    },
+    DASH: {
+      symbol: [
+        'DSH',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
+    },
     RIPPLE: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
+      symbol: [
+        'XRP',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 1,
+      hasPaymentIdForWithdrawals: 1,
     },
-    EOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
+    IOTA: {
+      symbol: [
+        'IOT',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
     },
-    WAX: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
+    TETHERUSO: {
+      symbol: [
+        'UST',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
     },
-    XLM: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
+    ZRX: {
+      symbol: [
+        'ZRX',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
     },
-    ATD: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    ADD: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    IQX: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    LES: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    TETHERUSS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PBTCEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    EOSDT: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PLTCEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PETHEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PPNTEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PLINKEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PMKREOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PYFIEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PUNIEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PBANDEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PBALEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PCOMPEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PSNXEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    POMGEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PANTEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PDAIEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PLRCEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PUOSEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PBATEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PREPEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PZRXEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    PPNKEOS: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    CHEX: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    VELO: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    TETHERUSDTDVF: {
-      hasPaymentIdForDeposits: true,
-      hasPaymentIdForWithdrawals: true,
-    },
-    ATO: {
-      hasPaymentIdForWithdrawals: true,
-    },
-    EGLD: {
-      hasPaymentIdForWithdrawals: true,
-    },
-    CTK: {
-      hasPaymentIdForWithdrawals: true,
-    },
-    LUNA: {
-      hasPaymentIdForWithdrawals: true,
-    },
-    TERRAUST: {
-      hasPaymentIdForWithdrawals: true,
+    TRX: {
+      symbol: [
+        'TRX',
+      ],
+      isDepositActive: 1,
+      isWithdrawalActive: 1,
+      hasPaymentIdForDeposits: 0,
+      hasPaymentIdForWithdrawals: 0,
     },
   },
   currencySymbolToCurrencyCodeMap: {
