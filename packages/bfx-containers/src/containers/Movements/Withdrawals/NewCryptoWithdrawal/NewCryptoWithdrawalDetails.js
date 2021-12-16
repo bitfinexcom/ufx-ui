@@ -14,15 +14,17 @@ const NewCryptoWithdrawalDetails = ({
   currency,
   wallets,
   hasPaymentIdForWithdrawals,
+  getIsWithdrawalActive,
   getCurrencyLabel,
   getCurrencySymbol,
   getCurrencyTxMethod,
   requestNewWithdraw,
 }) => {
-  const { t } = useTranslation('withdrawals')
+  const { t } = useTranslation()
 
   const currencyLabel = getCurrencyLabel(currency)
   const hasPaymentId = hasPaymentIdForWithdrawals(currency)
+  const isWithdrawalActive = getIsWithdrawalActive(currency)
 
   const formProps = useNewWithdrawalForm(hasPaymentId)
   const { setFormField, formState } = formProps
@@ -40,11 +42,19 @@ const NewCryptoWithdrawalDetails = ({
     setFormField('wallet', _get(wallets, '0.name', ''))
   }, [setFormField, wallets])
 
+  if (!isWithdrawalActive) {
+    return (
+      <Notice type={NOTICE_TYPES.WARNING}>
+        {t('movements:not_active_or_supported', { currency, type: 'withdrawals' })}
+      </Notice>
+    )
+  }
+
   return (
     <>
       {ERC20_WARN_CCYS.includes(currency) && (
         <Notice type={NOTICE_TYPES.WARNING}>
-          {t('warnings.erc20_only', { currency, label: currencyLabel })}
+          {t('withdrawals:warnings.erc20_only', { currency, label: currencyLabel })}
         </Notice>
       )}
 
@@ -68,6 +78,7 @@ NewCryptoWithdrawalDetails.propTypes = {
   getCurrencyLabel: PropTypes.func.isRequired,
   getCurrencySymbol: PropTypes.func.isRequired,
   hasPaymentIdForWithdrawals: PropTypes.func.isRequired,
+  getIsWithdrawalActive: PropTypes.func.isRequired,
 }
 
 NewCryptoWithdrawalDetails.defaultProps = {

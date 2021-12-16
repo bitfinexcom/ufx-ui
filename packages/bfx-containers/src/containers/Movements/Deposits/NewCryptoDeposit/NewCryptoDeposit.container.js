@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import {
   getCurrencyTxMethod as getCurrencyTxMethodSelector,
   getHasPaymentIdForDeposits,
+  getIsDepositActive,
   getCurrencyLabel,
   getCurrencySymbolMemo,
   getCurrencyPool,
@@ -31,6 +32,7 @@ const NewCryptoDepositContainer = (props) => {
       loading={loading}
       paymentId={paymentId}
       hasPaymentIdForDeposits={useSelector(getHasPaymentIdForDeposits)}
+      getIsDepositActive={useSelector(getIsDepositActive)}
       getCurrencyLabel={useSelector(getCurrencyLabel)}
       getCurrencySymbol={useSelector(getCurrencySymbolMemo)}
       getCurrencyPool={useSelector(getCurrencyPool)}

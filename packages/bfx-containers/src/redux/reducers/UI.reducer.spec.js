@@ -13,20 +13,14 @@ describe('REDUCER: UI', () => {
       const action = {
         type: types.UI_LOAD,
         payload: {
-          config: {
-            user_settings: {
-              a: {},
-              b: {},
-            },
-            currentLayout: {},
-          },
+          config: [],
         },
       }
       expect(UIReducer(INITIAL_STATE, action)).toEqual({
         ...INITIAL_STATE,
-        a: {},
-        b: {},
-        currentLayout: { },
+        verified: false,
+        verificationLevel: false,
+        isPaperTrading: false,
       })
     })
   })
