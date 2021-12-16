@@ -6,9 +6,10 @@ export default {
   id: 'chart',
   component: Chart,
   defaults: {
+    minH: 20,
     h: 20,
     minW: 4,
-    minH: 20,
+    w: 4,
     static: false,
   },
   title: (args) => {
