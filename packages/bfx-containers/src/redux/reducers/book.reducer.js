@@ -8,7 +8,7 @@ import _toString from 'lodash/toString'
 import tAdapter from '../adapters/book.adapter'
 import types from '../constants/ws.constants'
 
-const INITIAL_STATE = {}
+export const INITIAL_STATE = {}
 
 export const getSides = (row, isBid) => (isBid(row)
   ? { side: 'bids', other: 'asks' }

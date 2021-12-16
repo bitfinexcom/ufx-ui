@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/bfx-containers",
-  "version": "0.11.3",
+  "version": "0.11.5",
   "description": "",
   "main": "dist/ufx-bfx-containers.cjs.js",
   "module": "dist/ufx-bfx-containers.esm.js",
@@ -10,7 +10,8 @@
     "start": "rollup -c -w",
     "prepare": "npm run build",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "test": "jest"
   },
   "author": "Bitfinex",
   "license": "Apache-2.0",
@@ -27,6 +28,7 @@
     "@babel/preset-react": "^7.10.1",
     "@rollup/plugin-url": "^5.0.1",
     "@svgr/rollup": "^5.4.0",
+    "@types/jest": "^27.0.2",
     "@ufx-ui/eslint-config": "^0.11.1",
     "autoprefixer": "^9.8.4",
     "babel-eslint": "^10.0.3",
@@ -37,6 +39,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.1.2",
     "fast-glob": "^3.2.5",
+    "jest": "^27.3.1",
     "postcss": "^8.1.9",
     "postcss-cli": "^7.1.1",
     "postcss-discard-comments": "^4.0.2",
@@ -57,7 +60,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@ufx-ui/core": "^0.11.3",
+    "@ufx-ui/core": "^0.11.5",
     "@ufx-ui/utils": "^0.11.1",
     "axios": "^0.21.1",
     "base-64": "^0.1.0",

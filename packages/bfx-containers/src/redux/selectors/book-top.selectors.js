@@ -8,7 +8,7 @@ import { createSelector } from 'reselect'
 import { BOOK_TOP_SUBSCRIPTION_CONFIG } from '../constants/book.constants'
 import { getTotals } from './book.selectors'
 import { getUfxState } from './common'
-import { getWSChannels, findMatchingChannel } from './ws.selectors'
+import { getWSChannels, findMatchingChannelWithSymbol } from './ws.selectors'
 
 const EMPTY_OBJ = {}
 
@@ -19,7 +19,7 @@ export const getBookTopChannel = createSelector(
     getWSChannels,
     (_, symbol) => symbol,
   ],
-  (wsChannels, symbol) => findMatchingChannel(wsChannels, {
+  (wsChannels, symbol) => findMatchingChannelWithSymbol(wsChannels, {
     ...BOOK_TOP_SUBSCRIPTION_CONFIG,
     symbol,
   }),

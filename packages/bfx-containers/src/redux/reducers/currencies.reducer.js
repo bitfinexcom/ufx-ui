@@ -58,11 +58,12 @@ const EXPECTED_CURRENCY_INFO_FIELDS = [
   CURRENCY_TX_METHOD,
 ]
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   currenciesInfo: {},
   txMethods: {},
   currencySymbolToCurrencyCodeMap: {},
   currencyLabelToCurrencyCodeMap: {},
+  pairsInfo: {},
 }
 
 /**

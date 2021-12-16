@@ -3,7 +3,7 @@ import _isEmpty from 'lodash/isEmpty'
 import adapter from '../adapters/conversions.adapter'
 import types from '../constants/currencies.constants'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   conversions: {},
 }
 

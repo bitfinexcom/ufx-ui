@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/core",
-  "version": "0.11.3",
+  "version": "0.11.5",
   "description": "UI components",
   "main": "dist/ufx-core.cjs.js",
   "module": "dist/ufx-core.esm.js",

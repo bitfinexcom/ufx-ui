@@ -9,7 +9,7 @@ import tAdapter from '../adapters/book.adapter'
 import types from '../constants/ws.constants'
 import { getRawData, getSides } from './book.reducer'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   asks: {},
   bids: {},
   pasks: [],

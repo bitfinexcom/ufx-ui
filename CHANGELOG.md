@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.11.5 (2021-11-23)
+
+#### :dizzy: Improvement
+* `core`
+  * [#143](https://github.com/bitfinexcom/ufx-ui/pull/143) (improvement) Modal: added Enter button support ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :house: Internal
+* `bfx-containers`
+  * [#144](https://github.com/bitfinexcom/ufx-ui/pull/144) (improvement) Redux reducers tests ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+
+
+## v0.11.4 (2021-11-15)
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#142](https://github.com/bitfinexcom/ufx-ui/pull/142) (improvement) Using environment for Chart component ([@Blaumaus](https://github.com/Blaumaus))
+
+#### :bug: Bug Fix
+* `bfx-containers`
+  * [#140](https://github.com/bitfinexcom/ufx-ui/pull/140) (fix) Chart: add support for env REACT_APP_UFX_CORS_PROXY_URL ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 2
+- Andrii R. ([@Blaumaus](https://github.com/Blaumaus))
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 ## v0.11.3 (2021-10-27)
 
 #### :bug: Bug Fix

@@ -7,7 +7,7 @@ import _isEqual from 'lodash/isEqual'
 import { adapterTradingRest, adapterFundingRest } from '../adapters/ticker.adapter'
 import types from '../constants/ticker.constants'
 
-const INITIAL_STATE = {}
+export const INITIAL_STATE = {}
 
 const reducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload = [] } = action

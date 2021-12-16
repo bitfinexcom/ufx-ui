@@ -1,3 +1,4 @@
+import _filter from 'lodash/filter'
 import _find from 'lodash/find'
 import _findKey from 'lodash/findKey'
 import _get from 'lodash/get'
@@ -36,7 +37,7 @@ export const getWSIsAuthenticated = createSelector(
   getWSAuthChannel, (authChannel) => (authChannel || EMPTY_OBJ).status === 'OK',
 )
 
-export const findMatchingChannel = (channels, source) => {
+export const findMatchingChannelWithSymbol = (channels, source) => {
   const compareWith = {
     symbol: source.symbol, // symbol: tBTCUSD
     channel: source.channel, // channel-name: book, trades
@@ -44,6 +45,15 @@ export const findMatchingChannel = (channels, source) => {
   }
 
   return _find(channels, _matches(compareWith))
+}
+
+export const findAllMatchingChannels = (channels, source) => {
+  const compareWith = {
+    channel: source.channel, // channel-name: book, trades
+    ...(source.len && { len: source.len }), // compare length because book and book-top has same name 'book' and differs by length, TODO: can we rename book(len=100) to book-top ?
+  }
+
+  return _filter(channels, _matches(compareWith))
 }
 
 export default {

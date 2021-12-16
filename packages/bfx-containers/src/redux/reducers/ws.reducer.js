@@ -3,7 +3,7 @@ import _omit from 'lodash/omit'
 
 import types, { WS_AUTH_CHANNEL_ID } from '../constants/ws.constants'
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   connected: false,
   reconnectRetries: 0,
 }

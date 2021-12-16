@@ -2,7 +2,7 @@ import _isNull from 'lodash/isNull'
 
 import types from '../constants/UI.constants'
 
-const INITIAL_STATE = {}
+export const INITIAL_STATE = {}
 
 const IS_VERIFIED_INDEX = 4
 const VERIFICATION_LEVEL_INDEX = 5
