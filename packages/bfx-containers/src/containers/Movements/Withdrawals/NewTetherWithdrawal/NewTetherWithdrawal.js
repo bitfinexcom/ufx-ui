@@ -22,6 +22,7 @@ import useNewWithdrawalForm from '../useNewWithdrawalForm'
 const NewTetherWithdrawal = ({
   tetherProtocols,
   hasPaymentIdForWithdrawals,
+  getIsWithdrawalActive,
   currency,
   getCurrencySymbol,
   getCurrencyLabel,
@@ -79,6 +80,16 @@ const NewTetherWithdrawal = ({
     setFormField('wallet', _get(WALLETS, '0.name', ''))
   }, [setFormField])
 
+  const isWithdrawalActive = getIsWithdrawalActive(currency)
+
+  if (!isWithdrawalActive) {
+    return (
+      <Notice type={NOTICE_TYPES.WARNING}>
+        {t('movements:not_active_or_supported', { currency, type: 'withdrawals' })}
+      </Notice>
+    )
+  }
+
   return (
     <div className={`${Classes.NEW_WITHDRAWAL} tether`}>
       <h2>
@@ -120,6 +131,7 @@ NewTetherWithdrawal.propTypes = {
   getCurrencySymbol: PropTypes.func.isRequired,
   requestNewWithdraw: PropTypes.func.isRequired,
   hasPaymentIdForWithdrawals: PropTypes.func.isRequired,
+  getIsWithdrawalActive: PropTypes.func.isRequired,
 }
 
 export default withI18nProvider(withResponsive(memo(NewTetherWithdrawal)))

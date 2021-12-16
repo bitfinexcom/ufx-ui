@@ -242,6 +242,22 @@ export const getHasPaymentIdForDeposits = createSelector(
   },
 )
 
+export const getIsDepositActive = createSelector(
+  [getCurrenciesInfo, getTxMethods],
+  (ccysInfo, txMethods) => (ccy) => {
+    const txMethod = getTxMethodForCcy(ccysInfo, ccy)
+    return !!_get(txMethods, [txMethod, 'isDepositActive'], false)
+  },
+)
+
+export const getIsWithdrawalActive = createSelector(
+  [getCurrenciesInfo, getTxMethods],
+  (ccysInfo, txMethods) => (ccy) => {
+    const txMethod = getTxMethodForCcy(ccysInfo, ccy)
+    return !!_get(txMethods, [txMethod, 'isWithdrawalActive'], false)
+  },
+)
+
 export const getCurrencyTxMethod = createSelector(
   getCurrenciesInfo,
   (ccysInfo) => (ccy, defaultValue = ccy) => (
@@ -276,6 +292,8 @@ export default {
   getCurrencyCodeFromCurrencySymbol,
   getRegularPair,
   getHasPaymentIdForDeposits,
+  getIsDepositActive,
+  getIsWithdrawalActive,
   getCurrencyPool,
   getCurrencyTxMethod,
   getCurrencyLabel,

@@ -41,7 +41,7 @@ const getTxMethodsMapping = (state, payload) => _reduce(payload?.[CCY_TX_STATUS_
   res[txMethod] = {
     ...state[txMethod],
     isDepositActive: entry[CCY_TX_STATUS_PAYLOAD.IS_DEPOSIT_ACTIVE_INDEX],
-    isWithdrawActive: entry[CCY_TX_STATUS_PAYLOAD.IS_WITHDRAW_ACTIVE_INDEX],
+    isWithdrawalActive: entry[CCY_TX_STATUS_PAYLOAD.IS_WITHDRAW_ACTIVE_INDEX],
     hasPaymentIdForDeposits: entry[CCY_TX_STATUS_PAYLOAD.HAS_PAYMENT_ID_DEPOSITS_INDEX],
     hasPaymentIdForWithdrawals: entry[CCY_TX_STATUS_PAYLOAD.HAS_PAYMENT_ID_WITHDRAWALS_INDEX],
   }
