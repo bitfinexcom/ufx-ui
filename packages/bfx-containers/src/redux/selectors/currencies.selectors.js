@@ -226,7 +226,6 @@ const getTxMethodForCcy = (ccysInfo, ccy) => {
   return txMethod
 }
 
-// TODO: test
 export const getHasPaymentIdForWithdrawals = createSelector(
   [getCurrenciesInfo, getTxMethods],
   (ccysInfo, txMethods) => (ccy) => {
