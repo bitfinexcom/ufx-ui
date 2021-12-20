@@ -102,7 +102,7 @@ Dialog.propTypes = {
   /**
    * A callback that is invoked when user click Enter button
    */
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   /**
    * Title of the dialog. If provided, an element with `Classes.DIALOG_HEADER`
    * will be rendered inside the dialog before any children elements.
@@ -169,6 +169,7 @@ Dialog.defaultProps = {
   width: 460,
   height: 'auto',
   textAlign: 'center',
+  onSubmit: () => {},
 }
 
 export default Dialog

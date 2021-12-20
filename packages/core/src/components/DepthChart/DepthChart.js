@@ -107,8 +107,8 @@ export const DepthChart = ({
 
 DepthChart.propTypes = {
   loading: PropTypes.bool,
-  asks: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)).isRequired,
-  bids: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)).isRequired,
+  asks: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
+  bids: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
   tAsks: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number]),
   ).isRequired,
@@ -117,8 +117,8 @@ DepthChart.propTypes = {
   ).isRequired,
   pAsks: PropTypes.arrayOf(PropTypes.number).isRequired,
   pBids: PropTypes.arrayOf(PropTypes.number).isRequired,
-  asksTop: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)).isRequired,
-  bidsTop: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)).isRequired,
+  asksTop: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
+  bidsTop: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
   tAsksTop: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number]),
   ).isRequired,
@@ -139,6 +139,10 @@ DepthChart.propTypes = {
 }
 
 export const defaultProps = {
+  asks: {},
+  bids: {},
+  asksTop: {},
+  bidsTop: {},
   loading: false,
   className: null,
   theme: 'dark-theme',

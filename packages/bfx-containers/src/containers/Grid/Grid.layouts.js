@@ -1,5 +1,6 @@
 import _get from 'lodash/get'
 import _isFunction from 'lodash/isFunction'
+import _min from 'lodash/min'
 
 import { GRID_COLUMNS } from './Grid.constants'
 
@@ -47,8 +48,9 @@ const buildGridColumns = (items, breakpoint, currentColumns, columnIdx) => {
     let compSettings = {
       ...defaults,
       x: currentColumnX,
-      w: itemWidth,
       y: nextY,
+      minW: _min(defaults.minW, itemWidth),
+      w: itemWidth,
       ...itemOverwrites,
       i: id,
     }

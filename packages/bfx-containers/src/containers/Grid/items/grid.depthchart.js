@@ -7,9 +7,10 @@ export default {
   id: 'depthchart',
   component: DepthChart,
   defaults: {
+    minH: 10,
     h: 10,
     minW: 4,
-    minH: 10,
+    w: 4,
     static: false,
   },
   title: (args) => {

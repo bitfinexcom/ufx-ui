@@ -6,9 +6,10 @@ export default {
   id: 'tickerlist',
   component: TickerList,
   defaults: {
-    h: 15.4,
     minH: 11,
+    h: 15.4,
     minW: 4,
+    w: 4,
     static: false,
   },
   title: () => i18n.t('grid:tickers'),

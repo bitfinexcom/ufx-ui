@@ -11,6 +11,7 @@ const Input = (props) => {
     },
     form: { touched, errors },
     fieldsToValidate,
+    fieldLabel,
     ...rest
   } = props
   let error = (touched[name] && errors[name])
