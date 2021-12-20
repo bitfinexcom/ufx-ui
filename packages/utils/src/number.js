@@ -62,7 +62,35 @@ export const formatNumber = (args = {}) => {
 
 export const getNumberOfDecimalsByPrice = (price, significantDigits = 5) => Math.max(0, significantDigits - 1 - Math.floor(Math.log10(price)))
 
-export const getNumberOfDecimals = (price) => Math.min(6, getNumberOfDecimalsByPrice(price))
+export function getDecimals(price, min = 5, max = 8) {
+  let zerosCount = 0
+  let x = Math.round(price * 10 ** max)
+  if (x === 0) return max
+
+  while (x % 10 === 0) {
+    x = Math.round(x / 10)
+    zerosCount += 1
+  }
+
+  const decimals = max - zerosCount
+
+  return Math.max(min, decimals)
+}
+
+export function getNumberOfDecimalsByPriceLowerThan1(price) {
+  return getDecimals(price)
+}
+
+export function getNumberOfDecimals(price) {
+  if (!price) {
+    return 0
+  }
+  const absPrice = Math.abs(price)
+
+  return absPrice < 1
+    ? getNumberOfDecimalsByPriceLowerThan1(absPrice)
+    : getNumberOfDecimalsByPrice(absPrice)
+}
 
 export const formatPrice = (price, opts = {}) => formatNumber({
   number: price,
