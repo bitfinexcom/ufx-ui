@@ -11,6 +11,7 @@ export default getDefaultMetadata(CooldownButton, 'Components/ui/CooldownButton'
 
 const props = {
   children: <FontAwesomeIcon icon={faSync} />,
+  ...CooldownButton.defaultProps,
 }
 
 export const basic = showTemplateStory(CooldownButton, props)

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, {
-  useEffect, useState, memo, useRef, forwardRef,
+  useEffect, useState, useRef, forwardRef,
 } from 'react'
 
 import Button from '../Button'
@@ -53,11 +53,16 @@ CooldownButton.propTypes = {
    * The cooldown timeout in milliseconds.
    */
   timeoutMs: PropTypes.number,
+  /**
+   * If true, set the button to the disabled state.
+   */
+  disabled: PropTypes.bool,
 }
 
 CooldownButton.defaultProps = {
-  onClick: () => {},
+  onClick: () => { },
   timeoutMs: 1000,
+  disabled: false,
 }
 
-export default memo(CooldownButton)
+export default CooldownButton
