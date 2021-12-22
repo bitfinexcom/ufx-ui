@@ -9,7 +9,6 @@ import OutsideClickHandler from 'react-outside-click-handler'
 
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
-import withI18nProvider from '../../../hoc/withI18nProvider'
 import Input from '../Input'
 import DropdownList from './Dropdown.List'
 
@@ -211,4 +210,4 @@ Dropdown.defaultProps = {
   ...DropdownList.defaultProps,
 }
 
-export default withI18nProvider(Dropdown)
+export default Dropdown
