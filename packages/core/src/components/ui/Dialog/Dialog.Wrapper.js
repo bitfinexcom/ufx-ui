@@ -86,6 +86,10 @@ const Dialog = forwardRef(function Dialog(props, ref) {
 
 Dialog.propTypes = {
   /**
+   * The element inside of Modal window
+   */
+  children: PropTypes.node.isRequired,
+  /**
    * Toggles the visibility of the overlay and its children.
    * This prop is required because the component is controlled.
    */

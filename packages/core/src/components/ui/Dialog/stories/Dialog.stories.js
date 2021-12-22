@@ -32,9 +32,9 @@ const Component = () => {
   )
 }
 
-export default getDefaultMetadata(Component, 'Components/ui/Dialog', {}, true)
+export default getDefaultMetadata(Dialog, 'Components/ui/Dialog', {}, true)
 
-export const basic = showTemplateStory(Component, Dialog.defaultProps)
+export const basic = showTemplateStory(Component, {})
 
 export const canNotClose = showTemplateStory(() => {
   const [toggle, { isOpen, onClose }] = useToggle()
