@@ -1,3 +1,7 @@
+import {
+  faSync,
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import React, {
   useEffect, useState, useRef, forwardRef,
@@ -57,12 +61,17 @@ CooldownButton.propTypes = {
    * If true, set the button to the disabled state.
    */
   disabled: PropTypes.bool,
+  /**
+   * The element, which is displayed as button.
+   */
+  children: PropTypes.node,
 }
 
 CooldownButton.defaultProps = {
   onClick: () => { },
   timeoutMs: 1000,
   disabled: false,
+  children: <FontAwesomeIcon icon={faSync} />,
 }
 
 export default CooldownButton
