@@ -5,7 +5,7 @@ import {
   getDefaultMetadata,
   showTemplateStory,
 } from '../../../../../../storybook/.storybook/helper'
-import Dropdown from '../Dropdown'
+import { Dropdown } from '../Dropdown'
 
 export default getDefaultMetadata(Dropdown, 'Components/ui/Dropdown', {}, true)
 

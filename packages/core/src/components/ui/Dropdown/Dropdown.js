@@ -9,11 +9,12 @@ import OutsideClickHandler from 'react-outside-click-handler'
 
 import * as Classes from '../../../common/classes'
 import * as utils from '../../../common/utils'
+import withI18nProvider from '../../../hoc/withI18nProvider'
 import Input from '../Input'
 import DropdownList from './Dropdown.List'
 
 // eslint-disable-next-line prefer-arrow-callback
-const Dropdown = forwardRef(function Dropdown(props, ref) {
+export const Dropdown = forwardRef(function Dropdown(props, ref) {
   const {
     value,
     valueRenderer,
@@ -228,4 +229,4 @@ Dropdown.defaultProps = {
   ...DropdownList.defaultProps,
 }
 
-export default Dropdown
+export default withI18nProvider(Dropdown)

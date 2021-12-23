@@ -1,5 +1,5 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
-import ExternalLink from '../ExternalLink'
+import { ExternalLink } from '../ExternalLink'
 
 export default getDefaultMetadata(ExternalLink, 'Components/ui/ExternalLink', {}, true)
 

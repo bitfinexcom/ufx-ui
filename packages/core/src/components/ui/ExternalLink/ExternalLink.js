@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { memo, forwardRef } from 'react'
 
 // eslint-disable-next-line prefer-arrow-callback
-const ExternalLink = forwardRef(function ExternalLink(props, ref) {
+export const ExternalLink = forwardRef(function ExternalLink(props, ref) {
   const {
     link,
     children,
@@ -46,4 +46,7 @@ ExternalLink.defaultProps = {
   target: '_blank',
 }
 
-export default memo(ExternalLink)
+const DefaultComp = memo(ExternalLink)
+DefaultComp.displayName = 'ExternalLink'
+
+export default DefaultComp
