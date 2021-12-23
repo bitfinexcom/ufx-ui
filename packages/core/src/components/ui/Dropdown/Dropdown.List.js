@@ -61,11 +61,29 @@ const DropdownList = (props) => {
 }
 
 DropdownList.propTypes = {
+  /**
+   * Current value of Dropdown
+   */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * Object with with options available to choose from
+   */
   options: PropTypes.objectOf(PropTypes.string).isRequired,
+  /**
+   * Function with custom render
+   */
   optionRenderer: PropTypes.func,
+  /**
+   * If true, renders the dropdown with a search input.
+   */
   searchable: PropTypes.bool,
+  /**
+   * The function called when user selects Dropdown's option.
+   */
   onChange: PropTypes.func,
+  /**
+   * The function called when user types in search input
+   */
   onSearchTermChange: PropTypes.func,
 }
 
