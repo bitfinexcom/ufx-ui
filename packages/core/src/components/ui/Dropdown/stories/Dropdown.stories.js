@@ -1,7 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
+import React, { useState } from 'react'
 
-import { getDefaultMetadata, showTemplateStory } from '../../../../../../storybook/.storybook/helper'
+import {
+  getDefaultMetadata,
+  showTemplateStory,
+} from '../../../../../../storybook/.storybook/helper'
 import Dropdown from '../Dropdown'
 
 export default getDefaultMetadata(Dropdown, 'Components/ui/Dropdown', {}, true)
@@ -17,12 +20,24 @@ const props = {
     DOT: 'Polkadot',
     UNI: 'Uniswap',
   },
-  value: 'BTC',
 }
 
-export const basic = showTemplateStory(Dropdown, props)
+const Component = ({ options, ...rest }) => {
+  const [value, setValue] = useState('BTC')
 
-export const searchable = showTemplateStory(Dropdown, {
+  return (
+    <Dropdown
+      onChange={setValue}
+      options={options}
+      value={value}
+      {...rest}
+    />
+  )
+}
+
+export const basic = showTemplateStory(Component, props)
+
+export const searchable = showTemplateStory(Component, {
   ...props,
   searchable: true,
 })
@@ -35,7 +50,7 @@ const optionRenderer = (key, value) => (
 
 const valueRenderer = (key, value) => `${key} - ${value}`
 
-export const customRenderer = showTemplateStory(Dropdown, {
+export const customRenderer = showTemplateStory(Component, {
   ...props,
   optionRenderer,
   valueRenderer,
