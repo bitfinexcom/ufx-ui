@@ -55,3 +55,5 @@ export const customRenderer = showTemplateStory(Component, {
   optionRenderer,
   valueRenderer,
 })
+
+export const small = showTemplateStory(Component, { ...props, small: true })
