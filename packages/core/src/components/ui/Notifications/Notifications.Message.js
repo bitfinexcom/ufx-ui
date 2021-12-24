@@ -25,7 +25,7 @@ const NotificationMessage = (props) => {
 
   return (
     <div className={classes}>
-      {onClose && <p className='close-button' onClick={onClose} aria-hidden='true'>&#10005;</p>}
+      {_onClose && <p className='close-button' onClick={onClose} aria-hidden='true'>&#10005;</p>}
       <div className='message'>
         <div className='icon'>
           <FontAwesomeIcon icon={getIcon(level)} />
@@ -60,5 +60,9 @@ const NotificationMessage = (props) => {
 }
 
 NotificationMessage.propTypes = PROP_NOTIFICATION
+
+NotificationMessage.defaultProps = {
+  onClose: null,
+}
 
 export default memo(NotificationMessage)
