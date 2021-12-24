@@ -314,7 +314,8 @@
     "errors": {
       "required_field": "This field is required",
       "invalid_invoice_amount": "Invoice amount must be greater than or equal to {{min}} and less than or equal to {{max}}"
-    }
+    },
+    "not_active_or_supported": "{{currency}} {{type}} are currently not active or not supported."
   },
   "iota_notice": {
     "part0": "Understanding IOTA, Wallets, Nodes, and Tangle",
@@ -333,5 +334,16 @@
       "trading_wallet_name": "Margin",
       "deposit_wallet_name": "Funding"
     }
+  },
+  "login": {
+    "apiKey": "API Key",
+    "apiSecret": "API Secret",
+    "apiKeyRequired": "API Key is required.",
+    "apiSecretRequired": "API Secret is required.",
+    "title": "Login with Bitfinex API credentials",
+    "warning": "Warning!",
+    "warningText": "This is only for DEMO mode and it is advised to login with only READONLY API keys.",
+    "login": "LogIn",
+    "logout":"Logout"
   }
 }

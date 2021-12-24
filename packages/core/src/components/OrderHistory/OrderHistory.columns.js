@@ -23,6 +23,8 @@ const getColumns = (args = {}) => {
     {
       dataKey: KEYS.ID,
       label: '',
+      width: 20,
+      flexGrow: 0.1,
       headerStyle: styles.ID,
       style: styles.ID,
       headerClassName: 'intent',
@@ -56,6 +58,8 @@ const getColumns = (args = {}) => {
     {
       dataKey: KEYS.PAIR,
       label: t('pair'),
+      width: 60,
+      flexGrow: 1,
       headerStyle: styles.PAIR,
       style: styles.PAIR,
       headerClassName: 'pair',
@@ -80,6 +84,8 @@ const getColumns = (args = {}) => {
       {
         dataKey: KEYS.TYPE,
         label: t('type'),
+        width: 60,
+        flexGrow: 1,
         headerStyle: styles.TYPE,
         style: styles.TYPE,
         // dont truncate TYPE to avoid showing two tooltips on hover
@@ -89,6 +95,8 @@ const getColumns = (args = {}) => {
     {
       dataKey: KEYS.AMOUNT,
       label: t('amount'),
+      width: 70,
+      flexGrow: 1,
       headerStyle: styles.AMOUNT,
       style: styles.AMOUNT,
       headerClassName: Classes.RIGHT_TO_LEFT,
@@ -98,6 +106,8 @@ const getColumns = (args = {}) => {
     {
       dataKey: KEYS.BASE_CCY,
       label: t('ccy'),
+      width: 40,
+      flexGrow: 1,
       headerStyle: styles.CCY,
       style: styles.CCY,
       headerClassName: Classes.CENTER,
@@ -107,6 +117,8 @@ const getColumns = (args = {}) => {
     {
       dataKey: KEYS.PRICE,
       label: t('price'),
+      width: 50,
+      flexGrow: 1,
       headerStyle: styles.PRICE,
       style: styles.PRICE,
       headerClassName: Classes.RIGHT_TO_LEFT,
@@ -116,6 +128,8 @@ const getColumns = (args = {}) => {
     {
       dataKey: KEYS.PRICE_AVERAGE,
       label: t('average_price'),
+      width: 50,
+      flexGrow: 1,
       headerStyle: styles.PRICE_AVERAGE,
       style: styles.PRICE_AVERAGE,
       headerClassName: Classes.RIGHT_TO_LEFT,
@@ -125,6 +139,8 @@ const getColumns = (args = {}) => {
     {
       dataKey: KEYS.STATUS,
       label: t('status'),
+      width: 60,
+      flexGrow: 1,
       headerStyle: styles.STATUS,
       style: styles.STATUS,
       headerClassName: isMobile ? Classes.RIGHT_TO_LEFT : Classes.CENTER,
@@ -153,6 +169,8 @@ const getColumns = (args = {}) => {
       {
         dataKey: KEYS.PLACED,
         label: t('placed'),
+        width: 90,
+        flexGrow: 1.1,
         headerStyle: styles.PLACED,
         style: styles.PLACED,
         renderer: getDefaultCellRenderer(getDisplayValue),

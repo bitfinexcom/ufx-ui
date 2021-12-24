@@ -26,6 +26,7 @@ const DateTimePicker = (props) => {
     },
     form: { touched, errors },
     fieldsToValidate,
+    fieldLabel,
     ...rest
   } = props
 
@@ -83,12 +84,12 @@ const DateTimePicker = (props) => {
 DateTimePicker.propTypes = {
   field: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
-  minHours: PropTypes.number,
+  minDays: PropTypes.number,
   maxDays: PropTypes.number,
 }
 
 DateTimePicker.defaultProps = {
-  minHours: null,
+  minDays: null,
   maxDays: null,
 }
 

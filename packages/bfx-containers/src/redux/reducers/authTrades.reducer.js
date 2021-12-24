@@ -9,7 +9,7 @@ import types from '../constants/ws.constants'
 
 const MAX_TRADES_NUMBER = 24
 
-const INITIAL_STATE = { }
+export const INITIAL_STATE = {}
 
 const reducer = (state = INITIAL_STATE, action = {}) => {
   const {

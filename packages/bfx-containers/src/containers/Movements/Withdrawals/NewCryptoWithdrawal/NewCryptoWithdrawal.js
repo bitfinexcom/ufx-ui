@@ -19,6 +19,7 @@ const NewCryptoWithdrawal = ({
   getCurrencyTxMethod,
   requestNewWithdraw,
   hasPaymentIdForWithdrawals,
+  getIsWithdrawalActive,
 }) => {
   const isLNX = _toUpper(currency) === BTC_LIGHTNING_CCY
 
@@ -33,6 +34,7 @@ const NewCryptoWithdrawal = ({
       <Details
         currency={currency}
         hasPaymentIdForWithdrawals={hasPaymentIdForWithdrawals}
+        getIsWithdrawalActive={getIsWithdrawalActive}
         getCurrencyLabel={getCurrencyLabel}
         getCurrencySymbol={getCurrencySymbol}
         getCurrencyTxMethod={getCurrencyTxMethod}
@@ -45,6 +47,7 @@ const NewCryptoWithdrawal = ({
 
 NewCryptoWithdrawal.propTypes = {
   hasPaymentIdForWithdrawals: PropTypes.func.isRequired,
+  getIsWithdrawalActive: PropTypes.func.isRequired,
   currency: PropTypes.string.isRequired,
   getCurrencyLabel: PropTypes.func.isRequired,
   getCurrencySymbol: PropTypes.func.isRequired,

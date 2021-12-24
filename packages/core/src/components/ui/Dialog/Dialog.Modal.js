@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import PropTypes from 'prop-types'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
 
 import * as Classes from '../../../common/classes'
 import { DIALOG_CONTAINER_ID } from './Dialog.constants'
@@ -20,55 +20,60 @@ const Modal = forwardRef(({
   width,
   height,
   textAlign,
-}, ref) => (
-  /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-  <FocusTrap
-    focusTrapOptions={{
-      fallbackFocus: document.getElementById(DIALOG_CONTAINER_ID),
-    }}
-  >
-    <div className={cx(Classes.DIALOG)}>
-      <div
-        className={cx('background', state, {
-          'is-mobile-fullscreen': isFullscreenInMobile,
-        })}
-        onClick={canOutsideClickClose ? onClose : undefined}
-      />
-      <div
-        role='dialog'
-        aria-modal='true'
-        className={cx('modal', className, state, {
-          'is-mobile-fullscreen': isFullscreenInMobile,
-        })}
-        ref={ref}
-        style={{ maxWidth: width, height, textAlign }}
-      >
-        {isCloseButtonShown && (
-          <button type='button' className='modal__close-button' onClick={onClose}>
-            &#10005;
-          </button>
-        )}
-        {Icon && (
-          <div className='modal__icon'>
-            {typeof Icon === 'function' ? <Icon /> : Icon}
-          </div>
-        )}
-        {title && (
-          <div className='modal__title'>
-            {title}
-          </div>
-        )}
+}, ref) => {
+  const titleRef = useRef()
+  return (
+    /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+    <FocusTrap
+      focusTrapOptions={{
+        fallbackFocus: document.getElementById(DIALOG_CONTAINER_ID),
+        initialFocus: titleRef.current,
+      }}
+    >
+      <div className={cx(Classes.DIALOG)}>
         <div
-          className={cx('modal__body', {
-            'is-sticky-footer': hasStickyFooterInMobile,
+          className={cx('background', state, {
+            'is-mobile-fullscreen': isFullscreenInMobile,
           })}
+          onClick={canOutsideClickClose ? onClose : undefined}
+        />
+        <div
+          role='dialog'
+          aria-modal='true'
+          className={cx('modal', className, state, {
+            'is-mobile-fullscreen': isFullscreenInMobile,
+          })}
+          ref={ref}
+          style={{ maxWidth: width, height, textAlign }}
         >
-          {children}
+          {title && (
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            <div className='modal__title' ref={titleRef.current} tabIndex='0'>
+              {title}
+            </div>
+          )}
+          {isCloseButtonShown && (
+            <button type='button' className='modal__close-button' onClick={onClose}>
+              &#10005;
+            </button>
+          )}
+          {Icon && (
+            <div className='modal__icon'>
+              {typeof Icon === 'function' ? <Icon /> : Icon}
+            </div>
+          )}
+          <div
+            className={cx('modal__body', {
+              'is-sticky-footer': hasStickyFooterInMobile,
+            })}
+          >
+            {children}
+          </div>
         </div>
       </div>
-    </div>
-  </FocusTrap>
-))
+    </FocusTrap>
+  )
+})
 
 Modal.propTypes = {
   /**

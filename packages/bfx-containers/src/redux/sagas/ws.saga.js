@@ -1,11 +1,13 @@
 import { logger } from '@ufx-ui/utils'
+import _forEach from 'lodash/forEach'
 import _get from 'lodash/get'
 import _isArray from 'lodash/isArray'
 import _isObject from 'lodash/isObject'
 import {
-  put, select, takeEvery, delay, fork, call,
+  put, select, takeEvery, delay, fork, call, all,
 } from 'redux-saga/effects'
 
+import { notify } from '../actions/notifications.actions'
 import {
   WSSend,
   WSSubscribed,
@@ -17,7 +19,8 @@ import types, { WS_EVENT_TYPES } from '../constants/ws.constants'
 import {
   getWSConnected,
   getWSChannels,
-  findMatchingChannel,
+  findAllMatchingChannels,
+  findMatchingChannelWithSymbol,
 } from '../selectors/ws.selectors'
 import { wss, isHB } from './ws.saga.helpers'
 
@@ -59,7 +62,15 @@ function* processWSMessage({ payload: actionPayload }) {
         }
 
         case WS_EVENT_TYPES.AUTH: {
+          const { status, msg: message } = payload || {}
+          if (status === 'FAILED') {
+            yield put(notify({
+              level: 'error',
+              message,
+            }))
+          }
           yield put(WSAuthenticated(payload))
+
           break
         }
 
@@ -80,9 +91,25 @@ function* processWSMessage({ payload: actionPayload }) {
   return null
 }
 
-function* unsubscibeChannel({ payload }) {
+function* unsubscibeChannel({ payload }, unsubscribeAll = false) {
   const channels = yield select(getWSChannels)
-  const channel = findMatchingChannel(channels, payload)
+  if (unsubscribeAll) {
+    const channelsToUnsubscribe = findAllMatchingChannels(channels, payload)
+
+    const actions = []
+    _forEach(channelsToUnsubscribe, (_channel) => {
+      const id = _get(_channel, 'chanId')
+
+      actions.push(put(WSSend({
+        event: WS_EVENT_TYPES.UNSUBSCRIBE,
+        chanId: id,
+      })))
+      actions.push(put(resetChannelState(_channel)))
+    })
+    yield all(actions)
+  }
+
+  const channel = findMatchingChannelWithSymbol(channels, payload)
   const chanId = _get(channel, 'chanId')
 
   if (!chanId) {
@@ -106,9 +133,9 @@ function* subscibeChannel({ payload }) {
   }))
 }
 
-function* resubscibeChannel({ payload }) {
-  // unsubscibe if already subscibed to channel
-  yield call(unsubscibeChannel, { payload })
+function* resubscibeChannel({ payload }, unsubscribeAll = true) {
+  // unsubscibe all channels or channel matching payload
+  yield call(unsubscibeChannel, { payload }, unsubscribeAll)
 
   yield put(WSSend({
     event: WS_EVENT_TYPES.SUBSCRIBE,

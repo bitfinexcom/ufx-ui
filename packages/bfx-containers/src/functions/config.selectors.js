@@ -6,5 +6,4 @@ export const wssUrl = process.env.REACT_APP_UFX_WSS_URL || 'wss://api-pub.bitfin
 
 export const corsProxyUrl = process.env.REACT_APP_UFX_CORS_PROXY_URL || ''
 
-export const apiKey = process.env.REACT_APP_UFX_API_KEY || ''
-export const apiSecret = process.env.REACT_APP_UFX_API_SECRET || ''
+export const secretPassphrase = process.env.REACT_APP_SECRET_PASSPHRASE || ''

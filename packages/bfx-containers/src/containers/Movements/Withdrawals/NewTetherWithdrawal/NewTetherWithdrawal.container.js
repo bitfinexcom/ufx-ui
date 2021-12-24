@@ -12,6 +12,7 @@ import { MOVEMENTS_REDUCER_SAGA_KEY } from '../../../../redux/constants/movement
 import movementsSaga from '../../../../redux/sagas/movements.saga'
 import {
   getHasPaymentIdForWithdrawals,
+  getIsWithdrawalActive,
   getCurrencyLabel,
   getCurrencySymbolMemo,
   getTetherProtocolToCcyMapping,
@@ -45,6 +46,7 @@ const NewTetherWithdrawalContainer = (props) => {
       loading={!isAuthenticated}
       tetherProtocols={tetherProtocols}
       hasPaymentIdForWithdrawals={useSelector(getHasPaymentIdForWithdrawals)}
+      getIsWithdrawalActive={useSelector(getIsWithdrawalActive)}
       getCurrencyLabel={useSelector(getCurrencyLabel)}
       getCurrencySymbol={useSelector(getCurrencySymbolMemo)}
       tetherProtocolCcyMapping={useSelector(getTetherProtocolToCcyMapping)}

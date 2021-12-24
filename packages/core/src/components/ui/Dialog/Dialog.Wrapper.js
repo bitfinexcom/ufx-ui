@@ -13,6 +13,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
     children,
     isOpen,
     onClose,
+    onSubmit,
     canEscapeKeyClose,
     canOutsideClickClose,
     className,
@@ -27,18 +28,24 @@ const Dialog = forwardRef(function Dialog(props, ref) {
   } = props
 
   useEffect(() => {
-    const handleKeydown = e => {
+    // eslint-disable-next-line prefer-arrow-callback
+    function handleKeydown(e) {
       if (e.key === 'Escape' && isOpen && canEscapeKeyClose) {
         onClose()
       }
+      if (e.key === 'Enter' && isOpen) {
+        onSubmit()
+      }
     }
 
-    window.addEventListener('keydown', handleKeydown)
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeydown)
+    }
 
     return () => {
       window.removeEventListener('keydown', handleKeydown)
     }
-  }, [onClose, isOpen, canEscapeKeyClose])
+  }, [onClose, isOpen, canEscapeKeyClose, onSubmit])
 
   useEffect(() => {
     const addOrRemove = isOpen ? 'add' : 'remove'
@@ -50,11 +57,11 @@ const Dialog = forwardRef(function Dialog(props, ref) {
       <Transition
         in={isOpen}
         timeout={300}
-        onEnter={node => node.offsetHeight}
+        onEnter={(node) => node.offsetHeight}
         mountOnEnter
         unmountOnExit
       >
-        {state => (
+        {(state) => (
           <Modal
             state={state}
             className={className}
@@ -92,6 +99,10 @@ Dialog.propTypes = {
    * will not actually close itself until that prop becomes `false`.
    */
   onClose: PropTypes.func.isRequired,
+  /**
+   * A callback that is invoked when user click Enter button
+   */
+  onSubmit: PropTypes.func,
   /**
    * Title of the dialog. If provided, an element with `Classes.DIALOG_HEADER`
    * will be rendered inside the dialog before any children elements.
@@ -158,6 +169,7 @@ Dialog.defaultProps = {
   width: 460,
   height: 'auto',
   textAlign: 'center',
+  onSubmit: () => {},
 }
 
 export default Dialog

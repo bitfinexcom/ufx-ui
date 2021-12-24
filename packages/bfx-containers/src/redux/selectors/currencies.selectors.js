@@ -8,11 +8,16 @@ import {
   isPair,
   PAIR_URL_SEPARATOR,
 } from '@ufx-ui/utils'
+import _filter from 'lodash/filter'
+import _flow from 'lodash/flow'
 import _get from 'lodash/get'
+import _includes from 'lodash/includes'
 import _keys from 'lodash/keys'
 import _memoize from 'lodash/memoize'
 import _pickBy from 'lodash/pickBy'
+import _reduce from 'lodash/reduce'
 import _toUpper from 'lodash/toUpper'
+import _uniq from 'lodash/uniq'
 import { createSelector } from 'reselect'
 
 import {
@@ -26,7 +31,7 @@ import { getUfxState } from './common'
 const EMPTY_OBJ = {}
 
 const getReducer = (state) => _get(getUfxState(state), 'currencies', EMPTY_OBJ)
-const getCurrenciesInfo = (state) => getReducer(state).currenciesInfo
+export const getCurrenciesInfo = (state) => getReducer(state).currenciesInfo
 const getCurrenciesSymbolMap = (state) => getReducer(state).currencySymbolToCurrencyCodeMap
 const getTxMethods = (state) => getReducer(state).txMethods
 export const getPairsInfo = (state) => getReducer(state).pairsInfo
@@ -225,7 +230,7 @@ export const getHasPaymentIdForWithdrawals = createSelector(
   [getCurrenciesInfo, getTxMethods],
   (ccysInfo, txMethods) => (ccy) => {
     const txMethod = getTxMethodForCcy(ccysInfo, ccy)
-    return _get(txMethods, [txMethod, 'hasPaymentIdForWithdrawals'], false)
+    return !!_get(txMethods, [txMethod, 'hasPaymentIdForWithdrawals'], false)
   },
 )
 
@@ -233,7 +238,23 @@ export const getHasPaymentIdForDeposits = createSelector(
   [getCurrenciesInfo, getTxMethods],
   (ccysInfo, txMethods) => (ccy) => {
     const txMethod = getTxMethodForCcy(ccysInfo, ccy)
-    return _get(txMethods, [txMethod, 'hasPaymentIdForDeposits'], false)
+    return !!_get(txMethods, [txMethod, 'hasPaymentIdForDeposits'], false)
+  },
+)
+
+export const getIsDepositActive = createSelector(
+  [getCurrenciesInfo, getTxMethods],
+  (ccysInfo, txMethods) => (ccy) => {
+    const txMethod = getTxMethodForCcy(ccysInfo, ccy)
+    return !!_get(txMethods, [txMethod, 'isDepositActive'], false)
+  },
+)
+
+export const getIsWithdrawalActive = createSelector(
+  [getCurrenciesInfo, getTxMethods],
+  (ccysInfo, txMethods) => (ccy) => {
+    const txMethod = getTxMethodForCcy(ccysInfo, ccy)
+    return !!_get(txMethods, [txMethod, 'isWithdrawalActive'], false)
   },
 )
 
@@ -244,6 +265,25 @@ export const getCurrencyTxMethod = createSelector(
   ),
 )
 
+const getCurrenciesSymbolFromTxMethods = (txMethods, includeTether = false) => _flow(
+  (data) => _filter(data, (value, key) => (includeTether
+    ? _includes(key, 'TETHER')
+    : !_includes(key, 'TETHER')
+  )),
+  (data) => _reduce(data, (acc, txMethod) => [...acc, ...txMethod.symbol], []),
+  (data) => _uniq(data),
+)(txMethods)
+
+export const getCryptoCurrencies = createSelector(
+  getTxMethods,
+  (txMethods) => getCurrenciesSymbolFromTxMethods(txMethods),
+)
+
+export const getTetherCurrencies = createSelector(
+  getTxMethods,
+  (txMethods) => getCurrenciesSymbolFromTxMethods(txMethods, true),
+)
+
 export default {
   getIsTradingPair,
   getIsDerivativePair,
@@ -252,8 +292,12 @@ export default {
   getCurrencyCodeFromCurrencySymbol,
   getRegularPair,
   getHasPaymentIdForDeposits,
+  getIsDepositActive,
+  getIsWithdrawalActive,
   getCurrencyPool,
   getCurrencyTxMethod,
   getCurrencyLabel,
   getIsSecuritiesPair,
+  getCryptoCurrencies,
+  getTetherCurrencies,
 }
