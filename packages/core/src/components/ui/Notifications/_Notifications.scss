@@ -64,6 +64,7 @@ $notification-font-color: $light-gray5;
   // LEVELS
   &__level {
     margin-bottom: $ufx-base-size * 0.6;
+    position: relative;
 
     @each $intent, $color in $intents {
       &--#{$intent} {
