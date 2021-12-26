@@ -16,18 +16,8 @@
     justify-content: flex-end;
   }
 
-  thead {
-    th {
-      padding: ($ufx-base-size * 0.6) 0 !important;
-    }
-  }
-
-  tbody {
+  .is-monospaced {
     font-feature-settings: "tnum";
-
-    td.#{$ns}-rtl {
-      padding-right: $ufx-base-size;
-    }
   }
 
   .empty {

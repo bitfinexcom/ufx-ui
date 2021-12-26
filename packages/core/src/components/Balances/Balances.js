@@ -21,6 +21,12 @@ import BalancesToolbar from './Balances.Toolbar'
 
 const ROW_HEIGHT = 42
 
+const noRowsRenderer = (t) => () => (
+  <div className='empty'>
+    <small>{t('common:no_results_found')}</small>
+  </div>
+)
+
 export const Balances = (props) => {
   const {
     balances,
@@ -51,32 +57,6 @@ export const Balances = (props) => {
 
   const filtered = _filter(data, ({ name } = {}) => _includes(_toLower(name), _toLower(searchTerm)))
 
-  const renderBalancesTable = () => {
-    if (filtered.length === 0) {
-      return (
-        <div className='empty'>
-          <small>{t('common:no_results_found')}</small>
-        </div>
-      )
-    }
-
-    return (
-      <>
-        <div className={Classes.TABLE_WRAPPER}>
-          <VirtualTable
-            interactive
-            striped
-            columns={columns}
-            data={filtered}
-            defaultSortBy={KEYS.EXCHANGE}
-            defaultSortDirection='DESC'
-            rowHeight={ROW_HEIGHT}
-          />
-        </div>
-      </>
-    )
-  }
-
   return (
     <div className={cx(Classes.BALANCES, className)}>
       <BalancesToolbar
@@ -86,7 +66,17 @@ export const Balances = (props) => {
         setHideSmallBalances={setHideSmallBalances}
         smallBalanceThreshold={smallBalanceThreshold}
       />
-      {renderBalancesTable()}
+
+      <VirtualTable
+        interactive
+        striped
+        columns={columns}
+        data={filtered}
+        defaultSortBy={KEYS.EXCHANGE}
+        defaultSortDirection='DESC'
+        rowHeight={ROW_HEIGHT}
+        noRowsRenderer={noRowsRenderer(t)}
+      />
     </div>
   )
 }

@@ -29,7 +29,7 @@ const getColumns = ({ showTransfer, handleDepositClick, handleWithdrawClick }) =
   label: getNiceWalletName('exchange'),
   dataKey: KEYS.EXCHANGE,
   headerClassName: Classes.RIGHT_TO_LEFT,
-  className: Classes.RIGHT_TO_LEFT,
+  className: `${Classes.RIGHT_TO_LEFT} is-monospaced`,
   renderer: ({ rowData }) => <AmountRenderer data={rowData} walletKey={KEYS.EXCHANGE_KEY} />,
 },
 ...(!showTransfer ? []
