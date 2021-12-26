@@ -22,14 +22,14 @@ const BalancesRow = (props) => {
     <tr>
       {columns.map(column => {
         const {
-          key, renderer: defRenderer, cellClassName, cellStyle,
+          dataKey, renderer: defRenderer, cellClassName, cellStyle,
         } = column || {}
-        const value = getDisplayValue(key, false)
-        const formattedValue = getDisplayValue(key)
-        const renderer = _get(customMapping, [key, 'renderer'], defRenderer)
+        const value = getDisplayValue(dataKey, false)
+        const formattedValue = getDisplayValue(dataKey)
+        const renderer = _get(customMapping, [dataKey, 'renderer'], defRenderer)
 
         return (
-          <td key={key} className={cellClassName} style={cellStyle}>
+          <td key={dataKey} className={cellClassName} style={cellStyle}>
             {renderer ? renderer({
               value,
               formattedValue,

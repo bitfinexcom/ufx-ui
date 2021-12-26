@@ -19,12 +19,12 @@ const BalancesHeader = (props) => {
       <tr>
         {columns.map(column => {
           const {
-            key, sortKey, isSortable, getLabel, headerClassName, defaultSortAsc, cellStyle,
+            dataKey, sortKey, isSortable, getLabel, headerClassName, defaultSortAsc, cellStyle,
           } = column || {}
 
           return (
             <th
-              key={key}
+              key={dataKey}
               className={headerClassName}
               style={cellStyle}
             >
@@ -36,7 +36,7 @@ const BalancesHeader = (props) => {
                     sortBy={sortBy}
                     sortAscending={sortAscending}
                     defaultSortAscending={defaultSortAsc}
-                    field={sortKey || key}
+                    field={sortKey || dataKey}
                   />
                 )}
             </th>

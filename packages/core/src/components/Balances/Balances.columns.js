@@ -24,12 +24,12 @@ const AmountRenderer = ({ data, walletKey }) => {
 
 const getColumns = (showTransfer) => [{
   getLabel: () => i18n.t('balances:name'),
-  key: KEYS.NAME,
+  dataKey: KEYS.NAME,
   isSortable: true,
   defaultSortAsc: true,
 }, {
   getLabel: () => getNiceWalletName('exchange'),
-  key: KEYS.EXCHANGE,
+  dataKey: KEYS.EXCHANGE,
   isSortable: true,
   defaultSortAsc: false,
   headerClassName: Classes.RIGHT_TO_LEFT,
@@ -39,7 +39,7 @@ const getColumns = (showTransfer) => [{
 ...(!showTransfer ? []
   : [{
     getLabel: () => '',
-    key: '',
+    dataKey: '',
     isSortable: false,
     headerClassName: Classes.RIGHT_TO_LEFT,
     cellClassName: Classes.RIGHT_TO_LEFT,
