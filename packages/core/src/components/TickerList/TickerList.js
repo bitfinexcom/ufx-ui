@@ -4,18 +4,17 @@ import _filter from 'lodash/filter'
 import _get from 'lodash/get'
 import _includes from 'lodash/includes'
 import _join from 'lodash/join'
-import _map from 'lodash/map'
 import _toLower from 'lodash/toLower'
 import PropTypes from 'prop-types'
 import React, {
-  useCallback, useState, useMemo, memo,
-  useRef,
+  useCallback, useState, memo, useRef,
 } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
+import { getVirtualTableColumns } from '../helper'
 import { VirtualTable } from '../ui'
 import getColumns from './TickerList.columns'
 import { MAPPING, KEYS } from './TickerList.constants'
@@ -85,8 +84,9 @@ export const TickerList = (props) => {
     saveFavs(newFavs)
   }, [favs, saveFavs])
 
-  const columns = useMemo(() => {
-    const cols = getColumns({
+  const columns = getVirtualTableColumns(
+    getColumns,
+    {
       getDisplayValue,
       t,
       favs,
@@ -97,20 +97,9 @@ export const TickerList = (props) => {
       volumeUnit,
       setVolumeUnit,
       volumeUnitList,
-    })
-    const customisedRenderer = _map(cols, (col) => {
-      const cellRenderer = _get(rowMapping, [col.dataKey, 'renderer'], col.renderer)
-      const sortKey = _get(rowMapping, [col.dataKey, 'selector'], col.dataKey)
-
-      return {
-        ...col,
-        sortKey,
-        cellRenderer,
-      }
-    })
-
-    return customisedRenderer
-  }, [getDisplayValue, favs, toggleFav, showOnlyFavs, setShowOnlyFavs, showVolumeUnit, volumeUnit, setVolumeUnit, volumeUnitList, rowMapping, t])
+    },
+    rowMapping,
+  )
 
   const calculateRowHeight = () => {
     const width = _get(containerRef, 'current.offsetWidth', 0)
