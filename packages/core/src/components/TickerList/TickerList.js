@@ -123,7 +123,7 @@ export const TickerList = (props) => {
         // give default key, dont give customised key
         defaultSortBy={KEYS.VOLUME}
         defaultSortDirection='DESC'
-        headerClassName='ufx-button ufx-button--minimal'
+        headerClassName={`${Classes.BUTTON} ${Classes.BUTTON}--minimal`}
         rowHeight={calculateRowHeight()}
         interactive
         striped
