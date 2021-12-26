@@ -7,7 +7,7 @@ import _isString from 'lodash/isString'
 import _orderBy from 'lodash/orderBy'
 import _slice from 'lodash/slice'
 import PropTypes from 'prop-types'
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
