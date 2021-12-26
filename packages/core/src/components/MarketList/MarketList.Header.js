@@ -19,13 +19,13 @@ const MarketListHeader = (props) => {
     <FontAwesomeIcon size='xs' icon={sortAscending ? faCaretUp : faCaretDown} />
   )
 
-  const handleSort = (key, label) => {
+  const handleSort = (dataKey, label) => {
     if (label) {
       dispatch({
         type: ACTION_TYPES.SET_SORT,
         payload: {
-          sortBy: key,
-          sortAscending: sortBy === key ? !sortAscending : false,
+          sortBy: dataKey,
+          sortAscending: sortBy === dataKey ? !sortAscending : false,
         },
       })
     }
@@ -35,14 +35,14 @@ const MarketListHeader = (props) => {
     <thead>
       <tr>
         {columns.map(({
-          key,
+          dataKey,
           label,
           headerCellClassName,
           cellStyle,
         }) => (
           <th
-            key={key}
-            onClick={() => handleSort(key, label)}
+            key={dataKey}
+            onClick={() => handleSort(dataKey, label)}
             style={cellStyle}
             className={headerCellClassName}
           >
@@ -50,7 +50,7 @@ const MarketListHeader = (props) => {
               <Button>
                 <div className='table-header'>
                   <div className='table-header__text'>{label}</div>
-                  {key === sortBy ? icon
+                  {dataKey === sortBy ? icon
                     : (
                       <div className='table-header__default-icon'>
                         <FontAwesomeIcon

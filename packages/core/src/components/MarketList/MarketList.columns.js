@@ -8,7 +8,7 @@ import * as Classes from '../../common/classes'
 import { Button } from '../ui'
 import { KEYS } from './MarketList.constants'
 
-// key: column key
+// dataKey: column key
 // label: column header
 // cellStyle : td, th style
 // headerCellClassName: th classname
@@ -18,7 +18,7 @@ export const getColumns = (args = {}) => {
   const { t, isSmallView } = args
   return [
     {
-      key: KEYS.FAV,
+      dataKey: KEYS.FAV,
       label: '',
       cellStyle: { minWidth: '45px' },
       renderer: ({ isFav, toggleFav }) => (
@@ -35,13 +35,13 @@ export const getColumns = (args = {}) => {
       ),
     },
     {
-      key: KEYS.BASE_CCY,
+      dataKey: KEYS.BASE_CCY,
       label: t('marketlist:symbol'),
       cellStyle: { width: isSmallView ? '40%' : '20%' },
       renderer: ({ formattedValue, quoteCcy }) => `${formattedValue}/${quoteCcy}`,
     },
     {
-      key: KEYS.LAST_PRICE,
+      dataKey: KEYS.LAST_PRICE,
       label: (
         <>
           <span className='hidden-lg hidden-md hidden-sm hidden-xs'>{t('marketlist:last_price')}</span>
@@ -53,7 +53,7 @@ export const getColumns = (args = {}) => {
       cellClassName: Classes.RIGHT_TO_LEFT,
     },
     {
-      key: KEYS.CHANGE_PERC,
+      dataKey: KEYS.CHANGE_PERC,
       label: (
         <>
           <span className='hidden-lg hidden-md hidden-sm hidden-xs'>{t('marketlist:24h_change')}</span>
@@ -70,21 +70,21 @@ export const getColumns = (args = {}) => {
       ),
     },
     {
-      key: KEYS.HIGH,
+      dataKey: KEYS.HIGH,
       label: t('marketlist:24h_high'),
       cellStyle: { width: '13%' },
       headerCellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
       cellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
     },
     {
-      key: KEYS.LOW,
+      dataKey: KEYS.LOW,
       label: t('marketlist:24h_low'),
       cellStyle: { width: '13%' },
       headerCellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
       cellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
     },
     {
-      key: KEYS.VOLUME,
+      dataKey: KEYS.VOLUME,
       label: (
         <>
           <span>{t('marketlist:24h_volume')}</span>
@@ -100,7 +100,7 @@ export const getColumns = (args = {}) => {
       ),
     },
     {
-      key: 'action',
+      dataKey: 'action',
       label: '',
       cellStyle: { width: '4%' },
       headerCellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,

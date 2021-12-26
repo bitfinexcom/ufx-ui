@@ -13,6 +13,7 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
+import { getVirtualTableColumns } from '../helper'
 import { Table } from '../ui'
 import { TAB_PROP_TYPE } from '../ui/Tabs/Tab'
 import { getColumns } from './MarketList.columns'
@@ -52,7 +53,11 @@ export const MarketList = (props) => {
   )
 
   const { t } = useTranslation()
-  const columns = useMemo(() => getColumns({ t, isSmallView }), [t, isSmallView])
+  const columns = getVirtualTableColumns(
+    getColumns,
+    { t, isSmallView },
+    customMapping,
+  )
 
   const filtered = useMemo(
     () => filterData({
