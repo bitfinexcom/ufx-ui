@@ -16,6 +16,7 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import { useStore } from '../../store'
 import { PrettyDate } from '../format'
+import { getVirtualTableColumns } from '../helper'
 import { Table, Spinner } from '../ui'
 import getColumns from './Trades.columns'
 import { KEYS } from './Trades.constants'
@@ -39,7 +40,6 @@ export const Trades = (props) => {
     pageSize,
     className,
     rowMapping,
-    userRowMapping,
     minOrderSize,
   } = props
   const classes = cx(Classes.TRADES, className)
@@ -48,9 +48,13 @@ export const Trades = (props) => {
 
   const isMarketTrades = showType === TRADE_TYPES.MARKET
 
-  const mtsKey = getMappedKey(KEYS.MTS, isMarketTrades ? rowMapping : userRowMapping)
+  const mtsKey = getMappedKey(KEYS.MTS, rowMapping)
 
-  const columns = useMemo(() => getColumns({ t }), [t])
+  const columns = useMemo(() => getVirtualTableColumns(
+    getColumns,
+    { t },
+    rowMapping,
+  ), [rowMapping, t])
 
   const getTradesData = (data) => {
     const orderedData = _orderBy(data, mtsKey, 'desc')
@@ -86,8 +90,6 @@ export const Trades = (props) => {
 
   const keyForId = getMappedKey(KEYS.ID, rowMapping)
 
-  const mapping = isMarketTrades ? rowMapping : userRowMapping
-
   return (
     <div className={classes}>
       <Table condensed>
@@ -114,7 +116,7 @@ export const Trades = (props) => {
                 <TradesRow
                   key={_get(trade, keyForId)}
                   columns={columns}
-                  rowMapping={mapping}
+                  rowMapping={rowMapping}
                   data={trade}
                   minOrderSize={minOrderSize}
                 />
@@ -136,7 +138,6 @@ Trades.propTypes = {
   user: PropTypes.oneOfType([PropTypes.objectOf(PropTypes.object), PropTypes.arrayOf(PropTypes.object)]),
   className: PropTypes.string,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
-  userRowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
   minOrderSize: PropTypes.number,
 }
 
@@ -149,7 +150,6 @@ export const defaultProps = {
   user: {},
   className: null,
   rowMapping: {},
-  userRowMapping: {},
   minOrderSize: 0.001,
 }
 
