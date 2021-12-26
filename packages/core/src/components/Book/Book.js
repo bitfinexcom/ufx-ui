@@ -1,4 +1,3 @@
-import { getVisibleColumns } from '@ufx-ui/utils'
 import cx from 'classnames'
 import compose from 'lodash/fp/compose'
 import _isBoolean from 'lodash/isBoolean'
@@ -14,6 +13,7 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
+import { getVirtualTableColumns } from '../helper'
 import Spinner from '../ui/Spinner'
 import getColumns from './Book.columns'
 import {
@@ -54,7 +54,11 @@ export const Book = (props) => {
     [bids, asks],
   )
 
-  const columns = useMemo(() => getVisibleColumns(getColumns({ t }), rowMapping), [rowMapping, t])
+  const columns = useMemo(() => getVirtualTableColumns(
+    getColumns,
+    { t },
+    rowMapping,
+  ), [rowMapping, t])
 
   const classes = cx(Classes.BOOK, className)
 
