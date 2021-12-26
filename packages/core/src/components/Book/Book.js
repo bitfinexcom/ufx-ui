@@ -54,11 +54,11 @@ export const Book = (props) => {
     [bids, asks],
   )
 
-  const columns = useMemo(() => getVirtualTableColumns(
+  const columns = getVirtualTableColumns(
     getColumns,
     { t },
     rowMapping,
-  ), [rowMapping, t])
+  )
 
   const classes = cx(Classes.BOOK, className)
 

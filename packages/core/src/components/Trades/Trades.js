@@ -50,11 +50,11 @@ export const Trades = (props) => {
 
   const mtsKey = getMappedKey(KEYS.MTS, rowMapping)
 
-  const columns = useMemo(() => getVirtualTableColumns(
+  const columns = getVirtualTableColumns(
     getColumns,
     { t },
     rowMapping,
-  ), [rowMapping, t])
+  )
 
   const getTradesData = (data) => {
     const orderedData = _orderBy(data, mtsKey, 'desc')
