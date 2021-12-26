@@ -1,9 +1,7 @@
 import { getMappedKey } from '@ufx-ui/utils'
 import cx from 'classnames'
 import _filter from 'lodash/filter'
-import _get from 'lodash/get'
 import _includes from 'lodash/includes'
-import _map from 'lodash/map'
 import _toLower from 'lodash/toLower'
 import PropTypes from 'prop-types'
 import React, { useState, memo } from 'react'
@@ -15,13 +13,13 @@ import withI18nProvider from '../../hoc/withI18nProvider'
 import withResponsive from '../../hoc/withResponsive'
 import useSortableData from '../../hooks/useSortableData'
 import { getVirtualTableColumns } from '../helper'
-import { Table } from '../ui'
+import { VirtualTable } from '../ui'
 import getColumns from './Balances.columns'
 import { KEYS } from './Balances.constants'
-import BalancesHeader from './Balances.Header'
 import { balancesAdapter, sortData } from './Balances.helpers'
-import BalancesRow from './Balances.Row'
 import BalancesToolbar from './Balances.Toolbar'
+
+const ROW_HEIGHT = 42
 
 export const Balances = (props) => {
   const {
@@ -39,14 +37,13 @@ export const Balances = (props) => {
   const [searchTerm, setSearchTerm] = useState('')
   const columns = getVirtualTableColumns(
     getColumns,
-    showTransfer,
+    { showTransfer, handleDepositClick, handleWithdrawClick },
     rowMapping,
   )
 
-  const keyForName = getMappedKey(KEYS.NAME, rowMapping)
   const keyForExchange = getMappedKey(KEYS.EXCHANGE, rowMapping)
 
-  const { data = [], requestSort, sortConfig } = useSortableData(
+  const { data = [] } = useSortableData(
     balancesAdapter(balances),
     { key: keyForExchange },
     sortData,
@@ -65,28 +62,16 @@ export const Balances = (props) => {
 
     return (
       <>
-        <Table condensed>
-          <BalancesHeader
-            sortConfig={sortConfig}
-            requestSort={requestSort}
-            columns={columns}
-          />
-        </Table>
         <div className={Classes.TABLE_WRAPPER}>
-          <Table condensed striped>
-            <tbody>
-              {_map(filtered, (row) => (
-                <BalancesRow
-                  key={_get(row, keyForName)}
-                  data={row}
-                  dataMapping={rowMapping}
-                  columns={columns}
-                  handleDepositClick={handleDepositClick}
-                  handleWithdrawClick={handleWithdrawClick}
-                />
-              ))}
-            </tbody>
-          </Table>
+          <VirtualTable
+            interactive
+            striped
+            columns={columns}
+            data={filtered}
+            defaultSortBy={KEYS.EXCHANGE}
+            defaultSortDirection='DESC'
+            rowHeight={ROW_HEIGHT}
+          />
         </div>
       </>
     )

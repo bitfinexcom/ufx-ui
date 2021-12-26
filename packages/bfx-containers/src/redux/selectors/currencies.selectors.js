@@ -270,7 +270,11 @@ const getCurrenciesSymbolFromTxMethods = (txMethods, includeTether = false) => _
     ? _includes(key, 'TETHER')
     : !_includes(key, 'TETHER')
   )),
-  (data) => _reduce(data, (acc, txMethod) => [...acc, ...txMethod.symbol], []),
+  (data) => _reduce(
+    data,
+    (acc, txMethod) => [...acc, ...(txMethod?.symbol || [])],
+    [],
+  ),
   (data) => _uniq(data),
 )(txMethods)
 
