@@ -38,13 +38,8 @@ $ufx-balances-height: $ufx-base-size * 40 !default;
     margin-top: $ufx-base-size * 1.5;
   }
 
-  .#{$ns}-balances .#{$ns}-virtual-table--container {
-    width: 90%; // adjust for l/r padding of .#{$ns}-movements
-    height: $ufx-balances-height;
-  }
-
   .movement-list {
-    margin-top: $ufx-balances-height + ($ufx-base-size * 5.5);
+    margin-top: $ufx-base-size * 5.5;
   }
 }
 
