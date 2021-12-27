@@ -53,7 +53,7 @@ const Login = (props) => {
               type='password'
               autoComplete='off'
               label={t('apiKey')}
-              error={errors.apiKey?.type === 'required' && t('apiKeyRequired')}
+              error={errors.apiKey?.type === 'required' ? t('apiKeyRequired') : ''}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...field}
             />
