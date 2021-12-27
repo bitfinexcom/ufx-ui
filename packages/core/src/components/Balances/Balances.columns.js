@@ -25,13 +25,13 @@ const AmountRenderer = ({ data, walletKey }) => {
 const getColumns = ({ showTransfer, handleDepositClick, handleWithdrawClick }) => [{
   label: i18n.t('balances:name'),
   dataKey: KEYS.NAME,
-  width: 150,
+  width: 130,
   flexGrow: 1,
 }, {
   label: getNiceWalletName('exchange'),
   dataKey: KEYS.EXCHANGE,
   headerClassName: Classes.RIGHT_TO_LEFT,
-  width: 200,
+  width: 180,
   flexGrow: 1,
   className: `${Classes.RIGHT_TO_LEFT} is-monospaced`,
   renderer: ({ rowData }) => <AmountRenderer data={rowData} walletKey={KEYS.EXCHANGE_KEY} />,
@@ -40,7 +40,7 @@ const getColumns = ({ showTransfer, handleDepositClick, handleWithdrawClick }) =
   : [{
     label: '',
     dataKey: '',
-    width: 50,
+    width: 100,
     flexGrow: 0.1,
     headerClassName: Classes.RIGHT_TO_LEFT,
     className: Classes.RIGHT_TO_LEFT,

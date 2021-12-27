@@ -1,4 +1,8 @@
 .#{$ns}-balances {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
   .search-icon {
     align-self: center;
     margin-right: $ufx-base-size * 0.5;
@@ -48,7 +52,8 @@
   }
 }
 
-.#{$ns}-responsive--xs {
+.#{$ns}-responsive--xs,
+.#{$ns}-responsive--xxs {
   .#{$ns}-balances {
     .actions {
       button {

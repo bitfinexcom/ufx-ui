@@ -1,6 +1,8 @@
 $fav-col-min-width: $ufx-base-size * 1.4;
 
 .#{$ns}-tickerlist {
+  height: 100%;
+
   .empty-tickerlist {
     display: flex;
     justify-content: center;
