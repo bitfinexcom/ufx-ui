@@ -2,7 +2,7 @@ $breakpoints: "hg", "xl", "lg", "ml", "md", "sm", "s", "xs", "xxs";
 
 .#{$ns}-responsive {
   display: block;
-  height: 100%;
+  height: inherit;
 
   // .hidden-hg
   // .hidden-xl

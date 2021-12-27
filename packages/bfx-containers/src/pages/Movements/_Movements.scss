@@ -2,6 +2,7 @@ $ufx-balances-height: $ufx-base-size * 40 !default;
 
 .#{$ns}-movements {
   padding: $ufx-base-size * 2.5 5%;
+  height: inherit;
 
   .header {
     font-size: $ufx-base-size * 2;
@@ -43,7 +44,8 @@ $ufx-balances-height: $ufx-base-size * 40 !default;
   }
 }
 
-.#{$ns}-responsive--xs {
+.#{$ns}-responsive--xs,
+.#{$ns}-responsive--xxs {
   .#{$ns}-deposits {
     padding-left: $ufx-base-size;
     padding-right: $ufx-base-size;
