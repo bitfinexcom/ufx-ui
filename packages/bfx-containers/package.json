@@ -67,7 +67,7 @@
     "bignumber.js": "^9.0.0",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.8.0",
-    "crypto-js": "^4.0.0",
+    "crypto-js": "^4.1.1",
     "date-fns": "^2.16.1",
     "history": "^4.10.1",
     "i18next": "^19.5.1",
