@@ -49,6 +49,7 @@ const Tabs = forwardRef(function Tabs(props, ref) {
 Tabs.propTypes = {
   /**
    * The tabs of the Tabs.
+   * Tab object should has required params (strings): id , title.
    */
   // tabs: { type: { name: 'object', required: false } },
   tabs: PropTypes.arrayOf(PropTypes.shape(TAB_PROP_TYPE)),
