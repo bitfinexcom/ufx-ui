@@ -21,7 +21,11 @@ const Truncate = forwardRef(function Truncate({ className, children, ...rest }, 
   )
 })
 
-Truncate.prototype = {
+Truncate.defaultProps = {
+  className: null,
+}
+
+Truncate.propTypes = {
   /**
    * The className of the Truncate.
    */
@@ -29,7 +33,7 @@ Truncate.prototype = {
   /**
    * The children of the Truncate.
    */
-  children: PropTypes.string,
+  children: PropTypes.string.isRequired,
 }
 
 export default Truncate
