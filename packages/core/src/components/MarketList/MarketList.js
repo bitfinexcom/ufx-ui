@@ -1,4 +1,4 @@
-import { getMappingForKey, getValue } from '@ufx-ui/utils'
+import { getValue } from '@ufx-ui/utils'
 import compose from 'lodash/fp/compose'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
@@ -35,14 +35,11 @@ export const MarketList = (props) => {
     rowMapping: customMapping,
     isMobileLayout: isSmallView,
   } = props
-
+  const { t } = useTranslation()
   const [state, dispatch] = useReducer(reducer, getInitState(tabs, defaultSortBy))
   const searchTerm = _get(state, `filter.${KEYS.BASE_CCY}`)
   const activeTab = _get(state, `filter.${KEYS.QUOTE_CCY}`)
-  const sortBy = _get(state, 'sortBy')
-  const sortAscending = _get(state, 'sortAscending')
 
-  const getMappedKey = getMappingForKey(customMapping)
   const getMappedValue = useCallback(
     (d) => getValue({
       mapping: MAPPING,
@@ -52,7 +49,6 @@ export const MarketList = (props) => {
     [customMapping],
   )
 
-  const { t } = useTranslation()
   const getDisplayValue = useCallback(
     (rowData) => getValue({
       mapping: MAPPING,
@@ -84,9 +80,6 @@ export const MarketList = (props) => {
       favs,
       activeTab,
       searchTerm,
-      sortBy,
-      sortAscending,
-      getMappedKey,
       getMappedValue,
     }),
     [
@@ -94,10 +87,7 @@ export const MarketList = (props) => {
       favs,
       activeTab,
       searchTerm,
-      sortBy,
-      sortAscending,
       filterData,
-      getMappedKey,
       getMappedValue,
     ],
   )
