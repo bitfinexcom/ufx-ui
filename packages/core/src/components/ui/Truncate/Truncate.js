@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import _truncate from 'lodash/truncate'
 import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
 
@@ -6,7 +7,14 @@ import * as Classes from '../../../common/classes'
 import Tooltip from '../Tooltip'
 
 // eslint-disable-next-line prefer-arrow-callback
-const Truncate = forwardRef(function Truncate({ className, children, ...rest }, ref) {
+const Truncate = forwardRef(function Truncate({
+  limit, className, children, ...rest
+}, ref) {
+  const shortedText = _truncate(children, {
+    length: limit,
+    omission: '...',
+  })
+
   return (
     <div ref={ref} className={cx(Classes.TRUNCATE, className)}>
       <Tooltip
@@ -15,7 +23,7 @@ const Truncate = forwardRef(function Truncate({ className, children, ...rest }, 
         {...rest}
         className={`${Classes.TRUNCATE}--tooltip`}
       >
-        {children}
+        {shortedText}
       </Tooltip>
     </div>
   )
@@ -23,6 +31,7 @@ const Truncate = forwardRef(function Truncate({ className, children, ...rest }, 
 
 Truncate.defaultProps = {
   className: null,
+  limit: 50,
 }
 
 Truncate.propTypes = {
@@ -34,6 +43,10 @@ Truncate.propTypes = {
    * The children of the Truncate.
    */
   children: PropTypes.string.isRequired,
+  /**
+   * Limit of visible symbols
+   */
+  limit: PropTypes.number,
 }
 
 export default Truncate
