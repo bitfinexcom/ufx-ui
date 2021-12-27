@@ -11,7 +11,6 @@ import { KEYS } from './MarketList.constants'
 
 // dataKey: column key
 // label: column header
-// cellStyle : td, th style
 // headerClassName: th classname
 // className: td classname
 // renderer: for content to be renderered inside td

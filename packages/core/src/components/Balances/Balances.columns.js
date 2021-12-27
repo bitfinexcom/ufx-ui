@@ -38,7 +38,7 @@ const getColumns = ({ showTransfer, handleDepositClick, handleWithdrawClick }) =
 },
 ...(!showTransfer ? []
   : [{
-    label: () => '',
+    label: '',
     dataKey: '',
     width: 50,
     flexGrow: 0.1,
