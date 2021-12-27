@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "@ufx-ui/eslint-config"
-  ]
-}
