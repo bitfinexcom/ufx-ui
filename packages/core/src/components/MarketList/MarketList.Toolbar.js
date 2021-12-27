@@ -62,7 +62,7 @@ const MarketListToolbar = (props) => {
       <Tabs
         tabs={tabs}
         active={activeTab}
-        containerClassName='hidden-md hidden-sm hidden-s hidden-xs hidden-xxs'
+        containerClassName='hidden-ml hidden-md hidden-sm hidden-s hidden-xs hidden-xxs'
         onChange={(value) => applyFilter(KEYS.QUOTE_CCY, value)}
       />
       <Dropdown
