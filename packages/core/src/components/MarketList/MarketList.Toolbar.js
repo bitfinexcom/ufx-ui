@@ -56,13 +56,13 @@ const MarketListToolbar = (props) => {
           ? <FontAwesomeIcon icon={faStar} />
           : <FontAwesomeIcon icon={faStarEmpty} />}
         {' '}
-        <span className='hidden-xs'>{t('marketlist:favorites')}</span>
+        <span className='hidden-xs hidden-xxs'>{t('marketlist:favorites')}</span>
       </Button>
 
       <Tabs
         tabs={tabs}
         active={activeTab}
-        containerClassName='hidden-md hidden-sm hidden-xs'
+        containerClassName='hidden-md hidden-sm hidden-s hidden-xs hidden-xxs'
         onChange={(value) => applyFilter(KEYS.QUOTE_CCY, value)}
       />
       <Dropdown
@@ -70,7 +70,7 @@ const MarketListToolbar = (props) => {
         options={options}
         onChange={(value) => applyFilter(KEYS.QUOTE_CCY, value)}
         searchable
-        className='quoteccy-dropdown hidden-xl hidden-lg'
+        className='quoteccy-dropdown hidden-hg hidden-xl hidden-lg'
       />
       <Input
         className='search-input'

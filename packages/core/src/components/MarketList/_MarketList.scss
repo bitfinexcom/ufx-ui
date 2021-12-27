@@ -1,6 +1,9 @@
 $search-input-height: $ufx-base-size * 2.8;
 
 .#{$ns}-marketlist {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   margin-bottom: $ufx-base-size * 2;
 
   .#{$ns}-button {

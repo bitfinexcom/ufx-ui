@@ -14,14 +14,14 @@ import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { getVirtualTableColumns } from '../helper'
-import { Table } from '../ui'
+import { VirtualTable } from '../ui'
 import { TAB_PROP_TYPE } from '../ui/Tabs/Tab'
 import { getColumns } from './MarketList.columns'
 import { KEYS, MAPPING } from './MarketList.constants'
-import Header from './MarketList.Header'
 import { reducer, getInitState, filterData as filterDataHelper } from './MarketList.helpers'
-import Row from './MarketList.Row'
 import Toolbar from './MarketList.Toolbar'
+
+const ROW_HEIGHT = 42
 
 export const MarketList = (props) => {
   const {
@@ -53,9 +53,28 @@ export const MarketList = (props) => {
   )
 
   const { t } = useTranslation()
+  const getDisplayValue = useCallback(
+    (rowData) => getValue({
+      mapping: MAPPING,
+      customMapping,
+      data: rowData,
+    }),
+    [customMapping],
+  )
+
+  const toggleFav = (id) => {
+    const newFavs = {
+      ...favs,
+      [id]: !favs[id],
+    }
+    saveFavs(newFavs)
+  }
+
   const columns = getVirtualTableColumns(
     getColumns,
-    { t, isSmallView },
+    {
+      t, isSmallView, getDisplayValue, toggleFav, favs,
+    },
     customMapping,
   )
 
@@ -83,16 +102,6 @@ export const MarketList = (props) => {
     ],
   )
 
-  const toggleFav = (id) => {
-    const newFavs = {
-      ...favs,
-      [id]: !favs[id],
-    }
-    saveFavs(newFavs)
-  }
-
-  const keyForId = getMappedKey(KEYS.ID)
-
   return (
     <div className={Classes.MARKET_LIST}>
       <Toolbar
@@ -101,46 +110,20 @@ export const MarketList = (props) => {
         searchTerm={searchTerm}
         dispatch={dispatch}
       />
+
       <div className='divider' />
-      <Table
-        className={`${Classes.MARKET_LIST}__table`}
+
+      <VirtualTable
         interactive
-      >
-        <Header
-          sortBy={sortBy}
-          sortAscending={sortAscending}
-          dispatch={dispatch}
-          getMappedValue={getMappedValue}
-          columns={columns}
-        />
-      </Table>
-
-      <div className={Classes.TABLE_WRAPPER}>
-        <Table
-          className={`${Classes.MARKET_LIST}__table`}
-          interactive
-          striped
-        >
-          <tbody>
-            {filtered.map((row) => {
-              const id = _get(row, keyForId)
-
-              return (
-                <Row
-                  key={id}
-                  data={row}
-                  isFav={favs[id]}
-                  toggleFav={() => toggleFav(id)}
-                  onRowClick={onRowClick}
-                  getMappedValue={getMappedValue}
-                  customMapping={customMapping}
-                  columns={columns}
-                />
-              )
-            })}
-          </tbody>
-        </Table>
-      </div>
+        striped
+        columns={columns}
+        data={filtered}
+        rowHeight={ROW_HEIGHT}
+        onRowClick={onRowClick}
+        // give default key, dont give customised key
+        defaultSortBy={defaultSortBy}
+        defaultSortDirection='DESC'
+      />
     </div>
   )
 }
