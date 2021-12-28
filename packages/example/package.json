@@ -12,6 +12,7 @@
     "lint:fix": "eslint src --fix"
   },
   "dependencies": {
+    "@babel/eslint-parser": "^7.16.5",
     "@ufx-ui/bfx-containers": "^0.12.0",
     "@ufx-ui/core": "^0.12.0",
     "normalize.css": "^8.0.1"
