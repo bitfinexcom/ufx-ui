@@ -1,5 +1,8 @@
 .#{$ns}-layout {
+  height: inherit;
+
   &__body {
+    height: inherit;
     margin-top: $ufx-base-size * 5.4;
   }
 }
