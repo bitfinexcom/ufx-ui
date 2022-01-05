@@ -1,4 +1,4 @@
-import { getMappingForKey, getValue } from '@ufx-ui/utils'
+import { getValue } from '@ufx-ui/utils'
 import compose from 'lodash/fp/compose'
 import _get from 'lodash/get'
 import PropTypes from 'prop-types'
@@ -13,14 +13,15 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
-import { Table } from '../ui'
+import { getVirtualTableColumns } from '../helper'
+import { VirtualTable } from '../ui'
 import { TAB_PROP_TYPE } from '../ui/Tabs/Tab'
 import { getColumns } from './MarketList.columns'
 import { KEYS, MAPPING } from './MarketList.constants'
-import Header from './MarketList.Header'
 import { reducer, getInitState, filterData as filterDataHelper } from './MarketList.helpers'
-import Row from './MarketList.Row'
 import Toolbar from './MarketList.Toolbar'
+
+const ROW_HEIGHT = 42
 
 export const MarketList = (props) => {
   const {
@@ -34,14 +35,11 @@ export const MarketList = (props) => {
     rowMapping: customMapping,
     isMobileLayout: isSmallView,
   } = props
-
+  const { t } = useTranslation()
   const [state, dispatch] = useReducer(reducer, getInitState(tabs, defaultSortBy))
   const searchTerm = _get(state, `filter.${KEYS.BASE_CCY}`)
   const activeTab = _get(state, `filter.${KEYS.QUOTE_CCY}`)
-  const sortBy = _get(state, 'sortBy')
-  const sortAscending = _get(state, 'sortAscending')
 
-  const getMappedKey = getMappingForKey(customMapping)
   const getMappedValue = useCallback(
     (d) => getValue({
       mapping: MAPPING,
@@ -51,31 +49,13 @@ export const MarketList = (props) => {
     [customMapping],
   )
 
-  const { t } = useTranslation()
-  const columns = useMemo(() => getColumns({ t, isSmallView }), [t, isSmallView])
-
-  const filtered = useMemo(
-    () => filterData({
-      data,
-      favs,
-      activeTab,
-      searchTerm,
-      sortBy,
-      sortAscending,
-      getMappedKey,
-      getMappedValue,
+  const getDisplayValue = useCallback(
+    (rowData) => getValue({
+      mapping: MAPPING,
+      customMapping,
+      data: rowData,
     }),
-    [
-      data,
-      favs,
-      activeTab,
-      searchTerm,
-      sortBy,
-      sortAscending,
-      filterData,
-      getMappedKey,
-      getMappedValue,
-    ],
+    [customMapping],
   )
 
   const toggleFav = (id) => {
@@ -86,7 +66,31 @@ export const MarketList = (props) => {
     saveFavs(newFavs)
   }
 
-  const keyForId = getMappedKey(KEYS.ID)
+  const columns = getVirtualTableColumns(
+    getColumns,
+    {
+      t, isSmallView, getDisplayValue, toggleFav, favs,
+    },
+    customMapping,
+  )
+
+  const filtered = useMemo(
+    () => filterData({
+      data,
+      favs,
+      activeTab,
+      searchTerm,
+      getMappedValue,
+    }),
+    [
+      data,
+      favs,
+      activeTab,
+      searchTerm,
+      filterData,
+      getMappedValue,
+    ],
+  )
 
   return (
     <div className={Classes.MARKET_LIST}>
@@ -96,46 +100,20 @@ export const MarketList = (props) => {
         searchTerm={searchTerm}
         dispatch={dispatch}
       />
+
       <div className='divider' />
-      <Table
-        className={`${Classes.MARKET_LIST}__table`}
+
+      <VirtualTable
         interactive
-      >
-        <Header
-          sortBy={sortBy}
-          sortAscending={sortAscending}
-          dispatch={dispatch}
-          getMappedValue={getMappedValue}
-          columns={columns}
-        />
-      </Table>
-
-      <div className={Classes.TABLE_WRAPPER}>
-        <Table
-          className={`${Classes.MARKET_LIST}__table`}
-          interactive
-          striped
-        >
-          <tbody>
-            {filtered.map((row) => {
-              const id = _get(row, keyForId)
-
-              return (
-                <Row
-                  key={id}
-                  data={row}
-                  isFav={favs[id]}
-                  toggleFav={() => toggleFav(id)}
-                  onRowClick={onRowClick}
-                  getMappedValue={getMappedValue}
-                  customMapping={customMapping}
-                  columns={columns}
-                />
-              )
-            })}
-          </tbody>
-        </Table>
-      </div>
+        striped
+        columns={columns}
+        data={filtered}
+        rowHeight={ROW_HEIGHT}
+        onRowClick={onRowClick}
+        // give default key, dont give customised key
+        defaultSortBy={defaultSortBy}
+        defaultSortDirection='DESC'
+      />
     </div>
   )
 }

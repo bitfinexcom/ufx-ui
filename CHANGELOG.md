@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.13.0 (2022-01-05)
+
+#### :bug: Bug Fix
+* `bfx-containers`
+  * [#158](https://github.com/bitfinexcom/ufx-ui/pull/158) (fix) movements-page: fix balances height ([@bhoomij](https://github.com/bhoomij))
+
+#### :art: Refactor
+* `bfx-containers`, `core`, `cypress-tests`, `eslint-config`, `example`, `storybook`
+  * [#157](https://github.com/bitfinexcom/ufx-ui/pull/157) (fix) dependency alerts, upgrade to react-scripts@v5.0.0 ([@bhoomij](https://github.com/bhoomij))
+* `bfx-containers`, `core`, `storybook`
+  * [#156](https://github.com/bitfinexcom/ufx-ui/pull/156) (improvement) refactor tables, consistent column-mapping ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.12.0 (2021-12-20)
 
 #### :rocket: Feature

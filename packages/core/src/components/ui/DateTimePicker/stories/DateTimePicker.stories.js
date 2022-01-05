@@ -1,13 +1,13 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
-import DateTimePicker from '../DateTimePicker'
+import { DateTimePicker } from '../DateTimePicker'
 
 export default getDefaultMetadata(DateTimePicker, 'Components/ui/DateTimePicker', {}, true)
 
 const props = {
-  value: new Date(1641385191379),
+  value: new Date('Wed, 05 Jan 2022 11:19:51 GMT'),
   label: 'Choose date:',
   id: '111222333',
-  maxDate: new Date(1641385191379),
+  maxDate: new Date('Wed, 05 Jan 2022 12:19:51 GMT'),
 }
 
 export const basic = showTemplateStory(DateTimePicker, props)

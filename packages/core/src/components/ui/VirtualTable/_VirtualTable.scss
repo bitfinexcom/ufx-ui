@@ -1,7 +1,5 @@
 .#{$ns}-virtual-table--container {
   display: flex;
-  position: absolute;
-  width: calc(100% - (#{$ufx-base-size} * 1.6));
   height: calc(100% - (#{$ufx-base-size} * 1.6));
 
   .#{$ns}-virtual-table {
@@ -51,7 +49,7 @@
 
     .interactive {
       &.ReactVirtualized__Table__row {
-        transition: all .2s;
+        transition: all 0.2s;
 
         &:hover,
         &:focus {

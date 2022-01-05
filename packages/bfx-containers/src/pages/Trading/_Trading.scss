@@ -4,21 +4,6 @@
     font-weight: $ufx-font-weight-light;
   }
 
-  .#{$ns}-orders {
-    th:nth-child(6),
-    td:nth-child(6) {
-      width: 25% !important;
-    }
-    th:nth-child(7),
-    td:nth-child(7) {
-      width: 13% !important;
-    }
-    th:nth-child(8),
-    td:nth-child(8) {
-      width: 12% !important;
-    }
-  }
-
   &__walletlist {
     padding: $ufx-base-size $ufx-base-size * 2.5;
 
