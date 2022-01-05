@@ -22,36 +22,37 @@ const AmountRenderer = ({ data, walletKey }) => {
   )
 }
 
-const getColumns = (showTransfer) => [{
-  getLabel: () => i18n.t('balances:name'),
-  key: KEYS.NAME,
-  isSortable: true,
-  defaultSortAsc: true,
+const getColumns = ({ showTransfer, handleDepositClick, handleWithdrawClick }) => [{
+  label: i18n.t('balances:name'),
+  dataKey: KEYS.NAME,
+  width: 130,
+  flexGrow: 1,
 }, {
-  getLabel: () => getNiceWalletName('exchange'),
-  key: KEYS.EXCHANGE,
-  isSortable: true,
-  defaultSortAsc: false,
+  label: getNiceWalletName('exchange'),
+  dataKey: KEYS.EXCHANGE,
   headerClassName: Classes.RIGHT_TO_LEFT,
-  cellClassName: Classes.RIGHT_TO_LEFT,
-  renderer: ({ data }) => <AmountRenderer data={data} walletKey={KEYS.EXCHANGE_KEY} />,
+  width: 180,
+  flexGrow: 1,
+  className: `${Classes.RIGHT_TO_LEFT} is-monospaced`,
+  renderer: ({ rowData }) => <AmountRenderer data={rowData} walletKey={KEYS.EXCHANGE_KEY} />,
 },
 ...(!showTransfer ? []
   : [{
-    getLabel: () => '',
-    key: '',
-    isSortable: false,
+    label: '',
+    dataKey: '',
+    width: 100,
+    flexGrow: 0.1,
     headerClassName: Classes.RIGHT_TO_LEFT,
-    cellClassName: Classes.RIGHT_TO_LEFT,
-    renderer: ({ data, handleDepositClick, handleWithdrawClick }) => (
+    className: Classes.RIGHT_TO_LEFT,
+    renderer: ({ rowData }) => (
       <div className='actions'>
         <Tooltip content={i18n.t('balances:deposit')}>
-          <Button minimal small onClick={() => handleDepositClick(data)}>
+          <Button minimal small onClick={() => handleDepositClick(rowData)}>
             <FontAwesomeIcon icon={faArrowDown} />
           </Button>
         </Tooltip>
         <Tooltip content={i18n.t('balances:withdraw')}>
-          <Button minimal small onClick={() => handleWithdrawClick(data)}>
+          <Button minimal small onClick={() => handleWithdrawClick(rowData)}>
             <FontAwesomeIcon icon={faArrowUp} />
           </Button>
         </Tooltip>

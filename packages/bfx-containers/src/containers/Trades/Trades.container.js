@@ -64,7 +64,7 @@ const TradesContainer = (props) => {
       user={userData}
       showType={tradeType}
       minOrderSize={minOrderSize}
-        // eslint-disable-next-line react/jsx-props-no-spreading
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
     />
   )

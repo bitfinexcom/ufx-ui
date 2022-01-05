@@ -5,106 +5,144 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 import * as Classes from '../../common/classes'
-import { Button } from '../ui'
+import { getDefaultCellRenderer } from '../helper'
+import { Button, Truncate } from '../ui'
 import { KEYS } from './MarketList.constants'
 
-// key: column key
+// dataKey: column key
 // label: column header
-// cellStyle : td, th style
-// headerCellClassName: th classname
-// cellClassName: td classname
+// headerClassName: th classname
+// className: td classname
 // renderer: for content to be renderered inside td
 export const getColumns = (args = {}) => {
-  const { t, isSmallView } = args
+  const {
+    t, isSmallView, getDisplayValue, toggleFav, favs,
+  } = args
   return [
     {
-      key: KEYS.FAV,
+      dataKey: KEYS.FAV,
       label: '',
-      cellStyle: { minWidth: '45px' },
-      renderer: ({ isFav, toggleFav }) => (
-        <Button
-          minimal
-          onClick={(e) => {
-            e.stopPropagation()
-            toggleFav()
-          }}
-          className='fav-button'
-        >
-          <FontAwesomeIcon size='sm' icon={isFav ? faStar : faStarEmpty} />
-        </Button>
-      ),
+      width: 50,
+      flexGrow: 0.1,
+      renderer: ({ rowData }) => {
+        const id = getDisplayValue(rowData, false)(KEYS.ID)
+        const isFav = !!favs[id]
+
+        const handleFavIconClick = (e) => {
+          e.stopPropagation()
+          toggleFav(id)
+        }
+
+        return (
+          <Button
+            minimal
+            onClick={handleFavIconClick}
+            className='fav-button'
+          >
+            <FontAwesomeIcon size='sm' icon={isFav ? faStar : faStarEmpty} />
+          </Button>
+        )
+      },
     },
     {
-      key: KEYS.BASE_CCY,
+      dataKey: KEYS.BASE_CCY,
       label: t('marketlist:symbol'),
-      cellStyle: { width: isSmallView ? '40%' : '20%' },
-      renderer: ({ formattedValue, quoteCcy }) => `${formattedValue}/${quoteCcy}`,
+      width: 150,
+      flexGrow: 1,
+      renderer: ({ rowData }) => {
+        const baseCcy = getDisplayValue(rowData)(KEYS.BASE_CCY)
+        const quoteCcy = getDisplayValue(rowData)(KEYS.QUOTE_CCY)
+
+        return <Truncate>{`${baseCcy}/${quoteCcy}`}</Truncate>
+      },
     },
     {
-      key: KEYS.LAST_PRICE,
+      dataKey: KEYS.LAST_PRICE,
       label: (
         <>
-          <span className='hidden-lg hidden-md hidden-sm hidden-xs'>{t('marketlist:last_price')}</span>
-          <span className='hidden-xl'>{t('marketlist:last')}</span>
+          <span className='hidden-lg hidden-ml hidden-md hidden-sm hidden-s hidden-xs hidden-xxs'>{t('marketlist:last_price')}</span>
+          <span className='hidden-xl hidden-hg'>{t('marketlist:last')}</span>
         </>
       ),
-      cellStyle: { width: isSmallView ? '30%' : '15%' },
-      headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: Classes.RIGHT_TO_LEFT,
+      width: 150,
+      flexGrow: 1,
+      headerClassName: Classes.RIGHT_TO_LEFT,
+      className: Classes.RIGHT_TO_LEFT,
+      renderer: getDefaultCellRenderer(getDisplayValue),
     },
-    {
-      key: KEYS.CHANGE_PERC,
+    ...(isSmallView ? [] : [{
+      dataKey: KEYS.CHANGE_PERC,
       label: (
         <>
-          <span className='hidden-lg hidden-md hidden-sm hidden-xs'>{t('marketlist:24h_change')}</span>
-          <span className='hidden-xl'>{t('marketlist:change')}</span>
+          <span className='hidden-lg hidden-ml hidden-md hidden-sm hidden-s hidden-xs hidden-xxs'>{t('marketlist:24h_change')}</span>
+          <span className='hidden-xl hidden-hg'>{t('marketlist:change')}</span>
         </>
       ),
-      cellStyle: { width: isSmallView ? '25%' : '15%' },
-      headerCellClassName: Classes.RIGHT_TO_LEFT,
-      cellClassName: Classes.RIGHT_TO_LEFT,
-      renderer: ({ formattedValue, value }) => (
-        <span className={Classes.getColors(value, { strike: 0, includeStrike: true })}>
-          {formattedValue}
-        </span>
-      ),
-    },
-    {
-      key: KEYS.HIGH,
+      width: 150,
+      flexGrow: 1,
+      headerClassName: Classes.RIGHT_TO_LEFT,
+      className: Classes.RIGHT_TO_LEFT,
+      renderer: ({ dataKey, rowData }) => {
+        const formattedValue = getDisplayValue(rowData)(dataKey)
+        const value = getDisplayValue(rowData)(dataKey, false)
+
+        return (
+          <Truncate>
+            <span className={Classes.getColors(value, { strike: 0, includeStrike: true })}>
+              {formattedValue}
+            </span>
+          </Truncate>
+        )
+      },
+    }]),
+    ...(isSmallView ? [] : [{
+      dataKey: KEYS.HIGH,
       label: t('marketlist:24h_high'),
-      cellStyle: { width: '13%' },
-      headerCellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
-      cellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
-    },
-    {
-      key: KEYS.LOW,
+      width: 150,
+      flexGrow: 1,
+      headerClassName: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
+      className: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
+      renderer: getDefaultCellRenderer(getDisplayValue),
+    }]),
+    ...(isSmallView ? [] : [{
+      dataKey: KEYS.LOW,
       label: t('marketlist:24h_low'),
-      cellStyle: { width: '13%' },
-      headerCellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
-      cellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
-    },
+      width: 150,
+      flexGrow: 1,
+      headerClassName: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
+      className: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
+      renderer: getDefaultCellRenderer(getDisplayValue),
+    }]),
     {
-      key: KEYS.VOLUME,
+      dataKey: KEYS.VOLUME,
       label: (
         <>
           <span>{t('marketlist:24h_volume')}</span>
         </>
       ),
-      cellStyle: { width: '16%' },
-      headerCellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
-      cellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
-      renderer: ({ formattedValue, quoteCcy }) => (
-        <span>
-          {`${formattedValue} ${quoteCcy}`}
-        </span>
-      ),
+      width: 150,
+      flexGrow: 1,
+      headerClassName: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
+      className: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
+      renderer: ({ dataKey, rowData }) => {
+        const formattedValue = getDisplayValue(rowData)(dataKey)
+        const quoteCcy = getDisplayValue(rowData)(KEYS.QUOTE_CCY)
+
+        return (
+          <Truncate>
+            <span>
+              {`${formattedValue} ${quoteCcy}`}
+            </span>
+          </Truncate>
+        )
+      },
     },
     {
-      key: 'action',
-      label: '',
-      cellStyle: { width: '4%' },
-      headerCellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
-      cellClassName: `hidden-sm hidden-xs ${Classes.RIGHT_TO_LEFT}`,
+      dataKey: 'action',
+      width: 20,
+      flexGrow: 0.1,
+      headerClassName: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
+      className: `hidden-sm hidden-s hidden-xs hidden-xxs ${Classes.RIGHT_TO_LEFT}`,
       renderer: () => (
         <FontAwesomeIcon icon={faAngleRight} />
       ),

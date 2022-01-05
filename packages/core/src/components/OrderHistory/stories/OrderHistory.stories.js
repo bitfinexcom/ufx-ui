@@ -45,31 +45,24 @@ export const customRowMapping = showTemplateStory(Component, {
     },
     [ID]: {
       index: 0,
-      truncate: true,
     },
     [PRICE]: {
       index: 1,
-      truncate: true,
     },
     [AMOUNT]: {
       index: 2,
-      truncate: true,
     },
     [TYPE]: {
       index: 3,
-      truncate: true,
     },
     [STATUS]: {
       index: 4,
-      truncate: true,
     },
     [PRICE_AVERAGE]: {
       index: 5,
-      truncate: true,
     },
     [PAIR]: {
       index: 6,
-      truncate: true,
     },
   },
 })

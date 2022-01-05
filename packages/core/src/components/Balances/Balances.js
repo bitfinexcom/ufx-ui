@@ -1,12 +1,10 @@
 import { getMappedKey } from '@ufx-ui/utils'
 import cx from 'classnames'
 import _filter from 'lodash/filter'
-import _get from 'lodash/get'
 import _includes from 'lodash/includes'
-import _map from 'lodash/map'
 import _toLower from 'lodash/toLower'
 import PropTypes from 'prop-types'
-import React, { useState, memo, useMemo } from 'react'
+import React, { useState, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
@@ -14,13 +12,20 @@ import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import withResponsive from '../../hoc/withResponsive'
 import useSortableData from '../../hooks/useSortableData'
-import { Table } from '../ui'
+import { getVirtualTableColumns } from '../helper'
+import { VirtualTable } from '../ui'
 import getColumns from './Balances.columns'
 import { KEYS } from './Balances.constants'
-import BalancesHeader from './Balances.Header'
 import { balancesAdapter, sortData } from './Balances.helpers'
-import BalancesRow from './Balances.Row'
 import BalancesToolbar from './Balances.Toolbar'
+
+const ROW_HEIGHT = 42
+
+const noRowsRenderer = (t) => () => (
+  <div className='empty'>
+    <small>{t('common:no_results_found')}</small>
+  </div>
+)
 
 export const Balances = (props) => {
   const {
@@ -36,56 +41,21 @@ export const Balances = (props) => {
   } = props
   const { t } = useTranslation('balances')
   const [searchTerm, setSearchTerm] = useState('')
-  const columns = useMemo(() => getColumns(showTransfer), [showTransfer])
+  const columns = getVirtualTableColumns(
+    getColumns,
+    { showTransfer, handleDepositClick, handleWithdrawClick },
+    rowMapping,
+  )
 
-  const keyForName = getMappedKey(KEYS.NAME, rowMapping)
   const keyForExchange = getMappedKey(KEYS.EXCHANGE, rowMapping)
 
-  const { data = [], requestSort, sortConfig } = useSortableData(
+  const { data = [] } = useSortableData(
     balancesAdapter(balances),
     { key: keyForExchange },
     sortData,
   )
 
   const filtered = _filter(data, ({ name } = {}) => _includes(_toLower(name), _toLower(searchTerm)))
-
-  const renderBalancesTable = () => {
-    if (filtered.length === 0) {
-      return (
-        <div className='empty'>
-          <small>{t('common:no_results_found')}</small>
-        </div>
-      )
-    }
-
-    return (
-      <>
-        <Table condensed>
-          <BalancesHeader
-            sortConfig={sortConfig}
-            requestSort={requestSort}
-            columns={columns}
-          />
-        </Table>
-        <div className={Classes.TABLE_WRAPPER}>
-          <Table condensed striped>
-            <tbody>
-              {_map(filtered, (row) => (
-                <BalancesRow
-                  key={_get(row, keyForName)}
-                  data={row}
-                  dataMapping={rowMapping}
-                  columns={columns}
-                  handleDepositClick={handleDepositClick}
-                  handleWithdrawClick={handleWithdrawClick}
-                />
-              ))}
-            </tbody>
-          </Table>
-        </div>
-      </>
-    )
-  }
 
   return (
     <div className={cx(Classes.BALANCES, className)}>
@@ -96,7 +66,17 @@ export const Balances = (props) => {
         setHideSmallBalances={setHideSmallBalances}
         smallBalanceThreshold={smallBalanceThreshold}
       />
-      {renderBalancesTable()}
+
+      <VirtualTable
+        interactive
+        striped
+        columns={columns}
+        data={filtered}
+        defaultSortBy={KEYS.EXCHANGE}
+        defaultSortDirection='DESC'
+        rowHeight={ROW_HEIGHT}
+        noRowsRenderer={noRowsRenderer(t)}
+      />
     </div>
   )
 }

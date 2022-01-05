@@ -1,8 +1,6 @@
 import _filter from 'lodash/filter'
 import _get from 'lodash/get'
 import _includes from 'lodash/includes'
-import _orderBy from 'lodash/orderBy'
-import _reverse from 'lodash/reverse'
 import _toLower from 'lodash/toLower'
 
 import { KEYS, ACTION_TYPES, FAV_TAB } from './MarketList.constants'
@@ -57,15 +55,12 @@ export const filterData = ({
   favs,
   activeTab,
   searchTerm,
-  sortBy,
-  sortAscending,
   getMappedValue,
-  getMappedKey,
 }) => {
   const term = _toLower(searchTerm)
   const tab = _toLower(activeTab)
 
-  const filtered = _filter(data, (item) => {
+  return _filter(data, (item) => {
     const getDisplayValue = getMappedValue(item)
     const id = getDisplayValue(KEYS.ID)
     const baseCcy = _toLower(getDisplayValue(KEYS.BASE_CCY))
@@ -74,13 +69,4 @@ export const filterData = ({
     return (quoteCcy === tab || (activeTab === FAV_TAB && favs[id])) // filter by activeTab
     && (_includes(baseCcy, term) || _includes(quoteCcy, term)) // filter by searchTerm
   })
-
-  const mappedSortBy = getMappedKey(sortBy)
-  const sorted = _orderBy(filtered, [mappedSortBy])
-
-  if (sortAscending) {
-    return sorted
-  }
-
-  return _reverse(sorted)
 }

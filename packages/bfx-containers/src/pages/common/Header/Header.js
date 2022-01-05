@@ -73,7 +73,7 @@ const Header = (props) => {
           </Tooltip>
         </div>
         )}
-        {isTrading && (
+        {isTrading && isAuthenticated && (
           <EditLayoutButton />
         )}
       </div>

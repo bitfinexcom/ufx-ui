@@ -1,3 +1,5 @@
+$ufx-balances-height: $ufx-base-size * 40 !default;
+
 .#{$ns}-movements {
   padding: $ufx-base-size * 2.5 5%;
 
@@ -37,7 +39,7 @@
   }
 
   .movement-list {
-    margin-top: $ufx-base-size * 3.5;
+    margin-top: $ufx-base-size * 5.5;
   }
 }
 

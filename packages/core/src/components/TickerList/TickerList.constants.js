@@ -29,15 +29,14 @@ export const MAPPING = {
 }
 
 export const STYLES = {
-  favorite: { flexGrow: 1, justifyContent: 'flex-start' },
+  favorite: { justifyContent: 'flex-start' },
   pair: {
-    flexGrow: 1,
     justifyContent: 'flex-start',
     wordBreak: 'break-all',
     whiteSpace: 'normal',
     lineHeight: 1,
   },
-  lastPrice: { flexGrow: 1, justifyContent: 'flex-end' },
-  changePerc: { flexGrow: 1, justifyContent: 'flex-end' },
-  volume: { flexGrow: 1, justifyContent: 'flex-end' },
+  lastPrice: { justifyContent: 'flex-end' },
+  changePerc: { justifyContent: 'flex-end' },
+  volume: { justifyContent: 'flex-end' },
 }
