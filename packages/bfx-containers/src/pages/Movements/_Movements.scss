@@ -4,6 +4,10 @@ $ufx-balances-height: $ufx-base-size * 40 !default;
   padding: $ufx-base-size * 2.5 5%;
   height: inherit;
 
+  .#{$ns}-balances {
+    height: $ufx-base-size * 50;
+  }
+
   .header {
     font-size: $ufx-base-size * 2;
 
