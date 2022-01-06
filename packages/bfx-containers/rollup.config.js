@@ -7,6 +7,8 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import del from 'rollup-plugin-delete'
 import json from 'rollup-plugin-json'
+import builtins from 'rollup-plugin-node-builtins'
+import globalPlugins from 'rollup-plugin-node-globals'
 import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import replace from 'rollup-plugin-replace'
@@ -107,6 +109,8 @@ const baseUmdConfig = (minified) => {
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
+    globalPlugins(),
+    builtins(),
   )
 
   if (minified) {
