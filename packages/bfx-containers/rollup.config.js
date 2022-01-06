@@ -93,9 +93,6 @@ const baseConfig = () => ({
     resolve({ preferBuiltins: true }),
     babel(getBabelOptions()),
     sizeSnapshot(snapshotArgs),
-    // delete extra output files dist/css/ufx-bfx-containers[.min].js generated while cssConfig build steps
-    del({ targets: cssOutputFilePath(false), verbose: true }),
-    del({ targets: cssOutputFilePath(true), verbose: true }),
   ],
 })
 
@@ -123,7 +120,13 @@ const baseUmdConfig = (minified) => {
   Goal of this configuration is to generate bundles to be consumed by bundlers.
   This configuration is not minimized and will exclude all dependencies.
 */
-const libConfig = baseConfig()
+const libConfig = Object.assign(baseConfig())
+libConfig.plugins.push(
+  // delete extra output files dist/css/ufx-bfx-containers[.min].js generated while cssConfig build steps
+  del({ targets: cssOutputFilePath(false), verbose: true }),
+  del({ targets: cssOutputFilePath(true), verbose: true }),
+)
+
 // Do not include any of the dependencies
 libConfig.external = excludeAllExternals
 libConfig.output = [
