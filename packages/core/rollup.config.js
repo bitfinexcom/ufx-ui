@@ -50,6 +50,13 @@ const snapshotArgs = process.env.SNAPSHOT === 'match'
   }
   : {}
 
+const cssInputFile = 'ufx-core'
+const cssInputFilePath = `./src/${cssInputFile}.scss`
+
+const cssOutputDir = 'dist/css'
+const cssOutputFilePath = (minimize) => `${cssOutputDir}/${cssInputFile}${minimize ? '.min' : ''}.js`
+const scssOutputFile = `${cssInputFile}.bundle.scss`
+
 const baseConfig = () => ({
   input,
   plugins: [
@@ -59,6 +66,9 @@ const baseConfig = () => ({
     resolve({ preferBuiltins: true }),
     babel(getBabelOptions()),
     sizeSnapshot(snapshotArgs),
+    // delete extra output files dist/css/ufx-core[.min].js generated while cssConfig build steps
+    del({ targets: cssOutputFilePath(false), verbose: true }),
+    del({ targets: cssOutputFilePath(true), verbose: true }),
   ],
 })
 
@@ -131,14 +141,6 @@ umdConfigMin.output = [
   },
 ]
 
-const cssInputFile = 'ufx-core'
-const cssInputFilePath = `./src/${cssInputFile}.scss`
-
-const cssOutputDir = 'dist/css'
-const cssOutputFilePath = (minimize) => `${cssOutputDir}/${cssInputFile}${minimize ? '.min' : ''}.css`
-const scssOutputFile = `${cssInputFile}.bundle.scss`
-const buildExtraFile = `${cssOutputDir}/${cssInputFile}.js`
-
 const cssConfig = (minimize) => ({
   input: cssInputFilePath,
   output: [{
@@ -153,8 +155,6 @@ const cssConfig = (minimize) => ({
         discardComments(),
       ],
     }),
-    // delete extra output file dist/css/ufx-core.js generated while bundleCssConfig
-    del({ targets: buildExtraFile, verbose: true }),
   ],
 })
 
