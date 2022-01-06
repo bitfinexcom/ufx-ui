@@ -28,6 +28,8 @@ const globals = {
   'react-dom': 'ReactDOM',
   'react-redux': 'ReactRedux',
   crypto: 'Crypto',
+  '@ufx-ui/core': 'UfxCore',
+  '@ufx-ui/utils': 'UfxUtils',
 }
 
 const commonjsArgs = {
