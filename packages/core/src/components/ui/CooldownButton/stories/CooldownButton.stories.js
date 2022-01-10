@@ -1,5 +1,5 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
-import CooldownButton from '../CooldownButton'
+import { CooldownButton } from '../CooldownButton'
 
 export default getDefaultMetadata(CooldownButton, 'Components/ui/CooldownButton', {}, true)
 
