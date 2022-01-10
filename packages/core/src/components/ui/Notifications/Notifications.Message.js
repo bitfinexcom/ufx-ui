@@ -19,7 +19,9 @@ const NotificationMessage = (props) => {
     group,
   } = notification
   const [groupIsExpanded, setGroupIsExpanded] = useState(false)
-  const classes = cx(`${Classes.NOTIFICATIONS}__level`, `${Classes.NOTIFICATIONS}__level--${level}`)
+
+  const intentModifier = Classes.intentSuffix(level)
+  const classes = cx(`${Classes.NOTIFICATIONS}__level`, { [`${Classes.NOTIFICATIONS}__level${intentModifier}`]: intentModifier })
 
   const onClose = () => _onClose(notification)
 
