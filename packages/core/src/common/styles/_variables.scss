@@ -9,7 +9,6 @@ $intent-success: $green1 !default;
 $intent-info: $blue2 !default;
 $intent-warning: $yellow1 !default;
 $intent-error: $red1 !default;
-$intent-none: $white !default;
 
 $intents: (
   "primary": $intent-primary,
@@ -18,7 +17,6 @@ $intents: (
   "info": $intent-info,
   "warning": $intent-warning,
   "error": $intent-error,
-  "none": $intent-none,
 ) !default;
 
 $ufx-background-color: $white !default;
