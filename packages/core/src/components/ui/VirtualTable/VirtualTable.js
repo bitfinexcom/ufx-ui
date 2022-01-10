@@ -137,6 +137,22 @@ VirtualTable.propTypes = {
        * Custom method of render column's data
        */
       cellRenderer: PropTypes.func,
+      /**
+       * CSS Flex-grow index of column element
+       */
+      flexGrow: PropTypes.number,
+      /**
+       * Style object of header
+       */
+      headerStyle: PropTypes.objectOf(PropTypes.string),
+      /**
+       * Style object of column
+       */
+      style: PropTypes.objectOf(PropTypes.string),
+      /**
+       * ClassName of column's header
+       */
+      headerClassName: PropTypes.string,
     }),
   ), // eslint-disable-line
   /**
