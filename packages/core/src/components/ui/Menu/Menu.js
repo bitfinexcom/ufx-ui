@@ -26,7 +26,7 @@ Menu.propTypes = {
 }
 
 Menu.defaultProps = {
-  className: '',
+  className: null,
 }
 
 export default memo(Menu)
