@@ -21,8 +21,17 @@ const FullDate = (props) => {
 }
 
 FullDate.propTypes = {
+  /**
+   * Timestamp in sec. Using if mts prop isn't exist
+   */
   ts: PropTypes.number,
+  /**
+   * Timestamp in ms
+   */
   mts: PropTypes.number,
+  /**
+   * Styles object of FullDate container
+   */
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
 }
