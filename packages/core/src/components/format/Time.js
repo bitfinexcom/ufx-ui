@@ -1,5 +1,6 @@
 import { pad2, applyTimeZoneOffset } from '@ufx-ui/utils'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 import { useStore } from '../../store'
 
@@ -16,11 +17,17 @@ const Time = (props) => {
 
   const timeParts = [HH, MM].concat(SS)
 
-  return timeParts.join(':')
+  return <span>{timeParts.join(':')}</span>
 }
 
 Time.propTypes = {
-  mts: PropTypes.number,
+  /**
+   * Timestamp in ms
+   */
+  mts: PropTypes.number.isRequired,
+  /**
+   * If true, seconds will be hidden
+   */
   hideSeconds: PropTypes.bool,
 }
 
