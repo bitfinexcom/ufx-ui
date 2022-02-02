@@ -5,7 +5,7 @@ import {
   showTemplateStory,
   getDefaultMetadata,
 } from '../../../../../storybook/.storybook/helper'
-import { Balances } from '../Balances'
+import C, { Balances } from '../Balances'
 import { data } from './Balances.stories_data'
 
 export default getDefaultMetadata(Balances, 'Components/Balances')
@@ -14,7 +14,7 @@ const Component = (props) => {
   const [hideSmallBalances, setHideSmallBalances] = useState(true)
 
   return (
-    <Balances
+    <C
       hideSmallBalances={hideSmallBalances}
       setHideSmallBalances={setHideSmallBalances}
       balances={data}
