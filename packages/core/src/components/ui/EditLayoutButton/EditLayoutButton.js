@@ -1,16 +1,15 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import withI18nProvider from '../../hoc/withI18nProvider'
-import Button from '../ui/Button'
+import withI18nProvider from '../../../hoc/withI18nProvider'
+import Button from '../Button'
 
-const EditLayoutButton = (props) => {
-  const {
-    layoutIsEditable,
-    enableEditLayout,
-    closeEditLayout,
-  } = props
+export const EditLayoutButton = ({
+  layoutIsEditable,
+  enableEditLayout,
+  closeEditLayout,
+}) => {
   const { t } = useTranslation()
 
   const label = layoutIsEditable
@@ -37,8 +36,18 @@ const EditLayoutButton = (props) => {
 }
 
 EditLayoutButton.propTypes = {
+  /**
+   * Callback, that enable editing layout (open modal)
+   */
   enableEditLayout: PropTypes.func,
+  /**
+   * If true, button's text is "Edit layout",
+   * if false - "Close edit"
+   */
   layoutIsEditable: PropTypes.bool,
+  /**
+   * Callback, that close editing (close modal)
+   */
   closeEditLayout: PropTypes.func,
 }
 
@@ -48,4 +57,4 @@ EditLayoutButton.defaultProps = {
   closeEditLayout: () => {},
 }
 
-export default withI18nProvider(EditLayoutButton)
+export default withI18nProvider(memo(EditLayoutButton))
