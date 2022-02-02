@@ -110,9 +110,17 @@ Balances.propTypes = {
    * A className of Balances container
    */
   className: PropTypes.string,
-
+  /**
+   * If true, there are showing deposit and withdraw buttons
+   */
   showTransfer: PropTypes.bool,
+  /**
+   * Callback, invoked when user clicks on deposit button
+   */
   handleDepositClick: PropTypes.func,
+  /**
+   * Callback, invoked when user clicks on withdraw button
+   */
   handleWithdrawClick: PropTypes.func,
 }
 
