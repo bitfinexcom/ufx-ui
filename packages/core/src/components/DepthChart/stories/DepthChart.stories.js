@@ -23,7 +23,6 @@ const props = {
   asksTop: {},
   bidsTop: {},
   currentPair: 'BTC/USD',
-  online: true,
   zoom: 25,
   fontFamily: '"Helvetica Neue"',
   updateZoom: () => {},

@@ -1,5 +1,4 @@
 import cx from 'classnames'
-import _values from 'lodash/values'
 import PropTypes from 'prop-types'
 import React, { memo, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
