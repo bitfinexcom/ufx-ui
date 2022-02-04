@@ -3,7 +3,7 @@ import Component, { DepositWallets, defaultProps } from '../DepositWallets'
 
 const wallets = [
   { name: 'exchange', address: '12qQVmzfyGz3AbYmjjPEg9VQ5Cy6UoeyWV' },
-  { name: 'trading' },
+  { name: 'trading', address: null },
 ]
 
 export default getDefaultMetadata(DepositWallets, 'Components/Movements/DepositWallets')
@@ -11,7 +11,7 @@ export default getDefaultMetadata(DepositWallets, 'Components/Movements/DepositW
 const props = {
   ...defaultProps,
   currency: 'BTC',
-  requestWalletAddress: () => {},
+  requestWalletAddress: () => alert('New wallet address was requested'),
   wallets,
   walletNames: {
     exchange: 'Exchange Wallet',

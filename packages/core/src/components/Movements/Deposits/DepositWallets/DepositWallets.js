@@ -30,13 +30,26 @@ export const DepositWallets = ({
 )
 
 DepositWallets.propTypes = {
+  /**
+   * The currency of wallets
+   */
   currency: PropTypes.string.isRequired,
+  /** The list of available wallets with addresses */
   wallets: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     address: PropTypes.string,
   })).isRequired,
+  /**
+   * The object with label names of wallets
+   */
   walletNames: PropTypes.objectOf(PropTypes.string).isRequired,
+  /**
+   * The function, called when user click on refresh button
+   */
   requestWalletAddress: PropTypes.func.isRequired,
+  /**
+   * The message, showing if something went wrong
+   */
   errorMessage: PropTypes.string,
 }
 
