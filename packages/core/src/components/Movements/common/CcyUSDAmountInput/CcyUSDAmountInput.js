@@ -102,13 +102,39 @@ export const CcyUSDAmountInput = ({
 }
 
 CcyUSDAmountInput.propTypes = {
+  /**
+   * The currency used in input
+   */
   currency: PropTypes.string.isRequired,
+  /**
+   * The currency symbol rendered
+   */
   symbol: PropTypes.string.isRequired,
+  /**
+   * The value of the input
+   */
   value: PropTypes.string.isRequired,
+  /**
+   * The function called when the input changes.
+   */
   onChange: PropTypes.func.isRequired,
+  /**
+   * The min value of the input
+   */
   minAmount: PropTypes.number,
+  /**
+   * If true, the block with the
+   * USD equivalent is dispayed next to
+   */
   showUsdEquivalent: PropTypes.bool,
+  /**
+   * The error message is dispayed below input
+   */
   error: PropTypes.string,
+  /**
+   * The function which calculates
+   * the USD equivalent of value
+   */
   convertCcy: PropTypes.func.isRequired,
 }
 
