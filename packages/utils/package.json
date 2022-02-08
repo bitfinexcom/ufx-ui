@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/utils",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "Utility functions",
   "main": "dist/ufx-utils.cjs.js",
   "module": "dist/ufx-utils.esm.js",
