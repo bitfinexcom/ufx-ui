@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## v0.13.1 (2022-02-08)
+
+#### :bug: Bug Fix
+* `core`
+  * [#161](https://github.com/bitfinexcom/ufx-ui/pull/161) (fix) Dialog: added isFocusTrapEnabled prop ([@dmytroshch](https://github.com/dmytroshch))
+* `bfx-containers`, `core`, `utils`
+  * [#159](https://github.com/bitfinexcom/ufx-ui/pull/159) (refactor) fix build warnings ([@bhoomij](https://github.com/bhoomij))
+
+#### :memo: Documentation
+* `core`, `storybook`
+  * [#154](https://github.com/bitfinexcom/ufx-ui/pull/154) (fix) UI components: fix and improve stories ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 ## v0.13.0 (2022-01-05)
 
 #### :bug: Bug Fix
