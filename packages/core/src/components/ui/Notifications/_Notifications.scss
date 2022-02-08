@@ -64,26 +64,27 @@ $notification-font-color: $light-gray5;
   // LEVELS
   &__level {
     margin-bottom: $ufx-base-size * 0.6;
+    position: relative;
+
+    .close-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin-right: 10px;
+      margin-top: 5px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .message {
+      border-color: inherit;
+    }
 
     @each $intent, $color in $intents {
       &--#{$intent} {
         background-color: $color;
         border-color: $color;
-
-        .close-button {
-          position: absolute;
-          right: 0;
-          top: 0;
-          margin-right: 10px;
-          margin-top: 5px;
-          font-size: 18px;
-          color: white;
-          cursor: pointer;
-        }
-
-        .message {
-          border-color: inherit;
-        }
 
         .expand-button {
           border-color: lighten($color, 4);
