@@ -25,6 +25,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
     width,
     height,
     textAlign,
+    isFocusTrapEnabled,
   } = props
 
   useEffect(() => {
@@ -71,6 +72,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
             isCloseButtonShown={isCloseButtonShown}
             isFullscreenInMobile={isFullscreenInMobile}
             hasStickyFooterInMobile={hasStickyFooterInMobile}
+            isFocusTrapEnabled={isFocusTrapEnabled}
             onClose={onClose}
             width={width}
             height={height}
@@ -155,6 +157,11 @@ Dialog.propTypes = {
    * Determines the text alignment of the dialog
    */
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  /**
+   * If true, modal is using focus-trap library for better UX.
+   * Need to disable if modal contains iframe, to avoid conflicts
+   */
+  isFocusTrapEnabled: PropTypes.bool,
 }
 
 Dialog.defaultProps = {
@@ -165,6 +172,7 @@ Dialog.defaultProps = {
   canOutsideClickClose: true,
   isFullscreenInMobile: false,
   hasStickyFooterInMobile: false,
+  isFocusTrapEnabled: true,
   className: null,
   width: 460,
   height: 'auto',
