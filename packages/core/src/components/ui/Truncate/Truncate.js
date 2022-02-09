@@ -35,7 +35,8 @@ Truncate.propTypes = {
   /**
    * The children of the Truncate.
    */
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+
 }
 
 export default Truncate
