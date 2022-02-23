@@ -3,7 +3,7 @@ import crypto from 'crypto-js'
 import _size from 'lodash/size'
 import _startsWith from 'lodash/startsWith'
 
-import { apiKey, apiSecret } from './config.selectors'
+import { getAPICredentials } from '../utils/authStorage'
 
 // https://docs.bitfinex.com/docs/ws-auth#section-channel-filters
 const AUTH_CHANNELS_FILTER = ['trading', 'balance', 'wallet']
@@ -21,6 +21,17 @@ const getHashedPayload = (payload, secret) => crypto
  * @return {Object}
  */
 export const signWithApiKey = () => {
+  // eslint-disable-next-line no-console
+  console.log('%c Stop!', 'font-weight: bold; font-size: 60px;color: red;')
+  // eslint-disable-next-line no-console
+  console.log('%c This is a browser feature intended for developers. If someone told you to copy-paste something here, it is a scam and will give them access to your money.', 'font-weight: 400; font-size: 30px;')
+
+  const [apiKey, apiSecret] = getAPICredentials()
+
+  if (!apiKey || !apiSecret) {
+    return false
+  }
+
   lastNonce += 1
   const authNonce = lastNonce
   const authPayload = `AUTH${authNonce}${authNonce}`
@@ -40,6 +51,8 @@ export const getAuthHeaders = (opts = {}) => {
     url,
     data = {},
   } = opts
+
+  const [apiKey, apiSecret] = getAPICredentials()
 
   lastNonce += 1
   const nonce = lastNonce.toString()

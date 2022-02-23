@@ -25,6 +25,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
     width,
     height,
     textAlign,
+    isFocusTrapEnabled,
   } = props
 
   useEffect(() => {
@@ -71,6 +72,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
             isCloseButtonShown={isCloseButtonShown}
             isFullscreenInMobile={isFullscreenInMobile}
             hasStickyFooterInMobile={hasStickyFooterInMobile}
+            isFocusTrapEnabled={isFocusTrapEnabled}
             onClose={onClose}
             width={width}
             height={height}
@@ -85,6 +87,10 @@ const Dialog = forwardRef(function Dialog(props, ref) {
 })
 
 Dialog.propTypes = {
+  /**
+   * The element inside of Modal window
+   */
+  children: PropTypes.node.isRequired,
   /**
    * Toggles the visibility of the overlay and its children.
    * This prop is required because the component is controlled.
@@ -102,7 +108,7 @@ Dialog.propTypes = {
   /**
    * A callback that is invoked when user click Enter button
    */
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   /**
    * Title of the dialog. If provided, an element with `Classes.DIALOG_HEADER`
    * will be rendered inside the dialog before any children elements.
@@ -155,6 +161,11 @@ Dialog.propTypes = {
    * Determines the text alignment of the dialog
    */
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  /**
+   * If true, modal is using focus-trap library for better UX.
+   * Need to disable if modal contains iframe, to avoid conflicts
+   */
+  isFocusTrapEnabled: PropTypes.bool,
 }
 
 Dialog.defaultProps = {
@@ -165,10 +176,12 @@ Dialog.defaultProps = {
   canOutsideClickClose: true,
   isFullscreenInMobile: false,
   hasStickyFooterInMobile: false,
+  isFocusTrapEnabled: true,
   className: null,
   width: 460,
   height: 'auto',
   textAlign: 'center',
+  onSubmit: () => {},
 }
 
 export default Dialog

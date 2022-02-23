@@ -1,35 +1,34 @@
+import { faSync } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import React, {
-  useEffect, useState, memo, useRef, forwardRef,
+  useEffect, useState, useRef, forwardRef, memo,
 } from 'react'
 
 import Button from '../Button'
 
 // eslint-disable-next-line prefer-arrow-callback
-const CooldownButton = forwardRef(function CooldownButton(props, ref) {
+export const CooldownButton = forwardRef(function CooldownButton(props, ref) {
   const {
-    timeoutMs,
-    disabled: propDisabled,
-    onClick,
-    ...rest
+    timeoutMs, disabled: propDisabled, onClick, ...rest
   } = props
 
   const [disabled, setDisabled] = useState(false)
 
   const cancelTimeout = useRef()
 
-  useEffect(() => () => {
-    if (cancelTimeout.current) {
-      clearTimeout(cancelTimeout.current)
-    }
-  }, [cancelTimeout])
+  useEffect(
+    () => () => {
+      if (cancelTimeout.current) {
+        clearTimeout(cancelTimeout.current)
+      }
+    },
+    [cancelTimeout],
+  )
 
   const handleClick = (e) => {
     setDisabled(true)
-    cancelTimeout.current = setTimeout(
-      () => setDisabled(false),
-      timeoutMs,
-    )
+    cancelTimeout.current = setTimeout(() => setDisabled(false), timeoutMs)
     onClick(e)
   }
 
@@ -53,11 +52,21 @@ CooldownButton.propTypes = {
    * The cooldown timeout in milliseconds.
    */
   timeoutMs: PropTypes.number,
+  /**
+   * If true, set the button to the disabled state.
+   */
+  disabled: PropTypes.bool,
+  /**
+   * The element, which is displayed as button.
+   */
+  children: PropTypes.node,
 }
 
 CooldownButton.defaultProps = {
   onClick: () => {},
   timeoutMs: 1000,
+  disabled: false,
+  children: <FontAwesomeIcon icon={faSync} />,
 }
 
 export default memo(CooldownButton)

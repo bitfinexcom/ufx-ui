@@ -40,11 +40,11 @@ export const OrderHistory = (props) => {
     [rowMapping],
   )
 
-  const columns = getVirtualTableColumns(getColumns,
-    {
-      t, isMobile, getDisplayValue,
-    },
-    rowMapping)
+  const columns = getVirtualTableColumns(
+    getColumns,
+    { t, isMobile, getDisplayValue },
+    rowMapping,
+  )
 
   if (loading) {
     return <Spinner />

@@ -1,9 +1,16 @@
 import _isNull from 'lodash/isNull'
-import _omit from 'lodash/omit'
 
 import types from '../constants/UI.constants'
 
-export const INITIAL_STATE = {}
+export const INITIAL_STATE = {
+  verified: false,
+  verificationLevel: false,
+  isPaperTrading: false,
+}
+
+const IS_VERIFIED_INDEX = 4
+const VERIFICATION_LEVEL_INDEX = 5
+const IS_PAPER_TRADING_INDEX = 21
 
 const UIReducer = (state = INITIAL_STATE, action = {}) => {
   const { type, payload = {} } = action
@@ -14,14 +21,17 @@ const UIReducer = (state = INITIAL_STATE, action = {}) => {
         return state
       }
       const {
-        config = {},
+        config = [],
       } = payload
-      const userSettings = config.user_settings || {}
+      const verified = !!config?.[IS_VERIFIED_INDEX]
+      const verificationLevel = !!config?.[VERIFICATION_LEVEL_INDEX]
+      const isPaperTrading = !!config?.[IS_PAPER_TRADING_INDEX]
 
       return {
         ...state,
-        ..._omit(config, 'user_settings'),
-        ...userSettings,
+        verified,
+        verificationLevel,
+        isPaperTrading,
       }
     }
 

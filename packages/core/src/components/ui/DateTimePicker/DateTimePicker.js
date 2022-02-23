@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import cx from 'classnames'
 import { parse } from 'date-fns'
 import _uniqueId from 'lodash/uniqueId'
@@ -161,9 +160,9 @@ DateTimePicker.propTypes = {
    */
   name: PropTypes.string,
   /**
-   * The value of the DateTimePicker.
+   * Date object as value for the DateTimePicker.
    */
-  value: PropTypes.object,
+  value: PropTypes.instanceOf(Date),
   /**
    * The label text of the DateTimePicker.
    */

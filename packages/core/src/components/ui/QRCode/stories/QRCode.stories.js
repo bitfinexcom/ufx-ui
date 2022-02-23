@@ -1,5 +1,5 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
-import QRCode from '../QRCode'
+import { QRCode } from '../QRCode'
 
 export default getDefaultMetadata(QRCode, 'Components/ui/QRCode', {}, true)
 

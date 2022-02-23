@@ -1,4 +1,8 @@
 .#{$ns}-balances {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+
   .search-icon {
     align-self: center;
     margin-right: $ufx-base-size * 0.5;
@@ -16,27 +20,13 @@
     justify-content: flex-end;
   }
 
-  thead {
-    th {
-      padding: ($ufx-base-size * 0.6) 0 !important;
-    }
-  }
-
-  tbody {
+  .is-monospaced {
     font-feature-settings: "tnum";
-
-    td.#{$ns}-rtl {
-      padding-right: $ufx-base-size;
-    }
   }
 
   .empty {
     margin-top: $ufx-base-size * 3;
     text-align: center;
-  }
-
-  table {
-    table-layout: fixed;
   }
 
   .balance {
@@ -62,7 +52,8 @@
   }
 }
 
-.#{$ns}-responsive--xs {
+.#{$ns}-responsive--xs,
+.#{$ns}-responsive--xxs {
   .#{$ns}-balances {
     .actions {
       button {

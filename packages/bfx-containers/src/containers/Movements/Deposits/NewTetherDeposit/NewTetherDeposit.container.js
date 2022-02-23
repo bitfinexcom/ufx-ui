@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 import {
   getHasPaymentIdForDeposits,
+  getIsDepositActive,
   getCurrencyLabel,
   getCurrencySymbolMemo,
   getTetherProtocolToCcyMapping,
@@ -33,6 +34,7 @@ const NewTetherDepositContainer = (props) => {
       loading={loading}
       tetherProtocols={tetherProtocols}
       hasPaymentIdForDeposits={useSelector(getHasPaymentIdForDeposits)}
+      getIsDepositActive={useSelector(getIsDepositActive)}
       getCurrencyLabel={useSelector(getCurrencyLabel)}
       getCurrencySymbol={useSelector(getCurrencySymbolMemo)}
       // eslint-disable-next-line react/jsx-props-no-spreading

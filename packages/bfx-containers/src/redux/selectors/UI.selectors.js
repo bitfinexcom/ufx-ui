@@ -1,11 +1,13 @@
 import {
-  isDerivativeCcy,
   PAIR_URL_SEPARATOR,
   PAIR_OUTPUT_SEPARATOR,
   book,
 } from '@ufx-ui/utils'
+import _find from 'lodash/find'
 import _get from 'lodash/get'
+import _includes from 'lodash/includes'
 import _isString from 'lodash/isString'
+import _keys from 'lodash/keys'
 import { createSelector } from 'reselect'
 
 import { depthChart } from '../../var/config'
@@ -17,7 +19,9 @@ import {
   DEPTH_CHART_ZOOM,
 } from '../constants/UI.constants'
 import { getUfxState } from './common'
-import { getIsPaperCcy, getCurrencySymbolMemo } from './currencies.selectors'
+import {
+  getCurrenciesInfo, getIsPaperCcy, getPairsInfo, getCurrencySymbolMemo,
+} from './currencies.selectors'
 
 export const VERIFICATION_LEVEL = {
   NONE: 0,
@@ -30,7 +34,7 @@ const EMPTY_OBJ = {}
 
 export const getUI = (state) => _get(getUfxState(state), 'UI', EMPTY_OBJ)
 
-export const getUIIsPaperTrading = (state) => getUI(state).is_ppt || false
+export const getUIIsPaperTrading = (state) => getUI(state).isPaperTrading || false
 
 export const getUIOrderform = (state) => getUI(state).orderform
 
@@ -68,7 +72,7 @@ export const getUIUserVerified = (state) => getUI(state).verified || false
 
 export const getUIUserVerificationLevel = (state) => (
   getUIUserVerified(state)
-    ? Number(getUI(state).verification_level || VERIFICATION_LEVEL.NONE)
+    ? Number(getUI(state).verificationLevel || VERIFICATION_LEVEL.NONE)
     : VERIFICATION_LEVEL.NONE
 )
 export const isUserVerifiedFull = (state) => (
@@ -81,59 +85,26 @@ export const isUserVerifiedBasic = (state) => (
   getUIUserVerificationLevel(state) >= VERIFICATION_LEVEL.BASIC
 )
 
-const getUICcys = (state) => getUI(state).currencies || []
-const getUIFiatCcys = (state) => getUI(state).fiat_currencies || []
-const getUITetherCcys = (state) => getUI(state).tether_currencies || []
-const getUIDepositCcys = (state) => getUI(state).deposit_currencies || []
-
-const filterCurrenciesByPaperTrading = (isPaperTrading, currencies, isPaperCcy) => {
-  if (!isPaperCcy) {
-    return currencies
-  }
-  return currencies.filter((ccy) => (
-    (isPaperTrading && isPaperCcy(ccy)) || (!isPaperTrading && !isPaperCcy(ccy))
-  ))
-}
-
-export const getUICryptoCurrencies = createSelector(
-  [getUIIsPaperTrading, getUIDepositCcys, getIsPaperCcy],
-  filterCurrenciesByPaperTrading,
-)
-
-export const getUITetherCurrencies = createSelector(
-  [getUIIsPaperTrading, getUITetherCcys, getIsPaperCcy],
-  filterCurrenciesByPaperTrading,
-)
-
-export const getUIFiatCurrencies = createSelector(
-  [getUIIsPaperTrading, getUIFiatCcys, getIsPaperCcy],
-  filterCurrenciesByPaperTrading,
-)
-
-export const getUIVerifiedCurrencies = (state) => getUI(state).verified_currencies || []
-
-export const getUIWithdrawalsMaxLnx = (state) => getUI(state).withdrawals_max_lnx || 0.02
-export const getUIWithdrawalsMinLnx = (state) => getUI(state).withdrawals_min_lnx || 0.000001
+export const getUIWithdrawalsMaxLnx = () => 0.02
+export const getUIWithdrawalsMinLnx = () => 0.000001
 
 export const getUIWalletNames = (state) => getUI(state).wallet_ui_names || {}
 
-export const getUICurrencies = createSelector(
-  [getUIIsPaperTrading, getUICcys, getIsPaperCcy],
-  filterCurrenciesByPaperTrading,
-)
-
 export const getUITradingCurrencies = createSelector(
-  [getUIIsPaperTrading, getUICcys, getIsPaperCcy, getCurrencySymbolMemo],
-  (isPaperTrading, currencies, isPaperCcy, getCurrencySymbol) => {
+  [getUIIsPaperTrading, getCurrenciesInfo, getPairsInfo, getIsPaperCcy, getCurrencySymbolMemo],
+  (isPaperTrading, currenciesInfo, pairsInfo, isPaperCcy, getCurrencySymbol) => {
+    const currencies = _keys(currenciesInfo)
     if (!isPaperCcy) {
       return currencies
     }
 
+    const getIsExchangeSymbol = (ccy) => _find(pairsInfo, (value, key) => _includes(key, ccy) && value.exchange)
+
     const ccyObject = { }
     currencies.forEach((ccy) => {
       if (
-        (isPaperTrading && isPaperCcy(ccy))
-        || (!isPaperTrading && !isPaperCcy(ccy) && !isDerivativeCcy(ccy))
+        ((isPaperTrading && isPaperCcy(ccy))
+        || (!isPaperTrading && !isPaperCcy(ccy))) && getIsExchangeSymbol(ccy)
       ) {
         ccyObject[ccy] = {
           name: getCurrencySymbol(ccy),
@@ -147,20 +118,14 @@ export const getUITradingCurrencies = createSelector(
 )
 
 export default {
-  getUI,
   getUIIsPaperTrading,
   getUIOrderformPrice,
-  getUIAllPairs,
-  getUIAllCurrencies,
+  getUIAllPairs, // TODO
+  getUIAllCurrencies, // TODO
   getUrlPair,
   getNicePair,
   getUIIsMarketTrades,
   getUIBookPrec,
   getUIUserVerified,
-  getUICryptoCurrencies,
-  getUITetherCurrencies,
-  getUIFiatCurrencies,
-  getUIVerifiedCurrencies,
   getUIWalletNames,
-  getUICurrencies,
 }

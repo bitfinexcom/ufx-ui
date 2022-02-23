@@ -7,9 +7,10 @@ export default {
   id: 'orderbook',
   component: Book,
   defaults: {
+    minH: 15,
     h: 15.8,
     minW: 6,
-    minH: 16,
+    w: 6,
     static: false,
   },
   title: (args) => {

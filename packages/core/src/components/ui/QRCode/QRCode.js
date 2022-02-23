@@ -3,7 +3,7 @@ import QRCodeUI from 'qrcode.react'
 import React, { memo, forwardRef } from 'react'
 
 // eslint-disable-next-line prefer-arrow-callback
-const QRCode = forwardRef(function QRCode(props, ref) {
+export const QRCode = forwardRef(function QRCode(props, ref) {
   const { value, className } = props
 
   return (

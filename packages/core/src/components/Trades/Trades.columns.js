@@ -10,7 +10,7 @@ const { AMOUNT_SIG_FIGS, PRICE_SIG_FIGS } = PLATFORM_SETTINGS
 
 const TRADE_AMOUNT_DECIMALS = 4
 
-// key: column key
+// dataKey: column key
 // label: column header
 // renderer: for content to be renderered inside td
 const getColumns = (args = {}) => {
@@ -18,7 +18,7 @@ const getColumns = (args = {}) => {
 
   return [
     {
-      key: KEYS.ID,
+      dataKey: KEYS.ID,
       label: '',
       cellStyle: { width: '5%' },
       renderer: ({ isBuy }) => {
@@ -30,13 +30,13 @@ const getColumns = (args = {}) => {
       },
     },
     {
-      key: KEYS.MTS,
+      dataKey: KEYS.MTS,
       label: t('trades:time'),
       cellStyle: { width: '25%' },
       renderer: ({ formattedValue }) => <Time mts={formattedValue} />,
     },
     {
-      key: KEYS.PRICE,
+      dataKey: KEYS.PRICE,
       label: t('trades:price'),
       cellStyle: { width: '28%', textAlign: 'right' },
       renderer: ({ formattedValue }) => (
@@ -48,7 +48,7 @@ const getColumns = (args = {}) => {
       ),
     },
     {
-      key: KEYS.AMOUNT,
+      dataKey: KEYS.AMOUNT,
       label: t('trades:amount'),
       cellStyle: { width: '42%', textAlign: 'right' },
       renderer: ({ formattedValue }) => (

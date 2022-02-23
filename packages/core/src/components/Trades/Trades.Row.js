@@ -39,18 +39,18 @@ const TradeRow = (props) => {
   return (
     <tr style={style}>
       {columns.map(({
-        key,
+        dataKey,
         cellClassName,
         cellStyle,
         renderer: defRenderer,
       }) => {
-        const formattedValue = getDisplayValue(key)
-        const value = getDisplayValue(key, false)
-        const renderer = _get(customMapping, [key, 'renderer'], defRenderer)
+        const formattedValue = getDisplayValue(dataKey)
+        const value = getDisplayValue(dataKey, false)
+        const renderer = _get(customMapping, [dataKey, 'renderer'], defRenderer)
 
         return (
           <td
-            key={key}
+            key={dataKey}
             className={cellClassName}
             style={cellStyle}
           >

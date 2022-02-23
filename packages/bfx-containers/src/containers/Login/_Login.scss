@@ -1,0 +1,24 @@
+.#{$ns}-login {
+  padding: $ufx-base-size * 1.5;
+  display: grid;
+  grid-row-gap: $ufx-base-size * 2.5;
+  text-align: left;
+
+  .text {
+    font-size: $ufx-base-size * 1.4;
+    text-align: center;
+  }
+
+  .title {
+    font-weight: $ufx-font-weight-bold;
+    text-align: center;
+  }
+
+  .warning {
+    color: $intent-warning;
+  }
+
+  .submit {
+    margin-top: $ufx-base-size * 2;
+  }
+}

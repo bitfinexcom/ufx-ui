@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## v0.13.1 (2022-02-08)
+
+#### :bug: Bug Fix
+* `core`
+  * [#161](https://github.com/bitfinexcom/ufx-ui/pull/161) (fix) Dialog: added isFocusTrapEnabled prop ([@dmytroshch](https://github.com/dmytroshch))
+* `bfx-containers`, `core`, `utils`
+  * [#159](https://github.com/bitfinexcom/ufx-ui/pull/159) (refactor) fix build warnings ([@bhoomij](https://github.com/bhoomij))
+
+#### :memo: Documentation
+* `core`, `storybook`
+  * [#154](https://github.com/bitfinexcom/ufx-ui/pull/154) (fix) UI components: fix and improve stories ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+## v0.13.0 (2022-01-05)
+
+#### :bug: Bug Fix
+* `bfx-containers`
+  * [#158](https://github.com/bitfinexcom/ufx-ui/pull/158) (fix) movements-page: fix balances height ([@bhoomij](https://github.com/bhoomij))
+
+#### :art: Refactor
+* `bfx-containers`, `core`, `cypress-tests`, `eslint-config`, `example`, `storybook`
+  * [#157](https://github.com/bitfinexcom/ufx-ui/pull/157) (fix) dependency alerts, upgrade to react-scripts@v5.0.0 ([@bhoomij](https://github.com/bhoomij))
+* `bfx-containers`, `core`, `storybook`
+  * [#156](https://github.com/bitfinexcom/ufx-ui/pull/156) (improvement) refactor tables, consistent column-mapping ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
+## v0.12.0 (2021-12-20)
+
+#### :rocket: Feature
+* `bfx-containers`, `core`, `storybook`
+  * [#149](https://github.com/bitfinexcom/ufx-ui/pull/149) (feature) login with api creds ([@bhoomij](https://github.com/bhoomij))
+
+#### :dizzy: Improvement
+* `bfx-containers`
+  * [#147](https://github.com/bitfinexcom/ufx-ui/pull/147) (improvement) unsubscribe prev symbol related channels on ticker change ([@bhoomij](https://github.com/bhoomij))
+
+#### :bug: Bug Fix
+* `utils`
+  * [#152](https://github.com/bitfinexcom/ufx-ui/pull/152) (fix) decimals when price < 1 ([@bhoomij](https://github.com/bhoomij))
+* `bfx-containers`, `core`, `storybook`
+  * [#151](https://github.com/bitfinexcom/ufx-ui/pull/151) (fix) console error/warning ([@bhoomij](https://github.com/bhoomij))
+* Other
+  * [#148](https://github.com/bitfinexcom/ufx-ui/pull/148) (fix) line-break-style lint error on windows ([@bhoomij](https://github.com/bhoomij))
+
+#### :art: Refactor
+* `bfx-containers`, `core`, `storybook`
+  * [#150](https://github.com/bitfinexcom/ufx-ui/pull/150) (refactor) movements and paper trading improvements ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 ## v0.11.5 (2021-11-23)
 
 #### :dizzy: Improvement

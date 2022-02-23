@@ -7,6 +7,8 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import del from 'rollup-plugin-delete'
 import json from 'rollup-plugin-json'
+import builtins from 'rollup-plugin-node-builtins'
+import globalPlugins from 'rollup-plugin-node-globals'
 import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import replace from 'rollup-plugin-replace'
@@ -28,6 +30,8 @@ const globals = {
   'react-dom': 'ReactDOM',
   'react-redux': 'ReactRedux',
   crypto: 'Crypto',
+  '@ufx-ui/core': 'UfxCore',
+  '@ufx-ui/utils': 'UfxUtils',
 }
 
 const commonjsArgs = {
@@ -77,6 +81,13 @@ const snapshotArgs = process.env.SNAPSHOT === 'match'
   }
   : {}
 
+const cssInputFile = 'ufx-bfx-containers'
+const cssInputFilePath = `./src/${cssInputFile}.scss`
+
+const cssOutputDir = 'dist/css'
+const cssOutputFilePath = (minimize) => `${cssOutputDir}/${cssInputFile}${minimize ? '.min' : ''}.js`
+const scssOutputFile = `${cssInputFile}.bundle.scss`
+
 const baseConfig = () => ({
   input,
   plugins: [
@@ -98,6 +109,8 @@ const baseUmdConfig = (minified) => {
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
+    globalPlugins(),
+    builtins(),
   )
 
   if (minified) {
@@ -113,7 +126,13 @@ const baseUmdConfig = (minified) => {
   Goal of this configuration is to generate bundles to be consumed by bundlers.
   This configuration is not minimized and will exclude all dependencies.
 */
-const libConfig = baseConfig()
+const libConfig = Object.assign(baseConfig())
+libConfig.plugins.push(
+  // delete extra output files dist/css/ufx-bfx-containers[.min].js generated while cssConfig build steps
+  del({ targets: cssOutputFilePath(false), verbose: true }),
+  del({ targets: cssOutputFilePath(true), verbose: true }),
+)
+
 // Do not include any of the dependencies
 libConfig.external = excludeAllExternals
 libConfig.output = [
@@ -158,14 +177,6 @@ umdConfigMin.output = [
   },
 ]
 
-const cssInputFile = 'ufx-bfx-containers'
-const cssInputFilePath = `./src/${cssInputFile}.scss`
-
-const cssOutputDir = 'dist/css'
-const cssOutputFilePath = (minimize) => `${cssOutputDir}/${cssInputFile}${minimize ? '.min' : ''}.css`
-const scssOutputFile = `${cssInputFile}.bundle.scss`
-const buildExtraFile = `${cssOutputDir}/${cssInputFile}.js`
-
 const cssConfig = (minimize) => ({
   input: cssInputFilePath,
   output: [{
@@ -180,8 +191,6 @@ const cssConfig = (minimize) => ({
         discardComments(),
       ],
     }),
-    // delete extra output file dist/css/ufx-core.js generated while bundleCssConfig
-    del({ targets: buildExtraFile, verbose: true }),
   ],
 })
 

@@ -7,7 +7,7 @@ import React, { memo, forwardRef } from 'react'
 import * as Classes from '../../../common/classes'
 
 // eslint-disable-next-line prefer-arrow-callback
-const Spinner = forwardRef(function Spinner(props, ref) {
+export const Spinner = forwardRef(function Spinner(props, ref) {
   const { useMarginWrapper, size, className } = props
 
   return (

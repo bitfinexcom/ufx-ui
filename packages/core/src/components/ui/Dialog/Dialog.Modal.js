@@ -16,6 +16,7 @@ const Modal = forwardRef(({
   title,
   isFullscreenInMobile,
   hasStickyFooterInMobile,
+  isFocusTrapEnabled,
   children,
   width,
   height,
@@ -29,6 +30,7 @@ const Modal = forwardRef(({
         fallbackFocus: document.getElementById(DIALOG_CONTAINER_ID),
         initialFocus: titleRef.current,
       }}
+      active={isFocusTrapEnabled}
     >
       <div className={cx(Classes.DIALOG)}>
         <div
@@ -129,6 +131,11 @@ Modal.propTypes = {
 
   /** Determines the text alignment of the dialog */
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  /**
+   * If true, modal is using focus-trap library for better UX.
+   * Need to disable if modal contains iframe, to avoid conflicts
+   */
+  isFocusTrapEnabled: PropTypes.bool.isRequired,
 }
 
 Modal.defaultProps = {

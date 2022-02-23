@@ -8,13 +8,13 @@ const TradesHeader = (props) => {
     <thead>
       <tr>
         {columns.map(({
-          key,
+          dataKey,
           label,
           headerCellClassName,
           cellStyle,
         }) => (
           <th
-            key={key}
+            key={dataKey}
             style={cellStyle}
             className={headerCellClassName}
           >

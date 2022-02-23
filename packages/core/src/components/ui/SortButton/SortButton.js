@@ -2,13 +2,13 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, memo } from 'react'
 
 import * as Classes from '../../../common/classes'
 import Button from '../Button'
 
 // eslint-disable-next-line prefer-arrow-callback
-const SortableButton = forwardRef(function SortableButton(props, ref) {
+export const SortableButton = forwardRef(function SortableButton(props, ref) {
   const {
     content,
     onSortClick,
@@ -76,4 +76,4 @@ SortableButton.defaultProps = {
   defaultSortAscending: false,
 }
 
-export default SortableButton
+export default memo(SortableButton)

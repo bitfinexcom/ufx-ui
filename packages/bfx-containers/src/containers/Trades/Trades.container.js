@@ -24,6 +24,7 @@ const TradesContainer = (props) => {
 
   const {
     isWSConnected,
+    isAuthenticated,
     symbol,
     dispatch,
   } = useCommonBfxData(baseCcy, quoteCcy)
@@ -37,8 +38,10 @@ const TradesContainer = (props) => {
   const minOrderSize = useSelector(state => getSymbolMinOrderSize(state, symbol))
 
   useEffect(() => {
-    dispatch(fetchAuthTradesHistory({ symbol }))
-  }, [dispatch, symbol])
+    if (isAuthenticated) {
+      dispatch(fetchAuthTradesHistory({ symbol }))
+    }
+  }, [dispatch, isAuthenticated, symbol])
 
   // resubscribe on symbol change
   useEffect(() => {
@@ -61,7 +64,7 @@ const TradesContainer = (props) => {
       user={userData}
       showType={tradeType}
       minOrderSize={minOrderSize}
-        // eslint-disable-next-line react/jsx-props-no-spreading
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
     />
   )

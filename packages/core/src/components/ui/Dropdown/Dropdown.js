@@ -14,7 +14,7 @@ import Input from '../Input'
 import DropdownList from './Dropdown.List'
 
 // eslint-disable-next-line prefer-arrow-callback
-const Dropdown = forwardRef(function Dropdown(props, ref) {
+export const Dropdown = forwardRef(function Dropdown(props, ref) {
   const {
     value,
     valueRenderer,
@@ -193,8 +193,26 @@ Dropdown.propTypes = {
    * If true, renders the dropdown with a search input.
    */
   searchable: PropTypes.bool,
+  /**
+   * The function called when user types in search input
+   */
   onSearchTermChange: PropTypes.func,
-  ...DropdownList.propTypes,
+  /**
+   * Current value of Dropdown, should be the key from options object
+   */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /**
+   * Object with with options available to choose from
+   */
+  options: PropTypes.objectOf(PropTypes.string).isRequired,
+  /**
+   * Function with custom render
+   */
+  optionRenderer: PropTypes.func,
+  /**
+   * The function called when user selects Dropdown's option.
+   */
+  onChange: PropTypes.func,
 }
 
 Dropdown.defaultProps = {

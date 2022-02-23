@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { forwardRef } from 'react'
 
-const Flex = (props = {}) => {
+// eslint-disable-next-line prefer-arrow-callback
+const Flex = forwardRef(function Flex(props = {}, ref) {
   const {
     children, style, className, id, horizontal,
   } = props
@@ -13,11 +14,11 @@ const Flex = (props = {}) => {
   }
 
   return (
-    <div id={id} style={s} className={className}>
+    <div id={id} style={s} className={className} ref={ref}>
       {children}
     </div>
   )
-}
+})
 
 Flex.propTypes = {
   /**

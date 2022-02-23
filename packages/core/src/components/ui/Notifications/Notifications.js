@@ -9,7 +9,7 @@ import NotificationMessage from './Notifications.Message'
 import { PROP_NOTIFICATION } from './Notifications.props'
 
 // eslint-disable-next-line prefer-arrow-callback
-const Notifications = forwardRef(function Notifications(props, ref) {
+export const Notifications = forwardRef(function Notifications(props, ref) {
   const { notifications, className, onClose } = props
   const groupedNotifications = groupNotifications(notifications)
 
@@ -32,6 +32,7 @@ const Notifications = forwardRef(function Notifications(props, ref) {
 Notifications.propTypes = {
   /**
    * The notifications of the Notifications.
+   * Notification object should have required params (strings): cid , message, level.
    */
   notifications: PropTypes.arrayOf(PropTypes.shape(PROP_NOTIFICATION)),
   /**

@@ -7,9 +7,10 @@ export default {
   id: 'trades',
   component: Trades,
   defaults: {
-    h: 15.8,
     minH: 14,
+    h: 15.8,
     minW: 4,
+    w: 4,
     static: false,
   },
   title: (args) => {

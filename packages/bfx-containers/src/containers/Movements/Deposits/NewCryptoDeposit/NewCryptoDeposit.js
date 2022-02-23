@@ -14,6 +14,7 @@ const NewCryptoDeposit = ({
   getCurrencyPool,
   hasPaymentIdForDeposits,
   paymentId,
+  getIsDepositActive,
 }) => {
   const currencyLabel = getCurrencyLabel(currency)
   const currencySymbol = getCurrencySymbol(currency)
@@ -30,6 +31,7 @@ const NewCryptoDeposit = ({
         currencyLabel={currencyLabel}
         currencySymbol={currencySymbol}
         hasPaymentIdForDeposits={hasPaymentIdForDeposits}
+        getIsDepositActive={getIsDepositActive}
       >
         <NewCryptoDepositDetails
           currency={currency}
@@ -52,6 +54,7 @@ NewCryptoDeposit.propTypes = {
   getCurrencyPool: PropTypes.func.isRequired,
   hasPaymentIdForDeposits: PropTypes.func.isRequired,
   paymentId: PropTypes.string,
+  getIsDepositActive: PropTypes.func.isRequired,
 }
 
 NewCryptoDeposit.defaultProps = {

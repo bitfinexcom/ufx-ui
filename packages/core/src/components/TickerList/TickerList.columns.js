@@ -66,12 +66,10 @@ const getColumns = ({
       const quoteCcy = getDisplayValue(rowData)(KEYS.QUOTE_CCY)
 
       return (
-        <>
-          <span>
-            {baseCcy}
-            <span className='price-unit'>/{quoteCcy}</span>
-          </span>
-        </>
+        <span>
+          {baseCcy}
+          <span className='price-unit'>/{quoteCcy}</span>
+        </span>
       )
     },
   }, {
