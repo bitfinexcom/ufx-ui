@@ -2,7 +2,7 @@ import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybo
 import VirtualTable from '../VirtualTable'
 import { columns, data } from './VirtualTable.stories_data'
 
-export default getDefaultMetadata(VirtualTable, 'Components/ui/VirtualTable', {}, true)
+export default getDefaultMetadata(VirtualTable, 'Components/ui/VirtualTable', {}, false)
 
 const props = {
   data,
