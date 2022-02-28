@@ -28,7 +28,6 @@ export const OrderForm = forwardRef((props, ref) => {
     minDays,
     maxDays,
     tifTooltip,
-    slippageTooltip,
   } = props
   const { t } = useTranslation('orderform')
 
@@ -62,7 +61,6 @@ export const OrderForm = forwardRef((props, ref) => {
         maxDays={maxDays}
         asks={asks}
         tifTooltip={tifTooltip}
-        slippageTooltip={slippageTooltip}
       />
     </Formik>
   )
@@ -125,7 +123,6 @@ OrderForm.propTypes = {
    * The custom element for TIF checkbox tooltip
    */
   tifTooltip: PropTypes.node,
-  slippageTooltip: PropTypes.node,
 }
 
 export const defaultProps = {
@@ -142,7 +139,6 @@ export const defaultProps = {
   priceMaxDecimals: null,
   minDays: null,
   maxDays: null,
-  slippageTooltip: null,
   tifTooltip: null,
 }
 
