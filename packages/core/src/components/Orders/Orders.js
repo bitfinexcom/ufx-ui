@@ -70,10 +70,25 @@ export const Orders = (props) => {
 }
 
 Orders.propTypes = {
+  /**
+   * The orders to be displayed in the Orders component.
+   */
   orders: PropTypes.arrayOf(PropTypes.object),
+  /**
+   * If true, show the loading message.
+   */
   loading: PropTypes.bool,
+  /**
+   * The custom field/column mapping for the data.
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  /**
+   * A className of Orders container
+   */
   className: PropTypes.string,
+  /**
+   * The function called when user clicks on cancel order button.
+   */
   cancelOrder: PropTypes.func.isRequired,
   /**
    * If true, show the Orders in a condensed mobile layout. By default
