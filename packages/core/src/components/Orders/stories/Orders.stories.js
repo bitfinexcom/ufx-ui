@@ -11,7 +11,7 @@ export default getDefaultMetadata(Orders, 'Components/Orders')
 
 const props = {
   ...defaultProps,
-  data,
+  orders: data,
   cancelOrder: action('on cancel order'),
 }
 
