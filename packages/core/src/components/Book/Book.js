@@ -169,7 +169,7 @@ Book.propTypes = {
    */
   orders: PropTypes.arrayOf(PropTypes.shape(PROP_ORDER)),
   /**
-   * The function called when an open order is closed.
+   * The function called when user clicks on cancel order button.
    */
   cancelOrder: PropTypes.func,
   /**
