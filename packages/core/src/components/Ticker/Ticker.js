@@ -95,11 +95,38 @@ export const Ticker = (props) => {
 
 Ticker.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  data: PropTypes.object,
+  /**
+   * The object with ticker data
+   */
+  data: PropTypes.shape({
+    baseCcy: PropTypes.string.isRequired,
+    quoteCcy: PropTypes.string.isRequired,
+    lastPrice: PropTypes.number.isRequired,
+    change: PropTypes.number.isRequired,
+    changePerc: PropTypes.number.isRequired,
+    volume: PropTypes.number.isRequired,
+    high: PropTypes.number.isRequired,
+    low: PropTypes.number.isRequired,
+  }),
+  /**
+   * The base currency icon
+   */
   ccyIcon: PropTypes.node,
+  /**
+   * If true, the info button is showing
+   */
   showCoinInfoIcon: PropTypes.bool,
+  /**
+   * The function, called when user clicks on coin info button
+   */
   onShowInfoClick: PropTypes.func,
+  /**
+   * The className of Ticker container
+   */
   className: PropTypes.string,
+  /**
+   * The custom field/column mapping for the data.
+   */
   dataMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
 }
 
