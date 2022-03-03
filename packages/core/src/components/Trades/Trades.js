@@ -130,14 +130,41 @@ export const Trades = (props) => {
 }
 
 Trades.propTypes = {
+  /**
+   * If false, showing message about offline status
+   */
   online: PropTypes.bool,
+  /**
+   * If true, showing loader
+   */
   loading: PropTypes.bool,
+  /**
+   * The current type of trades, which is displayed
+   */
   showType: PropTypes.oneOf(TRADE_TYPES_ARR),
+  /**
+   * The number of showing rows
+   */
   pageSize: PropTypes.number,
+  /**
+   * The market`s trades data
+   */
   market: PropTypes.oneOfType([PropTypes.objectOf(PropTypes.object), PropTypes.arrayOf(PropTypes.object)]),
+  /**
+   * The user`s trades data
+   */
   user: PropTypes.oneOfType([PropTypes.objectOf(PropTypes.object), PropTypes.arrayOf(PropTypes.object)]),
+  /**
+   * The classname of Trades container
+   */
   className: PropTypes.string,
+  /**
+   * The custom field/column mapping for the data.
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  /**
+   * The minimum order size number
+   */
   minOrderSize: PropTypes.number,
 }
 
