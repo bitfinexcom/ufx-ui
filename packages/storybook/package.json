@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "install:peer": "install-peers -f",
-    "start": "start-storybook --debug-webpack -p 6006",
+    "start": "start-storybook -p 6006",
     "build": "build-storybook",
     "deploy": "storybook-to-ghpages --remote=upstream",
     "test:snapshots": "jest --testPathPattern=./storyshots.test.js",
