@@ -4,7 +4,7 @@ import React, { memo, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import * as Classes from '../../common/classes'
-import { getCurrentStyle } from '../../common/themes'
+import { getCurrentStyle, THEMES } from '../../common/themes'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import { PROP_BOOK_TRADE, PROP_BOOK } from '../Book/Book.props'
 import Spinner from '../ui/Spinner'
@@ -106,35 +106,101 @@ export const DepthChart = ({
 }
 
 DepthChart.propTypes = {
+  /**
+   *If true, showing loader
+   */
   loading: PropTypes.bool,
+  /**
+   * The data to show on asks side.
+   */
   asks: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
+  /**
+   * The data to show on bids side.
+   */
   bids: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
+  /**
+   * The asks data with 'total' field that is cumulative sum of amount.
+   */
   tAsks: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number]),
   ).isRequired,
+  /**
+   * The bids data with 'total' field that is cumulative sum of amount.
+   */
   tBids: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number]),
   ).isRequired,
+  /**
+   * The sorted price list to show on asks side.
+   */
   pAsks: PropTypes.arrayOf(PropTypes.number).isRequired,
+  /**
+   * The sorted price list to show on bids side.
+   */
   pBids: PropTypes.arrayOf(PropTypes.number).isRequired,
+  /**
+   * The book data that includes the lowest cluster of ask orders
+   */
   asksTop: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
+  /**
+   * The book data that includes the highest cluster of bid orders
+   */
   bidsTop: PropTypes.objectOf(PropTypes.shape(PROP_BOOK)),
+  /**
+   * The book data that includes the lowest cluster of ask orders with 'total' field
+   */
   tAsksTop: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number]),
   ).isRequired,
+  /**
+   * The book data that includes the highest cluster of bid orders with 'total' field
+   */
   tBidsTop: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.shape(PROP_BOOK_TRADE), PropTypes.number]),
   ).isRequired,
+  /**
+   * The sorted lowest price to show on asks side
+   */
   pAsksTop: PropTypes.arrayOf(PropTypes.number).isRequired,
+  /**
+   * The sorted highest price to show on bids side
+   */
   pBidsTop: PropTypes.arrayOf(PropTypes.number).isRequired,
+  /**
+   * The className of the Book’s outer element.
+   */
   className: PropTypes.string,
+  /**
+   * One of available themes
+   */
   theme: PropTypes.string,
+  /**
+   * Width of Chart, in px
+   */
   width: PropTypes.number,
+  /**
+   * Height of Chart, in px
+   */
   height: PropTypes.number,
+  /**
+   * The zoom level for bar graph.
+   */
   zoom: PropTypes.number,
+  /**
+   * The precision level of Chart
+   */
   prec: PropTypes.number,
+  /**
+   * Callback, invoked when user change zoom slider
+   */
   updateZoom: PropTypes.func.isRequired,
+  /**
+   * Font, using for Chart texts
+   */
   fontFamily: PropTypes.string,
+  /**
+   * Current currency pair
+   */
   currentPair: PropTypes.string.isRequired,
 }
 
@@ -145,7 +211,7 @@ export const defaultProps = {
   bidsTop: {},
   loading: false,
   className: null,
-  theme: 'dark-theme',
+  theme: THEMES.DARK_THEME,
   width: 600,
   height: 220,
   zoom: 50,

@@ -14,7 +14,8 @@ const data = [
     clientId: 1574089692152,
     groupId: {},
     id: '18446744073709551525',
-    formattedPair: 'EOS/USDT',
+    pair: 'EOS/USDT',
+    baseCcy: 'EOS',
     placed: 1574089693508,
   },
   {
@@ -32,7 +33,8 @@ const data = [
     clientId: 1574071398353,
     groupId: {},
     id: '18446744073709551532',
-    formattedPair: 'EOS/USDT',
+    pair: 'EOS/USDT',
+    baseCcy: 'EOS',
     placed: 1574071400006,
   },
   {
@@ -50,7 +52,8 @@ const data = [
     clientId: 1574071224946,
     groupId: {},
     id: '79',
-    formattedPair: 'EOS/USDT',
+    pair: 'EOS/USDT',
+    baseCcy: 'EOS',
     placed: 1574071226511,
   },
   {
@@ -68,7 +71,8 @@ const data = [
     clientId: 1574069424599,
     groupId: {},
     id: '75',
-    formattedPair: 'EOS/USDT',
+    pair: 'EOS/USDT',
+    baseCcy: 'EOS',
     placed: 1574069427008,
   },
 ]

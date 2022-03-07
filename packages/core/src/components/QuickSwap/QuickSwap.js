@@ -1,4 +1,5 @@
 import { Formik } from 'formik'
+import compose from 'lodash/fp/compose'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -42,12 +43,34 @@ export const QuickSwap = (props) => {
 
 QuickSwap.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
+  /**
+   * The object with available tokens,
+   * 'key': 'label'
+   */
   tokenList: PropTypes.objectOf(PropTypes.string),
+  /**
+   * The default token for sell
+   */
   defaultFromToken: PropTypes.string,
+  /**
+   * The default token for buy
+   */
   defaultToToken: PropTypes.string,
+  /**
+   * The function called, when user clicks on swap button
+   */
   onSwapClick: PropTypes.func,
+  /**
+   * The function, fetching available balance
+   */
   getAvailableBalance: PropTypes.func,
+  /**
+   * The function, fetching conversion rate
+   */
   getConversionRate: PropTypes.func,
+  /**
+   * The link to terms and conditions page
+   */
   termsUrl: PropTypes.string,
 }
 
@@ -63,4 +86,4 @@ export const defaultProps = {
 
 QuickSwap.defaultProps = defaultProps
 
-export default withI18nProvider(withResponsive(memo(QuickSwap)))
+export default compose(withI18nProvider, withResponsive, memo)(QuickSwap)

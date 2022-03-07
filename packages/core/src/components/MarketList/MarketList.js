@@ -119,13 +119,38 @@ export const MarketList = (props) => {
 }
 
 MarketList.propTypes = {
+  /**
+   * Data, which is rendering in MarketList
+   */
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * The tabs of the MarketList.
+   * Tab object should has required properties (strings): id , title.
+   */
   tabs: PropTypes.arrayOf(PropTypes.shape(TAB_PROP_TYPE)).isRequired,
+  /**
+   * The function, called when a market row is clicked
+   */
   onRowClick: PropTypes.func,
+  /**
+   * Object with pairs, selected as favorites
+   */
   favs: PropTypes.objectOf(PropTypes.bool).isRequired,
+  /**
+   * The function, called, when user sets pair as favorite
+   */
   saveFavs: PropTypes.func.isRequired,
+  /**
+   * Default value of list dataKey, which is sorted by
+   */
   defaultSortBy: PropTypes.string,
+  /**
+   * The function, using for filtering list data
+   */
   filterData: PropTypes.func,
+  /**
+   * The custom field/column mapping for the data.
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
   /**
    * If true, show the OrderHistory in a condensed mobile layout. By default

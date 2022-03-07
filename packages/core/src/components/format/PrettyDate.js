@@ -80,10 +80,25 @@ const PrettyDate = (props) => {
 }
 
 PrettyDate.propTypes = {
+  /**
+   * Timestamp in ms
+   */
   mts: PropTypes.number.isRequired,
+  /**
+   * If true, the day is showing
+   */
   showDay: PropTypes.bool,
+  /**
+   * If true, thew year is showing
+   */
   showYear: PropTypes.bool,
+  /**
+   * If true, the month name is cutted
+   */
   abbreviate: PropTypes.bool,
+  /**
+   * If true, month and day are showing
+   */
   monthDayOnly: PropTypes.bool,
 }
 

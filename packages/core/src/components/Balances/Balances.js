@@ -82,15 +82,45 @@ export const Balances = (props) => {
 }
 
 Balances.propTypes = {
+  /**
+   * Object with balances data
+   */
   // eslint-disable-next-line react/forbid-prop-types
   balances: PropTypes.object,
+  /**
+   * If true, only currencies with a balance
+   * greater than the threshold  showing
+   */
   hideSmallBalances: PropTypes.bool,
+  /**
+   * Callback, invoked, when user checked
+   * checkbox 'Hide small Balances'
+   */
   setHideSmallBalances: PropTypes.func,
+  /**
+   * The custom field/column mapping for the data.
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  /**
+   * A value of small balance threshold,
+   * using when hideSmallBalances is true
+   */
   smallBalanceThreshold: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
+   * A className of Balances container
+   */
   className: PropTypes.string,
+  /**
+   * If true, there are showing deposit and withdraw buttons
+   */
   showTransfer: PropTypes.bool,
+  /**
+   * Callback, invoked when user clicks on deposit button
+   */
   handleDepositClick: PropTypes.func,
+  /**
+   * Callback, invoked when user clicks on withdraw button
+   */
   handleWithdrawClick: PropTypes.func,
 }
 

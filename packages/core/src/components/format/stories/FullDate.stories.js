@@ -4,7 +4,7 @@ import FullDate from '../FullDate'
 export default getDefaultMetadata(FullDate, 'Components/format/FullDate')
 
 const props = {
-  ts: 1580286340520, // Monday, October 21, 2019 8:35:40 PM GMT+05:30
+  ts: 1580286340520, // Monday, Jan 29, 2021 15:25:40 GMT+0700
 }
 
 export const basic = showTemplateStory(FullDate, props)

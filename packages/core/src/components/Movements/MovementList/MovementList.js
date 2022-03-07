@@ -44,8 +44,17 @@ export const MovementList = (props) => {
 
 MovementList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
+  /**
+   * An array with movements data
+   */
   movements: PropTypes.arrayOf(PropTypes.object),
+  /**
+   * The custom field/column mapping for the data.
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  /**
+   * The className of MovementList container
+   */
   className: PropTypes.string,
 }
 

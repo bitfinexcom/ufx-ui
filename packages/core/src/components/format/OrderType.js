@@ -58,6 +58,9 @@ const OrderType = (props) => {
 }
 
 OrderType.propTypes = {
+  /**
+   * Children of OrderType
+   */
   children: PropTypes.string.isRequired,
 }
 

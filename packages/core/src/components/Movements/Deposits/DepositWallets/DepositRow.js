@@ -1,6 +1,4 @@
-import {
-  faCopy, faQrcode, faSync,
-} from '@fortawesome/free-solid-svg-icons'
+import { faCopy, faQrcode, faSync } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { copyToClipboard } from '@ufx-ui/utils'
 import _capitalize from 'lodash/capitalize'
@@ -21,10 +19,7 @@ const DepositRow = ({
   requestWalletAddress,
   errorMessage,
 }) => {
-  const {
-    address: addr = null,
-    name,
-  } = wallet
+  const { address: addr = null, name } = wallet
   const { t } = useTranslation('deposits')
 
   const [address, setAddress] = useState(addr)
@@ -67,72 +62,55 @@ const DepositRow = ({
 
   return (
     <>
-      {!address && errorMessage && <div>{errorMessage}</div>}
+      <div className='deposit-row'>
+        <div>
+          <Heading tag='h6'>{_capitalize(walletNames[name])}</Heading>
 
-      {address && (
-        <div className='deposit-row'>
-          <div>
-            <Heading tag='h6'>
-              {_capitalize(walletNames[name])}
-            </Heading>
-
-            <div className='deposit-address'>
-              {noAddress
-                ? (
-                  <Button
-                    minimal
-                    small
-                    onClick={updateWalletAddress}
-                  >{t('generate_address')}
+          {!address && errorMessage ? <div>{errorMessage}</div>
+            : (
+              <div className='deposit-address'>
+                {noAddress ? (
+                  <Button minimal small onClick={updateWalletAddress}>
+                    {t('generate_address')}
                   </Button>
                 ) : (
-                  <Input
-                    small
-                    disabled={notEnabled}
-                    readOnly
-                    value={address}
-                  />
+                  <Input small disabled={notEnabled} readOnly value={address} />
                 )}
-            </div>
-          </div>
-
-          <div className='actions'>
-            <Button
-              small
-              onClick={copy}
-              disabled={notEnabled || noAddress}
-            >
-              <Tooltip content={t('common:copy_to_clipboard')} placement='top'>
-                <FontAwesomeIcon icon={faCopy} />
-              </Tooltip>
-            </Button>
-
-            <Button
-              small
-              type='button'
-              onClick={updateWalletAddress}
-              disabled={notEnabled || noAddress}
-            >
-              <Tooltip content={t('change_address')} placement='top'>
-                <FontAwesomeIcon icon={faSync} />
-              </Tooltip>
-            </Button>
-
-            <Button
-              small
-              type='button'
-              onClick={showQrCode}
-              disabled={notEnabled || noAddress}
-            >
-              <Tooltip content={t('scan_qr_code')} placement='top'>
-                <FontAwesomeIcon icon={faQrcode} />
-              </Tooltip>
-            </Button>
-
-          </div>
+              </div>
+            )}
 
         </div>
-      )}
+
+        <div className='actions'>
+          <Button small onClick={copy} disabled={notEnabled || noAddress}>
+            <Tooltip content={t('common:copy_to_clipboard')} placement='top'>
+              <FontAwesomeIcon icon={faCopy} />
+            </Tooltip>
+          </Button>
+
+          <Button
+            small
+            type='button'
+            onClick={updateWalletAddress}
+            disabled={notEnabled || noAddress}
+          >
+            <Tooltip content={t('change_address')} placement='top'>
+              <FontAwesomeIcon icon={faSync} />
+            </Tooltip>
+          </Button>
+
+          <Button
+            small
+            type='button'
+            onClick={showQrCode}
+            disabled={notEnabled || noAddress}
+          >
+            <Tooltip content={t('scan_qr_code')} placement='top'>
+              <FontAwesomeIcon icon={faQrcode} />
+            </Tooltip>
+          </Button>
+        </div>
+      </div>
 
       <Dialog
         title={_startCase(`${name} ${t('wallet')} (${currency})`)}
@@ -142,9 +120,7 @@ const DepositRow = ({
         <div className='qr-code-modal'>
           <QRCode value={address} className='qr-code' />
           <br />
-          <div className='address'>
-            {address}
-          </div>
+          <div className='address'>{address}</div>
         </div>
       </Dialog>
     </>

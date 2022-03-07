@@ -21,11 +21,7 @@ import { MAPPING, KEYS } from './TickerList.constants'
 import { rowRenderer } from './TickerList.helpers'
 import TickerListToolbar from './TickerList.Toolbar'
 
-const noRowsRenderer = (t) => () => (
-  <div className='empty-tickerlist'>
-    {t('tickerlist:empty')}
-  </div>
-)
+const noRowsRenderer = (t) => () => <div className='empty-tickerlist'>{t('tickerlist:empty')}</div>
 
 export const TickerList = (props) => {
   const {
@@ -61,28 +57,35 @@ export const TickerList = (props) => {
   )
 
   // filter ccys matching search-term and marked as fav
-  const filtered = _filter(data,
-    (row) => {
-      const baseCcy = _get(row, keyForBaseCcy)
-      const quoteCcy = _get(row, keyForQuoteCcy)
-      const defaultLabels = [baseCcy, quoteCcy, baseCcy + quoteCcy, `${baseCcy}/${quoteCcy}`]
-      const ccyLabels = getDisplayValue(row)(KEYS.CCY_LABELS) || []
+  const filtered = _filter(data, (row) => {
+    const baseCcy = _get(row, keyForBaseCcy)
+    const quoteCcy = _get(row, keyForQuoteCcy)
+    const defaultLabels = [
+      baseCcy,
+      quoteCcy,
+      baseCcy + quoteCcy,
+      `${baseCcy}/${quoteCcy}`,
+    ]
+    const ccyLabels = getDisplayValue(row)(KEYS.CCY_LABELS) || []
 
-      const matches = _toLower(_join([...ccyLabels, ...defaultLabels]))
+    const matches = _toLower(_join([...ccyLabels, ...defaultLabels]))
 
-      return (
-        _includes(matches, _toLower(searchTerm))
-        && (!showOnlyFavs || favs[row[keyForId]])
-      )
-    })
+    return (
+      _includes(matches, _toLower(searchTerm))
+      && (!showOnlyFavs || favs[row[keyForId]])
+    )
+  })
 
-  const toggleFav = useCallback((id) => {
-    const newFavs = {
-      ...favs,
-      [id]: !favs[id],
-    }
-    saveFavs(newFavs)
-  }, [favs, saveFavs])
+  const toggleFav = useCallback(
+    (id) => {
+      const newFavs = {
+        ...favs,
+        [id]: !favs[id],
+      }
+      saveFavs(newFavs)
+    },
+    [favs, saveFavs],
+  )
 
   const columns = getVirtualTableColumns(
     getColumns,
@@ -135,17 +138,64 @@ export const TickerList = (props) => {
 }
 
 TickerList.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object),
+  /**
+   * The array of tickers data
+   */
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      baseCcy: PropTypes.string.isRequired,
+      quoteCcy: PropTypes.string.isRequired,
+      changePerc: PropTypes.number.isRequired,
+      lastPrice: PropTypes.number.isRequired,
+      volume: PropTypes.number.isRequired,
+      ccyLabels: PropTypes.arrayOf(PropTypes.string),
+    }),
+  ),
+  /**
+   * Object with pairs, selected as favorites
+   */
   favs: PropTypes.objectOf(PropTypes.bool).isRequired,
+  /**
+   * The function, called, when user sets pair as favorite
+   */
   saveFavs: PropTypes.func.isRequired,
+  /**
+   * The function, called when a ticker row is clicked
+   */
   onRowClick: PropTypes.func,
+  /**
+   * If true, the volume equivalent unit toggler is showing
+   */
   showVolumeUnit: PropTypes.bool,
+  /**
+   * The object with enabled currencies for volume unit toggler
+   */
   volumeUnitList: PropTypes.objectOf(PropTypes.string),
+  /**
+   * The current volume equivalent currency
+   */
   volumeUnit: PropTypes.string,
+  /**
+   * The function, called when user change volume equivalent unit
+   */
   setVolumeUnit: PropTypes.func,
+  /**
+   * The custom field/column mapping for the data.
+   */
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  /**
+   * The function, called when user clicks
+   * on show only favs button
+   */
   setShowOnlyFavs: PropTypes.func.isRequired,
+  /**
+   * If true, only favorite pairs are showing
+   */
   showOnlyFavs: PropTypes.bool.isRequired,
+  /**
+   * The classname of TickerList
+   */
   className: PropTypes.string,
 }
 

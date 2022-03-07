@@ -6,27 +6,9 @@ import React from 'react'
 
 import { DepthChart } from '../DepthChart'
 import DepthChartCanvas from '../DepthChart.canvas'
-import {
-  asks, bids, tAsks, tBids, pAsks, pBids,
-} from '../stories/DepthChart.stories_data'
+import props from '../stories/DepthChart.stories_data'
 
 jest.mock('../DepthChart.canvas')
-
-const props = {
-  asks,
-  bids,
-  tAsks,
-  tBids,
-  pAsks,
-  pBids,
-  width: 500,
-  height: 180,
-  online: true,
-  zoom: 50,
-  updateZoom: () => {},
-  currentPair: 'BTC/UST',
-  theme: 'dark-theme',
-}
 
 const tests = describe('DepthChart', () => {
   let wrapper

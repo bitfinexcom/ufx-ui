@@ -28,7 +28,6 @@ export const OrderForm = forwardRef((props, ref) => {
     minDays,
     maxDays,
     tifTooltip,
-    slippageTooltip,
   } = props
   const { t } = useTranslation('orderform')
 
@@ -62,28 +61,68 @@ export const OrderForm = forwardRef((props, ref) => {
         maxDays={maxDays}
         asks={asks}
         tifTooltip={tifTooltip}
-        slippageTooltip={slippageTooltip}
       />
     </Formik>
   )
 })
 
 OrderForm.propTypes = {
+  /**
+   * The lowest price for sellingч
+   */
   topAsk: PropTypes.number,
+  /**
+   * The highest price for buying
+   */
   topBid: PropTypes.number,
+  /**
+   * The base currency
+   */
   baseCcy: PropTypes.string,
+  /**
+   * The quote currency
+   */
   quoteCcy: PropTypes.string,
+  /**
+   * The function, called when user submits form
+   */
   submitOrder: PropTypes.func,
+  /**
+   * The last requested price
+   */
   lastPriceReq: PropTypes.number,
+  /**
+   * The classname of OrderForm
+   */
   className: PropTypes.string,
+  /**
+   * If true, form is disabled
+   */
   disabled: PropTypes.bool,
+  /**
+   * The object with existed order types
+   */
   orderTypes: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  /**
+   * The maximum number of decimal places for the amount
+   */
   amountMaxDecimals: PropTypes.number,
+  /**
+   * The maximum number of decimal places for the price
+   */
   priceMaxDecimals: PropTypes.number,
+  /**
+   * The minimum number of days to cancel an order automatically
+   */
   minDays: PropTypes.number,
+  /**
+   * The maximum number of days to cancel an order automatically
+   */
   maxDays: PropTypes.number,
+  /**
+   * The custom element for TIF checkbox tooltip
+   */
   tifTooltip: PropTypes.node,
-  slippageTooltip: PropTypes.node,
 }
 
 export const defaultProps = {
@@ -100,7 +139,6 @@ export const defaultProps = {
   priceMaxDecimals: null,
   minDays: null,
   maxDays: null,
-  slippageTooltip: null,
   tifTooltip: null,
 }
 
