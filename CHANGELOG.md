@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 
 
+## v0.13.2 (2022-04-13)
+
+#### :bug: Bug Fix
+* `core`, `storybook`
+  * [#165](https://github.com/bitfinexcom/ufx-ui/pull/165) (fix) TickerList: fix lint ([@bhoomij](https://github.com/bhoomij))
+  * [#164](https://github.com/bitfinexcom/ufx-ui/pull/164) (fix) VirtualTable story ([@bhoomij](https://github.com/bhoomij))
+  * [#163](https://github.com/bitfinexcom/ufx-ui/pull/163) (fix) Truncate: fix prop validation ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 ## v0.13.1 (2022-02-08)
 
 #### :bug: Bug Fix
