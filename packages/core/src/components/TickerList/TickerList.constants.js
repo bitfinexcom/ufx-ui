@@ -34,7 +34,6 @@ export const STYLES = {
     justifyContent: 'flex-start',
     wordBreak: 'break-all',
     whiteSpace: 'normal',
-    lineHeight: 1,
   },
   lastPrice: { justifyContent: 'flex-end' },
   changePerc: { justifyContent: 'flex-end' },
