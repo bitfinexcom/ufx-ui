@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 #### :bug: Bug Fix
 * `core`, `storybook`
-  * [#165](https://github.com/bitfinexcom/ufx-ui/pull/165) (fix) lint ([@bhoomij](https://github.com/bhoomij))
+  * [#165](https://github.com/bitfinexcom/ufx-ui/pull/165) (fix) TickerList: fix lint ([@bhoomij](https://github.com/bhoomij))
   * [#164](https://github.com/bitfinexcom/ufx-ui/pull/164) (fix) VirtualTable story ([@bhoomij](https://github.com/bhoomij))
   * [#163](https://github.com/bitfinexcom/ufx-ui/pull/163) (fix) Truncate: fix prop validation ([@dmytroshch](https://github.com/dmytroshch))
 
