@@ -42,11 +42,11 @@ $button-padding-vertical: $ufx-base-size * 1.4 !default;
 
   &--outline {
     border-width: 2px;
-    background: white;
+    background: transparent;
     color: $color;
 
     &:hover:not([disabled]) {
-      background: white;
+      background: transparent;
       color: darken($color, 10);
     }
   }
