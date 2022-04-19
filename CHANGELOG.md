@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.13.3 (2022-04-19)
+
+#### :bug: Bug Fix
+* `core`
+  * [#168](https://github.com/bitfinexcom/ufx-ui/pull/168) (fix) Button: fix issue with bg color in outline state ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 
 ## v0.13.2 (2022-04-13)
 
