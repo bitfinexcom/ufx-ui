@@ -35,6 +35,7 @@ const VirtualTable = (props) => {
     noRowsRenderer,
     minTableWidth,
     rowRenderer,
+    onScrollToBottom,
   } = props
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
@@ -66,6 +67,17 @@ const VirtualTable = (props) => {
     setSortDirection(postSortDirection)
   }
 
+  const onScrollInternal = (message) => {
+    if (!message) {
+      return
+    }
+    const { clientHeight, scrollHeight, scrollTop } = message
+    const SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD = 0
+    if ((clientHeight + scrollTop + SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD) >= scrollHeight) {
+      onScrollToBottom()
+    }
+  }
+
   return (
     <div className={classes}>
       <div className={Classes.VIRTUAL_TABLE}>
@@ -78,6 +90,7 @@ const VirtualTable = (props) => {
                   ? minTableWidth
                   : width
               }
+              onScroll={onScrollInternal}
               rowHeight={rowHeight}
               rowGetter={({ index }) => _get(processedData, index)}
               rowCount={_size(processedData)}
@@ -214,6 +227,10 @@ VirtualTable.propTypes = {
    * The minimum width the table can shrink by
    */
   minTableWidth: PropTypes.number,
+  /**
+   * Callback to be invoked when more rows must be loaded
+   */
+  onScrollToBottom: PropTypes.func,
 }
 
 VirtualTable.defaultProps = {
@@ -233,6 +250,7 @@ VirtualTable.defaultProps = {
   noRowsRenderer: () => {},
   rowRenderer: defaultTableRowRenderer,
   minTableWidth: null,
+  onScrollToBottom: () => {},
 }
 
 export default memo(VirtualTable)

@@ -28,6 +28,7 @@ export const OrderHistory = (props) => {
     rowMapping,
     className,
     isMobileLayout: isMobile,
+    loadMoreRows,
   } = props
   const { t } = useTranslation('orderhistory')
 
@@ -64,6 +65,7 @@ export const OrderHistory = (props) => {
         striped
         noRowsRenderer={noRowsRenderer(t)}
         minTableWidth={MIN_TABLE_WIDTH}
+        onScrollToBottom={loadMoreRows}
       />
     </div>
   )
@@ -92,6 +94,7 @@ OrderHistory.propTypes = {
    * breakpoint (BREAKPOINTS.SM).
    */
   isMobileLayout: PropTypes.bool,
+  loadMoreRows: PropTypes.func,
 }
 
 export const defaultProps = {
@@ -100,6 +103,7 @@ export const defaultProps = {
   rowMapping: {},
   className: null,
   isMobileLayout: undefined,
+  loadMoreRows: () => {},
 }
 
 OrderHistory.defaultProps = defaultProps
