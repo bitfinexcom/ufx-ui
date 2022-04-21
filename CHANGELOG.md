@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.13.4 (2022-04-21)
+
+#### :rocket: Feature
+* `core`, `storybook`
+  * [#170](https://github.com/bitfinexcom/ufx-ui/pull/170) (feature) OrderHistory/VirtualTable: add callback to be invoked when fetching more rows ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
 
 ## v0.13.3 (2022-04-19)
 
