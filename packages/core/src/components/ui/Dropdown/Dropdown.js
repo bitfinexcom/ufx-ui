@@ -30,6 +30,7 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
     closeOnMouseLeave,
     isOpen: isOpenProp,
     onSearchTermChange,
+    disabled,
     ...rest
   } = props
   const { t } = useTranslation('ui')
@@ -37,6 +38,7 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
   const content = valueRenderer && valueRenderer(value, options[value])
   const classes = cx(Classes.DROPDOWN, className, {
     [Classes.DROPDOWN + Classes.SIZE_SMALL]: small,
+    disabled,
     'is-open': isOpen,
   })
 
@@ -91,6 +93,9 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
   // toggle dropdown-menu, reset searchterm
   const onDropdownArrowClick = (e) => {
     e.stopPropagation()
+    if (disabled) {
+      return
+    }
     handleDropDownToggle(!isOpen)
   }
 
@@ -101,8 +106,8 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
   const element = (
     <Input
       ref={ref}
-      className='dropdown-field'
-      disabled={!searchable}
+      className={cx('dropdown-field', { 'non-searchable': !searchable && !disabled })}
+      disabled={!searchable || disabled}
       onClick={onDropdownClick}
       id={id}
       name={name}
@@ -113,6 +118,7 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
       rightElement={(
         <div
           className='arrow-icon'
+          disabled={disabled}
           role='button'
           tabIndex={0}
           onClick={onDropdownArrowClick}
@@ -213,6 +219,10 @@ Dropdown.propTypes = {
    * The function called when user selects Dropdown's option.
    */
   onChange: PropTypes.func,
+  /**
+   * If true, set the Dropdown to the disabled state.
+   */
+  disabled: PropTypes.bool,
 }
 
 Dropdown.defaultProps = {
@@ -226,6 +236,7 @@ Dropdown.defaultProps = {
   isOpen: false,
   searchable: false,
   onSearchTermChange: null,
+  disabled: false,
   ...DropdownList.defaultProps,
 }
 
