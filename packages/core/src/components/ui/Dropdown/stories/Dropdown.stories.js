@@ -57,3 +57,5 @@ export const customRenderer = showTemplateStory(Component, {
 })
 
 export const small = showTemplateStory(Component, { ...props, small: true })
+
+export const disabled = showTemplateStory(Component, { ...props, disabled: true })
