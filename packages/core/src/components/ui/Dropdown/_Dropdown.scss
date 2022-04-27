@@ -26,12 +26,6 @@ $ufx-dropdown-input-background-color: $light-gray6 !default;
   min-width: $ufx-base-size * 12;
   @include disabled(0.5);
 
-  // &.disabled {
-  //   .input-field {
-  //     cursor: not-allowed !important;
-  //   }
-  // }
-
   .ufx-input.dropdown-field {
     border-radius: $ufx-border-radius;
     border: 1px solid transparent;
