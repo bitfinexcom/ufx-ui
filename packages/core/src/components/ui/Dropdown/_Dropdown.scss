@@ -24,6 +24,7 @@ $ufx-dropdown-input-background-color: $light-gray6 !default;
   position: relative;
   height: $ufx-dropdown-height;
   min-width: $ufx-base-size * 12;
+  @include disabled();
 
   .ufx-input.dropdown-field {
     border-radius: $ufx-border-radius;
@@ -34,14 +35,14 @@ $ufx-dropdown-input-background-color: $light-gray6 !default;
       border-color: $ufx-dropdown-border-color;
     }
 
-    .input-field-container.disabled,
-    .input-field,
-    .input-field.disabled,
-    .input-field:disabled {
-      background: $ufx-dropdown-input-background-color;
-      cursor: default;
-      opacity: 1;
-      user-select: none;
+    &.non-searchable {
+      .input-field-container,
+      .input-field {
+        background: $ufx-dropdown-input-background-color;
+        cursor: default;
+        opacity: 1;
+        user-select: none;
+      }
     }
 
     .input-field-container {
@@ -76,8 +77,13 @@ $ufx-dropdown-input-background-color: $light-gray6 !default;
 
         &:hover,
         &:focus,
-        &:active {
+        &:active,
+        &:not(:disabled) {
           background-color: $ufx-dropdown-arrow-background-color;
+        }
+
+        &:disabled {
+          cursor: not-allowed;
         }
 
         &:focus-visible {
