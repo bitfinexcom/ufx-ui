@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.13.5 (2022-04-29)
+
+#### :rocket: Feature
+* `core`, `storybook`
+  * [#172](https://github.com/bitfinexcom/ufx-ui/pull/172) (feature) Dropdown: added disabled state ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
 ## v0.13.4 (2022-04-21)
 
 #### :rocket: Feature
