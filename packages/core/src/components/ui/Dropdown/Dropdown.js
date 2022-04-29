@@ -69,11 +69,14 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
   }
 
   const handleDropDownToggle = (_isOpen) => {
+    if (disabled) {
+      return
+    }
     setIsOpen(_isOpen)
+
     if (!searchable) {
       return
     }
-
     updateSearchTerm('')
   }
 
@@ -93,9 +96,6 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
   // toggle dropdown-menu, reset searchterm
   const onDropdownArrowClick = (e) => {
     e.stopPropagation()
-    if (disabled) {
-      return
-    }
     handleDropDownToggle(!isOpen)
   }
 
@@ -132,9 +132,6 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
   )
 
   const handleDropdownItemChange = (key) => {
-    if (disabled) {
-      return
-    }
     setIsOpen(false)
     onChange(key)
   }
