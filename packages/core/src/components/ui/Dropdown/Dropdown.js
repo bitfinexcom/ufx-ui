@@ -132,6 +132,9 @@ export const Dropdown = forwardRef(function Dropdown(props, ref) {
   )
 
   const handleDropdownItemChange = (key) => {
+    if (disabled) {
+      return
+    }
     setIsOpen(false)
     onChange(key)
   }
