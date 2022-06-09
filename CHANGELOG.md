@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## v0.13.6 (2022-06-09)
+
+#### :dizzy: Improvement
+* `core`, `storybook`
+  * [#174](https://github.com/bitfinexcom/ufx-ui/pull/174) (improvement) VirtualTable: add ref ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 ## v0.13.5 (2022-04-29)
 
 #### :rocket: Feature
