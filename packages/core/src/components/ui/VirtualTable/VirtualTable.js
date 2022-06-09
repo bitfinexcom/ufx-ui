@@ -3,7 +3,7 @@ import _get from 'lodash/get'
 import _isNumber from 'lodash/isNumber'
 import _size from 'lodash/size'
 import PropTypes from 'prop-types'
-import React, { useState, memo } from 'react'
+import React, { forwardRef, useState, memo } from 'react'
 import {
   AutoSizer,
   Table,
@@ -17,7 +17,7 @@ import {
   sortData,
 } from './VirtualTable.helpers'
 
-const VirtualTable = (props) => {
+const VirtualTable = forwardRef((props, ref) => {
   const {
     data,
     columns,
@@ -84,6 +84,7 @@ const VirtualTable = (props) => {
         <AutoSizer>
           {({ width, height }) => (
             <Table
+              ref={ref}
               height={height}
               width={
                 _isNumber(minTableWidth) && width < minTableWidth
@@ -122,7 +123,7 @@ const VirtualTable = (props) => {
       </div>
     </div>
   )
-}
+})
 
 VirtualTable.propTypes = {
   /**
