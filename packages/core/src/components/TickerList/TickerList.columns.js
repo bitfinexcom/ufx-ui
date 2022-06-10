@@ -3,6 +3,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import _get from 'lodash/get'
 import React from 'react'
+import { defaultTableHeaderRenderer } from 'react-virtualized'
 
 import { getColors } from '../../common/classes'
 import { getDefaultCellRenderer } from '../helper'
@@ -101,12 +102,16 @@ const getColumns = ({
       )
     },
   }, {
-    label: <Volume
-      showVolumeUnit={showVolumeUnit}
-      volumeUnit={volumeUnit}
-      setVolumeUnit={setVolumeUnit}
-      volumeUnitList={volumeUnitList}
-    />,
+    headerRenderer: () => (
+      <div className="ReactVirtualized__Table__headerTruncatedText">
+        <Volume
+          showVolumeUnit={showVolumeUnit}
+          volumeUnit={volumeUnit}
+          setVolumeUnit={setVolumeUnit}
+          volumeUnitList={volumeUnitList}
+        />
+      </div>
+    ),
     dataKey: KEYS.VOLUME,
     headerStyle: STYLES.volume,
     style: STYLES.volume,
