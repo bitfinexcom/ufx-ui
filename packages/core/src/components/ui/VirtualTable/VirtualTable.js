@@ -109,7 +109,7 @@ const VirtualTable = forwardRef((props, ref) => {
               headerClassName={headerClassName}
               noRowsRenderer={noRowsRenderer}
               rowRenderer={rowRenderer}
-              {...rest}
+              {...rest} // eslint-disable-line react/jsx-props-no-spreading
             >
               {columns.map((c = {}) => (
                 <Column
