@@ -102,7 +102,7 @@ const getColumns = ({
     },
   }, {
     headerRenderer: () => (
-      <div className="ReactVirtualized__Table__headerTruncatedText">
+      <div className='ReactVirtualized__Table__headerTruncatedText'>
         <Volume
           showVolumeUnit={showVolumeUnit}
           volumeUnit={volumeUnit}
