@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.13.7 (2022-06-10)
+
+#### :dizzy: Improvement
+* `core`
+  * [#176](https://github.com/bitfinexcom/ufx-ui/pull/176) (improvement) VirtualTable: support all props for react-virtualised table ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+
 
 ## v0.13.6 (2022-06-09)
 
