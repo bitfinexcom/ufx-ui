@@ -36,6 +36,7 @@ const VirtualTable = forwardRef((props, ref) => {
     minTableWidth,
     rowRenderer,
     onScrollToBottom,
+    ...rest
   } = props
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
@@ -108,6 +109,7 @@ const VirtualTable = forwardRef((props, ref) => {
               headerClassName={headerClassName}
               noRowsRenderer={noRowsRenderer}
               rowRenderer={rowRenderer}
+              {...rest}
             >
               {columns.map((c = {}) => (
                 <Column
