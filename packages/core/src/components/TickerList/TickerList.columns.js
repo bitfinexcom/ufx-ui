@@ -3,7 +3,6 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import _get from 'lodash/get'
 import React from 'react'
-import { defaultTableHeaderRenderer } from 'react-virtualized'
 
 import { getColors } from '../../common/classes'
 import { getDefaultCellRenderer } from '../helper'
