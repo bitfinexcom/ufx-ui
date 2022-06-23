@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.13.9 (2022-06-23)
+
+#### :bug: Bug Fix
+* `core`
+  * [#179](https://github.com/bitfinexcom/ufx-ui/pull/179) (fix) tickerlist: fix prop warn ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
+## v0.13.8 (2022-06-23)
+
+#### :bug: Bug Fix
+* `core`
+  * [#180](https://github.com/bitfinexcom/ufx-ui/pull/180) (fix) VirtualTable: accept func for rowHeight prop ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 ## v0.13.7 (2022-06-10)
 
 #### :dizzy: Improvement
