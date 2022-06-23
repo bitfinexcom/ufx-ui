@@ -1,6 +1,6 @@
 {
   "name": "@ufx-ui/storybook",
-  "version": "0.13.8",
+  "version": "0.13.9",
   "description": "stories for ufx-ui",
   "private": true,
   "homepage": "https://github.com/bitfinexcom/ufx-ui#readme",
@@ -42,6 +42,6 @@
     "react-redux": "^7.2.1"
   },
   "dependencies": {
-    "@ufx-ui/core": "^0.13.8"
+    "@ufx-ui/core": "^0.13.9"
   }
 }
