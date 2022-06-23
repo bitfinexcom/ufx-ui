@@ -101,12 +101,16 @@ const getColumns = ({
       )
     },
   }, {
-    label: <Volume
-      showVolumeUnit={showVolumeUnit}
-      volumeUnit={volumeUnit}
-      setVolumeUnit={setVolumeUnit}
-      volumeUnitList={volumeUnitList}
-    />,
+    headerRenderer: () => (
+      <div className='ReactVirtualized__Table__headerTruncatedText'>
+        <Volume
+          showVolumeUnit={showVolumeUnit}
+          volumeUnit={volumeUnit}
+          setVolumeUnit={setVolumeUnit}
+          volumeUnitList={volumeUnitList}
+        />
+      </div>
+    ),
     dataKey: KEYS.VOLUME,
     headerStyle: STYLES.volume,
     style: STYLES.volume,
