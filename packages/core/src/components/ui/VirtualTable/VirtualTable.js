@@ -174,7 +174,7 @@ VirtualTable.propTypes = {
   /**
    * The height of row, in px
    */
-  rowHeight: PropTypes.number,
+  rowHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.func]),
   /**
    * The height of header, in px
    */
