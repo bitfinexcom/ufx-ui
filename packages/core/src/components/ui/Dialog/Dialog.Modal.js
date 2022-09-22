@@ -29,6 +29,7 @@ const Modal = forwardRef(({
       focusTrapOptions={{
         fallbackFocus: document.getElementById(DIALOG_CONTAINER_ID),
         initialFocus: titleRef.current,
+        allowOutsideClick: true,
       }}
       active={isFocusTrapEnabled}
     >
