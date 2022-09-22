@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.
 * `core`
   * [#183](https://github.com/bitfinexcom/ufx-ui/pull/183) (fix) Resolve issue with FocusTrap blocks click ([@dmytroshch](https://github.com/dmytroshch))
 
-#### Committers: 2
+#### Committers: 1
 - Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
 
 
