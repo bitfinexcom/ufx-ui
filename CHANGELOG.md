@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.14.0 (2022-09-22)
+
+#### :bug: Bug Fix
+* `core`
+  * [#183](https://github.com/bitfinexcom/ufx-ui/pull/183) (fix) Resolve issue with FocusTrap blocks click ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 2
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 ## v0.13.9 (2022-06-23)
 
 #### :bug: Bug Fix
