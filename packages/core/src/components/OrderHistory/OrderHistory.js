@@ -59,7 +59,7 @@ export const OrderHistory = (props) => {
         columns={columns}
         data={orders}
         // give default key, dont give customised key
-        defaultSortBy={KEYS.PLACED}
+        defaultSortBy={KEYS.UPDATED}
         defaultSortDirection='DESC'
         rowHeight={isMobile ? 46 : 34}
         striped
