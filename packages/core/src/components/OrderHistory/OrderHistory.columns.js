@@ -151,14 +151,14 @@ const getColumns = (args = {}) => {
         }
 
         const formattedValue = getDisplayValue(rowData)(dataKey)
-        const placed = getDisplayValue(rowData)(KEYS.PLACED)
+        const updated = getDisplayValue(rowData)(KEYS.UPDATED)
 
         return (
           <div style={{ display: 'grid' }}>
             <Truncate><span>{formattedValue}</span></Truncate>
             <Truncate>
               <span className='mobile-order-placed'>
-                {placed}
+                {updated}
               </span>
             </Truncate>
           </div>
@@ -166,6 +166,15 @@ const getColumns = (args = {}) => {
       },
     },
     ...(isMobile ? [] : [
+      {
+        dataKey: KEYS.UPDATED,
+        label: t('updated'),
+        width: 90,
+        flexGrow: 1.1,
+        headerStyle: styles.UPDATED,
+        style: styles.UPDATED,
+        renderer: getDefaultCellRenderer(getDisplayValue),
+      },
       {
         dataKey: KEYS.PLACED,
         label: t('placed'),

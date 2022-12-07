@@ -181,7 +181,8 @@ const getColumns = (args = {}) => {
             minimal
             onClick={handleCancel}
             timeoutMs={CANCEL_TIMEOUT_MS}
-          ><FontAwesomeIcon icon={faTimes} />
+          >
+            <FontAwesomeIcon icon={faTimes} />
           </CooldownButton>
         )
 

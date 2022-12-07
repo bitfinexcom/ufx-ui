@@ -24,6 +24,7 @@ const {
   PRICE_AVERAGE,
   PLACED,
   STATUS,
+  UPDATED,
 } = KEYS
 
 export const basic = showTemplateStory(Component, props)
@@ -63,6 +64,9 @@ export const customRowMapping = showTemplateStory(Component, {
     },
     [PAIR]: {
       index: 6,
+    },
+    [UPDATED]: {
+      index: 7,
     },
   },
 })
