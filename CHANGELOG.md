@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 
 
+## v0.14.1 (2022-12-09)
+
+#### :rocket: Feature
+* `core`
+  * [#185](https://github.com/bitfinexcom/ufx-ui/pull/185) (feature) Updated field in OrderHistory ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 ## v0.14.0 (2022-09-22)
 
 #### :bug: Bug Fix
