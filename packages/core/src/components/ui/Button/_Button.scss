@@ -37,7 +37,7 @@ $button-padding-vertical: $ufx-base-size * 1.4 !default;
   &[disabled] {
     background-color: darken(desaturate($color, 10.82), 14.31);
     border-color: darken(desaturate($color, 10.82), 14.31);
-    color: mix($white, darken(desaturate($color, 10.82), 14.31), 60);
+    color: mix($white, darken(desaturate($color, 10.82), 14.31), 60%);
   }
 
   &--outline {
