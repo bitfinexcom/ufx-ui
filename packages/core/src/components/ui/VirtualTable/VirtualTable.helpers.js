@@ -1,7 +1,14 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import _forEach from 'lodash/forEach'
 import _get from 'lodash/get'
 import _isFunction from 'lodash/isFunction'
 import _values from 'lodash/values'
+import React from 'react'
+import Draggable from 'react-draggable'
+import { defaultTableHeaderRenderer } from 'react-virtualized'
+
+const COLUMN_MAX_WIDTH = 300
 
 export const getTransformers = (columns = []) => {
   const transformers = {}
@@ -68,11 +75,71 @@ export const getSortedData = (args = {}) => {
   })
 }
 
-export function sortData(args = {}, props = {}) {
+export const sortData = (args = {}, props = {}) => {
   const { getSortedData: getData, sortedDataPostProcessor } = props
   const sortedData = getData(args)
 
   sortedDataPostProcessor(sortedData)
 
   return sortedData
+}
+
+export const columnHeaderRenderer = (columnParams, setColumnsWidthState) => {
+  const { dataKey, minWidth = 30, width } = columnParams
+
+  const onStop = (e, { x }) => {
+    e.stopPropagation()
+    setColumnsWidthState(prevState => {
+      let nextValue = prevState[dataKey] + x
+
+      if (nextValue > Math.max(COLUMN_MAX_WIDTH, width)) {
+        nextValue = COLUMN_MAX_WIDTH
+      }
+
+      if (nextValue < minWidth) {
+        nextValue = minWidth
+      }
+      return {
+        ...prevState,
+        [dataKey]: nextValue,
+      }
+    })
+  }
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+      }}
+    >
+      <div>
+        {defaultTableHeaderRenderer(columnParams)}
+      </div>
+      <Draggable
+        axis='x'
+        defaultClassName='DragHandle'
+        defaultClassNameDragging='DragHandleActive'
+        onStop={onStop}
+        position={{
+          x: 0,
+          y: 0,
+        }}
+        zIndex={999}
+      >
+        <div
+          style={{
+            backgroundColor: 'yellow',
+            cursor: 'col-resize',
+            width: 3,
+          }}
+          onClick={(e) => {
+            console.log(e)
+            e.stopPropagation()
+          }}
+        />
+      </Draggable>
+    </div>
+  )
 }

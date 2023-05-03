@@ -1,9 +1,14 @@
 import cx from 'classnames'
+// import _debounce from 'lodash/debounce'
 import _get from 'lodash/get'
 import _isNumber from 'lodash/isNumber'
+import _map from 'lodash/map'
+import _reduce from 'lodash/reduce'
 import _size from 'lodash/size'
 import PropTypes from 'prop-types'
-import React, { forwardRef, useState, memo } from 'react'
+import React, {
+  useState, memo, useMemo, useCallback, forwardRef,
+} from 'react'
 import {
   AutoSizer,
   Table,
@@ -15,6 +20,7 @@ import * as Classes from '../../../common/classes'
 import {
   getSortedData as getSortedDataHelper,
   sortData,
+  columnHeaderRenderer as _columnHeaderRenderer,
 } from './VirtualTable.helpers'
 
 const VirtualTable = forwardRef((props, ref) => {
@@ -38,6 +44,24 @@ const VirtualTable = forwardRef((props, ref) => {
     onScrollToBottom,
     ...rest
   } = props
+
+  const initialColumnsWidthState = useMemo(
+    () => _reduce(
+      columns,
+      (acc, col) => {
+        const { width = 150, dataKey } = col
+
+        acc[dataKey] = Number(width)
+        return acc
+      },
+      {},
+    ),
+    [columns],
+  )
+
+  const [columnsWidthState, setColumnsWidthState] = useState(
+    initialColumnsWidthState,
+  )
   const [sortBy, setSortBy] = useState(defaultSortBy)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
 
@@ -74,10 +98,18 @@ const VirtualTable = forwardRef((props, ref) => {
     }
     const { clientHeight, scrollHeight, scrollTop } = message
     const SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD = 0
-    if ((clientHeight + scrollTop + SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD) >= scrollHeight) {
+    if (
+      clientHeight + scrollTop + SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD
+      >= scrollHeight
+    ) {
       onScrollToBottom()
     }
   }
+
+  const columnHeaderRenderer = useCallback(
+    (columnParams) => _columnHeaderRenderer(columnParams, setColumnsWidthState),
+    [setColumnsWidthState],
+  )
 
   return (
     <div className={classes}>
@@ -111,12 +143,14 @@ const VirtualTable = forwardRef((props, ref) => {
               rowRenderer={rowRenderer}
               {...rest} // eslint-disable-line react/jsx-props-no-spreading
             >
-              {columns.map((c = {}) => (
+              {_map(columns, (c) => (
                 <Column
                   key={c.dataKey}
                   dataKey={c.dataKey}
+                  headerRenderer={columnHeaderRenderer}
                   // eslint-disable-next-line react/jsx-props-no-spreading
                   {...c}
+                  width={columnsWidthState[c.dataKey]}
                 />
               ))}
             </Table>
@@ -146,7 +180,7 @@ VirtualTable.propTypes = {
        */
       dataKey: PropTypes.string,
       /**
-       * Width of colunm, in px
+       * Width of column, in px
        */
       width: PropTypes.number,
       /**
