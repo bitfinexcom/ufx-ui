@@ -74,4 +74,16 @@
       }
     }
   }
+
+  .column-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .DragHandle {
+    cursor: col-resize;
+    min-width: 5px;
+    border-right: 1px solid $gray3;
+  }
 }
