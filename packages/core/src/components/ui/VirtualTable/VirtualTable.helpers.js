@@ -91,7 +91,11 @@ export const sortData = (args = {}, props = {}) => {
   return sortedData
 }
 
-export const columnHeaderRenderer = (columnParams, setColumnsWidthState) => {
+export const columnHeaderRenderer = (
+  columnParams,
+  setColumnsWidthState,
+  updateTableState,
+) => {
   const {
     dataKey, minWidth = 30, width, label,
   } = columnParams
@@ -109,10 +113,14 @@ export const columnHeaderRenderer = (columnParams, setColumnsWidthState) => {
       if (nextValue < minWidth) {
         nextValue = minWidth
       }
-      return {
+
+      const newState = {
         ...prevState,
         [dataKey]: nextValue,
       }
+
+      updateTableState({ columnsWidthState: newState })
+      return newState
     })
   }
 

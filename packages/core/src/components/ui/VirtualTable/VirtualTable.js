@@ -1,5 +1,4 @@
 import cx from 'classnames'
-// import _debounce from 'lodash/debounce'
 import _get from 'lodash/get'
 import _isNumber from 'lodash/isNumber'
 import _map from 'lodash/map'
@@ -42,6 +41,8 @@ const VirtualTable = forwardRef((props, ref) => {
     minTableWidth,
     rowRenderer,
     onScrollToBottom,
+    tableState,
+    updateTableState,
     ...rest
   } = props
 
@@ -59,11 +60,19 @@ const VirtualTable = forwardRef((props, ref) => {
     [columns],
   )
 
+  const {
+    columnsWidthState: savedColumnsWidthState,
+    sortBy: savedSortBy,
+    sortDirection: savedSortDirection,
+  } = tableState
+
   const [columnsWidthState, setColumnsWidthState] = useState(
-    initialColumnsWidthState,
+    savedColumnsWidthState || initialColumnsWidthState,
   )
-  const [sortBy, setSortBy] = useState(defaultSortBy)
-  const [sortDirection, setSortDirection] = useState(defaultSortDirection)
+  const [sortBy, setSortBy] = useState(savedSortBy || defaultSortBy)
+  const [sortDirection, setSortDirection] = useState(
+    savedSortDirection || defaultSortDirection,
+  )
 
   const classes = cx(Classes.VIRTUAL_TABLE_CONTAINER, className)
 
@@ -90,6 +99,10 @@ const VirtualTable = forwardRef((props, ref) => {
 
     setSortBy(postSortBy)
     setSortDirection(postSortDirection)
+    updateTableState({
+      sortDirection: postSortDirection,
+      sortBy: postSortBy,
+    })
   }
 
   const onScrollInternal = (message) => {
@@ -107,8 +120,12 @@ const VirtualTable = forwardRef((props, ref) => {
   }
 
   const columnHeaderRenderer = useCallback(
-    (columnParams) => _columnHeaderRenderer(columnParams, setColumnsWidthState),
-    [setColumnsWidthState],
+    (columnParams) => _columnHeaderRenderer(
+      columnParams,
+      setColumnsWidthState,
+      updateTableState,
+    ),
+    [updateTableState],
   )
 
   return (
@@ -268,6 +285,16 @@ VirtualTable.propTypes = {
    * Callback to be invoked when more rows must be loaded
    */
   onScrollToBottom: PropTypes.func,
+  /**
+   * The object with external state of the table
+   */
+  tableState: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ),
+  /**
+   * Callback, which updates an external state of the table
+   */
+  updateTableState: PropTypes.func,
 }
 
 VirtualTable.defaultProps = {
@@ -288,6 +315,8 @@ VirtualTable.defaultProps = {
   rowRenderer: defaultTableRowRenderer,
   minTableWidth: null,
   onScrollToBottom: () => {},
+  tableState: {},
+  updateTableState: () => {},
 }
 
 export default memo(VirtualTable)
