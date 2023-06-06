@@ -288,9 +288,8 @@ VirtualTable.propTypes = {
   /**
    * The object with external state of the table
    */
-  tableState: PropTypes.objectOf(
-    PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  ),
+  // eslint-disable-next-line react/forbid-prop-types
+  tableState: PropTypes.object,
   /**
    * Callback, which updates an external state of the table
    */
