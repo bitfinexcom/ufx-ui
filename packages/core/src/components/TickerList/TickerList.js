@@ -41,6 +41,8 @@ export const TickerList = (props) => {
     showOnlyFavs,
     setShowOnlyFavs,
     className,
+    updateTableState,
+    tableState,
   } = props
 
   const containerRef = useRef()
@@ -129,6 +131,8 @@ export const TickerList = (props) => {
         striped
         noRowsRenderer={noRowsRenderer(t)}
         rowRenderer={rowRenderer}
+        tableState={tableState}
+        updateTableState={updateTableState}
       />
     </div>
   )
@@ -147,6 +151,15 @@ TickerList.propTypes = {
   setShowOnlyFavs: PropTypes.func.isRequired,
   showOnlyFavs: PropTypes.bool.isRequired,
   className: PropTypes.string,
+  /**
+   * The object with external state of the table
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  tableState: PropTypes.object,
+  /**
+   * Callback, which updates an external state of the table
+   */
+  updateTableState: PropTypes.func,
 }
 
 export const defaultProps = {
@@ -158,6 +171,8 @@ export const defaultProps = {
   setVolumeUnit: () => {},
   rowMapping: {},
   className: null,
+  tableState: {},
+  updateTableState: () => {},
 }
 
 TickerList.defaultProps = defaultProps
