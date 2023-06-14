@@ -1,9 +1,13 @@
 import cx from 'classnames'
 import _get from 'lodash/get'
 import _isNumber from 'lodash/isNumber'
+import _map from 'lodash/map'
+import _reduce from 'lodash/reduce'
 import _size from 'lodash/size'
 import PropTypes from 'prop-types'
-import React, { forwardRef, useState, memo } from 'react'
+import React, {
+  useState, memo, useMemo, useCallback, forwardRef,
+} from 'react'
 import {
   AutoSizer,
   Table,
@@ -15,6 +19,7 @@ import * as Classes from '../../../common/classes'
 import {
   getSortedData as getSortedDataHelper,
   sortData,
+  columnHeaderRenderer as _columnHeaderRenderer,
 } from './VirtualTable.helpers'
 
 const VirtualTable = forwardRef((props, ref) => {
@@ -36,10 +41,38 @@ const VirtualTable = forwardRef((props, ref) => {
     minTableWidth,
     rowRenderer,
     onScrollToBottom,
+    tableState,
+    updateTableState,
     ...rest
   } = props
-  const [sortBy, setSortBy] = useState(defaultSortBy)
-  const [sortDirection, setSortDirection] = useState(defaultSortDirection)
+
+  const initialColumnsWidthState = useMemo(
+    () => _reduce(
+      columns,
+      (acc, col) => {
+        const { width = 150, dataKey } = col
+
+        acc[dataKey] = Number(width)
+        return acc
+      },
+      {},
+    ),
+    [columns],
+  )
+
+  const {
+    columnsWidthState: savedColumnsWidthState,
+    sortBy: savedSortBy,
+    sortDirection: savedSortDirection,
+  } = tableState
+
+  const [columnsWidthState, setColumnsWidthState] = useState(
+    savedColumnsWidthState || initialColumnsWidthState,
+  )
+  const [sortBy, setSortBy] = useState(savedSortBy || defaultSortBy)
+  const [sortDirection, setSortDirection] = useState(
+    savedSortDirection || defaultSortDirection,
+  )
 
   const classes = cx(Classes.VIRTUAL_TABLE_CONTAINER, className)
 
@@ -66,6 +99,10 @@ const VirtualTable = forwardRef((props, ref) => {
 
     setSortBy(postSortBy)
     setSortDirection(postSortDirection)
+    updateTableState({
+      sortDirection: postSortDirection,
+      sortBy: postSortBy,
+    })
   }
 
   const onScrollInternal = (message) => {
@@ -74,10 +111,22 @@ const VirtualTable = forwardRef((props, ref) => {
     }
     const { clientHeight, scrollHeight, scrollTop } = message
     const SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD = 0
-    if ((clientHeight + scrollTop + SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD) >= scrollHeight) {
+    if (
+      clientHeight + scrollTop + SCROLL_TO_BOTTOM_TRIGGER_THRESHOLD
+      >= scrollHeight
+    ) {
       onScrollToBottom()
     }
   }
+
+  const columnHeaderRenderer = useCallback(
+    (columnParams) => _columnHeaderRenderer(
+      columnParams,
+      setColumnsWidthState,
+      updateTableState,
+    ),
+    [updateTableState],
+  )
 
   return (
     <div className={classes}>
@@ -111,12 +160,14 @@ const VirtualTable = forwardRef((props, ref) => {
               rowRenderer={rowRenderer}
               {...rest} // eslint-disable-line react/jsx-props-no-spreading
             >
-              {columns.map((c = {}) => (
+              {_map(columns, (c) => (
                 <Column
                   key={c.dataKey}
                   dataKey={c.dataKey}
+                  headerRenderer={columnHeaderRenderer}
                   // eslint-disable-next-line react/jsx-props-no-spreading
                   {...c}
+                  width={columnsWidthState[c.dataKey]}
                 />
               ))}
             </Table>
@@ -146,7 +197,7 @@ VirtualTable.propTypes = {
        */
       dataKey: PropTypes.string,
       /**
-       * Width of colunm, in px
+       * Width of column, in px
        */
       width: PropTypes.number,
       /**
@@ -234,6 +285,15 @@ VirtualTable.propTypes = {
    * Callback to be invoked when more rows must be loaded
    */
   onScrollToBottom: PropTypes.func,
+  /**
+   * The object with external state of the table
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  tableState: PropTypes.object,
+  /**
+   * Callback, which updates an external state of the table
+   */
+  updateTableState: PropTypes.func,
 }
 
 VirtualTable.defaultProps = {
@@ -254,6 +314,8 @@ VirtualTable.defaultProps = {
   rowRenderer: defaultTableRowRenderer,
   minTableWidth: null,
   onScrollToBottom: () => {},
+  tableState: {},
+  updateTableState: () => {},
 }
 
 export default memo(VirtualTable)

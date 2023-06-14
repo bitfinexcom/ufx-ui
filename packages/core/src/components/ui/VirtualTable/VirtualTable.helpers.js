@@ -1,7 +1,21 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import _forEach from 'lodash/forEach'
 import _get from 'lodash/get'
 import _isFunction from 'lodash/isFunction'
 import _values from 'lodash/values'
+import React from 'react'
+import Draggable from 'react-draggable'
+import { defaultTableHeaderRenderer } from 'react-virtualized'
+
+import Truncate from '../Truncate/Truncate'
+
+const COLUMN_MAX_WIDTH = 300
+
+const DRAGGABLE_POSITION = {
+  x: 0,
+  y: 0,
+}
 
 export const getTransformers = (columns = []) => {
   const transformers = {}
@@ -46,7 +60,7 @@ export const getSortedData = (args = {}) => {
 
   const transformers = getTransformers(columns)
   const sortKeys = getSortKeys(columns)
-  const transform = transformers[sortBy] || (v => v)
+  const transform = transformers[sortBy] || ((v) => v)
   const asc = sortDirection === 'ASC'
   const key = sortKeys[sortBy] || sortBy
 
@@ -68,11 +82,65 @@ export const getSortedData = (args = {}) => {
   })
 }
 
-export function sortData(args = {}, props = {}) {
+export const sortData = (args = {}, props = {}) => {
   const { getSortedData: getData, sortedDataPostProcessor } = props
   const sortedData = getData(args)
 
   sortedDataPostProcessor(sortedData)
 
   return sortedData
+}
+
+export const columnHeaderRenderer = (
+  columnParams,
+  setColumnsWidthState,
+  updateTableState,
+) => {
+  const {
+    dataKey, minWidth = 30, width, label,
+  } = columnParams
+  const isDraggable = !!label
+
+  const onStop = (e, { x }) => {
+    e.stopPropagation()
+    setColumnsWidthState((prevState) => {
+      let nextValue = prevState[dataKey] + x
+
+      if (nextValue > Math.max(COLUMN_MAX_WIDTH, width)) {
+        nextValue = COLUMN_MAX_WIDTH
+      }
+
+      if (nextValue < minWidth) {
+        nextValue = minWidth
+      }
+
+      const newState = {
+        ...prevState,
+        [dataKey]: nextValue,
+      }
+
+      updateTableState({ columnsWidthState: newState })
+      return newState
+    })
+  }
+
+  const onDragHandlerClick = (e) => e.stopPropagation()
+
+  return (
+    <div className='column-header'>
+      <Truncate>{defaultTableHeaderRenderer(columnParams)}</Truncate>
+      {isDraggable && (
+        <Draggable
+          axis='x'
+          defaultClassName='DragHandle'
+          defaultClassNameDragging='DragHandleActive'
+          onStop={onStop}
+          position={DRAGGABLE_POSITION}
+          zIndex={999}
+        >
+          <div onClick={onDragHandlerClick} />
+        </Draggable>
+      )}
+    </div>
+  )
 }

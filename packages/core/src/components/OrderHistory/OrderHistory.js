@@ -29,6 +29,8 @@ export const OrderHistory = (props) => {
     className,
     isMobileLayout: isMobile,
     loadMoreRows,
+    tableState,
+    updateTableState,
   } = props
   const { t } = useTranslation('orderhistory')
 
@@ -66,6 +68,8 @@ export const OrderHistory = (props) => {
         noRowsRenderer={noRowsRenderer(t)}
         minTableWidth={MIN_TABLE_WIDTH}
         onScrollToBottom={loadMoreRows}
+        tableState={tableState}
+        updateTableState={updateTableState}
       />
     </div>
   )
@@ -95,6 +99,15 @@ OrderHistory.propTypes = {
    */
   isMobileLayout: PropTypes.bool,
   loadMoreRows: PropTypes.func,
+  /**
+   * The object with external state of the table
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  tableState: PropTypes.object,
+  /**
+   * Callback, which updates an external state of the table
+   */
+  updateTableState: PropTypes.func,
 }
 
 export const defaultProps = {
@@ -104,6 +117,8 @@ export const defaultProps = {
   className: null,
   isMobileLayout: undefined,
   loadMoreRows: () => {},
+  tableState: {},
+  updateTableState: () => {},
 }
 
 OrderHistory.defaultProps = defaultProps
