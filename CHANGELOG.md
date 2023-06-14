@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.15.0 (2023-06-14)
+
+#### :rocket: Feature
+* `core`
+  * [#188](https://github.com/bitfinexcom/ufx-ui/pull/188) (improvement) Resizeble table ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
 
 ## v0.14.1 (2022-12-09)
 
