@@ -8,8 +8,6 @@ import React from 'react'
 import Draggable from 'react-draggable'
 import { defaultTableHeaderRenderer } from 'react-virtualized'
 
-import Truncate from '../Truncate/Truncate'
-
 const COLUMN_MAX_WIDTH = 300
 
 const DRAGGABLE_POSITION = {
@@ -128,7 +126,9 @@ export const columnHeaderRenderer = (
 
   return (
     <div className='column-header'>
-      <Truncate>{defaultTableHeaderRenderer(columnParams)}</Truncate>
+      <div className='column-header__text'>
+        {defaultTableHeaderRenderer(columnParams)}
+      </div>
       {isDraggable && (
         <Draggable
           axis='x'
