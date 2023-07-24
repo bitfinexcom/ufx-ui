@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+
+## v0.15.1 (2023-07-24)
+
+#### :dizzy: Improvement
+* `core`
+  * [#189](https://github.com/bitfinexcom/ufx-ui/pull/189) (fix) VirtualTable: Remove truncate as it has one & improved styles ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
+
 ## v0.15.0 (2023-06-14)
 
 #### :rocket: Feature
