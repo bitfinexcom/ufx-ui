@@ -32,7 +32,7 @@
     "@svgr/rollup": "^8.0.1",
     "@types/jest": "^27.0.2",
     "@ufx-ui/eslint-config": "^0.15.0",
-    "autoprefixer": "^9.8.4",
+    "autoprefixer": "^10.4.14",
     "babel-eslint": "^10.0.3",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.1.0",
