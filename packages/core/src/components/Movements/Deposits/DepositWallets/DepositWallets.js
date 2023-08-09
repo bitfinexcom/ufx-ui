@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { memo, Fragment } from 'react'
 
+import DepositRow from './DepositRow'
 import * as Classes from '../../../../common/classes'
 import withI18nProvider from '../../../../hoc/withI18nProvider'
 import withResponsive from '../../../../hoc/withResponsive'
-import DepositRow from './DepositRow'
 
 export const DepositWallets = ({
   currency,

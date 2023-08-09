@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { PLATFORM_SETTINGS } from '@ufx-ui/utils'
 import React from 'react'
 
-import { PrettyValue, Time } from '../format'
 import { KEYS } from './Trades.constants'
+import { PrettyValue, Time } from '../format'
 
 const { AMOUNT_SIG_FIGS, PRICE_SIG_FIGS } = PLATFORM_SETTINGS
 

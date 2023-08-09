@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import React, { useCallback, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import getColumns from './OrderHistory.columns'
+import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './OrderHistory.constants'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
@@ -12,8 +14,6 @@ import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { getVirtualTableColumns } from '../helper'
 import { VirtualTable, Spinner } from '../ui'
-import getColumns from './OrderHistory.columns'
-import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './OrderHistory.constants'
 
 const noRowsRenderer = (t) => () => (
   <div className='empty'>

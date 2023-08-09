@@ -6,8 +6,8 @@ import _max from 'lodash/max'
 import _size from 'lodash/size'
 import memoizeOne from 'memoize-one'
 
-import { SUCCESS_TEXT, ERROR_TEXT } from '../../common/classes'
 import { BOOK_VIZ_TYPES } from './Book.constants'
+import { SUCCESS_TEXT, ERROR_TEXT } from '../../common/classes'
 
 const getDecimal = (num) => {
   const asString = `${num}`

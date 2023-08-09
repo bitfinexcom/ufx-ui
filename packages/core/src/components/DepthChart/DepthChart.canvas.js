@@ -3,8 +3,8 @@ import { formatPrice, formatTotal, convertHexToRGBA } from '@ufx-ui/utils'
 import _last from 'lodash/last'
 import _sortBy from 'lodash/sortBy'
 
-import { BREAKPOINTS } from '../../common/classes'
 import { disableScroll, enableScroll, dpi } from './DepthChart.helpers'
+import { BREAKPOINTS } from '../../common/classes'
 
 export default class DepthChartCanvas {
   static ticksDisplayStyle = {

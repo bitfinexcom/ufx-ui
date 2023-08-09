@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import React, { useEffect, forwardRef } from 'react'
 import { Transition } from 'react-transition-group'
 
-import * as Classes from '../../../common/classes'
-import Portal from '../Portal'
 import { DIALOG_CONTAINER_ID } from './Dialog.constants'
 import Modal from './Dialog.Modal'
+import * as Classes from '../../../common/classes'
+import Portal from '../Portal'
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dialog = forwardRef(function Dialog(props, ref) {

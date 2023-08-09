@@ -8,13 +8,13 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { FAV_TAB, ACTION_TYPES, KEYS } from './MarketList.constants'
+import { getDefaultTab } from './MarketList.helpers'
 import * as Classes from '../../common/classes'
 import {
   Tabs, Input, Button, Dropdown,
 } from '../ui'
 import { TAB_PROP_TYPE } from '../ui/Tabs/Tab'
-import { FAV_TAB, ACTION_TYPES, KEYS } from './MarketList.constants'
-import { getDefaultTab } from './MarketList.helpers'
 
 const MarketListToolbar = (props) => {
   const {

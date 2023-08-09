@@ -3,10 +3,10 @@ import _map from 'lodash/map'
 import PropTypes from 'prop-types'
 import React, { memo, forwardRef } from 'react'
 
-import * as Classes from '../../../common/classes'
 import { groupNotifications } from './Notifications.helpers'
 import NotificationMessage from './Notifications.Message'
 import { PROP_NOTIFICATION } from './Notifications.props'
+import * as Classes from '../../../common/classes'
 
 // eslint-disable-next-line prefer-arrow-callback
 export const Notifications = forwardRef(function Notifications(props, ref) {

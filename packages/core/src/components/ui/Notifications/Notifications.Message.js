@@ -4,9 +4,9 @@ import _map from 'lodash/map'
 import _size from 'lodash/size'
 import React, { useState, memo } from 'react'
 
-import * as Classes from '../../../common/classes'
 import { getIcon } from './Notifications.helpers'
 import { PROP_NOTIFICATION } from './Notifications.props'
+import * as Classes from '../../../common/classes'
 
 const NotificationMessage = (props) => {
   const {

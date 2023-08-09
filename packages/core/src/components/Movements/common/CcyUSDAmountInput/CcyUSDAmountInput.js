@@ -5,9 +5,9 @@ import React, {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import withI18nProvider from '../../../../hoc/withI18nProvider'
 import AmountInput from './AmountInput'
 import HelpMessage from './HelpMessage'
+import withI18nProvider from '../../../../hoc/withI18nProvider'
 
 const FIAT_CCY = 'USD'
 

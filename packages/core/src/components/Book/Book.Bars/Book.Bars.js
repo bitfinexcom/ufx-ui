@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
+import Bar from './Book.Bar'
 import { BOOK_VIZ_TYPES } from '../Book.constants'
 import { calculateBarData } from '../Book.helpers'
 import { PROP_BOOK_TRADE } from '../Book.props'
 import { bar as style } from '../Book.styles'
-import Bar from './Book.Bar'
 
 const BookBars = (props) => {
   const {

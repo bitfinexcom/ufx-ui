@@ -8,13 +8,6 @@ import PropTypes from 'prop-types'
 import React, { useMemo, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import * as Classes from '../../common/classes'
-import { DATA_MAPPING } from '../../common/props'
-import withI18nProvider from '../../hoc/withI18nProvider'
-import withMobileLayout from '../../hoc/withMobileLayout'
-import withResponsive from '../../hoc/withResponsive'
-import { getVirtualTableColumns } from '../helper'
-import Spinner from '../ui/Spinner'
 import getColumns from './Book.columns'
 import {
   BOOK_VIZ_TYPES, DISPLAYED_ROWS, DEFAULT_ZOOM,
@@ -23,6 +16,13 @@ import { getBookAmountMax, getBooktMax, getDecimals } from './Book.helpers'
 import { PROP_BOOK_TRADE, PROP_BOOK, PROP_ORDER } from './Book.props'
 import BookSide from './Book.Side'
 import Spread from './Book.Spread'
+import * as Classes from '../../common/classes'
+import { DATA_MAPPING } from '../../common/props'
+import withI18nProvider from '../../hoc/withI18nProvider'
+import withMobileLayout from '../../hoc/withMobileLayout'
+import withResponsive from '../../hoc/withResponsive'
+import { getVirtualTableColumns } from '../helper'
+import Spinner from '../ui/Spinner'
 
 export const Book = (props) => {
   const {

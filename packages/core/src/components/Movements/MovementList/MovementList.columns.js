@@ -1,10 +1,10 @@
 import { getDecimalsForSymbol } from '@ufx-ui/utils'
 import React from 'react'
 
+import { KEYS } from './MovementList.constants'
 import * as Classes from '../../../common/classes'
 import { i18n } from '../../../i18n'
 import { PrettyDate, FullDate, PrettyValue } from '../../format'
-import { KEYS } from './MovementList.constants'
 
 const COLUMNS = [{
   key: KEYS.ID,
