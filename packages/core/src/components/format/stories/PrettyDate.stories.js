@@ -4,7 +4,7 @@ import React from 'react'
 import { showTemplateStory, getDefaultMetadata } from '../../../../../storybook/.storybook/helper'
 import PrettyDate from '../PrettyDate'
 
-export default getDefaultMetadata(PrettyDate, 'Components/format/PrettyDate')
+export default { ...getDefaultMetadata(PrettyDate), title: 'Components/format/PrettyDate' }
 
 const props = {
   mts: 1571670340000, // Monday, October 21, 2019 8:35:40 PM GMT+05:30

@@ -8,7 +8,7 @@ import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybo
 import Notice from '../Notice'
 import { NOTICE_TYPES } from '../Notice.constants'
 
-export default getDefaultMetadata(Notice, 'Components/ui/Notice', {}, true)
+export default { ...getDefaultMetadata(Notice, {}, true), title: 'Components/ui/Notice' }
 
 const props = {
   children: 'Notice content',

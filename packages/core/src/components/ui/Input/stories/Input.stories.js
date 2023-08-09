@@ -10,7 +10,7 @@ import './_Input.scss'
 
 const { TEXT_ALIGNMENT } = Props
 
-export default getDefaultMetadata(Input, 'Components/ui/Input', {}, true)
+export default { ...getDefaultMetadata(Input, {}, true), title: 'Components/ui/Input' }
 
 const props = {
   type: 'number',

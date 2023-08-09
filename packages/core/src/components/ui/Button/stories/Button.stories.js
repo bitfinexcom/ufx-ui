@@ -7,7 +7,7 @@ import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybo
 import Intent, { INTENT_TYPES_ARR } from '../../../../common/intent'
 import { Button } from '../Button'
 
-export default getDefaultMetadata(Button, 'Components/ui/Button', {}, true)
+export default { ...getDefaultMetadata(Button, {}, true), title: 'Components/ui/Button' }
 
 export const basic = showTemplateStory(Button, {})
 basic.argTypes = {

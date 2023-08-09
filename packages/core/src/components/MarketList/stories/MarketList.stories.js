@@ -3,11 +3,11 @@
 /* eslint-disable import/no-unresolved */
 import { action } from '@storybook/addon-actions'
 
+import { data, tabs } from './MarketList.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { MarketList, defaultProps } from '../MarketList'
-import { data, tabs } from './MarketList.stories_data'
 
-export default getDefaultMetadata(MarketList, 'Components/MarketList')
+export default { ...getDefaultMetadata(MarketList), title: 'Components/MarketList' }
 
 const props = {
   ...defaultProps,

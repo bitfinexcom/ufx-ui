@@ -4,7 +4,7 @@ import React from 'react'
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
 import Checkbox from '../Checkbox'
 
-export default getDefaultMetadata(Checkbox, 'Components/ui/Checkbox', {}, true)
+export default { ...getDefaultMetadata(Checkbox, {}, true), title: 'Components/ui/Checkbox' }
 
 const props = {
   label: 'Auto Save',

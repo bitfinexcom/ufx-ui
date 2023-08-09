@@ -1,7 +1,7 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../storybook/.storybook/helper'
 import OrderType from '../OrderType'
 
-export default getDefaultMetadata(OrderType, 'Components/format/OrderType')
+export default { ...getDefaultMetadata(OrderType), title: 'Components/format/OrderType' }
 
 const props = {
   children: 'EXCHANGE_LIMIT',

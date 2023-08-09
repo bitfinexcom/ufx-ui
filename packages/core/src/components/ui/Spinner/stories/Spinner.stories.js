@@ -3,7 +3,7 @@ import React from 'react'
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
 import { Spinner } from '../Spinner'
 
-export default getDefaultMetadata(Spinner, 'Components/ui/Spinner')
+export default { ...getDefaultMetadata(Spinner), title: 'Components/ui/Spinner' }
 
 export const basic = showTemplateStory(Spinner)
 

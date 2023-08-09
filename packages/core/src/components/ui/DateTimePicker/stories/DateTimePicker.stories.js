@@ -1,7 +1,7 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
 import { DateTimePicker } from '../DateTimePicker'
 
-export default getDefaultMetadata(DateTimePicker, 'Components/ui/DateTimePicker', {}, true)
+export default { ...getDefaultMetadata(DateTimePicker, {}, true), title: 'Components/ui/DateTimePicker' }
 
 const props = {
   value: new Date('Wed, 05 Jan 2022 11:19:51 GMT'),

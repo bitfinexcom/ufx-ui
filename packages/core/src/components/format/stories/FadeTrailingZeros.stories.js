@@ -3,7 +3,7 @@ import React from 'react'
 import { showTemplateStory, getDefaultMetadata } from '../../../../../storybook/.storybook/helper'
 import FadeTrailingZeros from '../FadeTrailingZeros'
 
-export default getDefaultMetadata(FadeTrailingZeros, 'Components/format/FadeTrailingZeros')
+export default { ...getDefaultMetadata(FadeTrailingZeros), title: 'Components/format/FadeTrailingZeros' }
 
 const props = {
   value: '10.1000',

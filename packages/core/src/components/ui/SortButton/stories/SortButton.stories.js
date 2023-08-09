@@ -7,12 +7,7 @@ import {
 import { Button } from '../../Button/Button'
 import { SortableButton } from '../SortButton'
 
-export default getDefaultMetadata(
-  SortableButton,
-  'Components/ui/SortableButton',
-  {},
-  true,
-)
+export default { ...getDefaultMetadata(SortableButton, {}, true), title: 'Components/ui/SortableButton' }
 
 const props = {
   sortAscending: true,

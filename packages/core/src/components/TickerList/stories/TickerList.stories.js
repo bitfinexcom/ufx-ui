@@ -4,11 +4,11 @@
 import { action } from '@storybook/addon-actions'
 import React, { useState } from 'react'
 
+import data from './TickerList.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { TickerList, defaultProps } from '../TickerList'
-import data from './TickerList.stories_data'
 
-export default getDefaultMetadata(TickerList, 'Components/TickerList')
+export default { ...getDefaultMetadata(TickerList), title: 'Components/TickerList' }
 
 const props = {
   ...defaultProps,

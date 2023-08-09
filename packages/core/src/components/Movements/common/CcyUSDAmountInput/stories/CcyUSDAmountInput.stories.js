@@ -1,7 +1,7 @@
 import { getDefaultMetadata, showTemplateStory } from '../../../../../../../storybook/.storybook/helper'
 import Component, { CcyUSDAmountInput, defaultProps } from '../CcyUSDAmountInput'
 
-export default getDefaultMetadata(CcyUSDAmountInput, 'Components/Movements/CcyUSDAmountInput')
+export default { ...getDefaultMetadata(CcyUSDAmountInput), title: 'Components/Movements/CcyUSDAmountInput' }
 
 const props = {
   ...defaultProps,

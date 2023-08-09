@@ -7,7 +7,7 @@ import {
 } from '../../../../../../storybook/.storybook/helper'
 import { Dropdown } from '../Dropdown'
 
-export default getDefaultMetadata(Dropdown, 'Components/ui/Dropdown', {}, true)
+export default { ...getDefaultMetadata(Dropdown, {}, true), title: 'Components/ui/Dropdown' }
 
 const props = {
   options: {

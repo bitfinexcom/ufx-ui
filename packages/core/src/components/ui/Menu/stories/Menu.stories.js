@@ -5,7 +5,7 @@ import { Menu } from '../Menu'
 import MenuDivider from '../MenuDivider'
 import MenuItem from '../MenuItem'
 
-export default getDefaultMetadata(Menu, 'Components/ui/Menu', {}, true)
+export default { ...getDefaultMetadata(Menu, {}, true), title: 'Components/ui/Menu' }
 
 const Component = () => (
   <Menu>

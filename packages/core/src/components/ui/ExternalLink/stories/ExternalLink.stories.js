@@ -1,7 +1,7 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
 import { ExternalLink } from '../ExternalLink'
 
-export default getDefaultMetadata(ExternalLink, 'Components/ui/ExternalLink', {}, true)
+export default { ...getDefaultMetadata(ExternalLink, {}, true), title: 'Components/ui/ExternalLink' }
 
 const props = {
   link: 'https://www.bitfinex.com',

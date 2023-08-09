@@ -1,6 +1,6 @@
+import { market, user } from './Trades.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { Trades, defaultProps } from '../Trades'
-import { market, user } from './Trades.stories_data'
 
 const props = {
   ...defaultProps,
@@ -11,7 +11,7 @@ const props = {
   user,
 }
 
-export default getDefaultMetadata(Trades, 'Components/Trades')
+export default { ...getDefaultMetadata(Trades), title: 'Components/Trades' }
 
 export const basic = showTemplateStory(Component, props)
 

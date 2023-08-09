@@ -7,12 +7,7 @@ import {
 import Intent, { INTENT_TYPES_ARR } from '../../../../common/intent'
 import { Notifications } from '../Notifications'
 
-export default getDefaultMetadata(
-  Notifications,
-  'Components/ui/Notifications',
-  {},
-  true,
-)
+export default { ...getDefaultMetadata(Notifications, {}, true), title: 'Components/ui/Notifications' }
 
 const groupedMessages = {
   cid: '8',

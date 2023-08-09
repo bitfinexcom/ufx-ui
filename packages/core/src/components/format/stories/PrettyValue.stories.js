@@ -3,7 +3,7 @@ import React from 'react'
 import { showTemplateStory, getDefaultMetadata } from '../../../../../storybook/.storybook/helper'
 import PrettyValue from '../PrettyValue'
 
-export default getDefaultMetadata(PrettyValue, 'Components/format/PrettyValue')
+export default { ...getDefaultMetadata(PrettyValue), title: 'Components/format/PrettyValue' }
 
 export const basic = showTemplateStory(PrettyValue)
 

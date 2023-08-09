@@ -6,7 +6,7 @@ import {
 } from '../../../../../../storybook/.storybook/helper'
 import Flex from '../Flex'
 
-export default getDefaultMetadata(Flex, 'Components/ui/Flex', {}, true)
+export default { ...getDefaultMetadata(Flex, {}, true), title: 'Components/ui/Flex' }
 
 const props = {
   children: (

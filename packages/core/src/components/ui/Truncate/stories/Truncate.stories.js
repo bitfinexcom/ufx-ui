@@ -4,7 +4,7 @@ import {
 } from '../../../../../../storybook/.storybook/helper'
 import Truncate from '../Truncate'
 
-export default getDefaultMetadata(Truncate, 'Components/ui/Truncate', {}, true)
+export default { ...getDefaultMetadata(Truncate, {}, true), title: 'Components/ui/Truncate' }
 
 export const basic = showTemplateStory(Truncate, {
   children:

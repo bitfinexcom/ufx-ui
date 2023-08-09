@@ -32,7 +32,7 @@ const Component = () => {
   )
 }
 
-export default getDefaultMetadata(Dialog, 'Components/ui/Dialog', {}, true)
+export default { ...getDefaultMetadata(Dialog, {}, true), title: 'Components/ui/Dialog' }
 
 export const basic = showTemplateStory(Component, {})
 

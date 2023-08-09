@@ -9,7 +9,7 @@ import Heading, { HEADING_TAGS } from '../Heading'
 
 const { TEXT_ALIGNMENT } = Props
 
-export default getDefaultMetadata(Heading, 'Components/ui/Heading', {}, true)
+export default { ...getDefaultMetadata(Heading, {}, true), title: 'Components/ui/Heading' }
 
 const props = {
   children: 'Heading',

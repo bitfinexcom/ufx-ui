@@ -4,7 +4,7 @@ import React from 'react'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../../storybook/.storybook/helper'
 import Tooltip from '../Tooltip'
 
-export default getDefaultMetadata(Tooltip, 'Components/ui/Tooltip', {}, true)
+export default { ...getDefaultMetadata(Tooltip, {}, true), title: 'Components/ui/Tooltip' }
 
 const props = {
   content: 'Lorem, ipsum dolor sit amet consectetur!',

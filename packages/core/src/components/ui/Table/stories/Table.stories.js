@@ -3,7 +3,7 @@ import React from 'react'
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
 import Table from '../Table'
 
-export default getDefaultMetadata(Table, 'Components/ui/Table', {}, true)
+export default { ...getDefaultMetadata(Table, {}, true), title: 'Components/ui/Table' }
 
 const props = {
   children: (

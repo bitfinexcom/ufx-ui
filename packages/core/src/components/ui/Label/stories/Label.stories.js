@@ -1,7 +1,7 @@
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
 import Label from '../Label'
 
-export default getDefaultMetadata(Label, 'Components/ui/Label', {}, true)
+export default { ...getDefaultMetadata(Label, {}, true), title: 'Components/ui/Label' }
 
 const props = {
   label: 'Label',

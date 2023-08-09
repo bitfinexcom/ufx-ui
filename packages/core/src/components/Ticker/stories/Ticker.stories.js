@@ -2,11 +2,11 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
+import { ticker } from './Ticker.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { Ticker, defaultProps } from '../Ticker'
-import { ticker } from './Ticker.stories_data'
 
-export default getDefaultMetadata(Ticker, 'Components/Ticker')
+export default { ...getDefaultMetadata(Ticker), title: 'Components/Ticker' }
 
 const props = {
   ...defaultProps,

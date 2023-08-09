@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { OrderForm, defaultProps } from '../OrderForm'
 
-export default getDefaultMetadata(OrderForm, 'Components/OrderForm')
+export default { ...getDefaultMetadata(OrderForm), title: 'Components/OrderForm' }
 
 const props = {
   ...defaultProps,

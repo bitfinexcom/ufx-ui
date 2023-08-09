@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { QuickSwap, defaultProps } from '../QuickSwap'
 
-export default getDefaultMetadata(QuickSwap, 'Components/QuickSwap')
+export default { ...getDefaultMetadata(QuickSwap), title: 'Components/QuickSwap' }
 
 const props = {
   ...defaultProps,

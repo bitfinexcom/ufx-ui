@@ -23,7 +23,7 @@ export const hideControlsAddon = () => ({
   controls: { disabled: true },
 })
 
-export const getDefaultMetadata = (Component, title, customParameters = {}, addContentDecorator = false) => {
+export const getDefaultMetadata = (Component, customParameters = {}, addContentDecorator = false) => {
 
   let params = {}
   if (addContentDecorator) {
@@ -34,7 +34,6 @@ export const getDefaultMetadata = (Component, title, customParameters = {}, addC
 
   return {
     component: Component,
-    title: title,
     parameters: {
       ...hideControlsAddon(),
       ...customParameters,

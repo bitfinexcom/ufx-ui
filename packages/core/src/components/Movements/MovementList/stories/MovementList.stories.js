@@ -1,8 +1,8 @@
+import { movements, rowMapping } from './MovementList.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../../storybook/.storybook/helper'
 import Component, { MovementList, defaultProps } from '../MovementList'
-import { movements, rowMapping } from './MovementList.stories_data'
 
-export default getDefaultMetadata(MovementList, 'Components/Movements/MovementList')
+export default { ...getDefaultMetadata(MovementList), title: 'Components/Movements/MovementList' }
 
 const props = {
   ...defaultProps,

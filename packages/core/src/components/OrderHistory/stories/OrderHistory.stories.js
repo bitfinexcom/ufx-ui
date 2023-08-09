@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
+import data from './OrderHistory.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { OrderHistory, defaultProps } from '../OrderHistory'
 import { KEYS } from '../OrderHistory.constants'
-import data from './OrderHistory.stories_data'
 
-export default getDefaultMetadata(OrderHistory, 'Components/OrderHistory')
+export default { ...getDefaultMetadata(OrderHistory), title: 'Components/OrderHistory' }
 
 const props = {
   ...defaultProps,

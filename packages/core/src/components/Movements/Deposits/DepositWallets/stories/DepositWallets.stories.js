@@ -6,7 +6,7 @@ const wallets = [
   { name: 'trading' },
 ]
 
-export default getDefaultMetadata(DepositWallets, 'Components/Movements/DepositWallets')
+export default { ...getDefaultMetadata(DepositWallets), title: 'Components/Movements/DepositWallets' }
 
 const props = {
   ...defaultProps,
