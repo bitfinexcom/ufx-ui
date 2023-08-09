@@ -1,7 +1,7 @@
 const peerDependencies = {
-  react: '16.13.1',
-  'react-dom': '16.13.1',
-  'react-redux': "^7.'error'.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.1"
 }
 
 module.exports = {
@@ -60,7 +60,7 @@ module.exports = {
       },
     },
     react: {
-      version: '16.13.1',
+      version: '17.0.2',
     },
   },
   env: {
