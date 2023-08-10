@@ -3,8 +3,8 @@ import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { DATA_MAPPING } from '../../../common/props'
 import COLUMNS from './MovementList.columns'
+import { DATA_MAPPING } from '../../../common/props'
 
 const MovementListRow = (props) => {
   const { data, rowMapping: customMapping } = props

@@ -1,6 +1,6 @@
+import authTradesReducer, { INITIAL_STATE } from './authTrades.reducer'
 import types from '../constants/authTrades.constants'
 import wsTypes from '../constants/ws.constants'
-import authTradesReducer, { INITIAL_STATE } from './authTrades.reducer'
 
 describe('REDUCER: authTrades', () => {
   describe('action: FETCH_AUTH_TRADES_HISTORY_SUCCESS', () => {

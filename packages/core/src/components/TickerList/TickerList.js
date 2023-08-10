@@ -11,15 +11,15 @@ import React, {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import getColumns from './TickerList.columns'
+import { MAPPING, KEYS } from './TickerList.constants'
+import { rowRenderer } from './TickerList.helpers'
+import TickerListToolbar from './TickerList.Toolbar'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import { getVirtualTableColumns } from '../helper'
 import { VirtualTable } from '../ui'
-import getColumns from './TickerList.columns'
-import { MAPPING, KEYS } from './TickerList.constants'
-import { rowRenderer } from './TickerList.helpers'
-import TickerListToolbar from './TickerList.Toolbar'
 
 const noRowsRenderer = (t) => () => (
   <div className='empty-tickerlist'>

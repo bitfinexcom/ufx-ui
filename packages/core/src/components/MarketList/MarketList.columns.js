@@ -4,10 +4,10 @@ import { faStar, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
+import { KEYS } from './MarketList.constants'
 import * as Classes from '../../common/classes'
 import { getDefaultCellRenderer } from '../helper'
 import { Button, Truncate } from '../ui'
-import { KEYS } from './MarketList.constants'
 
 // dataKey: column key
 // label: column header

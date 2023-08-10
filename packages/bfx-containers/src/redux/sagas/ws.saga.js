@@ -7,6 +7,7 @@ import {
   put, select, takeEvery, delay, fork, call, all,
 } from 'redux-saga/effects'
 
+import { wss, isHB } from './ws.saga.helpers'
 import { notify } from '../actions/notifications.actions'
 import {
   WSSend,
@@ -22,7 +23,6 @@ import {
   findAllMatchingChannels,
   findMatchingChannelWithSymbol,
 } from '../selectors/ws.selectors'
-import { wss, isHB } from './ws.saga.helpers'
 
 const PING_INTERVAL = 30000
 

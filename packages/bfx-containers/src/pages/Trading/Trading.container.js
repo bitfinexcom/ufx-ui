@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { useEffect, useCallback, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Trading from './Trading'
 import tradingLayout from '../../containers/Grid/layouts/trading'
 import tradingNoAuthLayout from '../../containers/Grid/layouts/tradingNoAuth'
 import Notifications from '../../containers/Notifications'
@@ -13,7 +14,6 @@ import { set } from '../../redux/actions/UI.actions'
 import { getLayoutIsEditable } from '../../redux/selectors/layouts.selectors'
 import { getUIIsPaperTrading } from '../../redux/selectors/UI.selectors'
 import { getWSIsAuthenticated } from '../../redux/selectors/ws.selectors'
-import Trading from './Trading'
 
 const TradingContainer = (props) => {
   const { match, history } = props

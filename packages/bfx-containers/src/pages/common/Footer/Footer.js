@@ -5,9 +5,9 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import withI18nProvider from '../../../hoc/withI18nProvider'
 import ColumnsRenderer from './ColumnsRenderer'
 import { PROP_CONTENT } from './Footer.constants'
+import withI18nProvider from '../../../hoc/withI18nProvider'
 
 const Footer = (props) => {
   const {

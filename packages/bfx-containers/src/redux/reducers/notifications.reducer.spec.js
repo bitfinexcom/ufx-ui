@@ -1,5 +1,5 @@
-import types from '../constants/notifications.constants'
 import notificationsReducer from './notifications.reducer'
+import types from '../constants/notifications.constants'
 
 describe('REDUCER: notifications', () => {
   describe('action: NOTIFY', () => {

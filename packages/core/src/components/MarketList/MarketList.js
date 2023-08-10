@@ -7,6 +7,10 @@ import React, {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { getColumns } from './MarketList.columns'
+import { KEYS, MAPPING } from './MarketList.constants'
+import { reducer, getInitState, filterData as filterDataHelper } from './MarketList.helpers'
+import Toolbar from './MarketList.Toolbar'
 import { BREAKPOINTS } from '../../common/classes'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
@@ -16,10 +20,6 @@ import withResponsive from '../../hoc/withResponsive'
 import { getVirtualTableColumns } from '../helper'
 import { VirtualTable } from '../ui'
 import { TAB_PROP_TYPE } from '../ui/Tabs/Tab'
-import { getColumns } from './MarketList.columns'
-import { KEYS, MAPPING } from './MarketList.constants'
-import { reducer, getInitState, filterData as filterDataHelper } from './MarketList.helpers'
-import Toolbar from './MarketList.Toolbar'
 
 const ROW_HEIGHT = 42
 

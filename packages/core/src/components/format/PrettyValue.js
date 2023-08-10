@@ -4,8 +4,8 @@ import _isFinite from 'lodash/isFinite'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { getColors } from '../../common/classes'
 import FadeTrailingZeros from './FadeTrailingZeros'
+import { getColors } from '../../common/classes'
 
 /**
  * this component will merge all the number formatting functions

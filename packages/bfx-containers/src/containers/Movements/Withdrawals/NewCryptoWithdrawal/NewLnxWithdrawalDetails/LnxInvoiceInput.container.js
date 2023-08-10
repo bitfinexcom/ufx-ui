@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
+import LnxInvoiceInput from './LnxInvoiceInput'
 import {
   getUIWithdrawalsMaxLnx,
   getUIWithdrawalsMinLnx,
 } from '../../../../../redux/selectors/UI.selectors'
-import LnxInvoiceInput from './LnxInvoiceInput'
 
 const LnxInvoiceInputDetails = (props) => {
   const minLnx = Number(useSelector(getUIWithdrawalsMinLnx))

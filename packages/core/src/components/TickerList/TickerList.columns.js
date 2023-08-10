@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import _get from 'lodash/get'
 import React from 'react'
 
+import { KEYS, STYLES } from './TickerList.constants'
+import { Favorite, Volume } from './TickerList.Header'
 import { getColors } from '../../common/classes'
 import { getDefaultCellRenderer } from '../helper'
 import { Button, Truncate } from '../ui'
-import { KEYS, STYLES } from './TickerList.constants'
-import { Favorite, Volume } from './TickerList.Header'
 
 // label: column header
 // dataKey: represents data in table cell

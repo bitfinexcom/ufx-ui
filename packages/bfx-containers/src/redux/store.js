@@ -10,7 +10,6 @@ import { batchedSubscribe } from 'redux-batched-subscribe'
 import { createInjectorsEnhancer } from 'redux-injectors'
 import createSagaMiddleware from 'redux-saga'
 
-import { setupHttpErrorHandlers } from '../functions/api'
 import { REDUX_STATE_PREFIX } from './constants/common'
 import wsMiddleware from './middleware/ws.middleware'
 import authTrades from './reducers/authTrades.reducer'
@@ -29,6 +28,7 @@ import trades from './reducers/trades.reducer'
 import UI from './reducers/UI.reducer'
 import ws from './reducers/ws.reducer'
 import rootSaga from './sagas'
+import { setupHttpErrorHandlers } from '../functions/api'
 
 export const history = createBrowserHistory()
 

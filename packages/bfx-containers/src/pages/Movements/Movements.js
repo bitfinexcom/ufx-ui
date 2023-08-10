@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { MovementListContainer } from '../../containers'
 import Balances from './Balances'
+import { MovementListContainer } from '../../containers'
 
 const Movements = (props) => {
   const { history } = props

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { getSlippagePerc } from './OrderForm.helpers'
 import * as Classes from '../../common/classes'
 import { Tooltip } from '../ui'
-import { getSlippagePerc } from './OrderForm.helpers'
 
 const OrderFormSlippage = (props) => {
   const {

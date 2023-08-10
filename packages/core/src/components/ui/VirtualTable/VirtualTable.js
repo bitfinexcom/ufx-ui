@@ -16,12 +16,12 @@ import {
   defaultTableHeaderRenderer,
 } from 'react-virtualized'
 
-import * as Classes from '../../../common/classes'
 import {
   getSortedData as getSortedDataHelper,
   sortData,
   columnHeaderRenderer as _columnHeaderRenderer,
 } from './VirtualTable.helpers'
+import * as Classes from '../../../common/classes'
 
 const VirtualTable = forwardRef((props, ref) => {
   const {

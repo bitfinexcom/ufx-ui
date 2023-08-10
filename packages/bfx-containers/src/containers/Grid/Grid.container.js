@@ -4,13 +4,13 @@ import React, { useCallback, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Grid from './Grid'
+import { generateLayout } from './Grid.layouts'
 import { layoutEditClose } from '../../redux/actions/layouts.actions'
 import { notifyInfo } from '../../redux/actions/notifications.actions'
 import { getLayoutIsEditable } from '../../redux/selectors/layouts.selectors'
 import { getNicePair, getUrlPair } from '../../redux/selectors/UI.selectors'
 import { getWSIsAuthenticated } from '../../redux/selectors/ws.selectors'
-import Grid from './Grid'
-import { generateLayout } from './Grid.layouts'
 
 const GridContainer = (props) => {
   const {

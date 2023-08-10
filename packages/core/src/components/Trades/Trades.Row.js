@@ -3,9 +3,9 @@ import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { DATA_MAPPING } from '../../common/props'
 import { KEYS } from './Trades.constants'
 import { getOpacityPercentage } from './Trades.helpers'
+import { DATA_MAPPING } from '../../common/props'
 
 const BASE_OPACITY = 0.05
 const MAX_OPACITY = 0.2

@@ -2,11 +2,11 @@ import { withResponsive } from '@ufx-ui/core'
 import React, { memo } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
+import Movements from './Movements'
+import NewMovement from './NewMovement'
 import Notifications from '../../containers/Notifications'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import { MOVEMENT_TYPES } from '../../utils/movements'
-import Movements from './Movements'
-import NewMovement from './NewMovement'
 
 const MovementsRoutes = () => (
   <>

@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
+import CurrencyList from './CurrencyList'
 import { getCurrencyLabel, getCryptoCurrencies, getTetherCurrencies } from '../../../../redux/selectors/currencies.selectors'
 import { MOVEMENT_SUBTYPES } from '../../../../utils/movements'
-import CurrencyList from './CurrencyList'
 
 const CurrencyListContainer = (props) => {
   const { type } = props

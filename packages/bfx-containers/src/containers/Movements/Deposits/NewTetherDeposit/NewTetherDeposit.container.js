@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
+import NewTetherDeposit from './NewTetherDeposit'
 import {
   getHasPaymentIdForDeposits,
   getIsDepositActive,
@@ -14,7 +15,6 @@ import {
 } from '../../../../redux/selectors/currencies.selectors'
 import { getWSIsAuthenticated } from '../../../../redux/selectors/ws.selectors'
 import { getTetherProtocols } from '../../Tether.helpers'
-import NewTetherDeposit from './NewTetherDeposit'
 
 const NewTetherDepositContainer = (props) => {
   const { baseCcy } = props

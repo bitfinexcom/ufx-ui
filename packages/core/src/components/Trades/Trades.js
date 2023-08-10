@@ -10,6 +10,11 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import getColumns from './Trades.columns'
+import { KEYS } from './Trades.constants'
+import TradesHeader from './Trades.Header'
+import { groupByDate } from './Trades.helpers'
+import TradesRow from './Trades.Row'
 import * as Classes from '../../common/classes'
 import * as Props from '../../common/props'
 import { DATA_MAPPING } from '../../common/props'
@@ -18,11 +23,6 @@ import { useStore } from '../../store'
 import { PrettyDate } from '../format'
 import { getVirtualTableColumns } from '../helper'
 import { Table, Spinner } from '../ui'
-import getColumns from './Trades.columns'
-import { KEYS } from './Trades.constants'
-import TradesHeader from './Trades.Header'
-import { groupByDate } from './Trades.helpers'
-import TradesRow from './Trades.Row'
 
 const {
   TRADE_TYPES,

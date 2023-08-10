@@ -3,9 +3,9 @@ import _isEmpty from 'lodash/isEmpty'
 import _values from 'lodash/values'
 import { createSelector } from 'reselect'
 
-import { SUBSCRIPTION_CONFIG } from '../constants/trades.constants'
 import { getUfxState } from './common'
 import { getWSChannels, findMatchingChannelWithSymbol } from './ws.selectors'
+import { SUBSCRIPTION_CONFIG } from '../constants/trades.constants'
 
 const EMPTY_OBJ = {}
 

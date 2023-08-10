@@ -1,5 +1,5 @@
-import types from '../constants/ws.constants'
 import bookTopReducer, { INITIAL_STATE } from './book-top.reducer'
+import types from '../constants/ws.constants'
 
 describe('REDUCER: book-top', () => {
   describe('action: BOOK_TOP_SNAPSHOT_MESSAGE', () => {

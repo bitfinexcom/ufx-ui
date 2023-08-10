@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
+import NewCryptoDeposit from './NewCryptoDeposit'
 import {
   getCurrencyTxMethod as getCurrencyTxMethodSelector,
   getHasPaymentIdForDeposits,
@@ -14,7 +15,6 @@ import {
 } from '../../../../redux/selectors/currencies.selectors'
 import { getPoolAddress } from '../../../../redux/selectors/movements.selectors'
 import { getWSIsAuthenticated } from '../../../../redux/selectors/ws.selectors'
-import NewCryptoDeposit from './NewCryptoDeposit'
 
 const NewCryptoDepositContainer = (props) => {
   const { baseCcy } = props

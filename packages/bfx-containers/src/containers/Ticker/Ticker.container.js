@@ -2,11 +2,11 @@ import { PROP_DEFAULT_CCYS, Ticker } from '@ufx-ui/core'
 import React, { memo, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
+import { getDataMapping } from './Ticker.helpers'
 import useCommonBfxData from '../../hooks/useCommonBfxData'
 import useTickers from '../../hooks/useTickers'
 import { getCurrencySymbol } from '../../redux/selectors/currencies.selectors'
 import { getTicker } from '../../redux/selectors/ticker.selectors'
-import { getDataMapping } from './Ticker.helpers'
 
 const TickerContainer = (props) => {
   const {
