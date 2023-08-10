@@ -70,6 +70,7 @@ export const Orders = (props) => {
 }
 
 Orders.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   orders: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),

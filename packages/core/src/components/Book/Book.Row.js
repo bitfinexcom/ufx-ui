@@ -93,6 +93,7 @@ BookRow.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.object,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 

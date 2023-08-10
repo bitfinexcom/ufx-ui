@@ -70,6 +70,7 @@ const TradeRow = (props) => {
 TradeRow.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
   minOrderSize: PropTypes.number.isRequired,

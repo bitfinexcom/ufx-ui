@@ -40,6 +40,7 @@ const SideHeader = (props) => {
 SideHeader.propTypes = {
   isBid: PropTypes.bool,
   isVertical: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 

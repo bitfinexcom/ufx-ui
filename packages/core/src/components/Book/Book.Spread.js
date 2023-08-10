@@ -58,6 +58,7 @@ Spread.propTypes = {
   pAsks: PropTypes.arrayOf(PropTypes.number),
   pBids: PropTypes.arrayOf(PropTypes.number),
   decimals: PropTypes.number.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)).isRequired,
 }

@@ -27,6 +27,7 @@ const TradesHeader = (props) => {
 }
 
 TradesHeader.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 

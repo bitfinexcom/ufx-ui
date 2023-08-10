@@ -132,6 +132,7 @@ BookSide.propTypes = {
   zoom: PropTypes.number.isRequired,
   bookViz: PropTypes.oneOf(Object.values(BOOK_VIZ_TYPES)).isRequired,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 

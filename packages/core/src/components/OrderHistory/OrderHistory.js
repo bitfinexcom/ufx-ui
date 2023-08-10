@@ -89,6 +89,7 @@ OrderHistory.propTypes = {
   /**
    * The orders to be displayed in the OrderHistory’s component.
    */
+  // eslint-disable-next-line react/forbid-prop-types
   orders: PropTypes.arrayOf(PropTypes.object),
   /**
    * If true, show the loading message.

@@ -139,6 +139,7 @@ export const TickerList = (props) => {
 }
 
 TickerList.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.arrayOf(PropTypes.object),
   favs: PropTypes.objectOf(PropTypes.bool).isRequired,
   saveFavs: PropTypes.func.isRequired,
