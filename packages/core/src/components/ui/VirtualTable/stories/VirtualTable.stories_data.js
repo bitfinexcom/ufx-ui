@@ -83,4 +83,7 @@ export const columns = [{
     <p>X</p>
   ),
   disableSort: true,
+  columnData: {
+    disableDrag: true,
+  },
 }]

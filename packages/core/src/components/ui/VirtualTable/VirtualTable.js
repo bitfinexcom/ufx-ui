@@ -15,12 +15,12 @@ import {
   defaultTableRowRenderer,
 } from 'react-virtualized'
 
-import * as Classes from '../../../common/classes'
 import {
   getSortedData as getSortedDataHelper,
   sortData,
   columnHeaderRenderer as _columnHeaderRenderer,
 } from './VirtualTable.helpers'
+import * as Classes from '../../../common/classes'
 
 const VirtualTable = forwardRef((props, ref) => {
   const {
@@ -220,6 +220,17 @@ VirtualTable.propTypes = {
        * ClassName of column's header
        */
       headerClassName: PropTypes.string,
+      /**
+       * Additional data passed to this column's cellDataGetter.
+       * Use this object to relay action-creators or relational data.
+       */
+      columnData: PropTypes.shape({
+        /**
+       * If true, the column width can't be changed by dragging
+       */
+        disableDrag: PropTypes.bool,
+      }),
+
     }),
   ), // eslint-disable-line
   /**
