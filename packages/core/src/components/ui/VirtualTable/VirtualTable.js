@@ -13,6 +13,7 @@ import {
   Table,
   Column,
   defaultTableRowRenderer,
+  defaultTableHeaderRenderer,
 } from 'react-virtualized'
 
 import * as Classes from '../../../common/classes'
@@ -43,6 +44,7 @@ const VirtualTable = forwardRef((props, ref) => {
     onScrollToBottom,
     tableState,
     updateTableState,
+    disableColumnsResizing,
     ...rest
   } = props
 
@@ -120,12 +122,15 @@ const VirtualTable = forwardRef((props, ref) => {
   }
 
   const columnHeaderRenderer = useCallback(
-    (columnParams) => _columnHeaderRenderer(
-      columnParams,
-      setColumnsWidthState,
-      updateTableState,
-    ),
-    [updateTableState],
+    (columnParams) => (
+      disableColumnsResizing
+        ? defaultTableHeaderRenderer(columnParams)
+        : _columnHeaderRenderer(
+          columnParams,
+          setColumnsWidthState,
+          updateTableState,
+        )),
+    [updateTableState, disableColumnsResizing],
   )
 
   return (
@@ -220,6 +225,16 @@ VirtualTable.propTypes = {
        * ClassName of column's header
        */
       headerClassName: PropTypes.string,
+      /**
+       * Additional data passed to this column's cellDataGetter.
+       * Use this object to relay action-creators or relational data.
+       */
+      columnData: PropTypes.shape({
+        /**
+         * If true, the current column width can't be changed by dragging
+         */
+        disableDrag: PropTypes.bool,
+      }),
     }),
   ), // eslint-disable-line
   /**
@@ -294,6 +309,10 @@ VirtualTable.propTypes = {
    * Callback, which updates an external state of the table
    */
   updateTableState: PropTypes.func,
+  /**
+   * If true, drag and drop column resizing is disabled for the entire table
+   */
+  disableColumnsResizing: PropTypes.bool,
 }
 
 VirtualTable.defaultProps = {
@@ -316,6 +335,7 @@ VirtualTable.defaultProps = {
   onScrollToBottom: () => {},
   tableState: {},
   updateTableState: () => {},
+  disableColumnsResizing: false,
 }
 
 export default memo(VirtualTable)

@@ -95,9 +95,13 @@ export const columnHeaderRenderer = (
   updateTableState,
 ) => {
   const {
-    dataKey, minWidth = 30, width, label,
+    dataKey,
+    minWidth = 30,
+    width,
+    label,
+    columnData: { disableDrag = false } = {},
   } = columnParams
-  const isDraggable = !!label
+  const isDraggable = !!label && !disableDrag
 
   const onStop = (e, { x }) => {
     e.stopPropagation()

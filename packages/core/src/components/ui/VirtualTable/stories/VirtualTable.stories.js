@@ -1,8 +1,16 @@
-import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
+import {
+  showTemplateStory,
+  getDefaultMetadata,
+} from '../../../../../../storybook/.storybook/helper'
 import VirtualTable from '../VirtualTable'
 import { columns, data } from './VirtualTable.stories_data'
 
-export default getDefaultMetadata(VirtualTable, 'Components/ui/VirtualTable', {}, false)
+export default getDefaultMetadata(
+  VirtualTable,
+  'Components/ui/VirtualTable',
+  {},
+  false,
+)
 
 const props = {
   data,
@@ -12,3 +20,7 @@ const props = {
 }
 
 export const basic = showTemplateStory(VirtualTable, props)
+export const fixedColumnsWidth = showTemplateStory(VirtualTable, {
+  ...props,
+  disableColumnsResizing: true,
+})
