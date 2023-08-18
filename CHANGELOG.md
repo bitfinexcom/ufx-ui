@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 
 
+
+## v0.15.2 (2023-08-18)
+
+#### :rocket: Feature
+* `core`
+  * [#193](https://github.com/bitfinexcom/ufx-ui/pull/193) (feature) VirtualTable: disable resizing columns option ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
+
+
 ## v0.15.1 (2023-07-24)
 
 #### :dizzy: Improvement
