@@ -56,6 +56,20 @@ const data = [
     id: '18446744073709551534',
     placed: 1574071835512,
   },
+  {
+    id: '64e35c92551e2914411fcd69',
+    userId: 283736,
+    gid: 2890750878,
+    type: 'EXCHANGE MARKET',
+    symbol: 'tUSTUSD',
+    currency: 'UST',
+    amount: 5,
+    status: 'FAILED',
+    mtsCreate: 1692621970642,
+    placed: 1692621970642,
+    pair: 'USDt/USD',
+    price: 0,
+  },
 ]
 
 export default data
