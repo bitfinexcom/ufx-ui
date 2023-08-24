@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.15.3 (2023-08-24)
+
+#### :rocket: Feature
+* `core`
+  * [#195](https://github.com/bitfinexcom/ufx-ui/pull/195) (feature) Dialog: add style prop ([@dmytroshch](https://github.com/dmytroshch))
+  * [#194](https://github.com/bitfinexcom/ufx-ui/pull/194) (feature) OrderHistory: show failed orders ([@dmytroshch](https://github.com/dmytroshch))
+
+#### :bug: Bug Fix
+* `core`
+  * [#196](https://github.com/bitfinexcom/ufx-ui/pull/196) Resolve lint error ([@dmytroshch](https://github.com/dmytroshch))
+
+#### Committers: 1
+- Dmytro Shcherbonos ([@dmytroshch](https://github.com/dmytroshch))
 
 
 ## v0.15.2 (2023-08-18)
