@@ -1,7 +1,7 @@
 {
   "name": "@ufx-ui/example",
   "homepage": ".",
-  "version": "0.15.2",
+  "version": "0.15.3",
   "private": true,
   "scripts": {
     "install:peer": "install-peers -f",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.16.5",
-    "@ufx-ui/bfx-containers": "^0.15.2",
-    "@ufx-ui/core": "^0.15.2",
+    "@ufx-ui/bfx-containers": "^0.15.3",
+    "@ufx-ui/core": "^0.15.3",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
