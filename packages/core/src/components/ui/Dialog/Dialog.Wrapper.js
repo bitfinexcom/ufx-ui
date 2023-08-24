@@ -26,6 +26,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
     height,
     textAlign,
     isFocusTrapEnabled,
+    style,
   } = props
 
   useEffect(() => {
@@ -77,6 +78,7 @@ const Dialog = forwardRef(function Dialog(props, ref) {
             width={width}
             height={height}
             textAlign={textAlign}
+            style={style}
           >
             {children}
           </Modal>
@@ -166,6 +168,11 @@ Dialog.propTypes = {
    * Need to disable if modal contains iframe, to avoid conflicts
    */
   isFocusTrapEnabled: PropTypes.bool,
+  /**
+   * Style object of the Modal
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
 }
 
 Dialog.defaultProps = {
@@ -182,6 +189,7 @@ Dialog.defaultProps = {
   height: 'auto',
   textAlign: 'center',
   onSubmit: () => {},
+  style: {},
 }
 
 export default Dialog
