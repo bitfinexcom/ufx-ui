@@ -11,6 +11,10 @@
   }
 
   .ReactVirtualized__Table__row {
+    &.failed {
+      background-color: rgba(224, 61, 84, 0.25) !important;
+    }
+
     .intent {
       text-align: center;
     }

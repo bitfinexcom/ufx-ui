@@ -4,6 +4,7 @@ import compose from 'lodash/fp/compose'
 import PropTypes from 'prop-types'
 import React, { useCallback, memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { defaultTableRowRenderer } from 'react-virtualized'
 
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
@@ -43,6 +44,14 @@ export const OrderHistory = (props) => {
     [rowMapping],
   )
 
+  const rowRenderer = useCallback((params) => {
+    const { rowData: { status }, className: _className } = params
+    if (status === 'FAILED') {
+      return defaultTableRowRenderer({ ...params, className: `${_className} failed` })
+    }
+    return defaultTableRowRenderer(params)
+  }, [])
+
   const columns = getVirtualTableColumns(
     getColumns,
     { t, isMobile, getDisplayValue },
@@ -64,6 +73,7 @@ export const OrderHistory = (props) => {
         defaultSortBy={KEYS.UPDATED}
         defaultSortDirection='DESC'
         rowHeight={isMobile ? 46 : 34}
+        rowRenderer={rowRenderer}
         striped
         noRowsRenderer={noRowsRenderer(t)}
         minTableWidth={MIN_TABLE_WIDTH}
