@@ -3,8 +3,8 @@ import FocusTrap from 'focus-trap-react'
 import PropTypes from 'prop-types'
 import React, { forwardRef, useMemo, useRef } from 'react'
 
-import { DIALOG_CONTAINER_ID } from './Dialog.constants'
 import * as Classes from '../../../common/classes'
+import { DIALOG_CONTAINER_ID } from './Dialog.constants'
 
 const Modal = forwardRef(({
   state,
