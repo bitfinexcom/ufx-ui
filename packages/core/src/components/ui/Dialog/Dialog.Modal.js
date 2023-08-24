@@ -1,10 +1,10 @@
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import PropTypes from 'prop-types'
-import React, { forwardRef, useRef } from 'react'
+import React, { forwardRef, useMemo, useRef } from 'react'
 
-import * as Classes from '../../../common/classes'
 import { DIALOG_CONTAINER_ID } from './Dialog.constants'
+import * as Classes from '../../../common/classes'
 
 const Modal = forwardRef(({
   state,
@@ -24,6 +24,13 @@ const Modal = forwardRef(({
   style,
 }, ref) => {
   const titleRef = useRef()
+  const modalStyle = useMemo(() => ({
+    maxWidth: width,
+    height,
+    textAlign,
+    ...style,
+  }), [width, height, textAlign, style])
+
   return (
     /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
     <FocusTrap
@@ -48,9 +55,7 @@ const Modal = forwardRef(({
             'is-mobile-fullscreen': isFullscreenInMobile,
           })}
           ref={ref}
-          style={{
-            maxWidth: width, height, textAlign, ...style,
-          }}
+          style={modalStyle}
         >
           {title && (
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
