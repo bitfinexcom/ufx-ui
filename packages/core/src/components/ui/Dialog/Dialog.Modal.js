@@ -21,6 +21,7 @@ const Modal = forwardRef(({
   width,
   height,
   textAlign,
+  style,
 }, ref) => {
   const titleRef = useRef()
   return (
@@ -47,7 +48,9 @@ const Modal = forwardRef(({
             'is-mobile-fullscreen': isFullscreenInMobile,
           })}
           ref={ref}
-          style={{ maxWidth: width, height, textAlign }}
+          style={{
+            maxWidth: width, height, textAlign, ...style,
+          }}
         >
           {title && (
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
@@ -137,6 +140,11 @@ Modal.propTypes = {
    * Need to disable if modal contains iframe, to avoid conflicts
    */
   isFocusTrapEnabled: PropTypes.bool.isRequired,
+  /**
+   * Style object of the Modal
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
 }
 
 Modal.defaultProps = {
@@ -150,6 +158,7 @@ Modal.defaultProps = {
   width: 460,
   height: 'auto',
   textAlign: 'center',
+  style: {},
 }
 
 export default Modal
