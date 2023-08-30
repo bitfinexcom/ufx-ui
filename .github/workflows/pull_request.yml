@@ -11,11 +11,7 @@ on:
 
 jobs:
   checks:
-    runs-on: macos-latest
-
-    env:
-      # dont treat warning as error
-      CI: false
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
