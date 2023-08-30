@@ -33,7 +33,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install
-        run: npm run bootstrap:ignorescripts && npm run install:peer
+        run: npm install && npm run install:peer
 
       - name: Run Build Check
         run: npm run build
