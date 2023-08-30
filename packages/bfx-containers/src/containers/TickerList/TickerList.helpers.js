@@ -3,8 +3,8 @@ import { buildPair, getPairParts } from '@ufx-ui/utils'
 import _get from 'lodash/get'
 import _isEmpty from 'lodash/isEmpty'
 
-import { convertVolume as convertVolumeFunc } from '../../utils/ticker'
 import { VOLUME_UNIT, VOLUME_UNIT_PAPER } from './TickerList.constants'
+import { convertVolume as convertVolumeFunc } from '../../utils/ticker'
 
 const EMPTY_ARR = []
 

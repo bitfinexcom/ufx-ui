@@ -1,8 +1,8 @@
 import { Orders } from '@ufx-ui/core'
 import React, { memo } from 'react'
 
-import useOrders from '../../hooks/useOrders'
 import { ROW_MAPPING } from './Orders.constants'
+import useOrders from '../../hooks/useOrders'
 
 const OrdersContainer = (props) => {
   const { loading, orders, cancelOrder } = useOrders()

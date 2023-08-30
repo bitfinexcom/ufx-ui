@@ -3,8 +3,8 @@ import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
 
-import * as Classes from '../../../common/classes'
 import Tab, { TAB_PROP_TYPE } from './Tab'
+import * as Classes from '../../../common/classes'
 
 // eslint-disable-next-line prefer-arrow-callback
 const Tabs = forwardRef(function Tabs(props, ref) {

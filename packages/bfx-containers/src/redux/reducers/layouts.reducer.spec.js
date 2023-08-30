@@ -1,5 +1,5 @@
-import types from '../constants/layouts.constants'
 import layoutReducer, { INITIAL_STATE } from './layouts.reducer'
+import types from '../constants/layouts.constants'
 
 describe('REDUCER: layouts', () => {
   it('action: EDIT_ENABLE', () => {

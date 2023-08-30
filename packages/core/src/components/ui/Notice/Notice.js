@@ -6,8 +6,8 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
 
-import * as Classes from '../../../common/classes'
 import { NOTICE_TYPES } from './Notice.constants'
+import * as Classes from '../../../common/classes'
 
 const {
   NONE, INFO, WARNING, SUCCESS, ERROR,

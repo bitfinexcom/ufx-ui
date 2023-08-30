@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
+import MarketListWrapper from './MarketList.wrapper'
 import useTickers from '../../hooks/useTickers'
 import { getCurrencySymbolMemo } from '../../redux/selectors/currencies.selectors'
-import MarketListWrapper from './MarketList.wrapper'
 
 const MarketListContainer = (props) => {
   const getCurrencySymbol = useSelector(getCurrencySymbolMemo)

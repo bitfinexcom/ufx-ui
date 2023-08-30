@@ -7,6 +7,7 @@ import React, {
 import { useSelector } from 'react-redux'
 import { useInjectSaga } from 'redux-injectors'
 
+import { getFlags, validate } from './OrderForm.helpers'
 import useCommonBfxData from '../../hooks/useCommonBfxData'
 import { notifyError } from '../../redux/actions/notifications.actions'
 import { submitOrder as submitOrderAction } from '../../redux/actions/orders.actions'
@@ -18,7 +19,6 @@ import ordersSaga from '../../redux/sagas/orders.saga'
 import { getBookTopAsk, getBookTopBid } from '../../redux/selectors/book-top.selectors'
 import { getCurrencySymbol } from '../../redux/selectors/currencies.selectors'
 import { getUIOrderformPrice } from '../../redux/selectors/UI.selectors'
-import { getFlags, validate } from './OrderForm.helpers'
 
 const { AMOUNT_DECIMALS } = PLATFORM_SETTINGS
 

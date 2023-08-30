@@ -7,6 +7,7 @@ import React, { memo, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useInjectSaga } from 'redux-injectors'
 
+import NewCryptoWithdrawal from './NewCryptoWithdrawal'
 import { requestNewWithdraw as requestNewWithdrawAction } from '../../../../redux/actions/movements.actions'
 import { MOVEMENTS_REDUCER_SAGA_KEY } from '../../../../redux/constants/movements.constants'
 import movementsSaga from '../../../../redux/sagas/movements.saga'
@@ -18,7 +19,6 @@ import {
   getCurrencyTxMethod,
 } from '../../../../redux/selectors/currencies.selectors'
 import { getWSIsAuthenticated } from '../../../../redux/selectors/ws.selectors'
-import NewCryptoWithdrawal from './NewCryptoWithdrawal'
 
 const NewCryptoWithdrawalContainer = (props) => {
   useInjectSaga({ key: MOVEMENTS_REDUCER_SAGA_KEY, saga: movementsSaga })

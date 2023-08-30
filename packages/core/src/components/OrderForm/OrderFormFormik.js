@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 import React, { memo, useEffect, forwardRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { DEFAULT_ACTION_TIMEOUT } from './OrderForm.constants'
+import OrderFormBidAsk from './OrderFormBidAsk'
+import OrderFormTotalValue from './OrderFormTotalValue'
 import * as Classes from '../../common/classes'
 import Intent from '../../common/intent'
 import { TEXT_ALIGNMENT } from '../../common/props'
@@ -20,9 +23,6 @@ import {
   Tooltip,
   Label,
 } from '../ui'
-import { DEFAULT_ACTION_TIMEOUT } from './OrderForm.constants'
-import OrderFormBidAsk from './OrderFormBidAsk'
-import OrderFormTotalValue from './OrderFormTotalValue'
 
 const OrderFormFormik = forwardRef((props, ref) => {
   const {

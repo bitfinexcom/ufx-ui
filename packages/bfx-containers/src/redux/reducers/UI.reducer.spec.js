@@ -1,5 +1,5 @@
-import types from '../constants/UI.constants'
 import UIReducer, { INITIAL_STATE } from './UI.reducer'
+import types from '../constants/UI.constants'
 
 describe('REDUCER: UI', () => {
   describe('action: UI_LOAD', () => {

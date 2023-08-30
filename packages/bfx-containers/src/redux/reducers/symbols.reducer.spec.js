@@ -1,5 +1,5 @@
-import types from '../constants/currencies.constants'
 import symbolsReducer, { INITIAL_STATE } from './symbols.reducer'
+import types from '../constants/currencies.constants'
 
 describe('REDUCER: symbols', () => {
   describe('action: REQUEST_SYMBOL_DETAILS_SUCCESS', () => {

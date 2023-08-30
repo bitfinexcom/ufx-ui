@@ -6,12 +6,12 @@ import React, {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { DATA_MAPPING } from '../../common/props'
 import Bars from './Book.Bars'
 import { BOOK_VIZ_TYPES } from './Book.constants'
 import { PROP_ORDER, PROP_BOOK, PROP_BOOK_TRADE } from './Book.props'
 import Row from './Book.Row'
 import SideHeader from './Book.SideHeader'
+import { DATA_MAPPING } from '../../common/props'
 
 const getHeight = ref => _get(ref, 'current.clientHeight', 0)
 
@@ -132,6 +132,7 @@ BookSide.propTypes = {
   zoom: PropTypes.number.isRequired,
   bookViz: PropTypes.oneOf(Object.values(BOOK_VIZ_TYPES)).isRequired,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 

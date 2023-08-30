@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
+import { tabs } from './Tabs.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../../storybook/.storybook/helper'
 import Tabs from '../Tabs'
-import { tabs } from './Tabs.stories_data'
 
 export default getDefaultMetadata(Tabs, 'Components/ui/Tabs', {}, true)
 

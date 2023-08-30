@@ -3,8 +3,8 @@ import _isNaN from 'lodash/isNaN'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { PrettyValue } from '../../format'
 import Tooltip from './Balances.Tooltip'
+import { PrettyValue } from '../../format'
 
 const DECIMALS = 2
 

@@ -7,11 +7,11 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { KEYS, MAPPING } from './Ticker.constants'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import { Button } from '../ui'
-import { KEYS, MAPPING } from './Ticker.constants'
 
 export const Ticker = (props) => {
   const {

@@ -5,13 +5,13 @@ import _map from 'lodash/map'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
+import { KEYS } from './MovementList.constants'
+import MovementListHeader from './MovementList.Header'
+import MovementListRow from './MovementList.Row'
 import * as Classes from '../../../common/classes'
 import { DATA_MAPPING } from '../../../common/props'
 import withI18nProvider from '../../../hoc/withI18nProvider'
 import { Table } from '../../ui'
-import { KEYS } from './MovementList.constants'
-import MovementListHeader from './MovementList.Header'
-import MovementListRow from './MovementList.Row'
 
 export const MovementList = (props) => {
   const {

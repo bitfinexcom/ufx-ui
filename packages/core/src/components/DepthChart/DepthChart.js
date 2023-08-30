@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import React, { memo, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import DepthChartCanvas from './DepthChart.canvas'
 import * as Classes from '../../common/classes'
 import { getCurrentStyle } from '../../common/themes'
 import withI18nProvider from '../../hoc/withI18nProvider'
 import { PROP_BOOK_TRADE, PROP_BOOK } from '../Book/Book.props'
 import Spinner from '../ui/Spinner'
-import DepthChartCanvas from './DepthChart.canvas'
 
 export const DepthChart = ({
   asks,

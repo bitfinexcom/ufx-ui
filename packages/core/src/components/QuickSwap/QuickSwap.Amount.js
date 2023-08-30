@@ -4,8 +4,8 @@ import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { Input } from '../FormikFields'
 import TokenList from './QuickSwap.TokenList'
+import { Input } from '../FormikFields'
 
 const AmountInput = (props) => {
   const {

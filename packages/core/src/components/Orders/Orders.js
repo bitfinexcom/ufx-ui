@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import getColumns from './Orders.columns'
+import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './Orders.constants'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
@@ -12,8 +14,6 @@ import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { getVirtualTableColumns } from '../helper'
 import { Spinner, VirtualTable } from '../ui'
-import getColumns from './Orders.columns'
-import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './Orders.constants'
 
 const noRowsRenderer = (t) => () => (
   <div className='empty'>
@@ -70,6 +70,7 @@ export const Orders = (props) => {
 }
 
 Orders.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   orders: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),

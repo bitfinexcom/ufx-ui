@@ -6,6 +6,8 @@ import React, { useCallback, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { defaultTableRowRenderer } from 'react-virtualized'
 
+import getColumns from './OrderHistory.columns'
+import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './OrderHistory.constants'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
@@ -13,8 +15,6 @@ import withMobileLayout from '../../hoc/withMobileLayout'
 import withResponsive from '../../hoc/withResponsive'
 import { getVirtualTableColumns } from '../helper'
 import { VirtualTable, Spinner } from '../ui'
-import getColumns from './OrderHistory.columns'
-import { KEYS, MAPPING, MIN_TABLE_WIDTH } from './OrderHistory.constants'
 
 const noRowsRenderer = (t) => () => (
   <div className='empty'>
@@ -89,6 +89,7 @@ OrderHistory.propTypes = {
   /**
    * The orders to be displayed in the OrderHistory’s component.
    */
+  // eslint-disable-next-line react/forbid-prop-types
   orders: PropTypes.arrayOf(PropTypes.object),
   /**
    * If true, show the loading message.

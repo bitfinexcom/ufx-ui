@@ -1,6 +1,6 @@
+import { market, user } from './Trades.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { Trades, defaultProps } from '../Trades'
-import { market, user } from './Trades.stories_data'
 
 const props = {
   ...defaultProps,

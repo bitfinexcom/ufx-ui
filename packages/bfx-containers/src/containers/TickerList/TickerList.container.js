@@ -3,10 +3,10 @@ import { buildPair } from '@ufx-ui/utils'
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
+import TickerListWrapper from './TickerList.wrapper'
 import useTickers from '../../hooks/useTickers'
 import { getCurrencySymbolMemo } from '../../redux/selectors/currencies.selectors'
 import { getUIIsPaperTrading } from '../../redux/selectors/UI.selectors'
-import TickerListWrapper from './TickerList.wrapper'
 
 const TickerListContainer = (props) => {
   const { tickers, tradingTickerKeys } = useTickers()

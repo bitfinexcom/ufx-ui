@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import React, { memo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { BTC_LIGHTNING_CCY, WALLETS } from '../../constants'
 import NewInvoice from './NewInvoice'
 import PaymentIdConfirm from './PaymentIdConfirm'
+import { BTC_LIGHTNING_CCY, WALLETS } from '../../constants'
 
 const NewCryptoDepositChecks = ({
   currency,

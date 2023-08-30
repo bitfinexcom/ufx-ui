@@ -4,9 +4,9 @@ import _last from 'lodash/last'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { DATA_MAPPING } from '../../common/props'
 import { KEYS } from './Book.constants'
 import { PROP_BOOK_TRADE } from './Book.props'
+import { DATA_MAPPING } from '../../common/props'
 
 const getMaxTotal = (totalArr, priceArr) => Math.abs(_get(totalArr, [_last(priceArr), 'total'], 0))
 
@@ -58,6 +58,7 @@ Spread.propTypes = {
   pAsks: PropTypes.arrayOf(PropTypes.number),
   pBids: PropTypes.arrayOf(PropTypes.number),
   decimals: PropTypes.number.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)).isRequired,
 }

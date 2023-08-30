@@ -2,9 +2,9 @@ import { Classes, withResponsive, Spinner } from '@ufx-ui/core'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import withI18nProvider from '../../../../hoc/withI18nProvider'
 import NewCryptoDepositChecks from './NewCryptoDepositChecks'
 import NewCryptoDepositDetails from './NewCryptoDepositDetails'
+import withI18nProvider from '../../../../hoc/withI18nProvider'
 
 const NewCryptoDeposit = ({
   loading,
