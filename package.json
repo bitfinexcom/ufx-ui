@@ -17,7 +17,7 @@
     "remove:peer": "rm -rf node_modules/react node_modules/react-dom node_modules/react-redux",
     "bootstrap": "npm install && lerna bootstrap --no-hoist",
     "bootstrap:ignorescripts": "npm install && lerna bootstrap --no-hoist --ignore-scripts",
-    "bootstrap:dev": "npm install && npm run install:peer && lerna bootstrap --no-hoist --force-local",
+    "bootstrap:dev": "npm install && lerna bootstrap --no-hoist --force-local",
     "lint": "lerna run lint",
     "build": "lerna run build",
     "build:css": "lerna run build:css",
@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.2.9",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.5.0",
     "install-peers-cli": "^2.2.0",
@@ -36,8 +35,8 @@
     "lerna": "^4.0.0"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "react-redux": "^7.2.1"
   }
 }

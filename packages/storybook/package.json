@@ -24,7 +24,6 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.4.22",
     "@storybook/storybook-deployer": "^2.8.10",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
     "css-loader": "^5.2.4",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.5.0",
@@ -37,8 +36,8 @@
     "style-loader": "^2.0.0"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-redux": "^7.2.1"
   },
   "dependencies": {
