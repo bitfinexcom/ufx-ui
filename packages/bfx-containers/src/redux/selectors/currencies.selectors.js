@@ -20,13 +20,13 @@ import _toUpper from 'lodash/toUpper'
 import _uniq from 'lodash/uniq'
 import { createSelector } from 'reselect'
 
+import { getUfxState } from './common'
 import {
   CURRENCY_LABEL,
   CURRENCY_SYMBOL,
   CURRENCY_POOL,
   CURRENCY_TX_METHOD,
 } from '../constants/currencies.constants'
-import { getUfxState } from './common'
 
 const EMPTY_OBJ = {}
 

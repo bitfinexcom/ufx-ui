@@ -4,10 +4,10 @@ import PropTypes from 'prop-types'
 import React, { memo, useMemo, forwardRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import withI18nProvider from '../../hoc/withI18nProvider'
 import { INITIAL_STATE } from './OrderForm.constants'
 import { formSchema, supportedTypes } from './OrderForm.helpers'
 import FormikForm from './OrderFormFormik'
+import withI18nProvider from '../../hoc/withI18nProvider'
 
 const { AMOUNT_DECIMALS } = PLATFORM_SETTINGS
 

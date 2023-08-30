@@ -3,9 +3,9 @@ import { defaultBaseCcy, defaultQuoteCcy } from '@ufx-ui/utils'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
+import { CHART_URL, DEFAULT_THEME } from './Chart.constants'
 import { corsProxyUrl as proxyURL } from '../../functions/config.selectors'
 import useCommonBfxData from '../../hooks/useCommonBfxData'
-import { CHART_URL, DEFAULT_THEME } from './Chart.constants'
 
 const ChartContainer = ({
   baseCcy, quoteCcy, theme, env,

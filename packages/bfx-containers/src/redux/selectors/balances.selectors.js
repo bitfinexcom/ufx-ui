@@ -5,13 +5,13 @@ import _mergeWith from 'lodash/mergeWith'
 import _pickBy from 'lodash/pickBy'
 import { createSelector } from 'reselect'
 
+import { getUfxState } from './common'
+import { getCurrencySymbolMemo } from './currencies.selectors'
+import { getUIIsPaperTrading, getUITradingCurrencies } from './UI.selectors'
 import {
   ZERO_BALANCES,
   PAPER_ZERO_BALANCES,
 } from '../constants/balances.constants'
-import { getUfxState } from './common'
-import { getCurrencySymbolMemo } from './currencies.selectors'
-import { getUIIsPaperTrading, getUITradingCurrencies } from './UI.selectors'
 
 const EMPTY_OBJ = {}
 

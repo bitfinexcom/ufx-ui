@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 
-import { getBalancesWallets } from '../../../../../redux/selectors/balances.selectors'
 import AvailableBalanceBox from './AvailableBalanceBox'
+import { getBalancesWallets } from '../../../../../redux/selectors/balances.selectors'
 
 const AvailableBalanceBoxContainer = (props) => {
   const balances = useSelector(getBalancesWallets)

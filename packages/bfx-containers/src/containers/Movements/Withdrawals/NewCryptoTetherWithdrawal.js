@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import { getPaymentIdLabel } from '../../../utils/movements'
-import { TetherTransport, CcyUSDAmountInput } from '../common'
-import { WALLET_PROPS, TETHER_PROTOCOL_PROPS } from '../Movements.props'
 import {
   WithdrawalWalletSelect,
   WithdrawalPaymentIdInput,
   WithdrawalAddressInput,
 } from './common'
 import NewWithdrawalForm, { NEW_WITHDRAWAL_FORM_PROPS } from './NewWithdrawalForm'
+import { getPaymentIdLabel } from '../../../utils/movements'
+import { TetherTransport, CcyUSDAmountInput } from '../common'
+import { WALLET_PROPS, TETHER_PROTOCOL_PROPS } from '../Movements.props'
 
 const NewCryptoTetherWithdrawal = ({
   formState,

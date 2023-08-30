@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cx from 'classnames'
 import React from 'react'
 
+import { KEYS, getStyles } from './OrderHistory.constants'
 import * as Classes from '../../common/classes'
 import { getDefaultCellRenderer } from '../helper'
 import { Tooltip, Truncate } from '../ui'
-import { KEYS, getStyles } from './OrderHistory.constants'
 
 // label: column header
 // datadataKey: represents data in table cell

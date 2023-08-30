@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import withI18nProvider from '../../hoc/withI18nProvider'
-import withResponsive from '../../hoc/withResponsive'
 import {
   formSchema, validateForm, getInitialState,
 } from './QuickSwap.helpers'
 import QuickSwapForm from './QuickSwapForm'
+import withI18nProvider from '../../hoc/withI18nProvider'
+import withResponsive from '../../hoc/withResponsive'
 
 export const QuickSwap = (props) => {
   const {

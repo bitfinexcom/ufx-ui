@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
-import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
-import Component, { DepthChart, defaultProps } from '../DepthChart'
 import {
   asks, bids, tAsks, tBids, pAsks, pBids,
 } from './DepthChart.stories_data'
+import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
+import Component, { DepthChart, defaultProps } from '../DepthChart'
 
 export default getDefaultMetadata(DepthChart, 'Components/DepthChart')
 

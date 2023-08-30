@@ -1,5 +1,5 @@
-import types from '../constants/ticker.constants'
 import tickerReducer, { INITIAL_STATE } from './ticker.reducer'
+import types from '../constants/ticker.constants'
 
 describe('REDUCER: ticker', () => {
   describe('action: FETCH_ALL_TICKERS_SUCCESS', () => {

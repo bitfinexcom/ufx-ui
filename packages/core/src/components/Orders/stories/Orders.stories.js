@@ -3,9 +3,9 @@
 /* eslint-disable import/no-unresolved */
 import { action } from '@storybook/addon-actions'
 
+import data from './Orders.stories_data'
 import { getDefaultMetadata, showTemplateStory } from '../../../../../storybook/.storybook/helper'
 import Component, { Orders, defaultProps } from '../Orders'
-import data from './Orders.stories_data'
 
 export default getDefaultMetadata(Orders, 'Components/Orders')
 

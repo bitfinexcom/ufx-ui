@@ -5,8 +5,8 @@ import { ORDER_HISTORY_KEYS, Tooltip, Classes } from '@ufx-ui/core'
 import _get from 'lodash/get'
 import React from 'react'
 
-import OrderStatus from '../format/OrderStatus'
 import OrderAmount from './OrderHistory.Amount'
+import OrderStatus from '../format/OrderStatus'
 
 export const getMapping = (t, isMobile) => ({
   [ORDER_HISTORY_KEYS.ID]: {

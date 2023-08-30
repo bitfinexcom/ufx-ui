@@ -2,8 +2,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Dropdown } from '../../FormikFields'
 import renderer from './TokenList.renderer'
+import { Dropdown } from '../../FormikFields'
 
 const TokenList = (props) => (
   <Dropdown

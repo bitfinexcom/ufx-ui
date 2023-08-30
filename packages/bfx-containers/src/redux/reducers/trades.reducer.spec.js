@@ -1,5 +1,5 @@
-import types from '../constants/ws.constants'
 import tradesReducer, { INITIAL_STATE } from './trades.reducer'
+import types from '../constants/ws.constants'
 
 describe('REDUCER: trades', () => {
   const initialState = {

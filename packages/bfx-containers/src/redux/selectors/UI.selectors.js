@@ -10,6 +10,10 @@ import _isString from 'lodash/isString'
 import _keys from 'lodash/keys'
 import { createSelector } from 'reselect'
 
+import { getUfxState } from './common'
+import {
+  getCurrenciesInfo, getIsPaperCcy, getPairsInfo, getCurrencySymbolMemo,
+} from './currencies.selectors'
 import { depthChart } from '../../var/config'
 import {
   LAST_PRICE_REQ,
@@ -18,10 +22,6 @@ import {
   BOOK_ZOOM,
   DEPTH_CHART_ZOOM,
 } from '../constants/UI.constants'
-import { getUfxState } from './common'
-import {
-  getCurrenciesInfo, getIsPaperCcy, getPairsInfo, getCurrencySymbolMemo,
-} from './currencies.selectors'
 
 export const VERIFICATION_LEVEL = {
   NONE: 0,

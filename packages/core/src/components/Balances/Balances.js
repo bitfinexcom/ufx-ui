@@ -7,6 +7,10 @@ import PropTypes from 'prop-types'
 import React, { useState, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import getColumns from './Balances.columns'
+import { KEYS } from './Balances.constants'
+import { balancesAdapter, sortData } from './Balances.helpers'
+import BalancesToolbar from './Balances.Toolbar'
 import * as Classes from '../../common/classes'
 import { DATA_MAPPING } from '../../common/props'
 import withI18nProvider from '../../hoc/withI18nProvider'
@@ -14,10 +18,6 @@ import withResponsive from '../../hoc/withResponsive'
 import useSortableData from '../../hooks/useSortableData'
 import { getVirtualTableColumns } from '../helper'
 import { VirtualTable } from '../ui'
-import getColumns from './Balances.columns'
-import { KEYS } from './Balances.constants'
-import { balancesAdapter, sortData } from './Balances.helpers'
-import BalancesToolbar from './Balances.Toolbar'
 
 const ROW_HEIGHT = 42
 

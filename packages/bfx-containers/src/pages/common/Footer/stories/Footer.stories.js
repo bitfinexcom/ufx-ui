@@ -1,9 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { bottomContents, footerLinks, rightContents } from './Footer.story__data'
 import { showTemplateStory, getDefaultMetadata } from '../../../../../../storybook/.storybook/helper'
 import Footer from '../Footer'
-import { bottomContents, footerLinks, rightContents } from './Footer.story__data'
 
 export default getDefaultMetadata(Footer, 'Components/pages/Footer')
 

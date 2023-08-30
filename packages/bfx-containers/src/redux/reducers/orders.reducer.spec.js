@@ -1,6 +1,6 @@
+import ordersReducer, { INITIAL_STATE } from './orders.reducer'
 import types from '../constants/orders.constants'
 import wsTypes from '../constants/ws.constants'
-import ordersReducer, { INITIAL_STATE } from './orders.reducer'
 
 describe('REDCUER: orders', () => {
   describe('action: OS_MESSAGE', () => {

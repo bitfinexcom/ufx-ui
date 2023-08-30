@@ -3,12 +3,12 @@
 /* eslint-disable import/no-unresolved */
 import { action } from '@storybook/addon-actions'
 
-import { showTemplateStory, getDefaultMetadata } from '../../../../../storybook/.storybook/helper'
-import Component, { Book, defaultProps } from '../Book'
-import { BOOK_VIZ_TYPES, DISPLAYED_ROWS, DEFAULT_ZOOM } from '../Book.constants'
 import {
   orders, asks, bids, tAsks, tBids,
 } from './Book.stories_data'
+import { showTemplateStory, getDefaultMetadata } from '../../../../../storybook/.storybook/helper'
+import Component, { Book, defaultProps } from '../Book'
+import { BOOK_VIZ_TYPES, DISPLAYED_ROWS, DEFAULT_ZOOM } from '../Book.constants'
 
 export default getDefaultMetadata(Book, 'Components/Book')
 

@@ -3,8 +3,8 @@ import compose from 'lodash/fp/compose'
 import React, { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import useOrders from '../../hooks/useOrders'
 import { getMapping } from './OrderHistory.constants'
+import useOrders from '../../hooks/useOrders'
 
 const OrderHistoryContainer = (props) => {
   const { loading, ordersHistory: orders } = useOrders(true)

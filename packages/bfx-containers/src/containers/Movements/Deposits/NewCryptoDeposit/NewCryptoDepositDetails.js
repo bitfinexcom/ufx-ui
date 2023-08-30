@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { getPaymentIdLabel } from '../../../../utils/movements'
-import DepositWallets from '../common/DepositWallets'
 import DepositInstructions from './DepositInstructions'
 import DepositInstructionsForCcy from './DepositInstructionsForCcy'
+import { getPaymentIdLabel } from '../../../../utils/movements'
+import DepositWallets from '../common/DepositWallets'
 
 const NewCryptoDepositDetails = ({
   currency,

@@ -1,13 +1,13 @@
 import React, { memo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import NewInvoice from './NewInvoice'
 import { notifyError } from '../../../../../redux/actions/notifications.actions'
 import { getUiInvoices } from '../../../../../redux/selectors/movements.selectors'
 import {
   getUIWithdrawalsMaxLnx,
   getUIWithdrawalsMinLnx,
 } from '../../../../../redux/selectors/UI.selectors'
-import NewInvoice from './NewInvoice'
 
 const NewInvoiceContainer = (props) => {
   const minLnx = Number(useSelector(getUIWithdrawalsMinLnx))

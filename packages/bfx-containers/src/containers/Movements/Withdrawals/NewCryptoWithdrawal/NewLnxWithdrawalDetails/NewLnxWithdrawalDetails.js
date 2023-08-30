@@ -9,6 +9,7 @@ import React, {
   useEffect,
 } from 'react'
 
+import LnxInvoiceInput from './LnxInvoiceInput.container'
 import { WALLET_PROPS } from '../../../Movements.props'
 import WithdrawalWalletSelect from '../../common/WithdrawalWalletSelect'
 import {
@@ -17,7 +18,6 @@ import {
   removeWhitespace,
 } from '../../helpers'
 import NewWithdrawalForm from '../../NewWithdrawalForm'
-import LnxInvoiceInput from './LnxInvoiceInput.container'
 
 const initialWithdrawalFormState = {
   invoice: '',

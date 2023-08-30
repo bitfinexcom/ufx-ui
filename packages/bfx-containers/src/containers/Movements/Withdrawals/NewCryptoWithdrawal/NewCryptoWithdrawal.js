@@ -6,10 +6,10 @@ import _toUpper from 'lodash/toUpper'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 
-import withI18nProvider from '../../../../hoc/withI18nProvider'
-import { BTC_LIGHTNING_CCY, WALLETS } from '../../constants'
 import NewCryptoWithdrawalDetails from './NewCryptoWithdrawalDetails'
 import NewLnxWithdrawalDetails from './NewLnxWithdrawalDetails'
+import withI18nProvider from '../../../../hoc/withI18nProvider'
+import { BTC_LIGHTNING_CCY, WALLETS } from '../../constants'
 
 const NewCryptoWithdrawal = ({
   loading,

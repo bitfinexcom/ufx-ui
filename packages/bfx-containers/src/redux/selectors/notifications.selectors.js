@@ -1,7 +1,7 @@
 import _get from 'lodash/get'
 
-import { notifications as config } from '../../var/config'
 import { getUfxState } from './common'
+import { notifications as config } from '../../var/config'
 
 const EMPTY_ARR = []
 

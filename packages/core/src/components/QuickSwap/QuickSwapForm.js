@@ -6,13 +6,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useTranslation, Trans } from 'react-i18next'
 
+import AmountInput from './QuickSwap.Amount'
+import QuickSwapRate from './QuickSwap.Rate'
+import QuickSwapToggle from './QuickSwap.Toggle'
 import * as Classes from '../../common/classes'
 import Intent from '../../common/intent'
 import { Checkbox } from '../FormikFields'
 import { Button, Heading } from '../ui'
-import AmountInput from './QuickSwap.Amount'
-import QuickSwapRate from './QuickSwap.Rate'
-import QuickSwapToggle from './QuickSwap.Toggle'
 
 const { AMOUNT_DECIMALS } = PLATFORM_SETTINGS
 

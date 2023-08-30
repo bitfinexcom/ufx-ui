@@ -1,5 +1,5 @@
-import types from '../constants/ws.constants'
 import balanceReducer, { INITIAL_STATE } from './balances.reducer'
+import types from '../constants/ws.constants'
 
 describe('REDUCER: balances', () => {
   describe('action: WS_MESSAGE', () => {

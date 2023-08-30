@@ -1,5 +1,5 @@
-import types from '../constants/currencies.constants'
 import conversionsReducer, { INITIAL_STATE } from './conversions.reducer'
+import types from '../constants/currencies.constants'
 
 describe('REDUCER: conversions', () => {
   describe('action: REQUEST_CONVERSIONS_SUCCESS', () => {

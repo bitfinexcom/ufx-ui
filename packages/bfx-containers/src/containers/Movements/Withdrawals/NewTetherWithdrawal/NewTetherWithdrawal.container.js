@@ -7,6 +7,7 @@ import React, { memo, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useInjectSaga } from 'redux-injectors'
 
+import NewTetherWithdrawal from './NewTetherWithdrawal'
 import { requestNewWithdraw as requestNewWithdrawAction } from '../../../../redux/actions/movements.actions'
 import { MOVEMENTS_REDUCER_SAGA_KEY } from '../../../../redux/constants/movements.constants'
 import movementsSaga from '../../../../redux/sagas/movements.saga'
@@ -19,7 +20,6 @@ import {
 } from '../../../../redux/selectors/currencies.selectors'
 import { getWSIsAuthenticated } from '../../../../redux/selectors/ws.selectors'
 import { getTetherProtocols } from '../../Tether.helpers'
-import NewTetherWithdrawal from './NewTetherWithdrawal'
 
 const NewTetherWithdrawalContainer = (props) => {
   const { baseCcy } = props

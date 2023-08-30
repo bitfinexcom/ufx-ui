@@ -1,5 +1,5 @@
-import types from '../constants/movements.constants'
 import movementsReducer, { INITIAL_STATE } from './movements.reducer'
+import types from '../constants/movements.constants'
 
 describe('REDUCER: movements', () => {
   const initialState = {

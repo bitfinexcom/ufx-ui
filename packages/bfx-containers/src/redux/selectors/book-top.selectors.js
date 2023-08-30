@@ -5,10 +5,10 @@ import _map from 'lodash/map'
 import _orderBy from 'lodash/orderBy'
 import { createSelector } from 'reselect'
 
-import { BOOK_TOP_SUBSCRIPTION_CONFIG } from '../constants/book.constants'
 import { getTotals } from './book.selectors'
 import { getUfxState } from './common'
 import { getWSChannels, findMatchingChannelWithSymbol } from './ws.selectors'
+import { BOOK_TOP_SUBSCRIPTION_CONFIG } from '../constants/book.constants'
 
 const EMPTY_OBJ = {}
 

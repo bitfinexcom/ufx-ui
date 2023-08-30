@@ -6,11 +6,11 @@ import React, { useMemo, useCallback, forwardRef } from 'react'
 import DatePicker from 'react-datepicker'
 import NumberFormat from 'react-number-format'
 
+import { DATE_FORMAT_OPTIONS } from './DateTimePicker.constants'
+import { isValidDate, toDate, calculateMinMaxTime } from './DateTimePicker.helpers'
 import * as Classes from '../../../common/classes'
 import * as Props from '../../../common/props'
 import Label from '../Label'
-import { DATE_FORMAT_OPTIONS } from './DateTimePicker.constants'
-import { isValidDate, toDate, calculateMinMaxTime } from './DateTimePicker.helpers'
 
 const { TEXT_ALIGNMENT } = Props
 

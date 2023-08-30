@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import React, { useMemo } from 'react'
 import { withContentRect } from 'react-measure'
 
-import * as Classes from '../../common/classes'
 import ResponsiveContext from './ResponsiveContext'
+import * as Classes from '../../common/classes'
 
 const Responsive = (props) => {
   const { children, measureRef, contentRect } = props

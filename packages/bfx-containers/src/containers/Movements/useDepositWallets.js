@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useInjectSaga } from 'redux-injectors'
 
+import { BTC_LIGHTNING_TX_METHOD } from './constants'
 import { requestDepositWallets } from '../../redux/actions/movements.actions'
 import { MOVEMENTS_REDUCER_SAGA_KEY } from '../../redux/constants/movements.constants'
 import movementsSaga from '../../redux/sagas/movements.saga'
 import { getCurrencyTxMethod as getCurrencyTxMethodSelector } from '../../redux/selectors/currencies.selectors'
 import { getDepositWallets } from '../../redux/selectors/movements.selectors'
-import { BTC_LIGHTNING_TX_METHOD } from './constants'
 
 const SUPPORTED_WALLETS = ['exchange']
 

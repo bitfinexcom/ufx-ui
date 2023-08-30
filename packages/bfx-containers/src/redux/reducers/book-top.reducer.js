@@ -5,9 +5,9 @@ import _omit from 'lodash/omit'
 import _size from 'lodash/size'
 import _toString from 'lodash/toString'
 
+import { getRawData, getSides } from './book.reducer'
 import tAdapter from '../adapters/book.adapter'
 import types from '../constants/ws.constants'
-import { getRawData, getSides } from './book.reducer'
 
 export const INITIAL_STATE = {
   asks: {},

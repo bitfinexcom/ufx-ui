@@ -4,9 +4,9 @@ import _get from 'lodash/get'
 import PropTypes from 'prop-types'
 import React, { memo, forwardRef } from 'react'
 
+import { KEYS } from './Book.constants'
 import { DATA_MAPPING } from '../../common/props'
 import * as utils from '../../common/utils'
-import { KEYS } from './Book.constants'
 
 const BookRow = forwardRef((props, ref) => {
   const {
@@ -93,6 +93,7 @@ BookRow.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   data: PropTypes.object,
   rowMapping: PropTypes.objectOf(PropTypes.shape(DATA_MAPPING)),
+  // eslint-disable-next-line react/forbid-prop-types
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 

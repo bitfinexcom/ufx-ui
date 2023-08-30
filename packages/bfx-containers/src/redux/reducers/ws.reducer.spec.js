@@ -1,5 +1,5 @@
-import types from '../constants/ws.constants'
 import WSReducer, { INITIAL_STATE } from './ws.reducer'
+import types from '../constants/ws.constants'
 
 describe('REDUCER: WS', () => {
   describe('action: CONNECT', () => {
