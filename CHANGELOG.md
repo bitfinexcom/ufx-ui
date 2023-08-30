@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.16.0 (2023-08-30)
+
+#### :art: Refactor
+* `bfx-containers`, `core`, `cypress-tests`, `eslint-config`, `example`, `storybook`, `utils`
+  * [#200](https://github.com/bitfinexcom/ufx-ui/pull/200) (refactor) update dependencies for node16 ([@bhoomij](https://github.com/bhoomij))
+
+#### Committers: 1
+- Bhoomi Joshi ([@bhoomij](https://github.com/bhoomij))
+
+
 ## v0.15.3 (2023-08-24)
 
 #### :rocket: Feature
