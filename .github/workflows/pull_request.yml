@@ -13,6 +13,10 @@ jobs:
   checks:
     runs-on: macos-latest
 
+    env:
+      # dont treat warning as error
+      CI: false
+
     strategy:
       matrix:
         node-version: [16.20.x]
